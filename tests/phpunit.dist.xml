@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./DoctrineExtensions/TestHelper.php">
+    <php>
+        <var name="doctrine2-path" value="" />
+    </php>
+</phpunit>
