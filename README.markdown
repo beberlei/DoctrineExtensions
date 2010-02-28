@@ -47,7 +47,9 @@ that are called before and after the fixture is loaded respectively.
     namespace MyProject\Tests;
 
     use DoctrineExtensions\PHPUnit\Event\EntityManagerEventArgs,
-        Doctrine\ORM\Tools\SchemaTool;
+        DoctrineExtensions\PHPUnit\OrmTestCase,
+        Doctrine\ORM\Tools\SchemaTool,
+        Doctrine\ORM\EntityManager;
 
     class SchemaSetupListener
     {
