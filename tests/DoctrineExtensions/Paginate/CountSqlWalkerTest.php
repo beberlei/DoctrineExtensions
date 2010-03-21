@@ -1,0 +1,86 @@
+<?php
+
+namespace DoctrineExtensions\Paginate;
+use Doctrine\ORM\Query;
+
+class CountSqlWalkerTest extends \PHPUnit_Framework_TestCase
+{
+    public $entityManager = null;
+
+    public function testCountQuery()
+    {
+        $query = $this->entityManager->createQuery(
+            'SELECT p, c, a FROM DoctrineExtensions\Paginate\BlogPost p JOIN p.category c JOIN p.author a');
+        $countQuery = Paginate::createCountQuery($query);
+
+        $this->assertEquals(
+            "SELECT count(DISTINCT b0_.id) AS sclr0 FROM BlogPost b0_ INNER JOIN Category c1_ ON b0_.category_id = c1_.id INNER JOIN Author a2_ ON b0_.author_id = a2_.id",
+            $countQuery->getSql()
+        );
+    }
+
+    public function testCountQuery_RemovesLimits()
+    {
+        $query = $this->entityManager->createQuery(
+            'SELECT p, c, a FROM DoctrineExtensions\Paginate\BlogPost p JOIN p.category c JOIN p.author a');
+        $countQuery = Paginate::createCountQuery($query);
+
+        $this->assertEquals(
+            "SELECT count(DISTINCT b0_.id) AS sclr0 FROM BlogPost b0_ INNER JOIN Category c1_ ON b0_.category_id = c1_.id INNER JOIN Author a2_ ON b0_.author_id = a2_.id",
+            $countQuery->getSql()
+        );
+    }
+
+    public function setUp()
+    {
+        $config = new \Doctrine\ORM\Configuration();
+        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
+        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
+        $config->setProxyDir(__DIR__ . '/_files');
+        $config->setProxyNamespace('DoctrineExtensions\Paginate\Proxies');
+
+        $conn = array(
+            'driver' => 'pdo_sqlite',
+            'memory' => true,
+        );
+
+        $this->entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
+    }
+}
+
+/**
+ * @Entity
+ */
+class BlogPost
+{
+    /** @Id @column(type="integer") @generatedValue */
+    public $id;
+
+    /**
+     * @ManyToOne(targetEntity="Author")
+     */
+    public $author;
+
+    /**
+     * @ManyToOne(targetEntity="Category")
+     */
+    public $category;
+}
+
+/**
+ * @Entity
+ */
+class Author
+{
+    /** @Id @column(type="integer") @generatedValue */
+    public $id;
+}
+
+/**
+ * @Entity
+ */
+class Category
+{
+    /** @id @column(type="integer") @generatedValue */
+    public $id;
+}
