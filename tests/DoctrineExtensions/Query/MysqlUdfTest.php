@@ -16,7 +16,7 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         $config->setProxyNamespace('DoctrineExtensions\Paginate\Proxies');
 
         $conn = array(
-            'driver' => 'pdo_mysql',
+            'driver' => 'pdo_sqlite',
             'memory' => true,
         );
 
@@ -39,6 +39,15 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         $q = $this->entityManager->createQuery($dql);
 
         var_dump($q->getSql());
+    }
+
+    public function testDateAdd2()
+    {
+        $dql = "SELECT p FROM DoctrineExtensions\Query\BlogPost p WHERE DATE_ADD(CURRENT_TIME(), p.created) < 7";
+        $q = $this->entityManager->createQuery($dql);
+
+        $this->setExpectedException('Doctrine\ORM\Query\QueryException');
+        $q->getSql();
     }
 }
 
