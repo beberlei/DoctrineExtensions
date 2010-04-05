@@ -30,7 +30,7 @@ use Doctrine\ORM\Query;
  * @copyright   Copyright (c) 2010 David Abdemoulaie (http://hobodave.com/)
  * @license     http://hobodave.com/license.txt New BSD License
  */
-class Paginate implements \Zend_Paginator_Adapter_Interface
+class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
 {
     /**
      * The SELECT query to paginate
