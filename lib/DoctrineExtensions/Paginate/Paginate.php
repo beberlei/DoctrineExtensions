@@ -23,7 +23,7 @@ class Paginate
         /* @var $countQuery Query */
         $countQuery = clone $query;
 
-        $countQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\CountSqlWalker'));
+        $countQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\CountWalker'));
         $countQuery->setFirstResult(null)->setMaxResults(null);
         
         return $countQuery;

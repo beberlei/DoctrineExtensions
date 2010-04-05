@@ -13,18 +13,19 @@
 
 namespace DoctrineExtensions\Paginate;
 
-use Doctrine\ORM\Query\TreeWalkerAdapter;
-use Doctrine\ORM\Query\AST\SelectStatement;
-use Doctrine\ORM\Query\AST\SelectExpression;
-use Doctrine\ORM\Query\AST\PathExpression;
-use Doctrine\ORM\Query\AST\AggregateExpression;
+use Doctrine\ORM\Query\TreeWalkerAdapter,
+    Doctrine\ORM\Query\AST\SelectStatement,
+    Doctrine\ORM\Query\AST\SelectExpression,
+    Doctrine\ORM\Query\AST\PathExpression,
+    Doctrine\ORM\Query\AST\AggregateExpression;
 
-class CountSqlWalker extends TreeWalkerAdapter
+class CountWalker extends TreeWalkerAdapter
 {
     /**
-     * Walks down a SelectStatement AST node, thereby generating the appropriate SQL.
+     * Walks down a SelectStatement AST node, modifying it to retrieve a COUNT
      *
-     * @return string The SQL.
+     * @param SelectStatement $AST
+     * @return void
      */
     public function walkSelectStatement(SelectStatement $AST)
     {

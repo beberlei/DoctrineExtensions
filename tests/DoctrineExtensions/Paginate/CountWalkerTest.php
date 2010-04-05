@@ -3,7 +3,7 @@
 namespace DoctrineExtensions\Paginate;
 use Doctrine\ORM\Query;
 
-class CountSqlWalkerTest extends \PHPUnit_Framework_TestCase
+class CountWalkerTest extends \PHPUnit_Framework_TestCase
 {
     public $entityManager = null;
 
