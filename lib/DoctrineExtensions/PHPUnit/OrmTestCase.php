@@ -15,8 +15,6 @@ namespace DoctrineExtensions\PHPUnit;
 
 use DoctrineExtensions\PHPUnit\Event\EntityManagerEventArgs;
 
-xdebug_start_trace("/tmp/dc2phpunit");
-
 abstract class OrmTestCase extends DatabaseTestCase
 {
     /**
@@ -27,7 +25,7 @@ abstract class OrmTestCase extends DatabaseTestCase
     /**
      * Performs operation returned by getSetUpOperation().
      */
-    final protected function setUp()
+    protected function setUp()
     {
         $this->databaseTester = NULL;
 
