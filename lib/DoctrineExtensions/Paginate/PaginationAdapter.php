@@ -141,10 +141,7 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
      */
     protected function createCountQuery()
     {
-        $countQuery = clone $this->query;
-        $countQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\CountWalker'));
-        $countQuery->setFirstResult(null)->setMaxResults(null);
-        return $countQuery;
+        return Paginate::createCountQuery($this->query);
     }
 
     /**
@@ -152,11 +149,7 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
      */
     protected function createLimitSubquery($offset, $itemCountPerPage)
     {
-        $subQuery = clone $this->query;
-        $subQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'))
-            ->setFirstResult($offset)
-            ->setMaxResults($itemCountPerPage);
-        return $subQuery;
+        return Paginate::createLimitSubQuery($this->query, $offset, $itemCountPerPage);
     }
 
     /**
@@ -164,15 +157,6 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
      */
     protected function createWhereInQuery($ids)
     {
-        $whereInQuery = clone $this->query;
-        $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
-        $whereInQuery->setHint('id.count', count($ids));
-        $whereInQuery->setHint('pg.ns', $this->namespace);
-        $whereInQuery->setFirstResult(null)->setMaxResults(null);
-        foreach ($ids as $i => $id) {
-            $i = $i+1;
-            $whereInQuery->setParameter("{$this->namespace}_{$i}", $id);
-        }
-        return $whereInQuery;
+        return Paginate::createWhereInQuery($this->query, $ids, $this->namepsace);
     }
 }

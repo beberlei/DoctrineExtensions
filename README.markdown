@@ -10,6 +10,39 @@ To include the DoctrineExtensions should fire up an autoloader, for example:
     $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', "/path/to/extensions");
     $classLoader->register();
 
+## Paginator
+
+The paginator offers a powerful way to iterate over any DQL, even fetch joins of collections. For this it has to issue
+3 queries to the database:
+
+1. Count the total number of entries in the list
+2. Fetch the Unique IDs of the given $limit + $offset window
+3. Fetch the Entities for all the Unique Ids given in 2.
+
+If you don't need to iterate a fetch-joined to-many DQL query you can shortcut:
+
+1. Count the total number of entries in the list
+2. Fetch the Query using $query->setFirstResult($offset)->setMaxResults($limit);
+
+The API for the Paginator is really simple:
+
+    use DoctrineExtensions\Paginate\Paginate;
+
+    $query = $em->createQuery($dql);
+
+    $count = Paginate::getTotalQueryResults($query); // Step 1
+    $paginateQuery = Paginate::getPaginateQuery($query, $offset, $limitPerPage); // Step 2 and 3
+    $result = $paginateQuery->getResult();
+
+In the simple case its even easier:
+
+    $count = Paginate::getTotalQueryResults($query); // Step 1
+    $result = $query->setFirstResult($offset)->setMaxResults($limitPerPage)->getResult(); // Step 2
+
+These methods internally use several others to create and retrieve the data. You can re-use
+those methods to integrate with existing pagination solutions, a `Zend_Paginator` implementation
+is already shipped (`DoctrineExtensions\Paginate\PaginationAdapter`).
+
 ## PHPUnit
 
 The PHPUnit Extension for Doctrine offers several hooks into PHPUnits Database extension and offers a

@@ -38,6 +38,7 @@ class CountWalkerTest extends \PHPUnit_Framework_TestCase
         $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
         $config->setProxyDir(__DIR__ . '/_files');
         $config->setProxyNamespace('DoctrineExtensions\Paginate\Proxies');
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
 
         $conn = array(
             'driver' => 'pdo_sqlite',

@@ -11,13 +11,24 @@ class LimitSubqueryWalkerTest extends \PHPUnit_Framework_TestCase
     {
         $query = $this->entityManager->createQuery(
             'SELECT p, c, a FROM DoctrineExtensions\Paginate\MyBlogPost p JOIN p.category c JOIN p.author a');
-        $countQuery = clone $query;
-        $countQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'));
+        $limitQuery = clone $query;
+        $limitQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'));
 
         $this->assertEquals(
             "SELECT DISTINCT m0_.id AS id0 FROM MyBlogPost m0_ INNER JOIN Category c1_ ON m0_.category_id = c1_.id INNER JOIN Author a2_ ON m0_.author_id = a2_.id",
-            $countQuery->getSql()
+            $limitQuery->getSql()
         );
+    }
+
+    public function testCreateLimitSubQuery()
+    {
+        $query = $this->entityManager->createQuery(
+            'SELECT p, c, a FROM DoctrineExtensions\Paginate\MyBlogPost p JOIN p.category c JOIN p.author a');
+        $limitQuery = Paginate::createLimitSubQuery($query, 10, 20);
+
+        $this->assertEquals(10, $limitQuery->getFirstResult());
+        $this->assertEquals(20, $limitQuery->getMaxResults());
+        $this->assertEquals(array('DoctrineExtensions\Paginate\LimitSubqueryWalker'), $limitQuery->getHint(Query::HINT_CUSTOM_TREE_WALKERS));
     }
 
     public function setUp()
@@ -27,6 +38,7 @@ class LimitSubqueryWalkerTest extends \PHPUnit_Framework_TestCase
         $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
         $config->setProxyDir(__DIR__ . '/_files');
         $config->setProxyNamespace('DoctrineExtensions\Paginate\Proxies');
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
 
         $conn = array(
             'driver' => 'pdo_sqlite',
