@@ -21,7 +21,7 @@ class LargeCollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testCountOneToMany()
     {
-        $lc = new LargeCollection($this->em);
+        $lc = new LargeCollection();
         $article = $this->em->find('DoctrineExtensions\LargeCollections\Article', $this->articleId);
 
         $this->assertEquals(2, $lc->count($article->getComments()));
@@ -29,7 +29,7 @@ class LargeCollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testCountManyToMany()
     {
-        $lc = new LargeCollection($this->em);
+        $lc = new LargeCollection();
         $article = $this->em->find('DoctrineExtensions\LargeCollections\Article', $this->articleId);
 
         $this->assertEquals(2, $lc->count($article->getTags()));
@@ -37,7 +37,7 @@ class LargeCollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSliceOneToMany()
     {
-        $lc = new LargeCollection($this->em);
+        $lc = new LargeCollection();
         $article = $this->em->find('DoctrineExtensions\LargeCollections\Article', $this->articleId);
 
         $results = $lc->getSliceQuery($article->getComments(), 10)->getResult();
@@ -53,7 +53,7 @@ class LargeCollectionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSliceManyToMany()
     {
-        $lc = new LargeCollection($this->em);
+        $lc = new LargeCollection();
         $article = $this->em->find('DoctrineExtensions\LargeCollections\Article', $this->articleId);
 
         $results = $lc->getSliceQuery($article->getTags(), 10)->getResult();

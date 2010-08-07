@@ -18,18 +18,22 @@ use Doctrine\ORM\PersistentCollection;
 
 class LargeCollection
 {
-    /**
-     * @var EntityManager
-     */
-    private $em;
+    private $reflField = null;
+
+    public function __construct()
+    {
+        $rc = new \ReflectionClass('Doctrine\ORM\PersistentCollection');
+        $this->reflField = $rc->getProperty('em');
+        $this->reflField->setAccessible(true);
+    }
 
     /**
-     * @param EntityManager $em
-     * @param PersistentCollection $collection
+     * @param  PersistentCollection $collection
+     * @return EntityManager
      */
-    public function __construct(EntityManager $em)
+    private function getEntityManager(PersistentCollection $collection)
     {
-        $this->em = $em;
+        return $this->reflField->getValue($collection);
     }
 
     /**
@@ -38,9 +42,11 @@ class LargeCollection
      */
     public function count(PersistentCollection $collection)
     {
+        $em = $this->getEntityManager($collection);
+
         $assoc = $collection->getMapping();
-        $sourceMetadata = $this->em->getClassMetadata($assoc->sourceEntityName);
-        $targetMetadata = $this->em->getClassMetadata($assoc->targetEntityName);
+        $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
+        $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
 
         if (count($targetMetadata->identifier) == 1) {
             $targetIdField = current($targetMetadata->identifier);
@@ -51,14 +57,13 @@ class LargeCollection
         $dql = 'SELECT COUNT(r.' . $targetIdField . ') AS collectionCount '.
                'FROM ' . $sourceMetadata->name . ' o LEFT JOIN o.' . $assoc->sourceFieldName . ' r ' .
                'WHERE ' . $this->getWhereConditions($sourceMetadata);
-        $query = $this->em->createQuery($dql);
+        $query = $em->createQuery($dql);
         
         $this->setParameters($collection, $query);
         return $query->getSingleScalarResult();
     }
 
     /**
-     *
      * @param PersistentCollection $collection
      * @param int $limit
      * @param int $offset
@@ -66,9 +71,11 @@ class LargeCollection
      */
     public function getSliceQuery(PersistentCollection $collection, $limit, $offset = 0)
     {
+        $em = $this->getEntityManager($collection);
+
         $assoc = $collection->getMapping();
-        $sourceMetadata = $this->em->getClassMetadata($assoc->sourceEntityName);
-        $targetMetadata = $this->em->getClassMetadata($assoc->targetEntityName);
+        $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
+        $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
 
         if ($assoc->isOwningSide && !$assoc->inversedBy) {
             throw new \UnexpectedValueException("Only bi-directional collections can be sliced.");
@@ -82,7 +89,7 @@ class LargeCollection
 
         $dql = 'SELECT r FROM ' . $targetMetadata->name . ' r JOIN r.' . $assocField . ' o '.
                'WHERE ' . $this->getWhereConditions($sourceMetadata);
-        $query = $this->em->createQuery($dql);
+        $query = $em->createQuery($dql);
 
         $this->setParameters($collection, $query);
         $query->setFirstResult($offset)->setMaxResults($limit);
@@ -101,8 +108,10 @@ class LargeCollection
 
     private function setParameters($collection, $query)
     {
+        $em = $this->getEntityManager($collection);
+
         $i = 0;
-        foreach ($this->em->getUnitOfWork()->getEntityIdentifier($collection->getOwner()) AS $value) {
+        foreach ($em->getUnitOfWork()->getEntityIdentifier($collection->getOwner()) AS $value) {
             $query->setParameter(++$i, $value);
         }
     }
