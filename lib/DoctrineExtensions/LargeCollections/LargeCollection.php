@@ -13,8 +13,9 @@
 
 namespace DoctrineExtensions\LargeCollections;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\PersistentCollection;
+use Doctrine\ORM\EntityManager,
+    Doctrine\ORM\PersistentCollection,
+    Doctrine\Common\Collections\Collection;
 
 class LargeCollection
 {
@@ -37,37 +38,63 @@ class LargeCollection
     }
 
     /**
-     * @param PersistentCollection $collection
+     * @param Collection $collection
      * @return int
      */
-    public function count(PersistentCollection $collection)
+    public function count(Collection $collection)
     {
-        $em = $this->getEntityManager($collection);
+        if ($collection instanceof PersistentCollection && !$collection->isInitialized()) {
 
-        $assoc = $collection->getMapping();
-        $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
-        $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
+            $em = $this->getEntityManager($collection);
 
-        if (count($targetMetadata->identifier) == 1) {
-            $targetIdField = current($targetMetadata->identifier);
+            $assoc = $collection->getMapping();
+            $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
+            $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
+
+            if (count($targetMetadata->identifier) == 1) {
+                $targetIdField = current($targetMetadata->identifier);
+            } else {
+                throw new \UnexpectedValueException("Only Relations with Entities using Single Primary Keys are supported.");
+            }
+
+            $dql = 'SELECT COUNT(r.' . $targetIdField . ') AS collectionCount '.
+                   'FROM ' . $sourceMetadata->name . ' o LEFT JOIN o.' . $assoc->sourceFieldName . ' r ' .
+                   'WHERE ' . $this->getWhereConditions($sourceMetadata);
+            $query = $em->createQuery($dql);
+
+            $this->setParameters($collection, $query);
+            return $query->getSingleScalarResult();
         } else {
-            throw new \UnexpectedValueException("Only Relations with Entities using Single Primary Keys are supported.");
+            return count($collection);
         }
-
-        $dql = 'SELECT COUNT(r.' . $targetIdField . ') AS collectionCount '.
-               'FROM ' . $sourceMetadata->name . ' o LEFT JOIN o.' . $assoc->sourceFieldName . ' r ' .
-               'WHERE ' . $this->getWhereConditions($sourceMetadata);
-        $query = $em->createQuery($dql);
-        
-        $this->setParameters($collection, $query);
-        return $query->getSingleScalarResult();
     }
 
     /**
-     * @param PersistentCollection $collection
+     * Return the slice from any given collection, using optimized queries for unitialized PersistentCollections.
+     * 
+     * @param Collection $collection
      * @param int $limit
      * @param int $offset
      * @return array
+     */
+    public function getSlice(Collection $collection, $limit, $offset = 0)
+    {
+        if ($collection instanceof PersistentCollection && !$collection->isInitialized()) {
+            return $this->getSliceQuery($collection, $limit, $offset)->getResult();
+        } else {
+            $col = $collection->toArray();
+
+            return \array_slice($col, $offset, $limit);
+        }
+    }
+
+    /**
+     * Return a Query instance to retrieve a slice of the given limit and offset from a persistent collection.
+     *
+     * @param PersistentCollection $collection
+     * @param int $limit
+     * @param int $offset
+     * @return \Doctrine\ORM\Query
      */
     public function getSliceQuery(PersistentCollection $collection, $limit, $offset = 0)
     {
