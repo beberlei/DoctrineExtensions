@@ -51,13 +51,11 @@ class LargeCollection
             $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
             $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
 
-            if (count($targetMetadata->identifier) == 1) {
-                $targetIdField = current($targetMetadata->identifier);
-            } else {
+            if (!count($targetMetadata->identifier) == 1) {
                 throw new \UnexpectedValueException("Only Relations with Entities using Single Primary Keys are supported.");
             }
 
-            $dql = 'SELECT COUNT(r.' . $targetIdField . ') AS collectionCount '.
+            $dql = 'SELECT COUNT(r.' . $targetMetadata->identifier[0] . ') AS collectionCount '.
                    'FROM ' . $sourceMetadata->name . ' o LEFT JOIN o.' . $assoc->sourceFieldName . ' r ' .
                    'WHERE ' . $this->getWhereConditions($sourceMetadata);
             $query = $em->createQuery($dql);
