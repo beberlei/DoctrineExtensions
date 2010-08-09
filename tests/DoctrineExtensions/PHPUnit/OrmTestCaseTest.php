@@ -41,6 +41,7 @@ class OrmTestCaseTest extends OrmTestCase
     protected function createEntityManager()
     {
         $config = new \Doctrine\ORM\Configuration();
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
         $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
         $config->setProxyDir(__DIR__ . '/Proxies');
