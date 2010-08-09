@@ -50,5 +50,7 @@ class CountWalker extends TreeWalkerAdapter
                 new AggregateExpression('count', $pathExpression, true), null
             )
         );
+        // remove the orderby clause as it is not needed for a count
+        $AST->orderByClause = null;
     }
 }
