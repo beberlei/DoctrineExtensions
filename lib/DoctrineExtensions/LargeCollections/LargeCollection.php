@@ -48,15 +48,15 @@ class LargeCollection
             $em = $this->getEntityManager($collection);
 
             $assoc = $collection->getMapping();
-            $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
-            $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
+            $sourceMetadata = $em->getClassMetadata($assoc['sourceEntity']);
+            $targetMetadata = $em->getClassMetadata($assoc['targetEntity']);
 
             if (!count($targetMetadata->identifier) == 1) {
                 throw new \UnexpectedValueException("Only Relations with Entities using Single Primary Keys are supported.");
             }
 
             $dql = 'SELECT COUNT(r.' . $targetMetadata->identifier[0] . ') AS collectionCount '.
-                   'FROM ' . $sourceMetadata->name . ' o LEFT JOIN o.' . $assoc->sourceFieldName . ' r ' .
+                   'FROM ' . $sourceMetadata->name . ' o LEFT JOIN o.' . $assoc['fieldName'] . ' r ' .
                    'WHERE ' . $this->getWhereConditions($sourceMetadata);
             $query = $em->createQuery($dql);
 
@@ -99,17 +99,17 @@ class LargeCollection
         $em = $this->getEntityManager($collection);
 
         $assoc = $collection->getMapping();
-        $sourceMetadata = $em->getClassMetadata($assoc->sourceEntityName);
-        $targetMetadata = $em->getClassMetadata($assoc->targetEntityName);
+        $sourceMetadata = $em->getClassMetadata($assoc['sourceEntity']);
+        $targetMetadata = $em->getClassMetadata($assoc['targetEntity']);
 
-        if ($assoc->isOwningSide && !$assoc->inversedBy) {
+        if ($assoc['isOwningSide'] && !$assoc['inversedBy']) {
             throw new \UnexpectedValueException("Only bi-directional collections can be sliced.");
         }
 
-        if ($assoc->isOwningSide) {
-            $assocField = $assoc->inversedBy;
+        if ($assoc['isOwningSide']) {
+            $assocField = $assoc['inversedBy'];
         } else {
-            $assocField = $assoc->mappedBy;
+            $assocField = $assoc['mappedBy'];
         }
 
         $dql = 'SELECT r FROM ' . $targetMetadata->name . ' r JOIN r.' . $assocField . ' o '.
