@@ -48,6 +48,7 @@ class Paginate
         $countQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\CountWalker'));
         $countQuery->setFirstResult(null)->setMaxResults(null);
         
+        $countQuery->setParameters($query->getParameters());
         return $countQuery;
     }
 
@@ -63,6 +64,7 @@ class Paginate
         $subQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'))
             ->setFirstResult($offset)
             ->setMaxResults($itemCountPerPage);
+        $subQuery->setParameters($query->getParameters());
         return $subQuery;
     }
 
@@ -77,6 +79,9 @@ class Paginate
         // don't do this for an empty id array
         if (count($ids) > 0) {
             $whereInQuery = clone $query;
+            
+            $whereInQuery->setParameters($query->getParameters());
+            
             $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
             $whereInQuery->setHint('id.count', count($ids));
             $whereInQuery->setHint('pg.ns', $namespace);
