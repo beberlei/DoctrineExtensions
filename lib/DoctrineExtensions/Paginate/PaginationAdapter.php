@@ -157,6 +157,6 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
      */
     protected function createWhereInQuery($ids)
     {
-        return Paginate::createWhereInQuery($this->query, $ids, $this->namepsace);
+        return Paginate::createWhereInQuery($this->query, $ids, $this->namespace);
     }
 }
