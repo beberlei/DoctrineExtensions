@@ -91,7 +91,7 @@ class Paginate
      */
     static public function createWhereInQuery(Query $query, array $ids, $namespace = 'pgid')
     {
-        $whereInQuery = self::cloneQuery($query);
+        $whereInQuery = clone $query;
         $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
         $whereInQuery->setHint('id.count', count($ids));
         $whereInQuery->setHint('pg.ns', $namespace);
