@@ -75,7 +75,7 @@ class WhereInWalker extends TreeWalkerAdapter
             $ns = $this->_getQuery()->getHint('pg.ns');
 
             for ($i=1; $i <= $count; $i++) {
-                $inExpression->literals[] = new InputParameter(":{$ns}_$i");
+                $expression->literals[] = new InputParameter(":{$ns}_$i");
             }
 
         } else {
