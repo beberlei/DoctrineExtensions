@@ -21,6 +21,7 @@ use Doctrine\ORM\Query\TreeWalkerAdapter,
     Doctrine\ORM\Query\AST\SelectStatement,
     Doctrine\ORM\Query\AST\PathExpression,
     Doctrine\ORM\Query\AST\InExpression,
+    Doctrine\ORM\Query\AST\NullComparisonExpression,
     Doctrine\ORM\Query\AST\InputParameter,
     Doctrine\ORM\Query\AST\ConditionalPrimary,
     Doctrine\ORM\Query\AST\ConditionalTerm,
@@ -67,14 +68,23 @@ class WhereInWalker extends TreeWalkerAdapter
         );
         $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
 
-        $inExpression = new InExpression($pathExpression);
-        $ns = $this->_getQuery()->getHint('pg.ns');
         $count = $this->_getQuery()->getHint('id.count');
-        for ($i=1; $i <= $count; $i++) {
-            $inExpression->literals[] = new InputParameter(":{$ns}_$i");
+
+        if ($count > 0) {
+            $expression = new InExpression($pathExpression);
+            $ns = $this->_getQuery()->getHint('pg.ns');
+
+            for ($i=1; $i <= $count; $i++) {
+                $expression->literals[] = new InputParameter(":{$ns}_$i");
+            }
+
+        } else {
+            $expression = new NullComparisonExpression($pathExpression);
+            $expression->not = false;
         }
+
         $conditionalPrimary = new ConditionalPrimary;
-        $conditionalPrimary->simpleConditionalExpression = $inExpression;
+        $conditionalPrimary->simpleConditionalExpression = $expression;
 
         $AST->whereClause = new WhereClause(
             new ConditionalExpression(array(
