@@ -58,10 +58,23 @@ class LimitSubqueryWalker extends TreeWalkerAdapter
             $parent['metadata']->getSingleIdentifierFieldName()
         );
         $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
-
-        $AST->selectClause->isDistinct = true;
+        
         $AST->selectClause->selectExpressions = array(
             new SimpleSelectExpression($pathExpression)
         );
+        
+        if (isset($AST->orderByClause)) {
+            foreach($AST->orderByClause->orderByItems as $item) {
+                $pathExpression = new PathExpression(
+                        PathExpression::TYPE_STATE_FIELD | PathExpression::TYPE_SINGLE_VALUED_ASSOCIATION,
+                        $item->expression->identificationVariable,
+                        $item->expression->field
+                );
+                $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
+                $AST->selectClause->selectExpressions[] = new SimpleSelectExpression($pathExpression);
+            }
+        }
+        
+        $AST->selectClause->isDistinct = true;
     }
 }
