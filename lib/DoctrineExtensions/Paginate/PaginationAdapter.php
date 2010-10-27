@@ -47,6 +47,13 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
     protected $rowCount = null;
 
     /**
+     * Use Array Result
+     *
+     * @var boolean
+     */
+    protected $arrayResult = false;
+
+    /**
      * Namespace to use for bound parameters
      * If you use :pgid_# as a parameter, then
      * you must change this.
@@ -65,6 +72,16 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
     {
         $this->query = $query;
         $this->namespace = $ns;
+    }
+
+    /**
+     * Set use array result flag
+     *
+     * @param boolean $flag True to use array result
+     */
+    public function useArrayResult($flag = true)
+    {
+        $this->arrayResult = $flag;
     }
 
     /**
@@ -119,7 +136,11 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
             $ids
         );
 
-        return $this->createWhereInQuery($ids)->getResult();
+        if ($this->arrayResult) {
+            return $this->createWhereInQuery($ids)->getArrayResult();
+        } else {
+            return $this->createWhereInQuery($ids)->getResult();
+        }
     }
 
     /**
