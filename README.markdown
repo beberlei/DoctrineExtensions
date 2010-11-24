@@ -95,7 +95,7 @@ that are called before and after the fixture is loaded respectively.
             $cmf = $em->getMetadataFactory();
             $classes = $cmf->getAllMetadata();
 
-            $schemaTool->dropSchema($classes);
+            $schemaTool->dropDatabase();
             $schemaTool->createSchema($classes);
         }
     }
