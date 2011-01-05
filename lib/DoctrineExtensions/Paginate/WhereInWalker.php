@@ -85,9 +85,7 @@ class WhereInWalker extends TreeWalkerAdapter
                 ))
             );
         } else { // add to the existing using AND
-            // I thought this should be $AST->whereClause->conditionalExpression->conditionalTerms
-            // but it seems not. If something breaks, this could be why
-            $AST->whereClause->conditionalExpression->conditionalFactors[] =
+            $AST->whereClause->conditionalExpression->conditionalTerms[] =
                     new ConditionalFactor($conditionalPrimary);
         }
     }
