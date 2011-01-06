@@ -18,15 +18,15 @@
 namespace DoctrineExtensions\Paginate;
 
 use Doctrine\ORM\Query\TreeWalkerAdapter,
-    Doctrine\ORM\Query\AST\SelectStatement,
-    Doctrine\ORM\Query\AST\PathExpression,
-    Doctrine\ORM\Query\AST\InExpression,
-    Doctrine\ORM\Query\AST\InputParameter,
-    Doctrine\ORM\Query\AST\ConditionalPrimary,
-    Doctrine\ORM\Query\AST\ConditionalTerm,
-    Doctrine\ORM\Query\AST\ConditionalExpression,
-    Doctrine\ORM\Query\AST\ConditionalFactor,
-    Doctrine\ORM\Query\AST\WhereClause;
+	Doctrine\ORM\Query\AST\SelectStatement,
+	Doctrine\ORM\Query\AST\PathExpression,
+	Doctrine\ORM\Query\AST\InExpression,
+	Doctrine\ORM\Query\AST\InputParameter,
+	Doctrine\ORM\Query\AST\ConditionalPrimary,
+	Doctrine\ORM\Query\AST\ConditionalTerm,
+	Doctrine\ORM\Query\AST\ConditionalExpression,
+	Doctrine\ORM\Query\AST\ConditionalFactor,
+	Doctrine\ORM\Query\AST\WhereClause;
 
 /**
  * Replaces the whereClause of the AST with a WHERE id IN (:foo_1, :foo_2) equivalent
@@ -39,54 +39,66 @@ use Doctrine\ORM\Query\TreeWalkerAdapter,
  */
 class WhereInWalker extends TreeWalkerAdapter
 {
-    /**
-     * Replaces the whereClause in the AST
-     *
-     * Generates a clause equivalent to WHERE IN (:pgid_1, :pgid_2, ...)
-     *
-     * The parameter namespace (pgid) is retrieved from the pg.ns query hint
-     * The total number of parameters is retrieved from the id.count query hint
-     *
-     * @param  SelectStatement $AST
-     * @return void
-     */
-    public function walkSelectStatement(SelectStatement $AST)
-    {
-        $parent = null;
-        $parentName = null;
-        foreach ($this->_getQueryComponents() AS $dqlAlias => $qComp) {
-            if ($qComp['parent'] === null && $qComp['nestingLevel'] == 0) {
-                $parent = $qComp;
-                $parentName = $dqlAlias;
-                break;
-            }
-        }
+	/**
+	 * Replaces the whereClause in the AST
+	 *
+	 * Generates a clause equivalent to WHERE IN (:pgid_1, :pgid_2, ...)
+	 *
+	 * The parameter namespace (pgid) is retrieved from the pg.ns query hint
+	 * The total number of parameters is retrieved from the id.count query hint
+	 *
+	 * @param  SelectStatement $AST
+	 * @return void
+	 */
+	public function walkSelectStatement(SelectStatement $AST)
+	{
+		$parent = null;
+		$parentName = null;
+		foreach ($this->_getQueryComponents() AS $dqlAlias => $qComp) {
+			if ($qComp['parent'] === null && $qComp['nestingLevel'] == 0) {
+				$parent = $qComp;
+				$parentName = $dqlAlias;
+				break;
+			}
+		}
 
-        $pathExpression = new PathExpression(
-            PathExpression::TYPE_STATE_FIELD, $parentName, $parent['metadata']->getSingleIdentifierFieldName()
-        );
-        $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
-
-        $inExpression = new InExpression($pathExpression);
-        $ns = $this->_getQuery()->getHint('pg.ns');
-        $count = $this->_getQuery()->getHint('id.count');
-        for ($i=1; $i <= $count; $i++) {
-            $inExpression->literals[] = new InputParameter(":{$ns}_$i");
-        }
-        $conditionalPrimary = new ConditionalPrimary;
-        $conditionalPrimary->simpleConditionalExpression = $inExpression;
-        // if no existing whereClause
-        if ($AST->whereClause === null) {
-            $AST->whereClause = new WhereClause(
-                new ConditionalExpression(array(
-                    new ConditionalTerm(array(
-                        new ConditionalFactor($conditionalPrimary)
-                    ))
-                ))
-            );
-        } else { // add to the existing using AND
-            $AST->whereClause->conditionalExpression->conditionalTerms[] =
-                    new ConditionalFactor($conditionalPrimary);
-        }
-    }
+		$pathExpression = new PathExpression(
+			PathExpression::TYPE_STATE_FIELD, $parentName, $parent['metadata']->getSingleIdentifierFieldName()
+		);
+		$pathExpression->type = PathExpression::TYPE_STATE_FIELD;
+		$inExpression = new InExpression($pathExpression);
+		$ns = $this->_getQuery()->getHint('pg.ns');
+		$count = $this->_getQuery()->getHint('id.count');
+		for ($i=1; $i <= $count; $i++) {
+			$inExpression->literals[] = new InputParameter(":{$ns}_$i");
+		}
+		$conditionalPrimary = new ConditionalPrimary;
+		$conditionalPrimary->simpleConditionalExpression = $inExpression;
+		// if no existing whereClause
+		if ($AST->whereClause === null) {
+			$AST->whereClause = new WhereClause(
+				new ConditionalExpression(array(
+					new ConditionalTerm(array(
+						new ConditionalFactor($conditionalPrimary)
+					))
+				))
+			);
+		} else { // add to the existing using AND
+			// check for multiple existing where clauses
+			if (isset($AST->whereClause->conditionalExpression->conditionalFactors)) {
+				$AST->whereClause->conditionalExpression->conditionalFactors[] = $conditionalPrimary;
+			} else { // there is only one existing where clause
+				$AST->whereClause->conditionalExpression = new ConditionalExpression(
+					array(
+						new ConditionalTerm(
+							array(
+								$AST->whereClause->conditionalExpression,
+								$conditionalPrimary
+							)
+						)
+					)
+				);
+			}
+		}
+	}
 }
