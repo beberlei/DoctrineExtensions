@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="./DoctrineExtensions/TestHelper.php">
-    <php>
-        <var name="doctrine2-path" value="" />
-    </php>
+<phpunit
+	bootstrap="./DoctrineExtensions/TestHelper.php" 
+	colors="true"
+>
+	<testsuites>
+		<testsuite name="AllTests">
+			<directory>DoctrineExtensions/LargeCollections</directory>
+			<directory>DoctrineExtensions/Paginate</directory>
+		</testsuite>
+	</testsuites>
+	<php>
+		<var name="doctrine2-path" value="/Users/MitMaro/htdocs/cp.local/library" />
+	</php>
+	<filter>
+		<blacklist>
+			<directory suffix=".php">/Users/MitMaro/htdocs/cp.local/library/Doctrine</directory>
+		</blacklist>
+	</filter>
 </phpunit>

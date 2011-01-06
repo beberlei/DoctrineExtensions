@@ -11,6 +11,7 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
         $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
         $config->setProxyDir(__DIR__ . '/_files');
         $config->setProxyNamespace('DoctrineExtensions\Paginate\Proxies');
