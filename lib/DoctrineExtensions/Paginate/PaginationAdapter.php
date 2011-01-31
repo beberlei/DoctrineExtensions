@@ -18,6 +18,7 @@
 namespace DoctrineExtensions\Paginate;
 
 use Doctrine\ORM\Query;
+use Zend\Paginator\Adapter;
 
 /**
  * Implements the Zend_Paginator_Adapter_Interface for use with Zend_Paginator
@@ -30,7 +31,7 @@ use Doctrine\ORM\Query;
  * @copyright   Copyright (c) 2010 David Abdemoulaie (http://hobodave.com/)
  * @license     http://hobodave.com/license.txt New BSD License
  */
-class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
+class PaginationAdapter implements Adapter
 {
     /**
      * The SELECT query to paginate
