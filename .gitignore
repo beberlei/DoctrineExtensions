@@ -1,3 +1,5 @@
 nbproject
 tests/phpunit.xml
 build/
+.project
+.settings
