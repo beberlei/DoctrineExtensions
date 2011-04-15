@@ -15,7 +15,7 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 
-class Acos extends FunctionNode
+class Tan extends FunctionNode
 {
 
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
