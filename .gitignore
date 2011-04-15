@@ -1,3 +1,8 @@
 nbproject
 tests/phpunit.xml
 build/
+
+# Eclipse files
+.settings
+.buildpath
+.project
