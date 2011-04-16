@@ -18,8 +18,14 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 class Degrees extends FunctionNode
 {
 
+	public $arithmeticExpression;
+
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
+
+		return 'DEGREES(' . $sqlWalker->walkArithmeticExpression(
+			$this->arithmeticExpression
+		) . ')';
 
 	}
 

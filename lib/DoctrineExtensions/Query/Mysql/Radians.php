@@ -18,13 +18,21 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 class Radians extends FunctionNode
 {
 
+	public $arithmeticExpression;
+
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
+
+		return 'RADIANS(' . $sqlWalker->walkArithmeticExpression(
+			$this->arithmeticExpression
+		) . ')';
 
 	}
 
 	public function parse(\Doctrine\ORM\Query\Parser $parser)
 	{
+
+
 
 	}
 

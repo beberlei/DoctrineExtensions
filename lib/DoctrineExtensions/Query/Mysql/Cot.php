@@ -18,8 +18,14 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 class Cot extends FunctionNode
 {
 
+	public $arithmeticExpression;
+
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
+
+		return 'COT(' . $sqlWalker->walkArithmeticExpression(
+			$this->arithmeticExpression
+		) . ')';
 
 	}
 

@@ -15,17 +15,29 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 
-class Acos extends FunctionNode
+class Atan2 extends FunctionNode
 {
 
 	public $arithmeticExpression;
+	public $optionalSecondExpression;
 
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
 
-		return 'ACOS(' . $sqlWalker->walkArithmeticExpression(
+		$secondArgument = '';
+
+		if ($this->optionalSecondExpression) {
+
+			$secondArgument = $sqlWalker->walkArithmeticExpression(
+				$this->optionalSecondExpression
+			);
+
+		}
+
+		return 'ATAN(' . $sqlWalker->walkArithmeticExpression(
 			$this->arithmeticExpression
-		) . ')';
+		) . (($secondArgument) ? ', ' . $secondArgument : '')
+		. ')';
 
 	}
 

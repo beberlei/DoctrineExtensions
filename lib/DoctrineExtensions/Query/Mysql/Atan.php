@@ -18,8 +18,27 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 class Atan extends FunctionNode
 {
 
+	public $arithmeticExpression;
+	public $optionalSecondExpression;
+
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
+
+		$secondArgument = '';
+
+		if ($this->optionalSecondExpression) {
+
+			$secondArgument = $sqlWalker->walkArithmeticExpression(
+				$this->optionalSecondExpression
+			);
+
+		}
+
+		return $this->_functionName .
+			'(' . $sqlWalker->walkArithmeticExpression(
+				$this->arithmeticExpression
+			) . (($secondArgument) ? ', ' . $secondArgument : '')
+		. ')';
 
 	}
 

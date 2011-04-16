@@ -18,8 +18,14 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 class Asin extends FunctionNode
 {
 
+	public $arithmeticExpression;
+
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
+
+		return 'ASIN(' . $sqlWalker->walkArithmeticExpression(
+			$this->arithmeticExpression
+		) . ')';
 
 	}
 
