@@ -14,7 +14,8 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-	Doctrine\ORM\Query\Lexer;
+	Doctrine\ORM\Query\Lexer,
+	Doctrine\ORM\Query\QueryException;
 
 class Atan extends FunctionNode
 {
@@ -35,8 +36,7 @@ class Atan extends FunctionNode
 
 		}
 
-		return $this->_functionName .
-			'(' . $sqlWalker->walkArithmeticExpression(
+		return 'ATAN(' . $sqlWalker->walkArithmeticExpression(
 				$this->arithmeticExpression
 			) . (($secondArgument) ? ', ' . $secondArgument : '')
 		. ')';
@@ -45,6 +45,25 @@ class Atan extends FunctionNode
 
 	public function parse(\Doctrine\ORM\Query\Parser $parser)
 	{
+
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
+        $this->arithmeticExpression = $parser->ArithmeticExpression();
+
+        try {
+
+	        $parser->match(Lexer::T_COMMA);
+
+	        $this->optionalSecondExpression = $parser->ArithmeticExpression();
+
+	        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+
+        } catch (QueryException $e) {
+
+        	$parser->match(Lexer::T_CLOSE_PARENTHESIS);
+
+        }
 
 	}
 

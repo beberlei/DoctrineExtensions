@@ -19,31 +19,37 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class Atan2 extends FunctionNode
 {
 
-	public $arithmeticExpression;
-	public $optionalSecondExpression;
+	public $firstExpression;
+	public $secondExpression;
 
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
 
-		$secondArgument = '';
+		$firstArgument = $sqlWalker->walkArithmeticExpression(
+			$this->firstExpression
+		);
 
-		if ($this->optionalSecondExpression) {
+		$secondArgument = $sqlWalker->walkArithmeticExpression(
+			$this->secondExpression
+		);
 
-			$secondArgument = $sqlWalker->walkArithmeticExpression(
-				$this->optionalSecondExpression
-			);
-
-		}
-
-		return 'ATAN(' . $sqlWalker->walkArithmeticExpression(
-			$this->arithmeticExpression
-		) . (($secondArgument) ? ', ' . $secondArgument : '')
-		. ')';
+		return 'ATAN2(' . $firstArgument . ', ' . $secondArgument . ')';
 
 	}
 
 	public function parse(\Doctrine\ORM\Query\Parser $parser)
 	{
+
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
+        $this->firstExpression = $parser->ArithmeticExpression();
+
+        $parser->match(Lexer::T_COMMA);
+
+        $this->secondExpression = $parser->ArithmeticExpression();
+
+	    $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
 	}
 
