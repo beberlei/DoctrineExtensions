@@ -30,13 +30,13 @@ class Atan extends FunctionNode
 
 		if ($this->optionalSecondExpression) {
 
-			$secondArgument = $sqlWalker->walkArithmeticExpression(
+			$secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
 				$this->optionalSecondExpression
 			);
 
 		}
 
-		return 'ATAN(' . $sqlWalker->walkArithmeticExpression(
+		return 'ATAN(' . $sqlWalker->walkSimpleArithmeticExpression(
 				$this->arithmeticExpression
 			) . (($secondArgument) ? ', ' . $secondArgument : '')
 		. ')';
@@ -49,13 +49,13 @@ class Atan extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        $this->arithmeticExpression = $parser->ArithmeticExpression();
+        $this->arithmeticExpression = $parser->SimpleArithmeticExpression();
 
         try {
 
 	        $parser->match(Lexer::T_COMMA);
 
-	        $this->optionalSecondExpression = $parser->ArithmeticExpression();
+	        $this->optionalSecondExpression = $parser->SimpleArithmeticExpression();
 
 	        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 

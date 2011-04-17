@@ -24,7 +24,7 @@ class Asin extends FunctionNode
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
 
-		return 'ASIN(' . $sqlWalker->walkArithmeticExpression(
+		return 'ASIN(' . $sqlWalker->walkSimpleArithmeticExpression(
 			$this->arithmeticExpression
 		) . ')';
 
@@ -38,7 +38,7 @@ class Asin extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        $this->arithmeticExpression = $parser->ArithmeticExpression();
+        $this->arithmeticExpression = $parser->SimpleArithmeticExpression();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 

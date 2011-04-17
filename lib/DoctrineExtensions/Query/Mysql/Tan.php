@@ -24,7 +24,7 @@ class Tan extends FunctionNode
 	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
 	{
 
-		return 'TAN(' . $sqlWalker->walkArithmeticExpression(
+		return 'TAN(' . $sqlWalker->walkSimpleArithmeticExpression(
 			$this->arithmeticExpression
 		) . ')';
 
@@ -38,7 +38,7 @@ class Tan extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        $this->arithmeticExpression = $parser->ArithmeticExpression();
+        $this->arithmeticExpression = $parser->SimpleArithmeticExpression();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
