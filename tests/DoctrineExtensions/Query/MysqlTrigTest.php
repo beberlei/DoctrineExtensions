@@ -47,6 +47,54 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     	$this->_assertSecondQuery('SIN');
 
+        $dql = "SELECT SIN(RADIANS(p.latitude)) FROM Entities\BlogPost p";
+        $q = $this->entityManager->createQuery($dql);
+
+        $sql = "SELECT SIN(RADIANS(b0_.latitude)) AS sclr0 FROM BlogPost b0_";
+        $this->assertEquals($sql, $q->getSql());
+
+        $dql = "SELECT SIN(p.latitude * p.longitude) FROM Entities\BlogPost p";
+        $q = $this->entityManager->createQuery($dql);
+
+        $sql = "SELECT SIN(b0_.latitude * b0_.longitude) AS sclr0 FROM BlogPost b0_";
+		$this->assertEquals($sql, $q->getSql());
+
+        $dql = "SELECT SIN(RADIANS(p.latitude) * RADIANS(p.longitude)) "
+        	. "FROM Entities\BlogPost p";
+        $q = $this->entityManager->createQuery($dql);
+
+        $sql = "SELECT SIN(RADIANS(b0_.latitude) * RADIANS(b0_.longitude)) AS sclr0 "
+        	. "FROM BlogPost b0_";
+		$this->assertEquals($sql, $q->getSql());
+
+        $dql = "SELECT p "
+        	. "FROM Entities\BlogPost p "
+        	. "WHERE p.longitude = (SIN(RADIANS(p.latitude)) * RADIANS(p.longitude))";
+		$q = $this->entityManager->createQuery($dql);
+
+		$sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 "
+			. "FROM BlogPost b0_ "
+			. "WHERE b0_.longitude = SIN(RADIANS(b0_.latitude)) * RADIANS(b0_.longitude)";
+		$this->assertEquals($sql, $q->getSql());
+
+        $dql = "SELECT p "
+        	. "FROM Entities\BlogPost p "
+        	. "WHERE SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) = 1";
+		$q = $this->entityManager->createQuery($dql);
+
+		$sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 "
+			. "FROM BlogPost b0_ "
+			. "WHERE SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) = 1";
+		$this->assertEquals($sql, $q->getSql());
+
+        $dql = "SELECT (SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude))) "
+        	. "FROM Entities\BlogPost p ";
+		$q = $this->entityManager->createQuery($dql);
+
+		$sql = "SELECT SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) AS sclr0 "
+			. "FROM BlogPost b0_";
+		$this->assertEquals($sql, $q->getSql());
+
     }
 
     public function testAsin()
@@ -132,7 +180,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
     public function testAtan2()
     {
 
-    	$dql = "SELECT ATAN2(p.latitude, p.longitude) FROM Entities\BlogPost p ";
+    	$dql = "SELECT ATAN2(p.latitude, p.longitude) FROM Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT ATAN2(b0_.latitude, b0_.longitude) AS sclr0 FROM BlogPost b0_";
@@ -140,6 +188,30 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /*
+    public function testCosineLaw()
+    {
+
+    	$lat = 0.0;
+    	$lng = 0.0;
+    	$radiusOfEarth = 6371;
+
+		$cosineLaw = 'ACOS(SIN(' . deg2rad($lat) . ') * SIN(RADIANS(p.latitude)) '
+				   . '+ COS(' . deg2rad($lat) . ') * COS(RADIANS(p.latitude)) '
+				   . '* COS(RADIANS(p.longitude) - ' . deg2rad($lng) . ')'
+				   . ') * ' . $radiusOfEarth;
+
+		echo "\n";
+		echo $cosineLaw . "\n";
+		echo "\n";
+
+		$dql = "SELECT " . $cosineLaw . " FROM Entities\BlogPost p";
+		$q = $this->entityManager->createQuery($dql);
+
+		echo $q->getSql(); die;
+
+    }
+*/
     protected function _assertFirstQuery($func)
     {
 
