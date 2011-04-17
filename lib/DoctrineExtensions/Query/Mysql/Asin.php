@@ -13,7 +13,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode,
+	Doctrine\ORM\Query\Lexer;
 
 class Asin extends FunctionNode
 {
@@ -31,6 +32,15 @@ class Asin extends FunctionNode
 
 	public function parse(\Doctrine\ORM\Query\Parser $parser)
 	{
+
+        $lexer = $parser->getLexer();
+
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
+        $this->arithmeticExpression = $parser->ArithmeticExpression();
+
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
 	}
 
