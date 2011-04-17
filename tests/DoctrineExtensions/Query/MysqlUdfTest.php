@@ -27,16 +27,6 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         $config->addCustomNumericFunction('DATEDIFF', 'DoctrineExtensions\Query\Mysql\DateDiff');
         $config->addCustomDatetimeFunction('DATE_ADD', 'DoctrineExtensions\Query\Mysql\DateAdd');
 
-        $config->addCustomNumericFunction('SIN', 'DoctrineExtensions\Query\Mysql\Sin');
-        $config->addCustomNumericFunction('ASIN', 'DoctrineExtensions\Query\Mysql\Asin');
-        $config->addCustomNumericFunction('COS', 'DoctrineExtensions\Query\Mysql\Cos');
-        $config->addCustomNumericFunction('ACOS', 'DoctrineExtensions\Query\Mysql\Acos');
-        $config->addCustomNumericFunction('COT', 'DoctrineExtensions\Query\Mysql\Cot');
-        $config->addCustomNumericFunction('TAN', 'DoctrineExtensions\Query\Mysql\Tan');
-
-        $config->addCustomNumericFunction('DEGREES', 'DoctrineExtensions\Query\Mysql\Degrees');
-        $config->addCustomNumericFunction('RADIANS', 'DoctrineExtensions\Query\Mysql\Radians');
-
         $this->entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
 
     }
@@ -69,40 +59,6 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('Doctrine\ORM\Query\QueryException');
 
         $q->getSql();
-
-    }
-
-    public function testSin()
-    {
-
-        $dql = "SELECT p FROM Entities\BlogPost p WHERE SIN(p.latitude) = 1";
-        $q = $this->entityManager->createQuery($dql);
-
-        $sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 FROM BlogPost b0_ WHERE SIN(b0_.latitude) = 1";
-    	$this->assertEquals($sql, $q->getSql());
-
-        $dql = "SELECT SIN(p.latitude) FROM Entities\BlogPost p";
-        $q = $this->entityManager->createQuery($dql);
-
-        $sql = "SELECT SIN(b0_.latitude) AS sclr0 FROM BlogPost b0_";
-        $this->assertEquals($sql, $q->getSql());
-
-    }
-
-    public function testAsin()
-    {
-
-        $dql = "SELECT p FROM Entities\BlogPost p WHERE ASIN(p.latitude) = 1";
-        $q = $this->entityManager->createQuery($dql);
-
-        $sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 FROM BlogPost b0_ WHERE ASIN(b0_.latitude) = 1";
-    	$this->assertEquals($sql, $q->getSql());
-
-        $dql = "SELECT ASIN(p.latitude) FROM Entities\BlogPost p";
-        $q = $this->entityManager->createQuery($dql);
-
-        $sql = "SELECT ASIN(b0_.latitude) AS sclr0 FROM BlogPost b0_";
-        $this->assertEquals($sql, $q->getSql());
 
     }
 
