@@ -113,6 +113,14 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     	$this->_assertSecondQuery('ACOS');
 
+		$dql = "SELECT (ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1) "
+			. "FROM Entities\BlogPost p";
+        $q = $this->entityManager->createQuery($dql);
+
+		$sql = "SELECT ACOS(SIN(RADIANS(b0_.latitude)) + SIN(RADIANS(b0_.longitude))) * 1 AS sclr0 "
+			. "FROM BlogPost b0_";
+		$this->assertEquals($sql, $q->getSql());
+
     }
 
     public function testCos()
@@ -188,7 +196,6 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    /*
     public function testCosineLaw()
     {
 
@@ -201,17 +208,15 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 				   . '* COS(RADIANS(p.longitude) - ' . deg2rad($lng) . ')'
 				   . ') * ' . $radiusOfEarth;
 
-		echo "\n";
-		echo $cosineLaw . "\n";
-		echo "\n";
-
-		$dql = "SELECT " . $cosineLaw . " FROM Entities\BlogPost p";
+		$dql = "SELECT (" . $cosineLaw . ") FROM Entities\BlogPost p";
 		$q = $this->entityManager->createQuery($dql);
 
-		echo $q->getSql(); die;
+		$sql = "SELECT ACOS(SIN(0) * SIN(RADIANS(b0_.latitude)) + COS(0) * COS(RADIANS(b0_.latitude)) * COS(RADIANS(b0_.longitude) - 0)) * 6371 AS sclr0 "
+			. "FROM BlogPost b0_";
+		$this->assertEquals($sql, $q->getSql());
 
     }
-*/
+
     protected function _assertFirstQuery($func)
     {
 
