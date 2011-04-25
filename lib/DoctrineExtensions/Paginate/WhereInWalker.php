@@ -21,7 +21,6 @@ use Doctrine\ORM\Query\TreeWalkerAdapter,
 	Doctrine\ORM\Query\AST\SelectStatement,
 	Doctrine\ORM\Query\AST\PathExpression,
 	Doctrine\ORM\Query\AST\InExpression,
-	Doctrine\ORM\Query\AST\NullComparisonExpression,
 	Doctrine\ORM\Query\AST\InputParameter,
 	Doctrine\ORM\Query\AST\ConditionalPrimary,
 	Doctrine\ORM\Query\AST\ConditionalTerm,
@@ -75,6 +74,7 @@ class WhereInWalker extends TreeWalkerAdapter
 		}
 		$conditionalPrimary = new ConditionalPrimary;
 		$conditionalPrimary->simpleConditionalExpression = $inExpression;
+		
 		// if no existing whereClause
 		if ($AST->whereClause === null) {
 			$AST->whereClause = new WhereClause(
@@ -85,10 +85,13 @@ class WhereInWalker extends TreeWalkerAdapter
 				))
 			);
 		} else { // add to the existing using AND
-			// check for multiple existing where clauses
-			if (isset($AST->whereClause->conditionalExpression->conditionalFactors)) {
+			
+			// existing AND clause
+			if ($AST->whereClause->conditionalExpression instanceof ConditionalTerm) {
 				$AST->whereClause->conditionalExpression->conditionalFactors[] = $conditionalPrimary;
-			} else { // there is only one existing where clause
+			}
+			// single clause where
+			elseif ($AST->whereClause->conditionalExpression instanceof ConditionalPrimary) {
 				$AST->whereClause->conditionalExpression = new ConditionalExpression(
 					array(
 						new ConditionalTerm(
@@ -100,6 +103,23 @@ class WhereInWalker extends TreeWalkerAdapter
 					)
 				);
 			}
+			// an OR clause
+			elseif ($AST->whereClause->conditionalExpression instanceof ConditionalExpression) {
+				$tmpPrimary = new ConditionalPrimary;
+				$tmpPrimary->conditionalExpression = $AST->whereClause->conditionalExpression;
+				$AST->whereClause->conditionalExpression = new ConditionalTerm(
+					array(
+						$tmpPrimary,
+						$conditionalPrimary,
+					)
+				);
+			} else {
+				// error check to provide a more verbose error on failure
+				throw \Exception ("Unknown conditionalExpression in WhereInWalker");
+			}
 		}
+		
 	}
+	
+	
 }
