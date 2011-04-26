@@ -22,3 +22,6 @@ $loader->register();
 
 $loader = new Doctrine\Common\ClassLoader("DoctrineExtensions", __DIR__."/../../lib");
 $loader->register();
+
+$loader = new Doctrine\Common\ClassLoader("Entities", realpath(__DIR__."/.."));
+$loader->register();

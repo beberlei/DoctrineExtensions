@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< .merge_file_0MDGRJ
 <phpunit
 	bootstrap="./DoctrineExtensions/TestHelper.php" 
 	colors="true"
@@ -7,14 +8,18 @@
 		<testsuite name="AllTests">
 			<directory>DoctrineExtensions/LargeCollections</directory>
 			<directory>DoctrineExtensions/Paginate</directory>
+			<directory>DoctrineExtensions/Query</directory>
 		</testsuite>
 	</testsuites>
 	<php>
-		<var name="doctrine2-path" value="/Users/MitMaro/htdocs/cp.local/library" />
+        <var name="doctrine2-path" value="" />
+        <var name="doctrine2-entities-path" value="" />
+        <var name="doctrine2-proxies-path" value="" />
+        <var name="doctrine2-proxies-namespace" value="" />
 	</php>
 	<filter>
 		<blacklist>
-			<directory suffix=".php">/Users/MitMaro/htdocs/cp.local/library/Doctrine</directory>
+			<directory suffix=".php"></directory>
 		</blacklist>
 	</filter>
 </phpunit>
