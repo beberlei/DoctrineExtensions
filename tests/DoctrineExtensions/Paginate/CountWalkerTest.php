@@ -31,38 +31,14 @@ class CountWalkerTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testCountQuery_GroupBy()
+	public function testCountQuery_RemovesGroupBy()
 	{
 		$query = $this->entityManager->createQuery(
 			'SELECT b FROM DoctrineExtensions\Paginate\BlogPost b GROUP BY b.id');
 		$countQuery = Paginate::createCountQuery($query);
 
 		$this->assertEquals(
-			"SELECT count(DISTINCT b0_.id) AS sclr0 FROM BlogPost b0_ GROUP BY b0_.id",
-			$countQuery->getSql()
-		);
-	}
-
-	public function testCountQuery_GroupBySubGroupSingle()
-	{
-		$query = $this->entityManager->createQuery(
-			'SELECT b, a FROM DoctrineExtensions\Paginate\BlogPost b JOIN b.author a GROUP BY a.name');
-		$countQuery = Paginate::createCountQuery($query);
-
-		$this->assertEquals(
-			"SELECT count(DISTINCT b0_.id) AS sclr0 FROM BlogPost b0_ INNER JOIN Author a1_ ON b0_.author_id = a1_.id",
-			$countQuery->getSql()
-		);
-	}
-
-	public function testCountQuery_GroupBySubGroupMultiple()
-	{
-		$query = $this->entityManager->createQuery(
-			'SELECT b, a FROM DoctrineExtensions\Paginate\BlogPost b JOIN b.author a GROUP BY b.id, a.name');
-		$countQuery = Paginate::createCountQuery($query);
-
-		$this->assertEquals(
-			"SELECT count(DISTINCT b0_.id) AS sclr0 FROM BlogPost b0_ INNER JOIN Author a1_ ON b0_.author_id = a1_.id GROUP BY b0_.id",
+			"SELECT count(DISTINCT b0_.id) AS sclr0 FROM BlogPost b0_",
 			$countQuery->getSql()
 		);
 	}
