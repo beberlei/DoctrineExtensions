@@ -60,5 +60,20 @@ class CountWalker extends TreeWalkerAdapter
 		);
 		// ORDER BY is not needed, only increases query execution through unnecessary sorting.
 		$AST->orderByClause = null;
+		
+		// remove group by items that are not on the parent
+		foreach ($AST->groupByClause->groupByItems as $key => $item) {
+			
+			if ($item->identificationVariable != $parentName) {
+				unset($AST->groupByClause->groupByItems[$key]);
+			}
+			
+		}
+		
+		// if there are no items left then remove the group by
+		if (count($AST->groupByClause->groupByItems) == 0) {
+			$AST->groupByClause = null;
+		}
+		
 	}
 }
