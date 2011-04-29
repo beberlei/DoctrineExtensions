@@ -22,6 +22,22 @@ class WhereInWalkerTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 	
+	public function testCountQuery_MixedResultsWithName()
+	{
+		$query = $this->entityManager->createQuery(
+			'SELECT a, sum(a.name) as foo FROM DoctrineExtensions\Paginate\Author a'
+		);
+		$whereInQuery = clone $query;
+		$whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
+		$whereInQuery->setHint('id.count', 10);
+		
+		$this->assertEquals(
+			"SELECT a0_.id AS id0, a0_.name AS name1, sum(a0_.name) AS sclr2 FROM Author a0_ WHERE a0_.id IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			$whereInQuery->getSql()
+		);
+	}
+
+	
 	public function testWhereInQuery_SingleWhere()
 	{
 		$query = $this->entityManager->createQuery(

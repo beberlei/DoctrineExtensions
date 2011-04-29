@@ -55,6 +55,12 @@ class WhereInWalker extends TreeWalkerAdapter
 		$parent = null;
 		$parentName = null;
 		foreach ($this->_getQueryComponents() AS $dqlAlias => $qComp) {
+			
+			// skip mixed data in query
+			if (isset($qComp['resultVariable'])) {
+				continue;
+			}
+			
 			if ($qComp['parent'] === null && $qComp['nestingLevel'] == 0) {
 				$parent = $qComp;
 				$parentName = $dqlAlias;
