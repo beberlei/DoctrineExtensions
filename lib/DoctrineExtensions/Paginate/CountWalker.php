@@ -32,13 +32,15 @@ class CountWalker extends TreeWalkerAdapter
 		$parent = null;
 		$parentName = null;
 		
+
+		
 		foreach ($this->_getQueryComponents() AS $dqlAlias => $qComp) {
 			
 			// skip mixed data in query
 			if (isset($qComp['resultVariable'])) {
 				continue;
 			}
-			
+
 			if ($qComp['parent'] === null && $qComp['nestingLevel'] == 0) {
 				$parent = $qComp;
 				$parentName = $dqlAlias;
@@ -58,22 +60,11 @@ class CountWalker extends TreeWalkerAdapter
 				new AggregateExpression('count', $pathExpression, true), null
 			)
 		);
+		
 		// ORDER BY is not needed, only increases query execution through unnecessary sorting.
 		$AST->orderByClause = null;
 		
-		// remove group by items that are not on the parent
-		foreach ($AST->groupByClause->groupByItems as $key => $item) {
-			
-			if ($item->identificationVariable != $parentName) {
-				unset($AST->groupByClause->groupByItems[$key]);
-			}
-			
-		}
-		
-		// if there are no items left then remove the group by
-		if (count($AST->groupByClause->groupByItems) == 0) {
-			$AST->groupByClause = null;
-		}
-		
+		// GROUP BY will break things, we are trying to get a count of all
+		$AST->groupByClause = null;
 	}
 }
