@@ -26,7 +26,8 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
 
         $config->addCustomNumericFunction('DATEDIFF', 'DoctrineExtensions\Query\Mysql\DateDiff');
         $config->addCustomDatetimeFunction('DATE_ADD', 'DoctrineExtensions\Query\Mysql\DateAdd');
-
+        $config->addCustomStringFunction('STR_TO_DATE', 'DoctrineExtensions\Query\MySql\StrToDate');
+        $config->addCustomStringFunction('FIND_IN_SET', 'DoctrineExtensions\Query\MySql\FindInSet');
         $this->entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
 
     }
@@ -61,5 +62,41 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         $q->getSql();
 
     }
+	
+	public function testStrToDate()
+    {
+        $dql = "SELECT p FROM DoctrineExtensions\Query\BlogPost p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
+        $q = $this->entityManager->createQuery($dql);
+		$q->setParameter('dateFormat', '%Y-%m-%d %h:%i %p');
+		$q->setParameter('currentTime', date('Y-m-d H:i:s'));
+			
+        var_dump($q->getSql());
+    }
+    
+    public function testFindInSet()
+    {
+        $dql = "SELECT p FROM DoctrineExtensions\Query\BlogPost p WHERE FIND_IN_SET(p.id, p.testSet) != 0";
+        $q = $this->entityManager->createQuery($dql);
 
+        var_dump($q->getSql());
+    }
+}
+
+/**
+ * @Entity
+ */
+class BlogPost
+{
+    /** @Id @Column(type="string") @GeneratedValue */
+    public $id;
+	
+	/**
+     * @Column(type="String")
+     */
+    public $testSet;
+	
+    /**
+     * @Column(type="DateTime")
+     */
+    public $created;
 }
