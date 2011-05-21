@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DoctrineExtensions Mysql Function Pack
  *
@@ -18,6 +19,7 @@ use Doctrine\ORM\Query\Lexer;
 
 class DateAdd extends FunctionNode
 {
+
     public $firstDateExpression = null;
     public $intervalExpression = null;
     public $unit = null;
@@ -46,8 +48,9 @@ class DateAdd extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return 'DATE_ADD(' .
-            $this->firstDateExpression->dispatch($sqlWalker) . ', INTERVAL ' .
-            $this->intervalExpression->dispatch($sqlWalker) . ' ' . $this->unit .
+        $this->firstDateExpression->dispatch($sqlWalker) . ', INTERVAL ' .
+        $this->intervalExpression->dispatch($sqlWalker) . ' ' . $this->unit .
         ')';
     }
+
 }

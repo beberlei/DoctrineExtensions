@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DoctrineExtensions Mysql Function Pack
  *
@@ -14,24 +15,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-	Doctrine\ORM\Query\Lexer;
+    Doctrine\ORM\Query\Lexer;
 
 class Cot extends FunctionNode
 {
 
-	public $arithmeticExpression;
+    public $arithmeticExpression;
 
-	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-	{
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
 
-		return 'COT(' . $sqlWalker->walkSimpleArithmeticExpression(
-			$this->arithmeticExpression
-		) . ')';
+        return 'COT(' . $sqlWalker->walkSimpleArithmeticExpression(
+                $this->arithmeticExpression
+        ) . ')';
+    }
 
-	}
-
-	public function parse(\Doctrine\ORM\Query\Parser $parser)
-	{
+    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    {
 
         $lexer = $parser->getLexer();
 
@@ -41,7 +41,6 @@ class Cot extends FunctionNode
         $this->arithmeticExpression = $parser->SimpleArithmeticExpression();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-
-	}
+    }
 
 }

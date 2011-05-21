@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DoctrineExtensions Mysql Function Pack
  *
@@ -14,31 +15,30 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-	Doctrine\ORM\Query\Lexer;
+    Doctrine\ORM\Query\Lexer;
 
 class Atan2 extends FunctionNode
 {
 
-	public $firstExpression;
-	public $secondExpression;
+    public $firstExpression;
+    public $secondExpression;
 
-	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-	{
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
 
-		$firstArgument = $sqlWalker->walkSimpleArithmeticExpression(
-			$this->firstExpression
-		);
+        $firstArgument = $sqlWalker->walkSimpleArithmeticExpression(
+                        $this->firstExpression
+        );
 
-		$secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
-			$this->secondExpression
-		);
+        $secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
+                        $this->secondExpression
+        );
 
-		return 'ATAN2(' . $firstArgument . ', ' . $secondArgument . ')';
+        return 'ATAN2(' . $firstArgument . ', ' . $secondArgument . ')';
+    }
 
-	}
-
-	public function parse(\Doctrine\ORM\Query\Parser $parser)
-	{
+    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    {
 
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -49,8 +49,7 @@ class Atan2 extends FunctionNode
 
         $this->secondExpression = $parser->SimpleArithmeticExpression();
 
-	    $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-
-	}
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
 
 }
