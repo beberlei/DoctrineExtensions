@@ -1,28 +1,26 @@
 <?php
+
 namespace DoctrineExtensions\Versionable\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @Entity
- * @Table(name="dc_versionable_resources")
+ * @ORM\Entity
+ * @ORM\Table(name="dc_versionable_resources")
  */
-class ResourceVersion
-{
-    /** @Id @Column(type="integer") @GeneratedValue */
+class ResourceVersion {
+
+    /** @ORM\Id @ORM\Column(type="integer") @ORM\GeneratedValue */
     private $id;
-
-    /** @Column(name="resource_name", type="string") */
+    /** @ORM\Column(name="resource_name", type="string") */
     private $resourceName;
-
-    /** @Column(name="resource_id", type="string") */
+    /** @ORM\Column(name="resource_id", type="string") */
     private $resourceId;
-
-    /** @Column(name="versioned_data", type="array") */
+    /** @ORM\Column(name="versioned_data", type="array") */
     private $versionedData;
-
-    /** @Column(name="snapshot_version_id", type="integer") */
+    /** @ORM\Column(name="snapshot_version_id", type="integer") */
     private $version;
-
-    /** @Column(name="snapshot_date", type="datetime") */
+    /** @ORM\Column(name="snapshot_date", type="datetime") */
     private $snapshotDate;
 
     public function __construct($resourceName, $entityId, $versionedData, $entityVersion)
@@ -34,19 +32,23 @@ class ResourceVersion
         $this->snapshotDate     = new \DateTime("now");
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getResourceName() {
+    public function getResourceName()
+    {
         return $this->resourceName;
     }
 
-    public function getResourceId() {
+    public function getResourceId()
+    {
         return $this->resourceId;
     }
 
-    public function getVersionedData($key = null) {
+    public function getVersionedData($key = null)
+    {
         if ($key !== null) {
             return $this->versionedData[$key];
         } else {
@@ -54,11 +56,14 @@ class ResourceVersion
         }
     }
 
-    public function getVersion() {
+    public function getVersion()
+    {
         return $this->version;
     }
 
-    public function getSnapshotDate() {
+    public function getSnapshotDate()
+    {
         return $this->snapshotDate;
     }
+
 }
