@@ -50,7 +50,7 @@ class Field extends FunctionNode
 		$this->field = $parser->ArithmeticPrimary();
 		
 		// Add the strings to the values array. FIELD must
-        // be used with at least 1 string not including the field.
+		// be used with at least 1 string not including the field.
 		
 		$lexer = $parser->getLexer();
 		
