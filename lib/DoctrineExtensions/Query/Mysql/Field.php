@@ -15,7 +15,7 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-	Doctrine\ORM\Query\Lexer;
+    Doctrine\ORM\Query\Lexer;
 
 /**
  * Usage: FIELD(str,str1,str2,str3,...)
@@ -31,6 +31,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
  * @author  Jeremy Hicks <jeremy.hicks@gmail.com>
  * @version 2011.06.09
  */
+
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -38,49 +39,49 @@ use Doctrine\ORM\Query\Lexer;
 
 class Field extends FunctionNode
 {
-	private $field = null;
-	private $values = array();
+    private $field = null;
+    private $values = array();
     
-	public function parse(\Doctrine\ORM\Query\Parser $parser)
-	{
-		$parser->match(Lexer::T_IDENTIFIER);
-		$parser->match(Lexer::T_OPEN_PARENTHESIS);
+    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    {
+        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(Lexer::T_OPEN_PARENTHESIS);
 		
-		// Do the field.
-		$this->field = $parser->ArithmeticPrimary();
+        // Do the field.
+        $this->field = $parser->ArithmeticPrimary();
 		
-		// Add the strings to the values array. FIELD must
-		// be used with at least 1 string not including the field.
+        // Add the strings to the values array. FIELD must
+        // be used with at least 1 string not including the field.
 		
-		$lexer = $parser->getLexer();
+        $lexer = $parser->getLexer();
 		
-		while (count($this->values) < 1 || 
-				$lexer->lookahead['type'] != Lexer::T_CLOSE_PARENTHESIS) {
-			$parser->match(Lexer::T_COMMA);
-			$this->values[] = $parser->ArithmeticPrimary();
-		}
+        while (count($this->values) < 1 || 
+            $lexer->lookahead['type'] != Lexer::T_CLOSE_PARENTHESIS) {
+            $parser->match(Lexer::T_COMMA);
+            $this->values[] = $parser->ArithmeticPrimary();
+        }
 		
-		$parser->match(Lexer::T_CLOSE_PARENTHESIS);
-	}
+        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
 	
-	public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-	{
-		$query = 'FIELD(';
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
+        $query = 'FIELD(';
 		
-		$query .= $this->field->dispatch($sqlWalker);
+        $query .= $this->field->dispatch($sqlWalker);
 		
-		$query .= ',';
+        $query .= ',';
 		
-		for ($i = 0; $i < count($this->values); $i++) {
-			if ($i > 0) {
-				$query .= ',';
-			}
+        for ($i = 0; $i < count($this->values); $i++) {
+            if ($i > 0) {
+                $query .= ',';
+            }
 			
-			$query .= $this->values[$i]->dispatch($sqlWalker);
-		}
+            $query .= $this->values[$i]->dispatch($sqlWalker);
+        }
 		
-		$query .= ')';
+        $query .= ')';
 		
-		return $query;
-	}
+        return $query;
+    }
 }
