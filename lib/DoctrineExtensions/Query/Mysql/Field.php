@@ -15,7 +15,7 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+	Doctrine\ORM\Query\Lexer;
 
 /**
  * Usage: FIELD(str,str1,str2,str3,...)
@@ -40,7 +40,7 @@ class Field extends FunctionNode
 {
 	private $field = null;
 	private $values = array();
-
+    
 	public function parse(\Doctrine\ORM\Query\Parser $parser)
 	{
 		$parser->match(Lexer::T_IDENTIFIER);
@@ -57,7 +57,7 @@ class Field extends FunctionNode
 		while (count($this->values) < 1 || 
 				$lexer->lookahead['type'] != Lexer::T_CLOSE_PARENTHESIS) {
 			$parser->match(Lexer::T_COMMA);
-            $this->values[] = $parser->ArithmeticPrimary();
+			$this->values[] = $parser->ArithmeticPrimary();
 		}
 		
 		$parser->match(Lexer::T_CLOSE_PARENTHESIS);
