@@ -83,7 +83,7 @@ class MatchAgainst extends FunctionNode {
       $fields[] = $pathExp->dispatch($walker);
     }
 
-    $against = $walker->getConnection()->quote($this->against)
+    $against = $walker->walkStringPrimary($this->against)
         . ($this->booleanMode ? ' IN BOOLEAN MODE' : '')
         . ($this->queryExpansion ? ' WITH QUERY EXPANSION' : '');
 

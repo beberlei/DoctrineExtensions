@@ -18,16 +18,15 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
     Doctrine\ORM\Query\Lexer;
 
 /**
- * Usage: IFNULL(expr1, expr2)
+ * Usage: NULLIF(expr1, expr2)
  * 
- * If expr1 is not NULL, IFNULL() returns expr1; otherwise it returns expr2.
- * IFNULL() returns a numeric or string value, depending on the context in
- * which it is used.
+ * Returns NULL if expr1 = expr2 is true, otherwise returns expr1. This is the
+ * same as CASE WHEN expr1 = expr2 THEN NULL ELSE expr1 END. 
  * 
  * @author  Andrew Mackrodt <andrew@ajmm.org>
  * @version 2011.06.12
  */
-class IfNull extends FunctionNode
+class NullIf extends FunctionNode
 {
     private $expr1;
     private $expr2;
@@ -44,8 +43,9 @@ class IfNull extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return 'IFNULL('
-            .$sqlWalker->walkArithmeticPrimary($this->expr1). ', '
-            .$sqlWalker->walkArithmeticPrimary($this->expr2).')';
+        return sprintf(
+                'NULLIF(%s, %s)',
+                $sqlWalker->walkArithmeticPrimary($this->expr1),
+                $sqlWalker->walkArithmeticPrimary($this->expr2));
     }
 }
