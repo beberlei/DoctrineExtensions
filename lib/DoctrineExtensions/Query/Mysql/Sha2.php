@@ -39,7 +39,7 @@ class Sha2 extends FunctionNode
         return 'SHA2(' .
             $sqlWalker->walkStringPrimary($this->stringPrimary) .
             ',' .
-            $sqlWalker->walkSimpleArithmeticExpression($this->simpleArithmeticExpression)
+            $sqlWalker->walkSimpleArithmeticExpression($this->simpleArithmeticExpression) .
         ')';
     }
 
