@@ -18,7 +18,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 
 /**
- * "SHA2" "(" StringPrimary ")"
+ * "SHA2" "(" StringPrimary "," SimpleArithmeticExpression ")"
  *
  * @category    DoctrineExtensions
  * @package     DoctrineExtensions\Query\Mysql
@@ -29,6 +29,8 @@ class Sha2 extends FunctionNode
 {
     public $stringPrimary;
 
+    public $simpleArithmeticExpression;
+
     /**
      * @override
      */
@@ -36,6 +38,8 @@ class Sha2 extends FunctionNode
     {
         return 'SHA2(' .
             $sqlWalker->walkStringPrimary($this->stringPrimary) .
+            ',' .
+            $sqlWalker->walkSimpleArithmeticExpression($this->simpleArithmeticExpression)
         ')';
     }
 
@@ -50,6 +54,8 @@ class Sha2 extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $this->stringPrimary = $parser->StringPrimary();
+        $parser->match(Lexer::T_COMMA);
+        $this->simpleArithmeticExpression = $parser->SimpleArithmeticExpression();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
