@@ -23,7 +23,7 @@ abstract class DatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
     /**
      * @var DoctrineExtensions\PHPUnit\TestConnection
      */
-    private $_connection = null;
+    private static $_connection = null;
 
     /**
      * @return Doctrine\DBAL\Connection
@@ -35,10 +35,10 @@ abstract class DatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
      */
     final protected function getConnection()
     {
-        if ($this->_connection == null) {
-            $this->_connection = new TestConnection($this->getDoctrineConnection());
+        if (self::$_connection == null) {
+            self::$_connection = new TestConnection($this->getDoctrineConnection());
         }
-        return $this->_connection;
+        return self::$_connection;
     }
 
     /**
