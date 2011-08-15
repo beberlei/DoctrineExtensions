@@ -22,6 +22,8 @@ class TestConnection implements \PHPUnit_Extensions_Database_DB_IDatabaseConnect
      */
     private $_conn = null;
 
+    private $_metadata = null;
+
     public function __construct(Connection $conn)
     {
         $this->_conn = $conn;
@@ -86,7 +88,11 @@ class TestConnection implements \PHPUnit_Extensions_Database_DB_IDatabaseConnect
      */
     public function getMetaData()
     {
-        return new DoctrineMetadata($this->_conn->getSchemaManager(), $this->_conn->getDatabase());
+        if (null === $this->_metadata) {
+            $this->_metadata = new DoctrineMetadata($this->_conn->getSchemaManager(), $this->_conn->getDatabase());
+        }
+
+        return $this->_metadata;
     }
 
     /**
