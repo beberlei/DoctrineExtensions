@@ -140,4 +140,25 @@ class DoctrineMetadata implements \PHPUnit_Extensions_Database_DB_IMetaData
     {
         return false;
     }
+
+    /**
+     * Disables primary keys if the rdbms does not allow setting them otherwise
+     *
+     * @param string $tableName
+     */
+    public function disablePrimaryKeys($tableName)
+    {
+        return;
+    }
+
+    /**
+     * Reenables primary keys after they have been disabled
+     *
+     * @param string $tableName
+     */
+    public function enablePrimaryKeys($tableName)
+    {
+        return;
+    }
+
 }
