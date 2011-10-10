@@ -20,7 +20,7 @@ namespace DoctrineExtensions\Paginate;
 
 use Doctrine\ORM\Query\TreeWalkerAdapter,
     Doctrine\ORM\Query\AST\SelectStatement,
-    Doctrine\ORM\Query\AST\SimpleSelectExpression,
+    Doctrine\ORM\Query\AST\SelectExpression,
     Doctrine\ORM\Query\AST\PathExpression,
     Doctrine\ORM\Query\AST\AggregateExpression;
 
@@ -35,6 +35,10 @@ use Doctrine\ORM\Query\TreeWalkerAdapter,
  */
 class LimitSubqueryWalker extends TreeWalkerAdapter
 {
+    /**
+     * @var int Counter for generating unique order column aliases
+     */
+    private $_aliasCounter = 0;
 
     /**
      * Walks down a SelectStatement AST node, modifying it to retrieve DISTINCT ids
@@ -68,7 +72,7 @@ class LimitSubqueryWalker extends TreeWalkerAdapter
         $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
 
         $AST->selectClause->selectExpressions = array(
-            new SimpleSelectExpression($pathExpression)
+            new SelectExpression($pathExpression, '_dctrn_id')
         );
 
         if (isset($AST->orderByClause)) {
@@ -79,7 +83,7 @@ class LimitSubqueryWalker extends TreeWalkerAdapter
                                 $item->expression->field
                 );
                 $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
-                $AST->selectClause->selectExpressions[] = new SimpleSelectExpression($pathExpression);
+                $AST->selectClause->selectExpressions[] = new SelectExpression($pathExpression, '_dctrn_ord' . $this->_aliasCounter++);
             }
         }
 
