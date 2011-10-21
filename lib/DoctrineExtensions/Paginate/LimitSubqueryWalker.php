@@ -20,7 +20,7 @@ namespace DoctrineExtensions\Paginate;
 
 use Doctrine\ORM\Query\TreeWalkerAdapter,
     Doctrine\ORM\Query\AST\SelectStatement,
-    Doctrine\ORM\Query\AST\SimpleSelectExpression,
+    Doctrine\ORM\Query\AST\SelectExpression,
     Doctrine\ORM\Query\AST\PathExpression,
     Doctrine\ORM\Query\AST\AggregateExpression;
 
@@ -68,7 +68,7 @@ class LimitSubqueryWalker extends TreeWalkerAdapter
         $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
 
         $AST->selectClause->selectExpressions = array(
-            new SimpleSelectExpression($pathExpression)
+            new SelectExpression($pathExpression, null)
         );
 
         if (isset($AST->orderByClause)) {
@@ -79,7 +79,7 @@ class LimitSubqueryWalker extends TreeWalkerAdapter
                                 $item->expression->field
                 );
                 $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
-                $AST->selectClause->selectExpressions[] = new SimpleSelectExpression($pathExpression);
+                $AST->selectClause->selectExpressions[] = new SelectExpression($pathExpression, null);
             }
         }
 
