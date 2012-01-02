@@ -109,7 +109,8 @@ class Paginate
             $whereInQuery->setFirstResult(null)->setMaxResults(null);
             foreach ($ids as $i => $id) {
                 $i = $i+1;
-                $whereInQuery->setParameter("{$namespace}_{$i}", current($id));
+                $value = is_array($id) ? current($id) : $id;
+                $whereInQuery->setParameter("{$namespace}_{$i}", $value);
             }
             return $whereInQuery;
         } else {
