@@ -14,10 +14,10 @@ class LimitSubqueryWalkerTest extends \PHPUnit_Framework_TestCase
         $query = $this->entityManager->createQuery(
                         'SELECT p, c, a FROM DoctrineExtensions\Paginate\MyBlogPost p JOIN p.category c JOIN p.author a');
         $limitQuery = clone $query;
-        $limitQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'));
+        $limitQuery->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Paginate\LimitSubqueryWalker');
 
         $this->assertEquals(
-                "SELECT DISTINCT m0_.id AS id0 FROM MyBlogPost m0_ INNER JOIN Category c1_ ON m0_.category_id = c1_.id INNER JOIN Author a2_ ON m0_.author_id = a2_.id", $limitQuery->getSql()
+                "SELECT DISTINCT id0 FROM (SELECT m0_.id AS id0, c1_.id AS id1, a2_.id AS id2, a2_.name AS name3, m0_.author_id AS author_id4, m0_.category_id AS category_id5 FROM MyBlogPost m0_ INNER JOIN Category c1_ ON m0_.category_id = c1_.id INNER JOIN Author a2_ ON m0_.author_id = a2_.id) AS _dctrn_result", $limitQuery->getSql()
         );
     }
 
@@ -26,10 +26,10 @@ class LimitSubqueryWalkerTest extends \PHPUnit_Framework_TestCase
         $query = $this->entityManager->createQuery(
                         'SELECT a, sum(a.name) as foo FROM DoctrineExtensions\Paginate\Author a');
         $limitQuery = clone $query;
-        $limitQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'));
+        $limitQuery->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Paginate\LimitSubqueryWalker');
 
         $this->assertEquals(
-                "SELECT DISTINCT a0_.id AS id0 FROM Author a0_", $limitQuery->getSql()
+                "SELECT DISTINCT id0 FROM (SELECT a0_.id AS id0, a0_.name AS name1, sum(a0_.name) AS sclr2 FROM Author a0_) AS _dctrn_result", $limitQuery->getSql()
         );
     }
 
@@ -41,7 +41,7 @@ class LimitSubqueryWalkerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(10, $limitQuery->getFirstResult());
         $this->assertEquals(20, $limitQuery->getMaxResults());
-        $this->assertEquals(array('DoctrineExtensions\Paginate\LimitSubqueryWalker'), $limitQuery->getHint(Query::HINT_CUSTOM_TREE_WALKERS));
+        $this->assertEquals('DoctrineExtensions\Paginate\LimitSubqueryWalker', $limitQuery->getHint(Query::HINT_CUSTOM_OUTPUT_WALKER));
     }
 
     public function setUp()
