@@ -153,4 +153,25 @@ class TestConnection implements \PHPUnit_Extensions_Database_DB_IDatabaseConnect
     {
         return false;
     }
+
+    /**
+     * Disables primary keys if connection does not allow setting them otherwise
+     *
+     * @param string $tableName
+     */
+    public function disablePrimaryKeys($tableName)
+    {
+        $this->getMetaData()->disablePrimaryKeys($tableName);
+    }
+
+    /**
+     * Reenables primary keys after they have been disabled
+     *
+     * @param string $tableName
+     */
+    public function enablePrimaryKeys($tableName)
+    {
+        $this->getMetaData()->enablePrimaryKeys($tableName);
+    }
+
 }
