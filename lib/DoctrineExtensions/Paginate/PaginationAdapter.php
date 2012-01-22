@@ -30,7 +30,7 @@ use Doctrine\ORM\Query;
  * @copyright   Copyright (c) 2010 David Abdemoulaie (http://hobodave.com/)
  * @license     http://hobodave.com/license.txt New BSD License
  */
-class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
+class PaginationAdapter implements \Zend_Paginator_Adapter_Interface, \Serializable
 {
     /**
      * The SELECT query to paginate
@@ -128,7 +128,7 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
      */
     public function getItems($offset, $itemCountPerPage)
     {
-        $ids = $this->createLimitSubquery($offset, $itemCountPerPage)
+        /*$ids = $this->createLimitSubquery($offset, $itemCountPerPage)
             ->getScalarResult();
 
         $ids = array_map(
@@ -140,7 +140,10 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
             return $this->createWhereInQuery($ids)->getArrayResult();
         } else {
             return $this->createWhereInQuery($ids)->getResult();
-        }
+        }*/
+
+        $query = Paginate::getPaginateQuery($this->query, $offset, $itemCountPerPage);
+        return ($this->arrayResult)?$query->getArrayResult():$query->getResult();
     }
 
     /**
@@ -179,5 +182,34 @@ class PaginationAdapter implements \Zend_Paginator_Adapter_Interface
     protected function createWhereInQuery($ids)
     {
         return Paginate::createWhereInQuery($this->query, $ids, $this->namespace);
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * String representation of object
+     * @link http://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or &null;
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            'query' => $this->query->getDQL(),
+            'ns' => $this->namespace,
+            'isArray' => $this->arrayResult
+        ));
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Constructs the object
+     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return mixed the original value unserialized.
+     */
+    public function unserialize($serialized)
+    {
+
     }
 }
