@@ -27,16 +27,9 @@ class QueryTable extends \PHPUnit_Extensions_Database_DataSet_QueryTable
         if ($this->tableMetaData === null) {
             $this->loadData();
 
-            /* @var $table Doctrine\DBAL\Schema\Table */
-            $table = $this->databaseConnection
-                          ->getConnection()
-                          ->getSchemaManager()
-                          ->listTableDetails($this->tableName);
-
-            $columnNames = array();
-            foreach ($table->getColumns() AS $column) {
-                $columnNames[] = $column->getName();
-            }
+            $columnNames = $this->databaseConnection
+                                ->getMetaData()
+                                ->getTableColumns($this->tableName);
 
             $this->tableMetaData = new \PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
                 $this->tableName, $columnNames
