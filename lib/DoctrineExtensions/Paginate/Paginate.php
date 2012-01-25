@@ -11,13 +11,15 @@ class Paginate
      */
     static protected function cloneQuery(Query $query)
     {
+        $reflector = new ReflectionClass($query);
+        $attribute = $reflector->getProperty('_paramTypes');
+        $attribute->setAccessible(true);
+        $paramTypes = $attribute->getValue($query);
+        
         /* @var $countQuery Query */
         $countQuery = clone $query;
         $params = $query->getParameters();
-
-        foreach ($params as $key => $param) {
-            $countQuery->setParameter($key, $param);
-        }
+        $countQuery->setParameters($params, $paramTypes);
 
         return $countQuery;
     } 
@@ -95,9 +97,8 @@ class Paginate
     {
         // don't do this for an empty id array
         if (count($ids) > 0) {
-            $whereInQuery = clone $query;
             
-            $whereInQuery->setParameters($query->getParameters());
+            $whereInQuery = self::cloneQuery($query);
             
             $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
             $whereInQuery->setHint('id.count', count($ids));
