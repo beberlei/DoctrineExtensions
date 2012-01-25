@@ -1,0 +1,6 @@
+{
+    "name": "beberlei/DoctrineExtensions",
+    "require": {
+        "doctrine/orm": "*"
+    }
+}
