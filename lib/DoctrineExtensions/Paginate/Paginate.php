@@ -1,7 +1,9 @@
 <?php
 
 namespace DoctrineExtensions\Paginate;
-use Doctrine\ORM\Query;
+
+use Doctrine\ORM\Query,
+    Doctrine\ORM\Query\ResultSetMapping;
 
 class Paginate
 {
@@ -20,7 +22,7 @@ class Paginate
         }
 
         return $countQuery;
-    } 
+    }
 
     /**
      * @param Query $query
@@ -48,8 +50,7 @@ class Paginate
      */
     static public function getPaginateQuery(Query $query, $offset, $itemCountPerPage)
     {
-        $ids = array_map('current', self::createLimitSubQuery($query, $offset, $itemCountPerPage)->getScalarResult());
-
+        $ids = self::createLimitSubQuery($query, $offset, $itemCountPerPage)->getScalarResult();
         return self::createWhereInQuery($query, $ids);
     }
 
@@ -61,11 +62,14 @@ class Paginate
     {
         /* @var $countQuery Query */
         $countQuery = self::cloneQuery($query);
-
-        $countQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\CountWalker'));
+        $countQuery->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Paginate\CountWalker');
         $countQuery->setFirstResult(null)->setMaxResults(null);
-        
         $countQuery->setParameters($query->getParameters());
+
+        $rsm = new ResultSetMapping();
+        $rsm->addScalarResult('_dctrn_count', 'count');
+        $countQuery->setResultSetMapping($rsm);
+
         return $countQuery;
     }
 
@@ -78,7 +82,7 @@ class Paginate
     static public function createLimitSubQuery(Query $query, $offset, $itemCountPerPage)
     {
         $subQuery = self::cloneQuery($query);
-        $subQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'))
+        $subQuery->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Paginate\LimitSubqueryWalker')
             ->setFirstResult($offset)
             ->setMaxResults($itemCountPerPage);
         $subQuery->setParameters($query->getParameters());
@@ -96,16 +100,17 @@ class Paginate
         // don't do this for an empty id array
         if (count($ids) > 0) {
             $whereInQuery = clone $query;
-            
+
             $whereInQuery->setParameters($query->getParameters());
-            
+
             $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
             $whereInQuery->setHint('id.count', count($ids));
             $whereInQuery->setHint('pg.ns', $namespace);
             $whereInQuery->setFirstResult(null)->setMaxResults(null);
             foreach ($ids as $i => $id) {
                 $i = $i+1;
-                $whereInQuery->setParameter("{$namespace}_{$i}", $id);
+                $value = is_array($id) ? current($id) : $id;
+                $whereInQuery->setParameter("{$namespace}_{$i}", $value);
             }
             return $whereInQuery;
         } else {

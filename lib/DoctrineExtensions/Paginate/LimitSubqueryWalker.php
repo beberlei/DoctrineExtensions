@@ -6,91 +6,144 @@
  * LICENSE
  *
  * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE. This license can also be viewed
- * at http://hobodave.com/license.txt
+ * with this package in the file LICENSE.txt.
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to kontakt@beberlei.de so I can send you a copy immediately.
  *
  * @category    DoctrineExtensions
  * @package     DoctrineExtensions\Paginate
- * @author      David Abdemoulaie <dave@hobodave.com>
- * @copyright   Copyright (c) 2010 David Abdemoulaie (http://hobodave.com/)
- * @license     http://hobodave.com/license.txt New BSD License
+ * @author      Sander Marechal <s.marechal@jejik.com>
+ * @copyright   Copyright (c) 2011 Sander Marechal
+ * @license     http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 
 namespace DoctrineExtensions\Paginate;
 
-use Doctrine\ORM\Query\TreeWalkerAdapter,
-    Doctrine\ORM\Query\AST\SelectStatement,
-    Doctrine\ORM\Query\AST\SelectExpression,
-    Doctrine\ORM\Query\AST\PathExpression,
-    Doctrine\ORM\Query\AST\AggregateExpression;
+use Doctrine\ORM\Query\SqlWalker,
+    Doctrine\ORM\Query\AST;
 
 /**
- * Replaces the selectClause of the AST with a SELECT DISTINCT root.id equivalent
+ * Wrap the query in order to select root entity IDs for pagination
  *
- * @category    DoctrineExtensions
- * @package     DoctrineExtensions\Paginate
- * @author      David Abdemoulaie <dave@hobodave.com>
- * @copyright   Copyright (c) 2010 David Abdemoulaie (http://hobodave.com/)
- * @license     http://hobodave.com/license.txt New BSD License
+ * Given a DQL like `SELECT u FROM User u` it will generate an SQL query like:
+ * SELECT DISTINCT <id> FROM (<original SQL>) LIMIT x OFFSET y
+ *
+ * Works with composite keys but cannot deal with queries that have multiple
+ * root entities (e.g. `SELECT f, b from Foo, Bar`)
  */
-class LimitSubqueryWalker extends TreeWalkerAdapter
+class LimitSubqueryWalker extends SqlWalker
 {
     /**
-     * @var int Counter for generating unique order column aliases
+     * @var Doctrine\DBAL\Platforms\AbstractPlatform
      */
-    private $_aliasCounter = 0;
+    private $platform;
 
     /**
-     * Walks down a SelectStatement AST node, modifying it to retrieve DISTINCT ids
-     * of the root Entity
+     * @var Doctrine\ORM\Query\ResultSetMapping
+     */
+    private $rsm;
+
+    /**
+     * @var array
+     */
+    private $queryComponents;
+
+    /**
+     * @var int
+     */
+    private $firstResult;
+
+    /**
+     * @var int
+     */
+    private $maxResults;
+
+    /**
+     * Constructor. Stores various parameters that are otherwise unavailable
+     * because Doctrine\ORM\Query\SqlWalker keeps everything private without
+     * accessors.
+     *
+     * @param Doctrine\ORM\Query $query
+     * @param Doctrine\ORM\Query\ParserResult $parserResult
+     * @param array $queryComponents
+     */
+    public function __construct($query, $parserResult, array $queryComponents)
+    {
+        $this->platform = $query->getEntityManager()->getConnection()->getDatabasePlatform();
+        $this->rsm = $parserResult->getResultSetMapping();
+        $this->queryComponents = $queryComponents;
+
+        // Reset limit and offset
+        $this->firstResult = $query->getFirstResult();
+        $this->maxResults = $query->getMaxResults();
+        $query->setFirstResult(null)->setMaxResults(null);
+
+        parent::__construct($query, $parserResult, $queryComponents);
+    }
+
+    /**
+     * Walks down a SelectStatement AST node, wrapping it in a SELECT DISTINCT
      *
      * @param SelectStatement $AST
-     * @return void
+     * @return string
      */
-    public function walkSelectStatement(SelectStatement $AST)
+    public function walkSelectStatement(AST\SelectStatement $AST)
     {
-        $parent = null;
-        $parentName = null;
-        $selectExpressions = array();
+        $sql = parent::walkSelectStatement($AST);
 
-        foreach ($this->_getQueryComponents() AS $dqlAlias => $qComp) {
-            // preserve mixed data in query for ordering
-            if (isset($qComp['resultVariable'])) {
-                $selectExpressions[] = new SelectExpression($qComp['resultVariable'], $dqlAlias);
-                continue;
-            }
+        // Find out the SQL alias of the identifier column of the root entity
+        // It may be possible to make this work with multiple root entities but that
+        // would probably require issuing multiple queries or doing a UNION SELECT
+        // so for now, It's not supported.
 
-            if ($qComp['parent'] === null && $qComp['nestingLevel'] == 0) {
-                $parent = $qComp;
-                $parentName = $dqlAlias;
-                continue;
-            }
+        // Get the root entity and alias from the AST fromClause
+        $from = $AST->fromClause->identificationVariableDeclarations;
+        if (count($from) !== 1) {
+            throw new \Exception('Cannot generate limit for DQL query with multiple root entities');
         }
 
-        $pathExpression = new PathExpression(
-                        PathExpression::TYPE_STATE_FIELD | PathExpression::TYPE_SINGLE_VALUED_ASSOCIATION, $parentName,
-                        $parent['metadata']->getSingleIdentifierFieldName()
-        );
-        $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
+        $rootClass = $from[0]->rangeVariableDeclaration->abstractSchemaName;
+        $rootAlias = $from[0]->rangeVariableDeclaration->aliasIdentificationVariable;
 
-        array_unshift($selectExpressions, new SelectExpression($pathExpression, '_dctrn_id'));
-        $AST->selectClause->selectExpressions = $selectExpressions;
+        // Get the identity properties from the metadata
+        $metadata = $this->queryComponents[$rootAlias]['metadata'];
+        $rootIdentifier = $metadata->identifier;
 
-        if (isset($AST->orderByClause)) {
-            foreach ($AST->orderByClause->orderByItems as $item) {
-                if ($item->expression instanceof PathExpression) {
-                    $pathExpression = new PathExpression(
-                                    PathExpression::TYPE_STATE_FIELD | PathExpression::TYPE_SINGLE_VALUED_ASSOCIATION,
-                                    $item->expression->identificationVariable,
-                                    $item->expression->field
-                    );
-                    $pathExpression->type = PathExpression::TYPE_STATE_FIELD;
-                    $AST->selectClause->selectExpressions[] = new SelectExpression($pathExpression, '_dctrn_ord' . $this->_aliasCounter++);
+        // For every identifier, find out the SQL alias by combing through the ResultSetMapping
+        $sqlIdentifier = array();
+        foreach ($rootIdentifier as $property) {
+            foreach (array_keys($this->rsm->fieldMappings, $property) as $alias) {
+                if ($this->rsm->columnOwnerMap[$alias] == $rootAlias) {
+                    $sqlIdentifier[$property] = $alias;
                 }
             }
         }
 
-        $AST->selectClause->isDistinct = true;
-    }
+        if (count($rootIdentifier) != count($sqlIdentifier)) {
+            throw new \Exception(sprintf(
+                'Not all identifier properties can be found in the ResultSetMapping: %s',
+                implode(', ', array_diff($rootIdentifier, array_keys($sqlIdentifier)))
+            ));
+        }
 
+        // Build the counter query
+        $sql = sprintf('SELECT DISTINCT %s FROM (%s) AS _dctrn_result',
+            implode(', ', $sqlIdentifier), $sql);
+
+        // Apply the limit and offset
+        $sql = $this->platform->modifyLimitQuery(
+            $sql, $this->maxResults, $this->firstResult
+        );
+
+        // Add the columns to the ResultSetMapping. It's not really nice but
+        // it works. Preferably I'd clear the RSM or simply create a new one
+        // but that is not possible from inside the output walker, so we dirty
+        // up the one we have.
+        foreach ($sqlIdentifier as $property => $alias) {
+            $this->rsm->addScalarResult($alias, $property);
+        }
+
+        return $sql;
+    }
 }

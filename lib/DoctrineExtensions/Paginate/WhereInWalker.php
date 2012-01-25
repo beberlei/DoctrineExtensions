@@ -70,6 +70,10 @@ class WhereInWalker extends TreeWalkerAdapter
             }
         }
 
+        if (count($parent['metadata']->identifier) > 1) {
+            throw new \Exception('Composite primary keys not supported');
+        }
+
         $pathExpression = new PathExpression(
                         PathExpression::TYPE_STATE_FIELD, $parentName, $parent['metadata']->getSingleIdentifierFieldName()
         );
