@@ -94,22 +94,22 @@ class Paginate
     static public function createWhereInQuery(Query $query, array $ids, $namespace = 'pgid')
     {
         // don't do this for an empty id array
-        if (count($ids) > 0) {
-            $whereInQuery = clone $query;
-            
-            $whereInQuery->setParameters($query->getParameters());
-            
-            $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
-            $whereInQuery->setHint('id.count', count($ids));
-            $whereInQuery->setHint('pg.ns', $namespace);
-            $whereInQuery->setFirstResult(null)->setMaxResults(null);
-            foreach ($ids as $i => $id) {
-                $i = $i+1;
-                $whereInQuery->setParameter("{$namespace}_{$i}", $id);
-            }
-            return $whereInQuery;
-        } else {
-            return $query;
+        if (count($ids) == 0) {
+            throw new \RuntimeException("No ids given, cannot create where in query in this case.");
         }
+
+        $whereInQuery = clone $query;
+
+        $whereInQuery->setParameters($query->getParameters());
+
+        $whereInQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\WhereInWalker'));
+        $whereInQuery->setHint('id.count', count($ids));
+        $whereInQuery->setHint('pg.ns', $namespace);
+        $whereInQuery->setFirstResult(null)->setMaxResults(null);
+        foreach ($ids as $i => $id) {
+            $i = $i+1;
+            $whereInQuery->setParameter("{$namespace}_{$i}", $id);
+        }
+        return $whereInQuery;
     }
 }
