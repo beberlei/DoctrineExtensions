@@ -2,5 +2,8 @@
     "name": "beberlei/DoctrineExtensions",
     "require": {
         "doctrine/orm": "*"
+    },
+    "autoload": {
+        "psr-0": {"DoctrineExtensions" : "lib/"}
     }
 }
