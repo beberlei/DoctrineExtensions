@@ -13,30 +13,38 @@
 
 namespace DoctrineExtensions\Phing\Task;
 
-require_once "AbstractDoctrineTask.php";
+use Symfony\Component\Console\Helper\HelperSet;
 
+require_once 'AbstractDoctrineTask.php';
+
+/**
+ * Generate classes proxies to a given directory
+ */
 class GenerateProxies extends AbstractDoctrineTask
 {
+    /**
+     * @var string
+     */
     protected $taskName = "dc2-proxies";
 
+    /**
+     * @var string
+     */
     protected $proxyDir = null;
 
+    /**
+     * @param  string $proxyDir
+     * @return void
+     */
     public function setProxyDir($proxyDir)
     {
         $this->proxyDir = $proxyDir;
     }
 
-    /**
-     * @param Configuration $cliConfig
-     */
-    protected function _doRun(\Doctrine\Common\Cli\Configuration $cliConfig)
+    protected function _doRun(HelperSet $helperSet)
     {
-        if ($this->proxyDir !== null && (!is_dir($this->proxyDir) || !is_writable($this->proxyDir))) {
-            throw new \BuildException("Proxy directory is not valid or writable.");
-        }
-
-        /* @var $cliConfig \Doctrine\Common\Cli\Configuration */
-        $em = $cliConfig->getAttribute('em');
+        $emHelper = $helperSet->get('em');
+        $em = $emHelper->getEntityManager();
 
         $cmf = $em->getMetadataFactory();
         $classes = $cmf->getAllMetadata();
@@ -45,11 +53,31 @@ class GenerateProxies extends AbstractDoctrineTask
         if (empty($classes)) {
             $this->log('No classes to generate proxies for.');
         } else {
-            $proxyDir = ($this->proxyDir != null) ? $this->proxyDir : $em->getConfiguration()->getProxyDir();
+            $proxyDir = ($this->proxyDir !== null)
+                      ? $this->proxyDir
+                      : $em->getConfiguration()->getProxyDir();
+
+            if ($proxyDir === null) {
+                throw new \BuildException(
+                    "Proxy directory is not set."
+                );
+            }
+
+            if (!is_dir($proxyDir)) {
+                throw new \BuildException(
+                    "Proxy directory is not a valid directory."
+                );
+            }
+
+            if (!is_writable($proxyDir)) {
+                throw new \BuildException(
+                    "Proxy directory is not writable."
+                );
+            }
 
             $factory->generateProxyClasses($classes, $proxyDir);
 
-            $this->log('Doctrine 2 proxy classes generated to: ' . $proxyDir);
+            $this->log("Doctrine 2 proxy classes generated to {$proxyDir}");
         }
     }
 }

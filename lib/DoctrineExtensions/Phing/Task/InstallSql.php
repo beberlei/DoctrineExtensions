@@ -13,44 +13,72 @@
 
 namespace DoctrineExtensions\Phing\Task;
 
-require_once "AbstractDoctrineTask.php";
+use Doctrine\ORM\Tools\SchemaTool;
+use Symfony\Component\Console\Helper\HelperSet;
 
+require_once 'AbstractDoctrineTask.php';
+
+/**
+ * Write schema SQL to a file
+ */
 class InstallSql extends AbstractDoctrineTask
 {
+    /**
+     * @var string
+     */
     protected $taskName = "dc2-install-sql";
-
-    protected $platformClass = null;
 
     /**
      * @var string
      */
     private $installSqlFile = null;
 
-    public function setInstallSqlFile($installSqlFile) {
+    /**
+     * @param  string $installSqlFile
+     * @return void
+     */
+    public function setInstallSqlFile($installSqlFile)
+    {
         $this->installSqlFile = $installSqlFile;
     }
 
-    /**
-     * @param Configuration $cliConfig
-     */
-    protected function _doRun(\Doctrine\Common\Cli\Configuration $cliConfig)
+    protected function _doRun(HelperSet $helperSet)
     {
-        if (!is_writable(dirname($this->installSqlFile))) {
-            throw new \BuildException("Directory to write Install Sql File into is not writable.");
+        if ($this->installSqlFile === null) {
+            throw new \BuildException(
+                "Schema SQL file is not set."
+            );
         }
 
-        $em = $cliConfig->getAttribute('em');
+        if (!is_dir(dirname($this->installSqlFile))) {
+            throw new \BuildException(
+                "Schema SQL directory is not a valid directory."
+            );
+        }
 
-        $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($em);
+        if (!is_writable(dirname($this->installSqlFile))) {
+            throw new \BuildException(
+                "Schema SQL directory is not writable."
+            );
+        }
+
+        $emHelper = $helperSet->get('em');
+        $em = $emHelper->getEntityManager();
+
+        $schemaTool = new SchemaTool($em);
 
         $cmf = $em->getMetadataFactory();
         $classes = $cmf->getAllMetadata();
 
         $sql = $schemaTool->getCreateSchemaSql($classes);
 
-        $code = "<?php\n\nreturn ".var_export($sql, true).";\n";
+        $code = sprintf(
+            "<?php\n\nreturn %s;\n",
+            var_export($sql, true)
+        );
+
         file_put_contents($this->installSqlFile, $code);
 
-        $this->log("Wrote the Array of SQL statements to create schema to file ".$this->installSqlFile);
+        $this->log("Wrote schema SQL to file {$this->installSqlFile}");
     }
 }
