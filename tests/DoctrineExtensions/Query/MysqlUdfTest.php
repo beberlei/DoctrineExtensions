@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineExtnsions\Query;
+namespace DoctrineExtensions\Query;
 use Doctrine\ORM\Query\Parser;
 
 class MysqlUdfTest extends \PHPUnit_Framework_TestCase
