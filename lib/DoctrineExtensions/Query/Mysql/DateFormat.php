@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * DoctrineExtensions Mysql Function Pack
  *
  * LICENSE
@@ -14,39 +14,37 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
- * "MONTHNAME" "(" SimpleArithmeticExpression ")".
+ * "DATE_FORMAT" (Date, Pattern).
  *
  * @category    DoctrineExtensions
  * @package     DoctrineExtensions\Query\Mysql
  * @author      Steve Lacey <steve.lacey@wiredmedia.co.uk>
  * @license     MIT License
  */
-class MonthName extends FunctionNode
+class DateFormat extends FunctionNode
 {
-    public $date;
+    public $dateExpression = null;
+    public $patternExpression = null;
 
-    /**
-     * @override
-     */
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-    {
-        return "MONTHNAME(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
-    }
-
-    /**
-     * @override
-     */
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
-
-        $this->date = $parser->ArithmeticPrimary();
-
+        $this->dateExpression = $parser->ArithmeticExpression();
+        $parser->match(Lexer::T_COMMA);
+        $this->patternExpression = $parser->StringPrimary();
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
+
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
+        return 'DATE_FORMAT(' .
+            $this->dateExpression->dispatch($sqlWalker) . ', ' .
+            $this->patternExpression->dispatch($sqlWalker) .
+        ')';
     }
 }
