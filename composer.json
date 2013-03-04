@@ -1,5 +1,5 @@
 {
-    "name": "beberlei/DoctrineExtensions",
+    "name": "wiredmedia/doctrine-extensions",
     "require": {
         "doctrine/orm": "*"
     },
