@@ -1,5 +1,5 @@
 {
-    "name": "dutchbridge/DoctrineExtensions",
+    "name": "dutchbridge/doctrine-extensions",
     "require": {
         "doctrine/orm": "*"
     },
