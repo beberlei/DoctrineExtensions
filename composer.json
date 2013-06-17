@@ -1,5 +1,5 @@
 {
-    "name": "beberlei/DoctrineExtensions",
+    "name": "dutchbridge/DoctrineExtensions",
     "require": {
         "doctrine/orm": "*"
     },
