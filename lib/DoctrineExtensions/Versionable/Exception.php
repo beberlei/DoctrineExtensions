@@ -17,7 +17,7 @@ class Exception extends \Exception
 {
     static public function versionedEntityRequired()
     {
-        return new self("A versioned entity is required if implementing DoctrineExtnsions\Versionable\Versionable interface.");
+        return new self("A versioned entity is required if implementing DoctrineExtensions\Versionable\Versionable interface.");
     }
 
     static public function singleIdentifierRequired()

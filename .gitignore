@@ -1,10 +1,14 @@
 nbproject
 tests/phpunit.xml
 build/
+vendor/
 
 # Eclipse files
 .settings
 .buildpath
 .project
+
+#PHPStorm
+.idea
 
 tests/Entities/Proxies
