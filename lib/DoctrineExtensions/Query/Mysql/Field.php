@@ -32,11 +32,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
  * @version 2011.06.09
  */
 
-namespace DoctrineExtensions\Query\Mysql;
-
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
-
 class Field extends FunctionNode
 {
     private $field = null;
