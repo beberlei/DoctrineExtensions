@@ -3,6 +3,12 @@
 This package contains several extensions to Doctrine 2 that hook into the facilities of Doctrine and
 offer new functionality or tools to use Doctrine 2 more efficently.
 
+    Warning: This repository is not really maintained anymore. The important paginatior and large collections code was moved to the Doctrine2 core.
+    For all the other extensions, be aware that I don't maintain them anymore.
+    
+    The user-defined functions are contributed by various persons and have not always been reviewed in their quality.
+    Please review everything you want to use.
+
 ## Including DoctrineExtensions
 
 To include the DoctrineExtensions should fire up an autoloader, for example:
