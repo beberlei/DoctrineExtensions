@@ -55,6 +55,35 @@ These methods internally use several others to create and retrieve the data. You
 those methods to integrate with existing pagination solutions, a `Zend_Paginator` implementation
 is already shipped (`DoctrineExtensions\Paginate\PaginationAdapter`).
 
+## Phing
+
+There are currently two Phing tasks provided by DoctrineExtensions:
+
+### GenerateProxies
+
+Generates Doctrine 2 proxy files.
+
+```xml
+<!-- assuming you have included the class file first -->
+
+<taskdef classname="DoctrineExtensions\Phing\Task\GenerateProxies" name="d2-proxies" />
+
+<d2-proxies cliConfig="${somedir}/cli-config.php" />
+```
+
+### InstallSql
+
+Generates a valid PHP file containing an array with all SQL that would be
+installed.
+
+```xml
+<!-- assuming you have included the class file first -->
+
+<taskdef classname="DoctrineExtensions\Phing\Task\InstallSql" name="d2-install-sql" />
+
+<d2-install-sql installSqlFile="${somedir}/sql/schema.sql.php" />
+```
+
 ## PHPUnit
 
 The PHPUnit Extension for Doctrine offers several hooks into PHPUnits Database extension and offers a

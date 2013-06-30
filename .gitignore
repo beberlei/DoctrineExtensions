@@ -1,7 +1,9 @@
+composer.lock
 nbproject
 tests/phpunit.xml
 build/
 vendor/
+tests/Entities/Proxies
 
 # Eclipse files
 .settings

@@ -13,42 +13,64 @@
 
 namespace DoctrineExtensions\Phing\Task;
 
+use Symfony\Component\Console\Helper\HelperSet;
+
 abstract class AbstractDoctrineTask extends \Task
 {
     /**
-     * @var \Doctrine\Common\Cli\Configuration
+     * @var HelperSet
      */
-    static protected $cliConfig = null;
+    protected static $helperSet = null;
 
+    /**
+     * @var string
+     */
     protected $cliConfigFile = "cli-config.php";
 
-    public function setCliConfig($cliConfig)
+    /**
+     * @todo   Rename to setCliConfigFile
+     * @param  string $cliConfigFile
+     * @return void
+     */
+    public function setCliConfig($cliConfigFile)
     {
-        $this->cliConfigFile = $cliConfig;
+        $this->cliConfigFile = $cliConfigFile;
     }
 
     public function main()
     {
-        if (self::$cliConfig == null) {
+        if (self::$helperSet === null) {
             if (!file_exists($this->cliConfigFile)) {
-                throw new \BuildException("Path to CLI Config has to be valid!");
+                throw new \BuildException(
+                    "Path to CLI config file must be valid!"
+                );
             }
 
             include($this->cliConfigFile);
 
-            if (!isset($cliConfig) || !($cliConfig instanceof \Doctrine\Common\Cli\Configuration)) {
-                throw new \BuildException("Doctrine CLI Config file has to create a \$cliConfig variable");
+            if (!isset($helperSet)) {
+                throw new \BuildException(
+                    "Doctrine CLI config file must create a \$helperSet"
+                  . " variable."
+                );
             }
 
-            self::$cliConfig = $cliConfig;
+            if (!$helperSet instanceof HelperSet) {
+                throw new \BuildException(
+                    "\$helperSet must be an instance of"
+                  . "Symfony\Component\Console\Helper\HelperSet."
+                );
+            }
+
+            self::$helperSet = $helperSet;
         }
 
-        $this->_doRun(self::$cliConfig);
+        $this->_doRun(self::$helperSet);
     }
 
     /**
-     * @param Configuration $cliConfig
+     * @param  HelperSet $helperSet
      * @return void
      */
-    abstract protected function _doRun(\Doctrine\Common\Cli\Configuration $cliConfig);
+    abstract protected function _doRun(HelperSet $helperSet);
 }
