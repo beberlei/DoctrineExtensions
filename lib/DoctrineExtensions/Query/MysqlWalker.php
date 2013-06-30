@@ -17,7 +17,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 class MysqlWalker extends SqlWalker
 {
-     /**
+    /**
      * Walks down a SelectClause AST node, thereby generating the appropriate SQL.
      *
      * @param $selectClause
