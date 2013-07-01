@@ -16,7 +16,7 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-
+use Doctrine\ORM\Query\QueryException;
 /**
  * "WEEK" "(" SimpleArithmeticExpression ")". Modified from DoctrineExtensions\Query\Mysql\Year
  *
@@ -30,13 +30,14 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 class Week extends FunctionNode
 {
     public $date;
+    public $mode;
 
     /**
      * @override
      */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "WEEK(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+        return "WEEK(" . $sqlWalker->walkArithmeticPrimary($this->date) . ($this->mode?", " . $sqlWalker->walkArithmeticPrimary($this->mode):"" ) . ")";
     }
 
     /**
@@ -48,6 +49,13 @@ class Week extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $this->date = $parser->ArithmeticPrimary();
+       try {
+
+            $parser->match(Lexer::T_COMMA);
+
+            $this->mode = $parser->SimpleArithmeticExpression();
+        } catch (QueryException $e) {
+        }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
