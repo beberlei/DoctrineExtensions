@@ -1,5 +1,6 @@
 <?php
-/**
+
+/*
  * DoctrineExtensions Mysql Function Pack
  *
  * LICENSE
