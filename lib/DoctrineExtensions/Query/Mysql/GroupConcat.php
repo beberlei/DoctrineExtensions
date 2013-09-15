@@ -17,23 +17,24 @@ namespace DoctrineExtensions\Query\Mysql;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
     Doctrine\ORM\Query\Lexer;
 
-// limited support for GROUP_CONCAT
+/**
+ * Full support for:
+ * 
+ * GROUP_CONCAT([DISTINCT] expr [,expr ...]
+ *              [ORDER BY {unsigned_integer | col_name | expr}
+ *                  [ASC | DESC] [,col_name ...]]
+ *              [SEPARATOR str_val])
+ * 
+ */
 class GroupConcat extends FunctionNode
 {
     public $isDistinct = false;
-    public $expression = null;
-
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-    {
-        return 'GROUP_CONCAT(' .
-            ($this->isDistinct ? 'DISTINCT ' : '') .
-            $this->expression->dispatch($sqlWalker) .
-        ')';
-    }
+    public $pathExp = null;
+    public $separator = null;
+    public $orderBy = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
-
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         
@@ -44,9 +45,53 @@ class GroupConcat extends FunctionNode
             $this->isDistinct = true;
         }
 
-        $this->expression = $parser->SingleValuedPathExpression();
+        // first Path Expression is mandatory
+        $this->pathExp = array();
+        $this->pathExp[] = $parser->SingleValuedPathExpression();
+
+        while ($lexer->isNextToken(Lexer::T_COMMA)) {
+            $parser->match(Lexer::T_COMMA);
+            $this->pathExp[] = $parser->StringPrimary();
+        }
+
+        if ($lexer->isNextToken(Lexer::T_ORDER)) {
+            $this->orderBy = $parser->OrderByClause();
+        }
+        
+        if ($lexer->isNextToken(Lexer::T_IDENTIFIER)) {
+            if (strtolower($lexer->lookahead['value']) !== 'separator') {
+                $parser->syntaxError('separator');
+            }
+            $parser->match(Lexer::T_IDENTIFIER);
+        
+            $this->separator = $parser->StringPrimary();
+        }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
+
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
+        $result = 'GROUP_CONCAT(' . ($this->isDistinct ? 'DISTINCT ' : '');
+
+        $fields = array();
+        foreach ($this->pathExp as $pathExp) {
+            $fields[] = $pathExp->dispatch($sqlWalker);
+        }
+        
+        $result .= sprintf('%s', implode(', ', $fields));
+        
+        if ($this->orderBy) {
+            $result .= ' '.$sqlWalker->walkOrderByClause($this->orderBy);
+        }
+        
+        if ($this->separator) {
+            $result .= ' SEPARATOR '.$sqlWalker->walkStringPrimary($this->separator);
+        }
+        
+        $result .= ')';
+        
+        return $result;
     }
 
 }
