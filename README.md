@@ -44,6 +44,7 @@ If you're using Symfony2 and are primarily interested in the additional MySQL fu
                     day: DoctrineExtensions\Query\Mysql\Day
                     dayname: DoctrineExtensions\Query\Mysql\DayName
                     strtodate: DoctrineExtensions\Query\Mysql\StrToDate
+                    time: DoctrineExtensions\Query\Mysql\Time
                     timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
                     week: DoctrineExtensions\Query\Mysql\Week
                     year: DoctrineExtensions\Query\Mysql\Year
