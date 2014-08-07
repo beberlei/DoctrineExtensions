@@ -251,4 +251,3 @@ $versionManager = new VersionManager($em);
 $versionManager->revert($blogPost, 100);
 $em->flush();
 ```
->>>>>>> marijn/patch-1
