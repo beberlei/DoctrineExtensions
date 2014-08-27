@@ -15,7 +15,7 @@ use Doctrine\ORM\Query\SqlWalker;
  *
  * @category DoctrineExtensions
  * @package  DoctrineExtensions\Query\Mysql
- * @author   Alişan ALAÇAM <alisanalacam@gmail.com>
+ * @author   Alişan ALAÇAM  <alisanalacam@gmail.com>
  * @license  BSD License
  *
  */
