@@ -3,6 +3,12 @@
     "require": {
         "doctrine/orm": "*"
     },
+    "require-dev": {
+        "nesbot/carbon": "*"
+    },
+    "suggest": {
+        "nesbot/carbon": "Alternative to DateTime"
+    },
     "autoload": {
         "psr-0": {"DoctrineExtensions" : "lib/"}
     }
