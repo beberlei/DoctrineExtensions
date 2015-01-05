@@ -34,7 +34,7 @@ class Year extends FunctionNode
      */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "YEAR(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+        return sprintf('YEAR(%s)', $sqlWalker->walkArithmeticPrimary($this->date));
     }
 
     /**
