@@ -4,6 +4,8 @@ namespace DoctrineExtensions\Query;
 
 use Doctrine\ORM\Query\Parser;
 
+require_once __DIR__ . '/../../Entities/BlogPost.php';
+
 class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 {
 
@@ -14,12 +16,10 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
         $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setProxyDir($GLOBALS['doctrine2-proxies-path']);
-        $config->setProxyNamespace($GLOBALS['doctrine2-proxies-namespace']);
+        $config->setProxyDir(__DIR__ . '/Proxies');
+        $config->setProxyNamespace('DoctrineExtensions\PHPUnit\Proxies');
         $config->setAutoGenerateProxyClasses(true);
-
-        $driver = $config->newDefaultAnnotationDriver($GLOBALS['doctrine2-entities-path']);
-        $config->setMetadataDriverImpl($driver);
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
         $conn = array(
             'driver' => 'pdo_sqlite',

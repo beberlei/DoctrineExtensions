@@ -29,7 +29,7 @@ class LimitSubqueryWalkerTest extends \PHPUnit_Framework_TestCase
         $limitQuery->setHint(Query::HINT_CUSTOM_TREE_WALKERS, array('DoctrineExtensions\Paginate\LimitSubqueryWalker'));
 
         $this->assertEquals(
-                "SELECT DISTINCT a0_.id AS id0 FROM Author a0_", $limitQuery->getSql()
+                "SELECT DISTINCT a0_.id AS id0, sum(a0_.name) AS sclr1 FROM Author a0_", $limitQuery->getSql()
         );
     }
 

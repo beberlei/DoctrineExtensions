@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-    bootstrap="../vendor/autoload.php" 
-    colors="true"
->
+<phpunit bootstrap="../vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="AllTests">
             <directory>DoctrineExtensions/LargeCollections</directory>
@@ -10,12 +7,6 @@
             <directory>DoctrineExtensions/Query</directory>
         </testsuite>
     </testsuites>
-    <php>
-        <var name="doctrine2-path" value="" />
-        <var name="doctrine2-entities-path" value="" />
-        <var name="doctrine2-proxies-path" value="" />
-        <var name="doctrine2-proxies-namespace" value="" />
-    </php>
     <filter>
         <blacklist>
             <directory suffix=".php"></directory>
