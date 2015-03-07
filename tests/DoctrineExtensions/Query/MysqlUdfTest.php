@@ -26,8 +26,8 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
 
         $config->addCustomNumericFunction('DATEDIFF', 'DoctrineExtensions\Query\Mysql\DateDiff');
         $config->addCustomDatetimeFunction('DATE_ADD', 'DoctrineExtensions\Query\Mysql\DateAdd');
-        $config->addCustomStringFunction('STR_TO_DATE', 'DoctrineExtensions\Query\MySql\StrToDate');
-        $config->addCustomStringFunction('FIND_IN_SET', 'DoctrineExtensions\Query\MySql\FindInSet');
+        $config->addCustomStringFunction('STR_TO_DATE', 'DoctrineExtensions\Query\Mysql\StrToDate');
+        $config->addCustomStringFunction('FIND_IN_SET', 'DoctrineExtensions\Query\Mysql\FindInSet');
         $this->entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
 
     }
