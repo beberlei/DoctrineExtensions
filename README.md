@@ -1,4 +1,15 @@
-# Some Doctrine 2 Extensions
+# DoctrineExtensions
+
+![Build Status](https://img.shields.io/badge/branch-master-blue.svg)
+[![Build Status](https://travis-ci.org/beberlei/DoctrineExtensions.svg?branch=master)](https://travis-ci.org/beberlei/DoctrineExtensions)
+![Build Status](https://img.shields.io/badge/version-0.3-orange.svg)
+[![Travis branch](https://img.shields.io/travis/beberlei/DoctrineExtensions/0.3.svg)]()
+![Build Status](https://img.shields.io/badge/version-1.0-orange.svg)
+[![Travis branch](https://img.shields.io/travis/beberlei/DoctrineExtensions/1.0.svg)]()
+
+[![Packagist](https://img.shields.io/packagist/dd/beberlei/DoctrineExtensions.svg)]()
+[![Packagist](https://img.shields.io/packagist/dm/beberlei/DoctrineExtensions.svg)]()
+[![Packagist](https://img.shields.io/packagist/dt/beberlei/DoctrineExtensions.svg)]()
 
 This package contains several extensions to Doctrine 2 that hook into the facilities of Doctrine and
 offer new functionality or tools to use Doctrine 2 more efficently.
