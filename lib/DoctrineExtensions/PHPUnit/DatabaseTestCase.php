@@ -48,8 +48,11 @@ abstract class DatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
      */
     protected function getSetUpOperation()
     {
+        $truncate_operation = new Truncate();
+        $truncate_operation->setCascade();
+
         return new \PHPUnit_Extensions_Database_Operation_Composite(array(
-            new Truncate(),
+            $truncate_operation,
             new \PHPUnit_Extensions_Database_Operation_Insert()
         ));
     }
