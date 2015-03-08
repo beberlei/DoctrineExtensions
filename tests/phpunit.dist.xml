@@ -2,8 +2,6 @@
 <phpunit bootstrap="../vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="AllTests">
-            <directory>DoctrineExtensions/LargeCollections</directory>
-            <directory>DoctrineExtensions/Paginate</directory>
             <directory>DoctrineExtensions/Query</directory>
             <directory>DoctrineExtensions/Types</directory>
         </testsuite>
