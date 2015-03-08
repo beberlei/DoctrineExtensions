@@ -79,7 +79,7 @@ If you're using Symfony2 and are primarily interested in the additional MySQL fu
                     sha1: DoctrineExtensions\Query\Mysql\Sha1
                     sha2: DoctrineExtensions\Query\Mysql\Sha2
 
-There may be more functions available than this, check https://github.com/wiredmedia/DoctrineExtensions/tree/master/lib/DoctrineExtensions/Query/Mysql to be sure.
+There may be more functions available than this, check https://github.com/beberlei/DoctrineExtensions/tree/master/lib/DoctrineExtensions/Query/Mysql to be sure.
 
 
 ## Paginator
