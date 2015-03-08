@@ -14,7 +14,7 @@
 
 namespace DoctrineExtensions\Types;
 
-require_once 'Zend/Date.php';
+if (!class_exists('Zend_Date')) require_once 'Zend/Date.php';
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Types\ConversionException;
@@ -60,7 +60,7 @@ class ZendDateType extends Type
         $dateTimeFormatString = \Zend_Locale_Format::convertPhpToIsoFormat(
             $platform->getDateTimeFormatString()
         );
-        
+
         $val = new \Zend_Date($value, $dateTimeFormatString);
         if (!$val) {
             throw ConversionException::conversionFailed($value, $this->getName());
