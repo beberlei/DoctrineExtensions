@@ -18,14 +18,14 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 
 /**
- * "DATE" "(" SimpleArithmeticExpression ")".
+ * "MONTHNAME" "(" SimpleArithmeticExpression ")".
  *
  * @category    DoctrineExtensions
  * @package     DoctrineExtensions\Query\Mysql
  * @author      Steve Lacey <steve.lacey@wiredmedia.co.uk>
  * @license     MIT License
  */
-class Date extends FunctionNode
+class MonthName extends FunctionNode
 {
     public $date;
 
@@ -34,7 +34,7 @@ class Date extends FunctionNode
      */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "DATE(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+        return "MONTHNAME(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
     }
 
     /**
