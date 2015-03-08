@@ -1,4 +1,5 @@
-# DoctrineExtensions
+DoctrineExtensions
+==================
 
 [![Build Status](https://img.shields.io/badge/branch-master-blue.svg)](https://github.com/beberlei/DoctrineExtensions/tree/master)
 [![Build Status](https://travis-ci.org/beberlei/DoctrineExtensions.svg?branch=master)](https://travis-ci.org/beberlei/DoctrineExtensions)
@@ -14,20 +15,43 @@
 This package contains several extensions to Doctrine 2 that hook into the facilities of Doctrine and
 offer new functionality or tools to use Doctrine 2 more efficently.
 
-> Warning: This repository is not really maintained anymore. The important paginatior and large collections code was moved to the Doctrine2 core.
-> For all the other extensions, be aware that I don't maintain them anymore.
+**[@beberlei](https://github.com/beberlei) no longer maintains this library given his other commitments to the Doctrine project, however, [@stevelacey](https://github.com/stevelacey) is in the process of bringing this library back up to speed**
+
+Versions
+--------
+
+At the time of writing, you're probably using version 0.1 – the only stable release. The current plan is to merge PR's to form a 0.3 release, and moving forward, a 1.0 release, that strips the project back to just the query functions for MySQL, Postgres, Oracle, and potentially others moving forwards.
+
+#### Which version should I use?
+
+**A tagged release of `0.3` and `1.0` will be available soon, for now, use `0.1` or `0.3.x-dev` at your own risk, `1.0` is unfinished and will feature BC breaks**
+
+#### Moving forwards
+
+###### 1.0
+
+If you simply want additional query functions for use in DQL – 1.0 is for you, and this applies to most users; there will be BC breaks against 0.3, as we're ripping out a lot of functionality, but the functions are largely standalone.
+
+###### 0.3
+
+If you're still using LargeCollections, Paginate, PHPUnit or Versionable behaviours available since 0.1, you're welcome to use 0.3, which brings in a bunch of merges from various PR's over the years – but do note, **this functionality is now available in Doctrine core, no longer supported in this library, and to be removed in 1.0**.
+
+We will consider pull requests for bugfixes to this functionality to be merged into 0.x releases, but you are encouraged to switch out your implementations and upgrade to 1.0.
+
+> ~~Warning: This repository is not really maintained anymore. The important paginatior and large collections code was moved to the Doctrine2 core.~~
+> ~~For all the other extensions, be aware that I don't maintain them anymore.~~
 >
 > The user-defined functions are contributed by various persons and have not always been reviewed in their quality.
 > Please review everything you want to use.
 
 ## Including DoctrineExtensions
 
-To include the DoctrineExtensions should fire up an autoloader, for example:
+To include the DoctrineExtensions you should fire up an autoloader, for example:
 
 ```php
 <?php
 
-$classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', "/path/to/extensions");
+$classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/extensions');
 $classLoader->register();
 ```
 
@@ -82,7 +106,7 @@ If you're using Symfony2 and are primarily interested in the additional MySQL fu
 There may be more functions available than this, check https://github.com/beberlei/DoctrineExtensions/tree/master/lib/DoctrineExtensions/Query/Mysql to be sure.
 
 
-## Paginator
+## Paginator (deprecated)
 
 The paginator offers a powerful way to iterate over any DQL, even fetch joins of collections. For this it has to issue
 3 queries to the database:
@@ -123,7 +147,7 @@ These methods internally use several others to create and retrieve the data. You
 those methods to integrate with existing pagination solutions, a `Zend_Paginator` implementation
 is already shipped (`DoctrineExtensions\Paginate\PaginationAdapter`).
 
-## Phing
+## Phing (deprecated)
 
 There are currently two Phing tasks provided by DoctrineExtensions:
 
@@ -152,7 +176,7 @@ installed.
 <d2-install-sql installSqlFile="${somedir}/sql/schema.sql.php" />
 ```
 
-## PHPUnit
+## PHPUnit (deprecated)
 
 The PHPUnit Extension for Doctrine offers several hooks into PHPUnits Database extension and offers a
 very convenient way to test your Doctrine 2 code against a Database.
@@ -236,7 +260,7 @@ class EntityFunctionalTest extends OrmTestCase
 * Add a test-case that automatically tests the persistence of all your entities against the current mapping
   schema and database, aswell as related entities.
 
-## Versionable
+## Versionable (deprecated)
 
 Deprecated, please use https://github.com/simplethings/EntityAudit
 
