@@ -34,12 +34,12 @@ If you simply want additional query functions for use in DQL – 1.0 is for you,
 
 ###### 0.3
 
-If you're still using LargeCollections, Paginate, PHPUnit or Versionable behaviours available since 0.1, you're welcome to use 0.3, which brings in a bunch of merges from various PR's over the years – but do note, **this functionality is now available in Doctrine core, no longer supported in this library, and to be removed in 1.0**.
+If you're still using Paginator, LargeCollections, Phing, PHPUnit or Versionable behaviours available since 0.1, you're welcome to use 0.3, which brings in a bunch of merges from various PR's over the years – but do note, **this functionality is now available in Doctrine core, no longer supported in this library, and to be removed in 1.0**.
 
 We will consider pull requests for bugfixes to this functionality to be merged into 0.x releases, but you are encouraged to switch out your implementations and upgrade to 1.0.
 
-> ~~Warning: This repository is not really maintained anymore. The important paginatior and large collections code was moved to the Doctrine2 core.~~
-> ~~For all the other extensions, be aware that I don't maintain them anymore.~~
+> ~~Warning: This repository is not really maintained anymore.~~
+> The important Paginator and large collections code was moved to the Doctrine2 core, and a lot of the functionality here is deprecated.
 >
 > The user-defined functions are contributed by various persons and have not always been reviewed in their quality.
 > Please review everything you want to use.
