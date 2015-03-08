@@ -14,13 +14,11 @@
 
 namespace DoctrineExtensions\Types;
 
-require_once 'Zend/Date.php';
-
 use Doctrine\Common\EventManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
-use DoctrineExtensions\PHPUnit\OrmTestCase;
-use DoctrineExtensions\PHPUnit\Event\EntityManagerEventArgs;
+
+require_once __DIR__ . '/../../Entities/Date.php';
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
@@ -30,109 +28,75 @@ use DoctrineExtensions\PHPUnit\Event\EntityManagerEventArgs;
  * @author      Andreas Gallien <gallien@seleos.de>
  * @license     New BSD License
  */
-class ZendDateTest extends OrmTestCase
+
+class ZendDateTest extends \PHPUnit_Framework_TestCase
 {
-    public static function setUpBeforeClass() 
+    public $entityManager = null;
+
+    public static function setUpBeforeClass()
     {
-        \Doctrine\DBAL\Types\Type::addType('zenddate', 
+        \Doctrine\DBAL\Types\Type::addType('zenddate',
             'DoctrineExtensions\Types\ZendDateType'
         );
     }
-     
-    protected function createEntityManager() 
-    {
-    	$eventManager = new EventManager();
-    	$eventManager->addEventListener(array('preTestSetUp'), $this);
 
+    public function setUp()
+    {
         $config = new \Doctrine\ORM\Configuration();
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver());
-        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
-        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
+        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
         $config->setProxyDir(__DIR__ . '/Proxies');
-        $config->setProxyNamespace('DoctrineExtensions\Types\Proxies');
-       
-        $conn = array(
-            'driver' => 'pdo_sqlite',
-            'memory' => true,
+        $config->setProxyNamespace('DoctrineExtensions\PHPUnit\Proxies');
+        $config->setAutoGenerateProxyClasses(true);
+        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
+
+        $this->em = \Doctrine\ORM\EntityManager::create(
+            array(
+                'driver' => 'pdo_sqlite',
+                'memory' => true,
+            ),
+            $config
         );
 
-	    return EntityManager::create($conn, $config, $eventManager);
-    }
-
-    public function getDataSet()
-    {
-        return $this->createFlatXMLDataSet(__DIR__ . '/_files/fixture.xml'); 
-    }
-    
-    public function preTestSetUp(EntityManagerEventArgs $eventArgs)
-    {
-    	$em = $eventArgs->getEntityManager();
-
-        $classes = array(
-            $em->getClassMetadata(__NAMESPACE__ . '\Date'),
-        );
-        
-    	$schemaTool = new SchemaTool($em);
+        $schemaTool = new SchemaTool($this->em);
         $schemaTool->dropDatabase();
-    	$schemaTool->createSchema($classes);
+        $schemaTool->createSchema(array(
+            $this->em->getClassMetadata('Entities\Date'),
+        ));
+
+        $this->em->persist(new \Entities\Date(1, new \Zend_Date(array(
+            'year' => 2012, 'month' => 11, 'day' => 10,
+            'hour' => 9, 'minute' => 8, 'second' => 7
+        ))));
+
+        $this->em->flush();
     }
-    
+
     public function testGetZendDate()
     {
-        $em = $this->getEntityManager(); 
-        
-        $compareDate = new \Zend_Date(
-            array('year' => 2012, 'month' => 11, 'day' => 10,
-                  'hour' => 9, 'minute' => 8, 'second' => 7)
-        );
-        
-        $date = $em->find('DoctrineExtensions\Types\Date', 1);
-        $zendDate = $date->date;
-        
-        $this->assertTrue($zendDate instanceof \Zend_Date);
-        $this->assertTrue($zendDate->equals($compareDate));
+        $entity = $this->em->find('Entities\Date', 1);
+
+        $this->assertTrue($entity->date instanceof \Zend_Date);
+        $this->assertTrue($entity->date->equals(new \Zend_Date(array(
+            'year' => 2012, 'month' => 11, 'day' => 10,
+            'hour' => 9, 'minute' => 8, 'second' => 7
+        ))));
     }
-    
+
     public function testSetZendDate()
     {
-        $em = $this->getEntityManager(); 
-        
-        $compareDate = new \Zend_Date(
-            array('year' => 2012, 'month' => 11, 'day' => 10,
-                  'hour' => 9, 'minute' => 8, 'second' => 7)
-        );
-        $date = new Date(2, $compareDate);
-        $em->persist($date);
-        $em->flush();
-        
-        $date = $em->find('DoctrineExtensions\Types\Date', 2);
-        $zendDate = $date->date;
-        
-        $this->assertTrue($zendDate instanceof \Zend_Date);
-        $this->assertTrue($zendDate->equals($compareDate)); 
-    }
-}
+        $zendDate = new \Zend_Date(array(
+            'year' => 2012, 'month' => 11, 'day' => 10,
+            'hour' => 9, 'minute' => 8, 'second' => 7
+        ));
 
-/**
- * @Entity
- * @Table(name="dates") 
- */
-class Date
-{
-    /**
-     * @Id
-     * @Column(type="integer")
-     */
-    public $id;
+        $entity = new \Entities\Date(2, $zendDate);
+        $this->em->persist($entity);
+        $this->em->flush();
 
-    /**
-     * @Column(type="zenddate")
-     */
-    public $date;
-    
-    public function __construct($id, $date) 
-    {
-        $this->id = $id;
-        $this->date = $date;    
+        $entity = $this->em->find('Entities\Date', 2);
+
+        $this->assertTrue($entity->date instanceof \Zend_Date);
+        $this->assertTrue($entity->date->equals($zendDate));
     }
 }

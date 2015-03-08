@@ -5,6 +5,7 @@
             <directory>DoctrineExtensions/LargeCollections</directory>
             <directory>DoctrineExtensions/Paginate</directory>
             <directory>DoctrineExtensions/Query</directory>
+            <directory>DoctrineExtensions/Types</directory>
         </testsuite>
     </testsuites>
     <filter>

@@ -24,5 +24,4 @@ class BlogPost
      * @Column(type="decimal", precision=12, scale=8)
      */
     public $latitude;
-
 }
