@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-    <posts id="1" title="Hello World!" content="Barbaz" version="1" />
-    <posts id="2" title="bar" content="bar" version="2" />
-    <dc_versionable_resources resource_name="DoctrineExtensions\Versionable\BlogPost" resource_id="2"
-        versioned_data="a:2:{s:5:&quot;title&quot;;s:3:&quot;foo&quot;;s:7:&quot;content&quot;;s:3:&quot;foo&quot;;}"
-        snapshot_version_id="1" snapshot_date="2010-02-28 01:01:01"
-    />
-</dataset>
