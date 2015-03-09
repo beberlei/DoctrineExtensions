@@ -16,6 +16,7 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\QueryException;
 
 class DateAdd extends FunctionNode
 {
@@ -23,6 +24,29 @@ class DateAdd extends FunctionNode
     public $firstDateExpression = null;
     public $intervalExpression = null;
     public $unit = null;
+
+    private static $allowedUnits = array(
+        "MICROSECOND",
+        "SECOND",
+        "MINUTE",
+        "HOUR",
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "QUARTER",
+        "YEAR",
+        "SECOND_MICROSECOND",
+        "MINUTE_MICROSECOND",
+        "MINUTE_SECOND",
+        "HOUR_MICROSECOND",
+        "HOUR_SECOND",
+        "HOUR_MINUTE",
+        "DAY_MICROSECOND",
+        "DAY_SECOND",
+        "DAY_MINUTE",
+        "DAY_HOUR",
+        "YEAR_MONTH",
+    );
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
@@ -32,24 +56,24 @@ class DateAdd extends FunctionNode
         $this->firstDateExpression = $parser->ArithmeticPrimary();
 
         $parser->match(Lexer::T_COMMA);
-        $parser->match(Lexer::T_IDENTIFIER);
-
         $this->intervalExpression = $parser->ArithmeticPrimary();
 
-        $parser->match(Lexer::T_IDENTIFIER);
-
-        /* @var $lexer Lexer */
-        $lexer = $parser->getLexer();
-        $this->unit = $lexer->token['value'];
+        $parser->match(Lexer::T_COMMA);
+        $this->unit = $parser->StringPrimary();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
+        $unit = strtoupper($this->unit);
+        if (!in_array($unit, self::$allowedUnits)) {
+            throw QueryException::semanticalError('DATE_ADD() does not support unit "' . $unit . '".');
+        }
+
         return 'DATE_ADD(' .
-        $this->firstDateExpression->dispatch($sqlWalker) . ', INTERVAL ' .
-        $this->intervalExpression->dispatch($sqlWalker) . ' ' . $this->unit .
+            $this->firstDateExpression->dispatch($sqlWalker) . ', INTERVAL ' .
+            $this->intervalExpression->dispatch($sqlWalker) . ' ' . $unit .
         ')';
     }
 

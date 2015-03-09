@@ -25,7 +25,7 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         );
 
         $config->addCustomNumericFunction('DATEDIFF', 'DoctrineExtensions\Query\Mysql\DateDiff');
-        $config->addCustomDatetimeFunction('DATE_ADD', 'DoctrineExtensions\Query\Mysql\DateAdd');
+        $config->addCustomDatetimeFunction('DATEADD', 'DoctrineExtensions\Query\Mysql\DateAdd');
         $config->addCustomStringFunction('STR_TO_DATE', 'DoctrineExtensions\Query\Mysql\StrToDate');
         $config->addCustomStringFunction('FIND_IN_SET', 'DoctrineExtensions\Query\Mysql\FindInSet');
         $this->entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
@@ -42,12 +42,9 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    /**
-     * @expectedException Doctrine\ORM\Query\QueryException
-     */
     public function testDateAdd()
     {
-        $dql = "SELECT p FROM Entities\BlogPost p WHERE DATE_ADD(CURRENT_TIME(), INTERVAL 4 MONTH) < 7";
+        $dql = "SELECT p FROM Entities\BlogPost p WHERE DATEADD(CURRENT_TIME(), 4, 'MONTH') < 7";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 FROM BlogPost b0_ WHERE DATE_ADD(CURRENT_TIME, INTERVAL 4 MONTH) < 7";
@@ -60,7 +57,7 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
      */
     public function testDateAdd2()
     {
-        $dql = "SELECT p FROM Entities\BlogPost p WHERE DATE_ADD(CURRENT_TIME(), p.created) < 7";
+        $dql = "SELECT p FROM Entities\BlogPost p WHERE DATEADD(CURRENT_TIME(), p.created) < 7";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = '';
