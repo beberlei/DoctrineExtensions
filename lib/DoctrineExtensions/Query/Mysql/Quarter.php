@@ -29,7 +29,7 @@ use Doctrine\ORM\Query\Lexer;
  * @author      Martin Štekl <martin.stekl@gmail.com>
  * @license     MIT License
  */
-class Minute extends FunctionNode
+class Quarter extends FunctionNode
 {
 	public $date;
 
