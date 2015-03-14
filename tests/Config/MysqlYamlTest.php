@@ -1,19 +1,19 @@
 <?php
 
-namespace DoctrineExtensions\Tests\docs;
+namespace DoctrineExtensions\Tests\Config;
 
 /**
  * Test that checks the README describes all of the query types
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlYamlTest extends \PHPUnit_Framework_TestCase
+class MysqlConfigTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
         $yaml = new \Symfony\Component\Yaml\Parser();
 
-        $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../mysql.yml'));
+        $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
     }
 
     public function testFunctions()
