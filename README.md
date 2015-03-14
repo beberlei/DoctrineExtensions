@@ -15,14 +15,6 @@ DoctrineExtensions
 This package contains several extensions to Doctrine 2 that hook into the facilities of Doctrine and
 offer new functionality or tools to use Doctrine 2 more efficently.
 
-**[@beberlei](https://github.com/beberlei) no longer maintains this library given his other commitments to the Doctrine project, however, [@stevelacey](https://github.com/stevelacey) is in the process of bringing this library back up to speed**
-
-> ~~Warning: This repository is not really maintained anymore.~~
-> The important Paginator and large collections code was moved to the Doctrine2 core, and a lot of the functionality here is deprecated.
->
-> The user-defined functions are contributed by various persons and have not always been reviewed in their quality.
-> Please review everything you want to use.
-
 Versions
 --------
 
