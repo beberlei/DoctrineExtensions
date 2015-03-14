@@ -41,11 +41,11 @@ class Field extends FunctionNode
 
         $query .= $this->field->dispatch($sqlWalker);
 
-        $query .= ',';
+        $query .= ', ';
 
         for ($i = 0; $i < count($this->values); $i++) {
             if ($i > 0) {
-                $query .= ',';
+                $query .= ', ';
             }
 
             $query .= $this->values[$i]->dispatch($sqlWalker);

@@ -1,64 +1,28 @@
 <?php
 
-namespace DoctrineExtensions\Query;
+namespace DoctrineExtensions\Tests\Query\Mysql;
 
-use Doctrine\ORM\Query\Parser;
-
-require_once __DIR__ . '/../../Entities/BlogPost.php';
-
-class MysqlTrigTest extends \PHPUnit_Framework_TestCase
+class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public $entityManager = null;
-
-    public function setUp()
-    {
-        $config = new \Doctrine\ORM\Configuration();
-        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setProxyDir(__DIR__ . '/Proxies');
-        $config->setProxyNamespace('DoctrineExtensions\PHPUnit\Proxies');
-        $config->setAutoGenerateProxyClasses(true);
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
-
-        $conn = array(
-            'driver' => 'pdo_sqlite',
-            'memory' => true,
-        );
-
-        $config->addCustomNumericFunction('SIN', 'DoctrineExtensions\Query\Mysql\Sin');
-        $config->addCustomNumericFunction('ASIN', 'DoctrineExtensions\Query\Mysql\Asin');
-        $config->addCustomNumericFunction('COS', 'DoctrineExtensions\Query\Mysql\Cos');
-        $config->addCustomNumericFunction('ACOS', 'DoctrineExtensions\Query\Mysql\Acos');
-        $config->addCustomNumericFunction('COT', 'DoctrineExtensions\Query\Mysql\Cot');
-        $config->addCustomNumericFunction('TAN', 'DoctrineExtensions\Query\Mysql\Tan');
-        $config->addCustomNumericFunction('ATAN', 'DoctrineExtensions\Query\Mysql\Atan');
-        $config->addCustomNumericFunction('ATAN2', 'DoctrineExtensions\Query\Mysql\Atan2');
-
-        $config->addCustomNumericFunction('DEGREES', 'DoctrineExtensions\Query\Mysql\Degrees');
-        $config->addCustomNumericFunction('RADIANS', 'DoctrineExtensions\Query\Mysql\Radians');
-
-        $this->entityManager = \Doctrine\ORM\EntityManager::create($conn, $config);
-    }
-
     public function testSin()
     {
         $this->_assertFirstQuery('SIN');
         $this->_assertSecondQuery('SIN');
 
-        $dql = "SELECT SIN(RADIANS(p.latitude)) FROM Entities\BlogPost p";
+        $dql = "SELECT SIN(RADIANS(p.latitude)) FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT SIN(RADIANS(b0_.latitude)) AS sclr0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
 
-        $dql = "SELECT SIN(p.latitude * p.longitude) FROM Entities\BlogPost p";
+        $dql = "SELECT SIN(p.latitude * p.longitude) FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT SIN(b0_.latitude * b0_.longitude) AS sclr0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT SIN(RADIANS(p.latitude) * RADIANS(p.longitude)) "
-                . "FROM Entities\BlogPost p";
+                . "FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT SIN(RADIANS(b0_.latitude) * RADIANS(b0_.longitude)) AS sclr0 "
@@ -66,7 +30,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT p "
-                . "FROM Entities\BlogPost p "
+                . "FROM DoctrineExtensions\Tests\Entities\BlogPost p "
                 . "WHERE p.longitude = (SIN(RADIANS(p.latitude)) * RADIANS(p.longitude))";
         $q = $this->entityManager->createQuery($dql);
 
@@ -76,7 +40,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT p "
-                . "FROM Entities\BlogPost p "
+                . "FROM DoctrineExtensions\Tests\Entities\BlogPost p "
                 . "WHERE SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) = 1";
         $q = $this->entityManager->createQuery($dql);
 
@@ -86,7 +50,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT (SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude))) "
-                . "FROM Entities\BlogPost p ";
+                . "FROM DoctrineExtensions\Tests\Entities\BlogPost p ";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) AS sclr0 "
@@ -106,7 +70,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
         $this->_assertSecondQuery('ACOS');
 
         $dql = "SELECT (ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1) "
-                . "FROM Entities\BlogPost p";
+                . "FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT ACOS(SIN(RADIANS(b0_.latitude)) + SIN(RADIANS(b0_.longitude))) * 1 AS sclr0 "
@@ -151,7 +115,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
         $this->_assertSecondQuery('ATAN');
 
         // test with 2 arguments
-        $dql = "SELECT ATAN(p.latitude, p.longitude) FROM Entities\BlogPost p ";
+        $dql = "SELECT ATAN(p.latitude, p.longitude) FROM DoctrineExtensions\Tests\Entities\BlogPost p ";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT ATAN(b0_.latitude, b0_.longitude) AS sclr0 FROM BlogPost b0_";
@@ -160,7 +124,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     public function testAtan2()
     {
-        $dql = "SELECT ATAN2(p.latitude, p.longitude) FROM Entities\BlogPost p";
+        $dql = "SELECT ATAN2(p.latitude, p.longitude) FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT ATAN2(b0_.latitude, b0_.longitude) AS sclr0 FROM BlogPost b0_";
@@ -178,7 +142,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
                 . '* COS(RADIANS(p.longitude) - ' . deg2rad($lng) . ')'
                 . ') * ' . $radiusOfEarth;
 
-        $dql = "SELECT (" . $cosineLaw . ") FROM Entities\BlogPost p";
+        $dql = "SELECT (" . $cosineLaw . ") FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);
 
         $sql = "SELECT ACOS(SIN(0) * SIN(RADIANS(b0_.latitude)) + COS(0) * COS(RADIANS(b0_.latitude)) * COS(RADIANS(b0_.longitude) - 0)) * 6371 AS sclr0 "
@@ -202,7 +166,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     protected function _getFirstDqlQuery($func)
     {
-        $dql = "SELECT p FROM Entities\BlogPost p "
+        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\BlogPost p "
                 . "WHERE " . $func . "(p.latitude) = 1";
 
         return $this->entityManager->createQuery($dql);
@@ -217,7 +181,7 @@ class MysqlTrigTest extends \PHPUnit_Framework_TestCase
 
     protected function _getSecondDqlQuery($func)
     {
-        $dql = "SELECT " . $func . "(p.latitude) FROM Entities\BlogPost p";
+        $dql = "SELECT " . $func . "(p.latitude) FROM DoctrineExtensions\Tests\Entities\BlogPost p";
 
         return $this->entityManager->createQuery($dql);
     }

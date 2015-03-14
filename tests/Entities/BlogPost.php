@@ -1,6 +1,6 @@
 <?php
 
-namespace Entities;
+namespace DoctrineExtensions\Tests\Entities;
 
 /**
  * @Entity

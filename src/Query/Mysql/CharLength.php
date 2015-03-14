@@ -12,6 +12,11 @@ class CharLength extends FunctionNode
 {
     private $expr;
 
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    {
+        return 'CHAR_LENGTH('.$sqlWalker->walkArithmeticPrimary($this->expr1).')';
+    }
+
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -20,10 +25,5 @@ class CharLength extends FunctionNode
         $this->expr1 = $parser->ArithmeticExpression();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-    }
-
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-    {
-        return 'CHAR_LENGTH('.$sqlWalker->walkArithmeticPrimary($this->expr1).')';
     }
 }
