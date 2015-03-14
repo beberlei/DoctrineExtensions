@@ -38,17 +38,17 @@ doctrine:
 
              string_functions:
                  binary: DoctrineExtensions\Query\Mysql\Binary
-                 charlength: DoctrineExtensions\Query\Mysql\CharLength
+                 char_length: DoctrineExtensions\Query\Mysql\CharLength
                  concat_ws: DoctrineExtensions\Query\Mysql\ConcatWs
                  countif: DoctrineExtensions\Query\Mysql\CountIf
                  crc32: DoctrineExtensions\Query\Mysql\Crc32
                  degrees: DoctrineExtensions\Query\Mysql\Degrees
                  field: DoctrineExtensions\Query\Mysql\Field
-                 findinset: DoctrineExtensions\Query\Mysql\FindInSet
-                 groupconcat: DoctrineExtensions\Query\Mysql\GroupConcat
+                 find_in_set: DoctrineExtensions\Query\Mysql\FindInSet
+                 group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
-                 matchagainst: DoctrineExtensions\Query\Mysql\MatchAgainst
+                 match_against: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  month: DoctrineExtensions\Query\Mysql\Month
                  monthname: DoctrineExtensions\Query\Mysql\MonthName
