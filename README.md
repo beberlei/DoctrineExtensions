@@ -12,9 +12,13 @@ DoctrineExtensions
 [![Packagist](https://img.shields.io/packagist/dm/beberlei/DoctrineExtensions.svg)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 [![Packagist](https://img.shields.io/packagist/dt/beberlei/DoctrineExtensions.svg)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 
-This package contains several extensions to Doctrine 2 that hook into the facilities of Doctrine and
-offer new functionality or tools to use Doctrine 2 more efficently.
+A set of extensions to Doctrine 2 that add support for additional query
+functions available in MySQL and Oracle.
 
+|DB|Functions|
+|:----------------:|:----------------:|
+| MySQL | `ACOS, ASIN, ATAN, ATAN2, BINARY, CHAR_LENGTH, CONCAT_WS, COS, COT, COUNTIF, CRC32, DATE, DATE_FORMAT, DATEADD, DATEDIFF, DAY, DAYNAME, DEGREES, FIELD, FIND_IN_SET, GROUP_CONCAT, HOUR, IFELSE, IFNULL, LAST_DAY, MATCH … AGAINST, MD5, MINUTE, MONTH, MONTHNAME, NULLIF, PI, POWER, QUARTER, RADIANS, RAND, REGEXP, REPLACE, ROUND, SECOND, SHA1, SHA2, SIN, SOUNDEX, STD, STRTODATE, TAN, TIME, TIMESTAMPADD, TIMESTAMPDIFF, UUID_SHORT, WEEK, WEEKDAY, YEAR` |
+| Oracle | `DAY, MONTH, NVL, TODATE, TRUNC, YEAR` |
 
 Installation
 ------------
