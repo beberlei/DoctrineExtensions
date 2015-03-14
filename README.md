@@ -29,7 +29,7 @@ $classLoader->register();
 ```
 
 You can find an example configuration for using the addition MySQL functions in
-Symfony2 in [https://github.com/beberlei/DoctrineExtensions/blob/master/mysql.yml](mysql.yml)
+Symfony2 in [mysql.yml](mysql.yml)
 
 
 Legacy verisons
