@@ -28,8 +28,8 @@ $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/
 $classLoader->register();
 ```
 
-You can find an example configuration for using the addition MySQL functions in
-Symfony2 in [mysql.yml](mysql.yml)
+You can find an example configuration for using the additional MySQL functions
+in Symfony2 in [mysql.yml](mysql.yml).
 
 
 Legacy verisons
