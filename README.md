@@ -36,7 +36,7 @@ You can find an example configuration for using the additional MySQL functions
 in Symfony2 in [config/mysql.yml](config/mysql.yml).
 
 
-Legacy verisons
+Legacy versions
 ---------------
 
 If you're still using Paginator, LargeCollections, Phing, PHPUnit or Versionable
