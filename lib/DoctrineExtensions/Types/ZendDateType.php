@@ -1,17 +1,5 @@
 <?php
 
-/*
- * DoctrineExtensions Types
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to kontakt@beberlei.de so I can send you a copy immediately.
- */
-
 namespace DoctrineExtensions\Types;
 
 if (!class_exists('Zend_Date')) require_once 'Zend/Date.php';
@@ -23,10 +11,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 /**
  * Type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
  *
- * @category    DoctrineExtensions
- * @package     DoctrineExtensions\Types
- * @author      Andreas Gallien <gallien@seleos.de>
- * @license     New BSD License
+ * @author Andreas Gallien <gallien@seleos.de>
  */
 class ZendDateType extends Type
 {

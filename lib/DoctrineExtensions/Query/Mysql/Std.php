@@ -2,14 +2,10 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
-use Doctrine\ORM\Query\Parser;
-use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode,
+    Doctrine\ORM\Query\Lexer;
 
 /**
- * "STD" "(" SimpleArithmeticExpression ")"
- *
  * @author Toni Uebernickel <tuebernickel@gmail.com>
  * @license MIT License
  */
@@ -17,12 +13,12 @@ class Std extends FunctionNode
 {
     public $arithmeticExpression;
 
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf('STD(%s)', $sqlWalker->walkSimpleArithmeticExpression($this->arithmeticExpression));
     }
 
-    public function parse(Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

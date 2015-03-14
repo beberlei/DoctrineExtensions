@@ -1,26 +1,13 @@
 <?php
 
-/**
- * DoctrineExtensions Mysql Function Pack
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to kontakt@beberlei.de so I can send you a copy immediately.
- */
-
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
-use Doctrine\ORM\Query\QueryException;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode,
+    Doctrine\ORM\Query\Lexer,
+    Doctrine\ORM\Query\QueryException;
 
 class DateAdd extends FunctionNode
 {
-
     public $firstDateExpression = null;
     public $intervalExpression = null;
     public $unit = null;
@@ -76,5 +63,4 @@ class DateAdd extends FunctionNode
             $this->intervalExpression->dispatch($sqlWalker) . ' ' . $unit .
         ')';
     }
-
 }

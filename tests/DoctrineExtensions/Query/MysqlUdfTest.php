@@ -1,6 +1,7 @@
 <?php
 
 namespace DoctrineExtensions\Query;
+
 use Doctrine\ORM\Query\Parser;
 
 require_once __DIR__ . '/../../Entities/BlogPost.php';
@@ -65,12 +66,12 @@ class MysqlUdfTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-	public function testStrToDate()
+    public function testStrToDate()
     {
         $dql = "SELECT p FROM DoctrineExtensions\Query\BlogPost p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
         $q = $this->entityManager->createQuery($dql);
-		$q->setParameter('dateFormat', '%Y-%m-%d %h:%i %p');
-		$q->setParameter('currentTime', date('Y-m-d H:i:s'));
+        $q->setParameter('dateFormat', '%Y-%m-%d %h:%i %p');
+        $q->setParameter('currentTime', date('Y-m-d H:i:s'));
 
         $this->assertEquals('SELECT b0_.id AS id0, b0_.testSet AS testSet1, b0_.created AS created2 FROM BlogPost b0_ WHERE STR_TO_DATE(b0_.created, ?) < ?', $q->getSql());
     }
@@ -92,7 +93,7 @@ class BlogPost
     /** @Id @Column(type="string") @GeneratedValue */
     public $id;
 
-	/**
+    /**
      * @Column(type="String")
      */
     public $testSet;

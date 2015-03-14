@@ -1,28 +1,12 @@
 <?php
 
-/*
- * DoctrineExtensions Oracle Function Pack
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to kontakt@beberlei.de so I can send you a copy immediately.
- */
-
 namespace DoctrineExtensions\Query\Oracle;
 
 use Doctrine\ORM\Query\Lexer,
     Doctrine\ORM\Query\AST\Functions\FunctionNode;
 
 /**
- * Usage: DAY(date)
- *
- * Returns the day of a given date using the Oracle's EXTRACT function
- *
- * @author  Andréia Bohner <andreiabohner@gmail.com>
+ * @author Andréia Bohner <andreiabohner@gmail.com>
  */
 class Day extends FunctionNode
 {

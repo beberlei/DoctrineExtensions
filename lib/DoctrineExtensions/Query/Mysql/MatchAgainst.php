@@ -1,28 +1,10 @@
 <?php
-/**
- * DoctrineExtensions Mysql Function Pack
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to kontakt@beberlei.de so I can send you a copy immediately.
- */
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
-use Doctrine\ORM\Query\Parser;
-use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode,
+    Doctrine\ORM\Query\Lexer;
 
-/**
- * MatchAgainstFunction ::=
- *  "MATCH" "(" StateFieldPathExpression {"," StateFieldPathExpression}* ")" "AGAINST" "("
- *      StringPrimary ["BOOLEAN"] ["EXPAND"] ")"
- */
 class MatchAgainst extends FunctionNode {
 
   /** @var array list of \Doctrine\ORM\Query\AST\PathExpression */
@@ -37,7 +19,7 @@ class MatchAgainst extends FunctionNode {
   /** @var boolean */
   protected $queryExpansion = false;
 
-  public function parse(Parser $parser) {
+  public function parse(\Doctrine\ORM\Query\Parser $parser) {
     // match
     $parser->match(Lexer::T_IDENTIFIER);
     $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -48,9 +30,9 @@ class MatchAgainst extends FunctionNode {
 
     // Subsequent Path Expressions are optional
     $lexer = $parser->getLexer();
-    while ($lexer->isNextToken(Lexer::T_COMMA)) { 
-      $parser->match(Lexer::T_COMMA); 
-      $this->pathExp[] = $parser->StateFieldPathExpression(); 
+    while ($lexer->isNextToken(Lexer::T_COMMA)) {
+      $parser->match(Lexer::T_COMMA);
+      $this->pathExp[] = $parser->StateFieldPathExpression();
     }
 
     $parser->match(Lexer::T_CLOSE_PARENTHESIS);
@@ -77,8 +59,9 @@ class MatchAgainst extends FunctionNode {
     $parser->match(Lexer::T_CLOSE_PARENTHESIS);
   }
 
-  public function getSql(SqlWalker $walker) {
+  public function getSql(\Doctrine\ORM\Query\SqlWalker $walker) {
     $fields = array();
+
     foreach ($this->pathExp as $pathExp) {
       $fields[] = $pathExp->dispatch($walker);
     }
