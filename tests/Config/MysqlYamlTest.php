@@ -14,15 +14,16 @@ class MysqlConfigTest extends \PHPUnit_Framework_TestCase
         $yaml = new \Symfony\Component\Yaml\Parser();
 
         $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
-    }
-
-    public function testFunctions()
-    {
-        $documented = array_merge(
+        $this->functions = array_merge(
             $this->config['doctrine']['orm']['dql']['datetime_functions'],
             $this->config['doctrine']['orm']['dql']['numeric_functions'],
             $this->config['doctrine']['orm']['dql']['string_functions']
         );
+    }
+
+    public function testFunctions()
+    {
+        $documented = $this->functions;
 
         $available = array_map(
             function ($path) {
@@ -39,5 +40,18 @@ class MysqlConfigTest extends \PHPUnit_Framework_TestCase
                 implode("\n", $undocumented)
             );
         }
+    }
+
+    public function testReadme()
+    {
+        preg_match('#\| MySQL \| `(.*)` \|#', file_get_contents(__DIR__ . '/../../README.md'), $matches);
+
+        $docs = explode(', ', strtolower($matches[1]));
+        $keys = array_keys($this->functions);
+
+        sort($docs);
+        sort($keys);
+
+        $this->assertEquals($docs, $keys);
     }
 }
