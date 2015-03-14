@@ -8,7 +8,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 /**
  * @author Rafael Kassner <kassner@gmail.com>
  * @author Sarjono Mukti Aji <me@simukti.net>
- * @license MIT License
  */
 class Day extends FunctionNode
 {

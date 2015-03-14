@@ -8,7 +8,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 /**
  * @author Steve Lacey <steve@stevelacey.net>
  * @author James Rohacik <rohacik.james@gmail.com>
- * @license MIT License
  */
 class Time extends FunctionNode
 {

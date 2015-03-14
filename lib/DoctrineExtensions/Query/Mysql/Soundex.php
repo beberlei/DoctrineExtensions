@@ -7,7 +7,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 
 /**
  * @author Steve Tauber <taubers@gmail.com>
- * @license MIT License
  */
 class Soundex extends FunctionNode
 {

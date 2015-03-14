@@ -7,7 +7,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 
 /**
  * @author Dawid Nowak <macdada@mmg.pl>
- * @license MIT License
  */
 class Hour extends FunctionNode
 {

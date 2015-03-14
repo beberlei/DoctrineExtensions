@@ -9,7 +9,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
  * @author Rafael Kassner <kassner@gmail.com>
  * @author Sarjono Mukti Aji <me@simukti.net>
  * @author Łukasz Nowicki <lukasz.mnowicki@gmail.com>
- * @license MIT License
  */
 class Week extends FunctionNode
 {

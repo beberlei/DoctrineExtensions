@@ -7,7 +7,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 
 /**
  * @author Rafael Kassner <kassner@gmail.com>
- * @license MIT License
  */
 class Year extends FunctionNode
 {

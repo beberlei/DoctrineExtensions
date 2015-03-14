@@ -7,7 +7,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 
 /**
  * @author Toni Uebernickel <tuebernickel@gmail.com>
- * @license MIT License
  */
 class Std extends FunctionNode
 {

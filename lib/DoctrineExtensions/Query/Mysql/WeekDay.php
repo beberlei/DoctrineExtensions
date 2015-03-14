@@ -7,7 +7,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 
 /**
  * @author Pavlo Cherniavskyi <ionafan2@gmail.com>
- * @license MIT License
  */
 class WeekDay extends FunctionNode
 {

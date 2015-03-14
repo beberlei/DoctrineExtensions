@@ -7,7 +7,6 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 
 /**
  * @author Steve Lacey <steve@stevelacey.net>
- * @license MIT License
  */
 class DateFormat extends FunctionNode
 {
