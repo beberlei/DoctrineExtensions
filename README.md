@@ -28,55 +28,8 @@ $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/
 $classLoader->register();
 ```
 
-If you're using Symfony2 and are primarily interested in the additional MySQL functions, you can pile them into your configuration like so:
-
-    doctrine:
-        orm:
-            dql:
-                datetime_functions:
-                    date: DoctrineExtensions\Query\Mysql\Date
-                    dateadd: DoctrineExtensions\Query\Mysql\DateAdd
-                    datediff: DoctrineExtensions\Query\Mysql\DateDiff
-                    date_format: DoctrineExtensions\Query\Mysql\DateFormat
-                    day: DoctrineExtensions\Query\Mysql\Day
-                    dayname: DoctrineExtensions\Query\Mysql\DayName
-                    strtodate: DoctrineExtensions\Query\Mysql\StrToDate
-                    time: DoctrineExtensions\Query\Mysql\Time
-                    timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
-                    week: DoctrineExtensions\Query\Mysql\Week
-                    year: DoctrineExtensions\Query\Mysql\Year
-
-                numeric_functions:
-                    acos: DoctrineExtensions\Query\Mysql\Acos
-                    asin: DoctrineExtensions\Query\Mysql\Asin
-                    atan2: DoctrineExtensions\Query\Mysql\Atan2
-                    atan: DoctrineExtensions\Query\Mysql\Atan
-                    cos: DoctrineExtensions\Query\Mysql\Cos
-                    cot: DoctrineExtensions\Query\Mysql\Cot
-                    round: DoctrineExtensions\Query\Mysql\Round
-                    sin: DoctrineExtensions\Query\Mysql\Sin
-                    tan: DoctrineExtensions\Query\Mysql\Tan
-
-                string_functions:
-                    charlength: DoctrineExtensions\Query\Mysql\CharLength
-                    concat_ws: DoctrineExtensions\Query\Mysql\ConcatWs
-                    countif: DoctrineExtensions\Query\Mysql\CountIf
-                    degrees: DoctrineExtensions\Query\Mysql\Degrees
-                    field: DoctrineExtensions\Query\Mysql\Field
-                    findinset: DoctrineExtensions\Query\Mysql\FindInSet
-                    groupconcat: DoctrineExtensions\Query\Mysql\GroupConcat
-                    ifelse: DoctrineExtensions\Query\Mysql\IfElse
-                    ifnull: DoctrineExtensions\Query\Mysql\IfNull
-                    matchagainst: DoctrineExtensions\Query\Mysql\MatchAgainst
-                    md5: DoctrineExtensions\Query\Mysql\Md5
-                    month: DoctrineExtensions\Query\Mysql\Month
-                    monthname: DoctrineExtensions\Query\Mysql\MonthName
-                    nullif: DoctrineExtensions\Query\Mysql\NullIf
-                    radians: DoctrineExtensions\Query\Mysql\Radians
-                    sha1: DoctrineExtensions\Query\Mysql\Sha1
-                    sha2: DoctrineExtensions\Query\Mysql\Sha2
-
-There may be more functions available than this, check https://github.com/beberlei/DoctrineExtensions/tree/master/lib/DoctrineExtensions/Query/Mysql to be sure.
+You can find an example configuration for using the addition MySQL functions in
+Symfony2 in [https://github.com/beberlei/DoctrineExtensions/blob/master/mysql.yml](mysql.yml)
 
 
 Legacy verisons
