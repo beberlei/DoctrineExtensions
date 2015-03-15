@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Entities;
 
 /**
  * @Entity
- * @Table(name="dates")
+ * @Table
  */
 class ZendDate
 {

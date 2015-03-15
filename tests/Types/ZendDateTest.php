@@ -2,9 +2,9 @@
 
 namespace DoctrineExtensions\Tests\Types;
 
-use Doctrine\Common\EventManager;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\SchemaTool;
+use Doctrine\Common\EventManager,
+    Doctrine\ORM\EntityManager,
+    Doctrine\ORM\Tools\SchemaTool;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.

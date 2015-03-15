@@ -13,12 +13,14 @@
     },
     "require-dev": {
         "doctrine/orm": "<2.2",
+        "nesbot/carbon": "*",
         "phpunit/phpunit": "~4.5",
         "symfony/yaml": "~2.6",
         "zf1/zend-date": "~1.12",
         "zf1/zend-registry": "~1.12"
     },
     "suggest": {
+        "nesbot/carbon": "Alternative to DateTime",
         "zf1/zend-date": "Alternative to DateTime"
     },
     "autoload": {

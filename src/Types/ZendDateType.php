@@ -2,11 +2,11 @@
 
 namespace DoctrineExtensions\Types;
 
-if (!class_exists('Zend_Date')) require_once 'Zend/Date.php';
+use Doctrine\DBAL\Platforms\AbstractPlatform,
+    Doctrine\DBAL\Types\ConversionException,
+    Doctrine\DBAL\Types\Type;
 
-use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Types\ConversionException;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
+if (!class_exists('Zend_Date')) require_once 'Zend/Date.php';
 
 /**
  * Type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
