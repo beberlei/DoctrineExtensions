@@ -12,7 +12,7 @@
         "php": ">=5.3.2"
     },
     "require-dev": {
-        "doctrine/orm": "<2.2",
+        "doctrine/orm": "~2.1",
         "nesbot/carbon": "*",
         "phpunit/phpunit": "~4.5",
         "symfony/yaml": "~2.6",
