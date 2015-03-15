@@ -22,3 +22,7 @@ notifications:
   email: false
 
 script: vendor/bin/phpunit
+
+cache:
+  directories:
+    - $COMPOSER_CACHE_DIR
