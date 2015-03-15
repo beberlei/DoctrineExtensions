@@ -15,6 +15,11 @@ DoctrineExtensions
 A set of extensions to Doctrine 2 that add support for additional query
 functions available in MySQL and Oracle.
 
+**Note: 0.x versions of DoctrineExtensions are end of life, as various
+functionality including Paginator, LargeCollections, Phing, PHPUnit and
+Versionable are now available in Doctrine core, and were removed from
+DoctrineExtensions in 1.0.**
+
 | DB | Functions |
 |:--:|:---------:|
 | MySQL | `ACOS, ASIN, ATAN, ATAN2, BINARY, CHAR_LENGTH, CONCAT_WS, COS, COT, COUNTIF, CRC32, DATE, DATE_FORMAT, DATEADD, DATEDIFF, DAY, DAYNAME, DEGREES, FIELD, FIND_IN_SET, GROUP_CONCAT, HOUR, IFELSE, IFNULL, LAST_DAY, MATCH_AGAINST, MD5, MINUTE, MONTH, MONTHNAME, NULLIF, PI, POWER, QUARTER, RADIANS, RAND, REGEXP, REPLACE, ROUND, SECOND, SHA1, SHA2, SIN, SOUNDEX, STD, STRTODATE, TAN, TIME, TIMESTAMPADD, TIMESTAMPDIFF, UUID_SHORT, WEEK, WEEKDAY, YEAR` |
