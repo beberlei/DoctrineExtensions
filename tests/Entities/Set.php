@@ -5,13 +5,13 @@ namespace DoctrineExtensions\Tests\Entities;
 /**
  * @Entity
  */
-class Date
+class Set
 {
     /** @Id @Column(type="string") @GeneratedValue */
     public $id;
 
     /**
-     * @Column(type="DateTime")
+     * @Column(type="String")
      */
-    public $created;
+    public $set;
 }

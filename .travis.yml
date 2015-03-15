@@ -12,4 +12,4 @@ install:
 notifications:
   email: false
 
-script: vendor/bin/phpunit -c tests/phpunit.dist.xml
+script: vendor/bin/phpunit -c phpunit.dist.xml
