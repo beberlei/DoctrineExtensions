@@ -53,7 +53,8 @@ class DateAdd extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        $unit = strtoupper($this->unit);
+        $unit = strtoupper(is_string($this->unit) ? $this->unit : $this->unit->value);
+
         if (!in_array($unit, self::$allowedUnits)) {
             throw QueryException::semanticalError('DATE_ADD() does not support unit "' . $unit . '".');
         }
