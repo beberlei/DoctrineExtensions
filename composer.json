@@ -1,7 +1,7 @@
 {
     "name": "beberlei/DoctrineExtensions",
     "type": "library",
-    "description": "Additional Doctrine 2 query functions",
+    "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL and Oracle.",
     "keywords": ["doctrine", "orm", "database"],
     "license": "BSD-3-Clause",
     "authors": [
