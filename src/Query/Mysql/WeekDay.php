@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineMgidExtensions\Query\Mysql;
+namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
     Doctrine\ORM\Query\Lexer;
