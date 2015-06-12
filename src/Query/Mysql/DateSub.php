@@ -2,8 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\QueryException;
+use Doctrine\ORM\Query\QueryException;
 
 /**
  * @author Vas N <phpvas@gmail.com>
