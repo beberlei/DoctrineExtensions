@@ -5,6 +5,7 @@ doctrine:
                  date: DoctrineExtensions\Query\Mysql\Date
                  date_format: DoctrineExtensions\Query\Mysql\DateFormat
                  dateadd: DoctrineExtensions\Query\Mysql\DateAdd
+                 datesub: DoctrineExtensions\Query\Mysql\DateSub
                  datediff: DoctrineExtensions\Query\Mysql\DateDiff
                  day: DoctrineExtensions\Query\Mysql\Day
                  dayname: DoctrineExtensions\Query\Mysql\DayName

@@ -12,7 +12,7 @@ class DateAdd extends FunctionNode
     public $intervalExpression = null;
     public $unit = null;
 
-    private static $allowedUnits = array(
+    protected static $allowedUnits = array(
         "MICROSECOND",
         "SECOND",
         "MINUTE",
