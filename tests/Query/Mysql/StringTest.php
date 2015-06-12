@@ -73,4 +73,14 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             $q->getSql()
         );
     }
+
+    public function testSubstringIndex()
+    {
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) from DoctrineExtensions\Tests\Entities\Blank");
+
+        $this->assertEquals(
+            "SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) AS sclr0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
 }

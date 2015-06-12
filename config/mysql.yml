@@ -60,4 +60,5 @@ doctrine:
                  sha1: DoctrineExtensions\Query\Mysql\Sha1
                  sha2: DoctrineExtensions\Query\Mysql\Sha2
                  soundex: DoctrineExtensions\Query\Mysql\Soundex
+                 substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
