@@ -53,6 +53,7 @@ doctrine:
                  month: DoctrineExtensions\Query\Mysql\Month
                  monthname: DoctrineExtensions\Query\Mysql\MonthName
                  nullif: DoctrineExtensions\Query\Mysql\NullIf
+                 password: DoctrineExtensions\Query\Mysql\Password
                  radians: DoctrineExtensions\Query\Mysql\Radians
                  regexp: DoctrineExtensions\Query\Mysql\Regexp
                  replace: DoctrineExtensions\Query\Mysql\Replace
