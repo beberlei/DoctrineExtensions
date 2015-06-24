@@ -3,7 +3,7 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 /**
- * @author Steve Lacey <steve@stevelacey.net>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 class Date extends AbstractStrfTime
 {

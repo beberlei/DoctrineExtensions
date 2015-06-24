@@ -3,7 +3,7 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 /**
- * @author Dawid Nowak <macdada@mmg.pl>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 class Hour extends AbstractStrfTime
 {

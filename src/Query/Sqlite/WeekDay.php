@@ -3,7 +3,7 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 /**
- * @author Pavlo Cherniavskyi <ionafan2@gmail.com>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 class WeekDay extends AbstractStrfTime
 {

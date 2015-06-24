@@ -3,8 +3,7 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 /**
- * @author Rafael Kassner <kassner@gmail.com>
- * @author Sarjono Mukti Aji <me@simukti.net>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 class Month extends AbstractStrfTime
 {

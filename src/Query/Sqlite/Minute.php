@@ -3,7 +3,7 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 /**
- * @author Martin Štekl <martin.stekl@gmail.com>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 class Minute extends AbstractStrfTime
 {

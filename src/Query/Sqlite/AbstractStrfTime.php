@@ -6,7 +6,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * @author Rafael Kassner <kassner@gmail.com>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 abstract class AbstractStrfTime extends FunctionNode
 {

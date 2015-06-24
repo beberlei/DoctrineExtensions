@@ -6,7 +6,6 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 /**

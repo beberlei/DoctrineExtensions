@@ -3,7 +3,7 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 /**
- * @author Rafael Kassner <kassner@gmail.com>
+ * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
 class Year extends AbstractStrfTime
 {
