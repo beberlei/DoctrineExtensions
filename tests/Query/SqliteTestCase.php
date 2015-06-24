@@ -9,6 +9,7 @@ use DoctrineExtensions\Query\Sqlite\Day;
 use DoctrineExtensions\Query\Sqlite\Hour;
 use DoctrineExtensions\Query\Sqlite\Minute;
 use DoctrineExtensions\Query\Sqlite\Month;
+use DoctrineExtensions\Query\Sqlite\StrfTime;
 use DoctrineExtensions\Query\Sqlite\Week;
 use DoctrineExtensions\Query\Sqlite\WeekDay;
 use DoctrineExtensions\Query\Sqlite\Year;
@@ -35,14 +36,16 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
 
         $config->setCustomDatetimeFunctions(
             array(
-                'YEAR' => Year::class,
-                'WEEKDAY' => WeekDay::class,
-                'WEEK' => Week::class,
-                'Month' => Month::class,
-                'MINUTE' => Minute::class,
-                'HOUR' => Hour::class,
-                'DAY' => Day::class,
-                'DATE' => Date::class,
+                'YEAR' => 'DoctrineExtensions\Query\Sqlite\Year',
+                'WEEKDAY' => 'DoctrineExtensions\Query\Sqlite\WeekDay',
+                'WEEK' => 'DoctrineExtensions\Query\Sqlite\Week',
+                'Month' => 'DoctrineExtensions\Query\Sqlite\Month',
+                'MINUTE' => 'DoctrineExtensions\Query\Sqlite\Minute',
+                'HOUR' => 'DoctrineExtensions\Query\Sqlite\Hour',
+                'DAY' => 'DoctrineExtensions\Query\Sqlite\Day',
+                'DATE' => 'DoctrineExtensions\Query\Sqlite\Date',
+                'STRFTIME' => 'DoctrineExtensions\Query\Sqlite\StrfTime',
+
             )
         );
         $this->entityManager = \Doctrine\ORM\EntityManager::create(
