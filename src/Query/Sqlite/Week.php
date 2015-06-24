@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Sqlite;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Rafael Kassner <kassner@gmail.com>

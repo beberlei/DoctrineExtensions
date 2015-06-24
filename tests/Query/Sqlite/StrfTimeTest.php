@@ -9,7 +9,11 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class YearTest extends SqliteTestCase
+/**
+ * Class FunctionsTest
+ * @package DoctrineExtensions\Tests\Query\Sqlite
+ */
+class StrfTimeTest extends SqliteTestCase
 {
 
     public function getFunctionFormatters()
@@ -28,12 +32,19 @@ class YearTest extends SqliteTestCase
     /**
      * @dataProvider getFunctionFormatters
      */
-    public function testStrfTimes($function, $formatter){
+    public function testStrfTimes($function, $formatter)
+    {
 
-        $dql = sprintf('SELECT %s(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p', $function);
+        $dql = sprintf(
+            'SELECT %s(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p',
+            $function
+        );
         $q = $this->entityManager->createQuery($dql);
         $this->assertEquals(
-            sprintf("SELECT strftime('%s', d0_.created) AS sclr_0 FROM Date d0_", $formatter),
+            sprintf(
+                "SELECT strftime('%s', d0_.created) AS sclr_0 FROM Date d0_",
+                $formatter
+            ),
             $q->getSql()
         );
 
