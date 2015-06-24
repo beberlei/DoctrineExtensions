@@ -25,9 +25,9 @@ class StrfTime extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return "strftime('"
+        return "strftime("
         . $sqlWalker->walkLiteral($this->formatter)
-        . "', "
+        . ", "
         . $sqlWalker->walkArithmeticPrimary($this->date)
         . ")";
     }
