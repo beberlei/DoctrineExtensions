@@ -12,6 +12,7 @@ doctrine:
                  minute: DoctrineExtensions\Query\Sqlite\Minute
                  second: DoctrineExtensions\Query\Sqlite\Second
                  month:  DoctrineExtensions\Query\Sqlite\Month
+                 strftime:  DoctrineExtensions\Query\Sqlite\StrfTime
                  #strtodate: DoctrineExtensions\Query\Sqlite\StrToDate
                  #time: DoctrineExtensions\Query\Sqlite\Time
                  #timestampadd: DoctrineExtensions\Query\Sqlite\TimestampAdd
