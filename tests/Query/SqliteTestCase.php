@@ -3,16 +3,6 @@
 namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Tools\SchemaTool;
-use DoctrineExtensions\Query\Sqlite\Date;
-use DoctrineExtensions\Query\Sqlite\Day;
-use DoctrineExtensions\Query\Sqlite\Hour;
-use DoctrineExtensions\Query\Sqlite\Minute;
-use DoctrineExtensions\Query\Sqlite\Month;
-use DoctrineExtensions\Query\Sqlite\StrfTime;
-use DoctrineExtensions\Query\Sqlite\Week;
-use DoctrineExtensions\Query\Sqlite\WeekDay;
-use DoctrineExtensions\Query\Sqlite\Year;
 
 class SqliteTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +10,7 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
      * @var EntityManagerInterface
      */
     public $entityManager = null;
-    
+
     /**
      * @var string name of Date.
      */
@@ -32,23 +22,23 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
 
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
         $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setProxyDir(__DIR__ . '/Proxies');
+        $config->setProxyDir(__DIR__.'/Proxies');
         $config->setProxyNamespace('DoctrineExtensions\Tests\Proxies');
         $config->setAutoGenerateProxyClasses(true);
         $config->setMetadataDriverImpl(
-            $config->newDefaultAnnotationDriver(__DIR__ . '/../Entities')
+            $config->newDefaultAnnotationDriver(__DIR__.'/../Entities')
         );
 
         $config->setCustomDatetimeFunctions(
             array(
-                'YEAR' => 'DoctrineExtensions\Query\Sqlite\Year',
-                'WEEKDAY' => 'DoctrineExtensions\Query\Sqlite\WeekDay',
-                'WEEK' => 'DoctrineExtensions\Query\Sqlite\Week',
-                'Month' => 'DoctrineExtensions\Query\Sqlite\Month',
-                'MINUTE' => 'DoctrineExtensions\Query\Sqlite\Minute',
-                'HOUR' => 'DoctrineExtensions\Query\Sqlite\Hour',
-                'DAY' => 'DoctrineExtensions\Query\Sqlite\Day',
-                'DATE' => 'DoctrineExtensions\Query\Sqlite\Date',
+                'YEAR'     => 'DoctrineExtensions\Query\Sqlite\Year',
+                'WEEKDAY'  => 'DoctrineExtensions\Query\Sqlite\WeekDay',
+                'WEEK'     => 'DoctrineExtensions\Query\Sqlite\Week',
+                'Month'    => 'DoctrineExtensions\Query\Sqlite\Month',
+                'MINUTE'   => 'DoctrineExtensions\Query\Sqlite\Minute',
+                'HOUR'     => 'DoctrineExtensions\Query\Sqlite\Hour',
+                'DAY'      => 'DoctrineExtensions\Query\Sqlite\Day',
+                'DATE'     => 'DoctrineExtensions\Query\Sqlite\Date',
                 'STRFTIME' => 'DoctrineExtensions\Query\Sqlite\StrfTime',
 
             )
@@ -58,11 +48,19 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
             $config
         );
 
-        $this->columnAlias = $this->entityManager
-            ->getConfiguration()
-            ->getQuoteStrategy()
-            ->getColumnAlias('sclr', 0, $this->entityManager->getConnection()->getDatabasePlatform(),
-                $this->entityManager->getClassMetadata('DoctrineExtensions\Tests\Entities\Date')
+        $configuration = $this->entityManager->getConfiguration();
+
+        if (method_exists($configuration, 'getQuoteStrategy') === false) { // doctrine < 2.3
+            $this->columnAlias = 'sclr0';
+        } else {
+            $this->columnAlias = $configuration
+                ->getQuoteStrategy()
+                ->getColumnAlias(
+                    'sclr',
+                    0,
+                    $this->entityManager->getConnection()->getDatabasePlatform(),
+                    $this->entityManager->getClassMetadata('DoctrineExtensions\Tests\Entities\Date')
                 );
+        }
     }
 }
