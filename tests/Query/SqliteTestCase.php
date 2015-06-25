@@ -20,6 +20,11 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
      * @var EntityManagerInterface
      */
     public $entityManager = null;
+    
+    /**
+     * @var string name of Date.
+     */
+    protected $columnAlias;
 
     public function setUp()
     {
@@ -52,5 +57,12 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
             array('driver' => 'pdo_sqlite', 'memory' => true),
             $config
         );
+
+        $this->columnAlias = $this->entityManager
+            ->getConfiguration()
+            ->getQuoteStrategy()
+            ->getColumnAlias('sclr', 0, $this->entityManager->getConnection()->getDatabasePlatform(),
+                $this->entityManager->getClassMetadata('DoctrineExtensions\Tests\Entities\Date')
+                );
     }
 }

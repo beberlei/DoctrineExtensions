@@ -41,8 +41,8 @@ class StrfTimeTest extends SqliteTestCase
         $q = $this->entityManager->createQuery($dql);
         $this->assertEquals(
             sprintf(
-                "SELECT strftime('%s', d0_.created) AS sclr_0 FROM Date d0_",
-                $formatter
+                "SELECT strftime('%s', d0_.created) AS %s FROM Date d0_",
+                $formatter, $this->columnAlias
             ),
             $q->getSql()
         );
@@ -70,7 +70,7 @@ class StrfTimeTest extends SqliteTestCase
         $dql = 'SELECT YEAR(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p GROUP BY Year';
         $q = $this->entityManager->createQuery($dql);
         $this->assertEquals(
-            "SELECT strftime('%Y', d0_.created) AS sclr_0 FROM Date d0_ GROUP BY sclr_0",
+            "SELECT strftime('%Y', d0_.created) AS {$this->columnAlias} FROM Date d0_ GROUP BY sclr_0",
             $q->getSql()
         );
     }
