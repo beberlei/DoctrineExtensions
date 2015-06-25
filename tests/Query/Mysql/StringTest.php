@@ -23,8 +23,10 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $q = $this->entityManager->createQuery("SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') from DoctrineExtensions\Tests\Entities\Blank");
 
+        $sclrAlias = $this->getColumnAlias('sclr');
+
         $this->assertEquals(
-            "SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') AS sclr_0 FROM Blank b0_",
+            "SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') AS $sclrAlias FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -48,8 +50,9 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $q = $this->entityManager->createQuery("SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') from DoctrineExtensions\Tests\Entities\Blank");
 
+        $sclrAlias = $this->getColumnAlias('sclr');
         $this->assertEquals(
-            "SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') AS sclr_0 FROM Blank b0_",
+            "SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') AS $sclrAlias FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -57,9 +60,9 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     public function testReplace()
     {
         $q = $this->entityManager->createQuery("SELECT REPLACE('www.mysql.com', 'w', 'Ww') from DoctrineExtensions\Tests\Entities\Blank");
-
+        $sclrAlias = $this->getColumnAlias('sclr');
         $this->assertEquals(
-            "SELECT REPLACE('www.mysql.com', 'w', 'Ww') AS sclr_0 FROM Blank b0_",
+            "SELECT REPLACE('www.mysql.com', 'w', 'Ww') AS $sclrAlias FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -68,8 +71,9 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $q = $this->entityManager->createQuery("SELECT SOUNDEX('Hello') from DoctrineExtensions\Tests\Entities\Blank");
 
+        $sclrAlias = $this->getColumnAlias('sclr');
         $this->assertEquals(
-            "SELECT SOUNDEX('Hello') AS sclr_0 FROM Blank b0_",
+            "SELECT SOUNDEX('Hello') AS $sclrAlias FROM Blank b0_",
             $q->getSql()
         );
     }
