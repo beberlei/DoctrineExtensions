@@ -10,11 +10,11 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
  */
 class FromUnixtime extends FunctionNode
 {
-    public $date;
+    public $time;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "FROM_UNIXTIME(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+        return "FROM_UNIXTIME(" . $sqlWalker->walkArithmeticPrimary($this->time) . ")";
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -22,7 +22,7 @@ class FromUnixtime extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        $this->date = $parser->ArithmeticPrimary();
+        $this->time = $parser->ArithmeticPrimary();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
