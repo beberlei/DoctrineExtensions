@@ -3,9 +3,7 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\SqlWalker,
-    Doctrine\ORM\Query\Parser;
+    Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Nima S <nimasdj@yahoo.com>
