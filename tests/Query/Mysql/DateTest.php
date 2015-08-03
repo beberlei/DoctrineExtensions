@@ -8,8 +8,8 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEDIFF(CURRENT_TIME(), p.created) < 7";
         $q = $this->entityManager->createQuery($dql);
-
         $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE DATEDIFF(CURRENT_TIME, d0_.created) < 7";
+
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -17,7 +17,6 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEADD(CURRENT_TIME(), 4, 'MONTH') < 7";
         $q = $this->entityManager->createQuery($dql);
-
         $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE DATE_ADD(CURRENT_TIME, INTERVAL 4 MONTH) < 7";
 
         $this->assertEquals($sql, $q->getSql());
@@ -30,7 +29,6 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEADD(CURRENT_TIME(), p.created) < 7";
         $q = $this->entityManager->createQuery($dql);
-
         $sql = '';
 
         $this->assertEquals($sql, $q->getSql());
@@ -40,9 +38,9 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE FROM_UNIXTIME(CURRENT_TIME()) = '2000-01-01 00:00:00'";
         $q = $this->entityManager->createQuery($dql);
+        $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE FROM_UNIXTIME(CURRENT_TIME) = '2000-01-01 00:00:00'";
 
-       $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE FROM_UNIXTIME(CURRENT_TIME) = '2000-01-01 00:00:00'";
-       $this->assertEquals($sql, $q->getSql());
+        $this->assertEquals($sql, $q->getSql());
     }
     
     public function testStrToDate()
@@ -51,10 +49,8 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery($dql);
         $q->setParameter('dateFormat', '%Y-%m-%d %h:%i %p');
         $q->setParameter('currentTime', date('Y-m-d H:i:s'));
+        $sql = 'SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?'
 
-        $this->assertEquals(
-            'SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?',
-            $q->getSql()
-        );
+        $this->assertEquals($sql, $q->getSql());
     }
 }
