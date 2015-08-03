@@ -38,10 +38,10 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
     public function testFromUnixtime()
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE FROM_UNIXTIME(CURRENT_TIME())";
+        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE FROM_UNIXTIME(CURRENT_TIME()) = CURRENT_TIME()";
         $q = $this->entityManager->createQuery($dql);
 
-       $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE FROM_UNIXTIME(CURRENT_TIME())";
+       $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE FROM_UNIXTIME(CURRENT_TIME()) = CURRENT_TIME()";
        $this->assertEquals($sql, $q->getSql());
     }
     
