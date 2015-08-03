@@ -12,6 +12,7 @@ env:
   - DOCTRINE_VERSION=2.2.*
   - DOCTRINE_VERSION=2.3.*
   - DOCTRINE_VERSION=2.4.*
+  - DOCTRINE_VERSION=2.5.*
 
 install:
   - composer self-update
