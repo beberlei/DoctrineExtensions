@@ -23,6 +23,8 @@ notifications:
 
 script: vendor/bin/phpunit
 
+sudo: false
+
 cache:
   directories:
     - $COMPOSER_CACHE_DIR
