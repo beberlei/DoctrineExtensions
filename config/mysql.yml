@@ -8,6 +8,7 @@ doctrine:
                  datediff: DoctrineExtensions\Query\Mysql\DateDiff
                  day: DoctrineExtensions\Query\Mysql\Day
                  dayname: DoctrineExtensions\Query\Mysql\DayName
+                 from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime 
                  last_day: DoctrineExtensions\Query\Mysql\LastDay
                  minute: DoctrineExtensions\Query\Mysql\Minute
                  second: DoctrineExtensions\Query\Mysql\Second
