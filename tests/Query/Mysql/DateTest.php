@@ -36,6 +36,15 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
+    public function testFromUnixtime()
+    {
+        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE FROM_UNIXTIME(CURRENT_TIME()) = '2000-01-01 00:00:00'";
+        $q = $this->entityManager->createQuery($dql);
+
+       $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE FROM_UNIXTIME(CURRENT_TIME) = '2000-01-01 00:00:00'";
+       $this->assertEquals($sql, $q->getSql());
+    }
+    
     public function testStrToDate()
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
