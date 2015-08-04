@@ -19,8 +19,9 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
 
         $config->setCustomDatetimeFunctions(array(
             'DATEADD'  => 'DoctrineExtensions\Query\Mysql\DateAdd',
+            'DATEDIFF' => 'DoctrineExtensions\Query\Mysql\DateDiff',
             'DATESUB'  => 'DoctrineExtensions\Query\Mysql\DateSub',
-            'DATEDIFF' => 'DoctrineExtensions\Query\Mysql\DateDiff'
+            'FROM_UNIXTIME' => 'DoctrineExtensions\Query\Mysql\FromUnixtime'
         ));
 
         $config->setCustomNumericFunctions(array(
