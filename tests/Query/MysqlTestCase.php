@@ -20,7 +20,8 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         $config->setCustomDatetimeFunctions(array(
             'DATEADD'  => 'DoctrineExtensions\Query\Mysql\DateAdd',
             'DATEDIFF' => 'DoctrineExtensions\Query\Mysql\DateDiff',
-            'FROM_UNIXTIME' => 'DoctrineExtensions\Query\Mysql\FromUnixtime' 
+            'DATESUB'  => 'DoctrineExtensions\Query\Mysql\DateSub',
+            'FROM_UNIXTIME' => 'DoctrineExtensions\Query\Mysql\FromUnixtime'
         ));
 
         $config->setCustomNumericFunctions(array(
@@ -37,13 +38,14 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         ));
 
         $config->setCustomStringFunctions(array(
-            'CHAR_LENGTH' => 'DoctrineExtensions\Query\Mysql\CharLength',
-            'CONCAT_WS'   => 'DoctrineExtensions\Query\Mysql\ConcatWs',
-            'FIELD'       => 'DoctrineExtensions\Query\Mysql\Field',
-            'FIND_IN_SET' => 'DoctrineExtensions\Query\Mysql\FindInSet',
-            'REPLACE'     => 'DoctrineExtensions\Query\Mysql\Replace',
-            'SOUNDEX'     => 'DoctrineExtensions\Query\Mysql\Soundex',
-            'STR_TO_DATE' => 'DoctrineExtensions\Query\Mysql\StrToDate'
+            'CHAR_LENGTH'       => 'DoctrineExtensions\Query\Mysql\CharLength',
+            'CONCAT_WS'         => 'DoctrineExtensions\Query\Mysql\ConcatWs',
+            'FIELD'             => 'DoctrineExtensions\Query\Mysql\Field',
+            'FIND_IN_SET'       => 'DoctrineExtensions\Query\Mysql\FindInSet',
+            'REPLACE'           => 'DoctrineExtensions\Query\Mysql\Replace',
+            'SOUNDEX'           => 'DoctrineExtensions\Query\Mysql\Soundex',
+            'STR_TO_DATE'       => 'DoctrineExtensions\Query\Mysql\StrToDate',
+            'SUBSTRING_INDEX'   => 'DoctrineExtensions\Query\Mysql\SubstringIndex'
         ));
 
         $this->entityManager = \Doctrine\ORM\EntityManager::create(
