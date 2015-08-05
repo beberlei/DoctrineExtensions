@@ -53,4 +53,14 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
             $config
         );
     }
+
+    public static function assertEquals($expected, $actual, $message = '')
+    {
+        // expectation patch to support pre Doctrine 2.5 field aliases
+        if (\Doctrine\ORM\Version::compare('2.5.0') < 0) {
+            $expected = preg_replace('/(\w+)_([0-9])/', '\1\2', $expected);
+        }
+
+        return parent::assertEquals($expected, $actual, $message);
+    }
 }
