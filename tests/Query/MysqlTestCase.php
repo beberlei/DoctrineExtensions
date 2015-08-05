@@ -54,7 +54,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public static function assertEquals($expected, $actual, $message = '')
+    public static function assertEquals($expected, $actual, $message = '', $delta = 0.0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false)
     {
         // expectation patch to support pre Doctrine 2.5 field aliases
         if (\Doctrine\ORM\Version::compare('2.5.0') < 0) {
