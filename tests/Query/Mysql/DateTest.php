@@ -22,6 +22,16 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
+    public function testDateSub()
+    {
+        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATESUB(CURRENT_TIME(), 4, 'MONTH') < 7";
+        $q = $this->entityManager->createQuery($dql);
+
+        $sql = "SELECT d0_.id AS id0, d0_.created AS created1 FROM Date d0_ WHERE DATE_SUB(CURRENT_TIME, INTERVAL 4 MONTH) < 7";
+
+        $this->assertEquals($sql, $q->getSql());
+    }
+
     /**
      * @expectedException Doctrine\ORM\Query\QueryException
      */

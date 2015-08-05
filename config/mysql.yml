@@ -5,6 +5,7 @@ doctrine:
                  date: DoctrineExtensions\Query\Mysql\Date
                  date_format: DoctrineExtensions\Query\Mysql\DateFormat
                  dateadd: DoctrineExtensions\Query\Mysql\DateAdd
+                 datesub: DoctrineExtensions\Query\Mysql\DateSub
                  datediff: DoctrineExtensions\Query\Mysql\DateDiff
                  day: DoctrineExtensions\Query\Mysql\Day
                  dayname: DoctrineExtensions\Query\Mysql\DayName
@@ -60,4 +61,5 @@ doctrine:
                  sha1: DoctrineExtensions\Query\Mysql\Sha1
                  sha2: DoctrineExtensions\Query\Mysql\Sha2
                  soundex: DoctrineExtensions\Query\Mysql\Soundex
+                 substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
