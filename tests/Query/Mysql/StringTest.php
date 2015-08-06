@@ -14,7 +14,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) AS sclr0 FROM Blank b0_",
+            "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -24,7 +24,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') AS sclr0 FROM Blank b0_",
+            "SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -39,7 +39,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT CONCAT_WS(',', 'First name', NULL, 'Last Name') from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT CONCAT_WS(',', 'First name', NULL, 'Last Name') AS sclr0 FROM Blank b0_",
+            "SELECT CONCAT_WS(',', 'First name', NULL, 'Last Name') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -49,7 +49,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') AS sclr0 FROM Blank b0_",
+            "SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -59,7 +59,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT REPLACE('www.mysql.com', 'w', 'Ww') from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT REPLACE('www.mysql.com', 'w', 'Ww') AS sclr0 FROM Blank b0_",
+            "SELECT REPLACE('www.mysql.com', 'w', 'Ww') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -69,7 +69,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT SOUNDEX('Hello') from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT SOUNDEX('Hello') AS sclr0 FROM Blank b0_",
+            "SELECT SOUNDEX('Hello') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
@@ -79,7 +79,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) from DoctrineExtensions\Tests\Entities\Blank");
 
         $this->assertEquals(
-            "SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) AS sclr0 FROM Blank b0_",
+            "SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }

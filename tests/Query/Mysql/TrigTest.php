@@ -20,19 +20,19 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $dql = "SELECT SIN(RADIANS(p.latitude)) FROM {$this->entity} p";
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT SIN(RADIANS(b0_.latitude)) AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT SIN(RADIANS(b0_.latitude)) AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT SIN(p.latitude * p.longitude) FROM {$this->entity} p";
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT SIN(b0_.latitude * b0_.longitude) AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT SIN(b0_.latitude * b0_.longitude) AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT SIN(RADIANS(p.latitude) * RADIANS(p.longitude)) FROM {$this->entity} p";
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT SIN(RADIANS(b0_.latitude) * RADIANS(b0_.longitude)) AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT SIN(RADIANS(b0_.latitude) * RADIANS(b0_.longitude)) AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
 
         if (\Doctrine\ORM\Version::compare('2.4.0') <= 0) {
@@ -43,13 +43,13 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 FROM BlogPost b0_ WHERE b0_.longitude = SIN(RADIANS(b0_.latitude)) * RADIANS(b0_.longitude)";
+        $sql = "SELECT b0_.id AS id_0, b0_.created AS created_1, b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 FROM BlogPost b0_ WHERE b0_.longitude = SIN(RADIANS(b0_.latitude)) * RADIANS(b0_.longitude)";
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT p FROM {$this->entity} p WHERE SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) = 1";
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT b0_.id AS id0, b0_.created AS created1, b0_.longitude AS longitude2, b0_.latitude AS latitude3 FROM BlogPost b0_ WHERE SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) = 1";
+        $sql = "SELECT b0_.id AS id_0, b0_.created AS created_1, b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 FROM BlogPost b0_ WHERE SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) = 1";
         $this->assertEquals($sql, $q->getSql());
 
         if (\Doctrine\ORM\Version::compare('2.4.0') <= 0) {
@@ -60,7 +60,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -83,7 +83,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT ACOS(SIN(RADIANS(b0_.latitude)) + SIN(RADIANS(b0_.longitude))) * 1 AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT ACOS(SIN(RADIANS(b0_.latitude)) + SIN(RADIANS(b0_.longitude))) * 1 AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -127,7 +127,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $dql = "SELECT ATAN(p.latitude, p.longitude) FROM {$this->entity} p ";
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT ATAN(b0_.latitude, b0_.longitude) AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT ATAN(b0_.latitude, b0_.longitude) AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -136,7 +136,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $dql = "SELECT ATAN2(p.latitude, p.longitude) FROM {$this->entity} p";
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT ATAN2(b0_.latitude, b0_.longitude) AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT ATAN2(b0_.latitude, b0_.longitude) AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -159,7 +159,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $q = $this->entityManager->createQuery($dql);
 
-        $sql = "SELECT ACOS(SIN(0) * SIN(RADIANS(b0_.latitude)) + COS(0) * COS(RADIANS(b0_.latitude)) * COS(RADIANS(b0_.longitude) - 0)) * 6371 AS sclr0 FROM BlogPost b0_";
+        $sql = "SELECT ACOS(SIN(0) * SIN(RADIANS(b0_.latitude)) + COS(0) * COS(RADIANS(b0_.latitude)) * COS(RADIANS(b0_.longitude) - 0)) * 6371 AS sclr_0 FROM BlogPost b0_";
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -186,8 +186,8 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
     protected function _getFirstSqlQuery($func)
     {
-        return "SELECT b0_.id AS id0, b0_.created AS created1, "
-        . "b0_.longitude AS longitude2, b0_.latitude AS latitude3 "
+        return "SELECT b0_.id AS id_0, b0_.created AS created_1, "
+        . "b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 "
         . "FROM BlogPost b0_ WHERE " . $func . "(b0_.latitude) = 1";
     }
 
@@ -200,6 +200,6 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
     protected function _getSecondSqlQuery($func)
     {
-        return "SELECT " . $func . "(b0_.latitude) AS sclr0 FROM BlogPost b0_";
+        return "SELECT " . $func . "(b0_.latitude) AS sclr_0 FROM BlogPost b0_";
     }
 }

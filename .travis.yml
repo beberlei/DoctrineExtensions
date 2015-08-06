@@ -12,6 +12,12 @@ env:
   - DOCTRINE_VERSION=2.2.*
   - DOCTRINE_VERSION=2.3.*
   - DOCTRINE_VERSION=2.4.*
+  - DOCTRINE_VERSION=2.5.*
+
+matrix:
+  exclude:
+  - php: 5.3
+    env: DOCTRINE_VERSION=2.5.*
 
 install:
   - composer self-update
