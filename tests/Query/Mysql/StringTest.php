@@ -4,6 +4,16 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
+    public function testAscii()
+    {
+        $q = $this->entityManager->createQuery("SELECT ASCII('A') from DoctrineExtensions\Tests\Entities\Blank");
+
+        $this->assertEquals(
+            "SELECT ASCII('A') AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
+    
     /**
      * Not implemented
      *
