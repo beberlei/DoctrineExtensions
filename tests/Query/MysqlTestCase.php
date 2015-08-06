@@ -38,6 +38,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         ));
 
         $config->setCustomStringFunctions(array(
+            'ASCII'             => 'DoctrineExtensions\Query\Mysql\Ascii',
             'CHAR_LENGTH'       => 'DoctrineExtensions\Query\Mysql\CharLength',
             'CONCAT_WS'         => 'DoctrineExtensions\Query\Mysql\ConcatWs',
             'FIELD'             => 'DoctrineExtensions\Query\Mysql\Field',
