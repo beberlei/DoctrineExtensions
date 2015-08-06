@@ -10,10 +10,6 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q = $this->entityManager->createQuery($dql);
         $sql = "SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATEDIFF(CURRENT_TIME, d0_.created) < 7";
 
-        $idAlias = $this->getColumnAlias('id');
-        $createdAlias = $this->getColumnAlias('created', 1);
-
-        $sql = "SELECT d0_.id AS $idAlias, d0_.created AS $createdAlias FROM Date d0_ WHERE DATEDIFF(CURRENT_TIME, d0_.created) < 7";
         $this->assertEquals($sql, $q->getSql());
     }
 
@@ -22,11 +18,6 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEADD(CURRENT_TIME(), 4, 'MONTH') < 7";
         $q = $this->entityManager->createQuery($dql);
         $sql = "SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATE_ADD(CURRENT_TIME, INTERVAL 4 MONTH) < 7";
-
-        $idAlias = $this->getColumnAlias('id');
-        $createdAlias = $this->getColumnAlias('created', 1);
-
-        $sql = "SELECT d0_.id AS $idAlias, d0_.created AS $createdAlias FROM Date d0_ WHERE DATE_ADD(CURRENT_TIME, INTERVAL 4 MONTH) < 7";
 
         $this->assertEquals($sql, $q->getSql());
     }
@@ -70,12 +61,6 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $q->setParameter('currentTime', date('Y-m-d H:i:s'));
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?';
 
-        $idAlias = $this->getColumnAlias('id');
-        $createdAlias = $this->getColumnAlias('created', 1);
-
-        $this->assertEquals(
-            "SELECT d0_.id AS $idAlias, d0_.created AS $createdAlias FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?",
-            $q->getSql()
-        );
+        $this->assertEquals($sql, $q->getSql());
     }
 }

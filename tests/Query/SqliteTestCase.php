@@ -3,7 +3,6 @@
 namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Version;
 
 class SqliteTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -51,9 +50,7 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
 
         $configuration = $this->entityManager->getConfiguration();
 
-
-
-        if (Version::compare('2.3') == 1) {
+        if (method_exists($configuration, 'getQuoteStrategy') === false) { // doctrine < 2.3
             $this->columnAlias = 'sclr0';
         } else {
             $this->columnAlias = $configuration

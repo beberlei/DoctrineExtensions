@@ -2,14 +2,8 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Version;
-
 class MysqlTestCase extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var EntityManager|null
-     */
     public $entityManager = null;
 
     public function setUp()
@@ -68,19 +62,5 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         }
 
         return parent::assertEquals($expected, $actual, $message);
-    }
-    public function getColumnAlias($alias, $counter = 0) {
-
-        if (Version::compare('2.3') == 1) {
-            return $alias.$counter;
-        }
-        return $this->columnAlias = $this->entityManager->getConfiguration()
-            ->getQuoteStrategy()
-            ->getColumnAlias(
-                $alias,
-                $counter,
-                $this->entityManager->getConnection()->getDatabasePlatform(),
-                $this->entityManager->getClassMetadata('DoctrineExtensions\Tests\Entities\Date')
-            );
     }
 }
