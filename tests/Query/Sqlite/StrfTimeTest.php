@@ -64,14 +64,4 @@ class StrfTimeTest extends SqliteTestCase
 
     }
 
-    public function testYearGroupBy()
-    {
-
-        $dql = 'SELECT YEAR(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p GROUP BY Year';
-        $q = $this->entityManager->createQuery($dql);
-        $this->assertEquals(
-            "SELECT strftime('%Y', d0_.created) AS {$this->columnAlias} FROM Date d0_ GROUP BY {$this->columnAlias}",
-            $q->getSql()
-        );
-    }
 }
