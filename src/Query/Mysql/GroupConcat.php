@@ -26,7 +26,11 @@ class GroupConcat extends FunctionNode
 
         // first Path Expression is mandatory
         $this->pathExp = array();
-        $this->pathExp[] = $parser->SingleValuedPathExpression();
+        if ($lexer->isNextToken(Lexer::T_IDENTIFIER)) {
+            $this->pathExp[] = $parser->StringExpression();
+        } else {
+            $this->pathExp[] = $parser->SingleValuedPathExpression();
+        }
 
         while ($lexer->isNextToken(Lexer::T_COMMA)) {
             $parser->match(Lexer::T_COMMA);
