@@ -63,7 +63,10 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
         $this->assertInstanceOf('Carbon\Carbon', $entity->date);
-        $this->assertEquals(Carbon::createFromDate(2015, 1, 1, $entity->date->timezone), $entity->date);
+        $this->assertEquals(
+            Carbon::createFromDate(2015, 1, 1, $entity->date->timezone)->format('Y-m-d'),
+            $entity->date->format('Y-m-d')
+        );
     }
 
     public function testDateSetter()
