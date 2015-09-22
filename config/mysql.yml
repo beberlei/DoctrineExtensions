@@ -53,6 +53,7 @@ doctrine:
                  group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
+                 least: DoctrineExtensions\Query\Mysql\Least
                  match_against: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  month: DoctrineExtensions\Query\Mysql\Month

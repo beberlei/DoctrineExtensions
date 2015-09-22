@@ -43,6 +43,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
             'CONCAT_WS'         => 'DoctrineExtensions\Query\Mysql\ConcatWs',
             'FIELD'             => 'DoctrineExtensions\Query\Mysql\Field',
             'FIND_IN_SET'       => 'DoctrineExtensions\Query\Mysql\FindInSet',
+            'LEAST'             => 'DoctrineExtensions\Query\Mysql\Least',
             'REPLACE'           => 'DoctrineExtensions\Query\Mysql\Replace',
             'SOUNDEX'           => 'DoctrineExtensions\Query\Mysql\Soundex',
             'STR_TO_DATE'       => 'DoctrineExtensions\Query\Mysql\StrToDate',
