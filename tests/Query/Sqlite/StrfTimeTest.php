@@ -57,11 +57,20 @@ class StrfTimeTest extends SqliteTestCase
         $dql = 'SELECT StrfTime(\'%s\', p.created) as Time FROM DoctrineExtensions\Tests\Entities\Date p';
         $q = $this->entityManager->createQuery($dql);
         $this->assertEquals(
-            "SELECT strftime('%s', d0_.created) AS {$this->columnAlias} FROM Date d0_"
-            ,
+            "SELECT strftime('%s', d0_.created) AS {$this->columnAlias} FROM Date d0_",
             $q->getSql()
         );
 
+    }
+
+    public function testDateFormat()
+    {
+        $dql = "SELECT DATE_FORMAT(b.created, '%r') FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
+
+        $this->assertEquals(
+            "SELECT STRFTIME('%H:%M:%S', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
+            $this->entityManager->createQuery($dql)->getSql()
+        );
     }
 
 }
