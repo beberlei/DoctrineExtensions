@@ -22,7 +22,7 @@ doctrine:
                  year: DoctrineExtensions\Query\Sqlite\Year
 
 
-#             string_functions:
+             string_functions:
 #                 binary: DoctrineExtensions\Query\Sqlite\Binary
 #                 char_length: DoctrineExtensions\Query\Sqlite\CharLength
 #                 concat_ws: DoctrineExtensions\Query\Sqlite\ConcatWs
@@ -33,7 +33,7 @@ doctrine:
 #                 find_in_set: DoctrineExtensions\Query\Sqlite\FindInSet
 #                 group_concat: DoctrineExtensions\Query\Sqlite\GroupConcat
 #                 ifelse: DoctrineExtensions\Query\Sqlite\IfElse
-#                 ifnull: DoctrineExtensions\Query\Sqlite\IfNull
+                 ifnull: DoctrineExtensions\Query\Sqlite\IfNull
 #                 match_against: DoctrineExtensions\Query\Sqlite\MatchAgainst
 #                 md5: DoctrineExtensions\Query\Sqlite\Md5
 #                 month: DoctrineExtensions\Query\Sqlite\Month
@@ -41,8 +41,11 @@ doctrine:
 #                 nullif: DoctrineExtensions\Query\Sqlite\NullIf
 #                 radians: DoctrineExtensions\Query\Sqlite\Radians
 #                 regexp: DoctrineExtensions\Query\Sqlite\Regexp
-#                 replace: DoctrineExtensions\Query\Sqlite\Replace
+                 replace: DoctrineExtensions\Query\Sqlite\Replace
 #                 sha1: DoctrineExtensions\Query\Sqlite\Sha1
 #                 sha2: DoctrineExtensions\Query\Sqlite\Sha2
 #                 soundex: DoctrineExtensions\Query\Sqlite\Soundex
 #                 uuid_short: DoctrineExtensions\Query\Sqlite\UuidShort
+
+             numeric_functions:
+                 round: DoctrineExtensions\Query\Sqlite\Round
