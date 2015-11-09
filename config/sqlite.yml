@@ -3,8 +3,7 @@ doctrine:
          dql:
              datetime_functions:
                  date: DoctrineExtensions\Query\Sqlite\Date
-                 # TODO :)
-                 #date_format: DoctrineExtensions\Query\Sqlite\DateFormat
+                 date_format: DoctrineExtensions\Query\Sqlite\DateFormat
                  #dateadd: DoctrineExtensions\Query\Sqlite\DateAdd
                  #datediff: DoctrineExtensions\Query\Sqlite\DateDiff
                  day: DoctrineExtensions\Query\Sqlite\Day
