@@ -24,8 +24,8 @@ functions available in MySQL and Oracle.
 | Sqlite | `DATE, MINUTE, HOUR, DAY, WEEK, WEEKDAY, MONTH, YEAR, STRFTIME, DATE_FORMAT*` |
 
 > Note: Sqlite date functions and are implemented as `strftime(format, value)`.
-  Sqlite only supports the most common [formats](https://www.sqlite.org/lang_datefunc.html),
-  so date_format will convert the formats to those formats.
+  Sqlite only supports the [most common formats](https://www.sqlite.org/lang_datefunc.html),
+  so date_format will convert the input to those formats. This means `Jan 1st 2015` becomes `01 01 2015`.
 
 Installation
 ------------
