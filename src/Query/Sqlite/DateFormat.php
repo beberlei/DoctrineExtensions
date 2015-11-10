@@ -54,7 +54,7 @@ class DateFormat extends FunctionNode
         // The order of the array is important. %i converts to %M, but %M converts to %m, so %M has to be done first.
         $conversion = array(
             '%a' => '%w',       // Abbreviated weekday name (Sun..Sat)          -> day of week (0..6)
-            '%b' => '%d',       // Abbreviated month name (Jan..Dec)            -> day of month (01..31)
+            '%b' => '%m',       // Abbreviated month name (Jan..Dec)            -> month (01..12)
             '%c' => '%m',       // Month, numeric (0..12)                       -> month (01..12)
             '%D' => '%d',       // Day of the month with English suffix (0th, 1st, 2nd, …) -> day of month (01..31)
             '%d' => '%d',       // Day of the month, numeric (00..31)           -> day of month (01..31)
