@@ -1,4 +1,6 @@
-<?php namespace DoctrineExtensions\Query\Sqlite;
+<?php
+
+namespace DoctrineExtensions\Query\Sqlite;
 
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -49,6 +51,7 @@ class DateFormat extends FunctionNode
      */
     private function convertFormat(ArithmeticExpression $expr)
     {
+        // The order of the array is important. %i converts to %M, but %M converts to %m, so %M has to be done first.
         $conversion = array(
             '%a' => '%w',       // Abbreviated weekday name (Sun..Sat)          -> day of week (0..6)
             '%b' => '%d',       // Abbreviated month name (Jan..Dec)            -> day of month (01..31)
@@ -60,20 +63,20 @@ class DateFormat extends FunctionNode
             '%H' => '%H',       // Hour (00..23)                                -> Hour (00..23)
             '%h' => '%H',       // Hour (01..12)                                -> Hour (00..23)
             '%I' => '%H',       // Hour (01..12)                                -> Hour (00..23)
-            '%i' => '%M',       // Minutes, numeric (00..59)                    -> minutes (00..59)
             '%j' => '%j',       // Day of year (001..366)                       -> Day of year (001..366)
             '%k' => '%H',       // Hour (0..23)                                 -> Hour (0..23)
             '%l' => '%H',       // Hour (1..12)                                 -> Hour (0..23)
             '%M' => '%m',       // Month name (January..December)               -> month (01..12)
             '%m' => '%m',       // Month, numeric (00..12)                      -> month (01..12)
+            '%i' => '%M',       // Minutes, numeric (00..59)                    -> minutes (00..59)
             '%p' => '',         // AM or PM                                     -> '' (ignored)
             '%S' => '%S',       // Seconds (00..59)                             -> Seconds (00..59)
             '%s' => '%S',       // Seconds (00..59)                             -> Seconds (00..59)
+            '%W' => '%w',       // Weekday name (Sunday..Saturday)              -> day of week (0..6)
             '%U' => '%W',       // Week (00..53), starting Sunday               -> week of year: (00..53)
             '%u' => '%W',       // Week (00..53), starting Monday               -> week of year: (00..53)
             '%V' => '%W',       // ISO Week (00..53), starting Sunday           -> week of year: (00..53)
             '%v' => '%W',       // ISO Week (00..53), starting Monday           -> week of year: (00..53)
-            '%W' => '%w',       // Weekday name (Sunday..Saturday)              -> day of week (0..6)
             '%w' => '%w',       // Day of the week (0=Sunday..6=Saturday)       -> day of week (0..6)
             '%X' => '%Y',       // ISO Week Year (YYYY), week starting Sunday   -> year (four digits)
             '%x' => '%Y',       // ISO Week Year (YYYY), week starting Monday   -> year (four digits)
