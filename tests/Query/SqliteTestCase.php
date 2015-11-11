@@ -40,6 +40,7 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
                 'DAY'      => 'DoctrineExtensions\Query\Sqlite\Day',
                 'DATE'     => 'DoctrineExtensions\Query\Sqlite\Date',
                 'STRFTIME' => 'DoctrineExtensions\Query\Sqlite\StrfTime',
+                'DATE_FORMAT' => 'DoctrineExtensions\Query\Sqlite\DateFormat',
 
             )
         );

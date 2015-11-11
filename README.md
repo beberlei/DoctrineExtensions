@@ -21,9 +21,12 @@ functions available in MySQL and Oracle.
 |:--:|:---------:|
 | MySQL | `ACOS, ASCII, ASIN, ATAN, ATAN2, BINARY, CEIL, CHAR_LENGTH, CONCAT_WS, COS, COT, COUNTIF, CRC32, DATE, DATE_FORMAT, DATEADD, DATEDIFF, DATESUB, DAY, DAYNAME, DEGREES, FIELD, FIND_IN_SET, FLOOR, FROM_UNIXTIME, GROUP_CONCAT, HOUR, IFELSE, IFNULL, LAST_DAY, LEAST, MATCH_AGAINST, MD5, MINUTE, MONTH, MONTHNAME, NULLIF, PI, POWER, QUARTER, RADIANS, RAND, REGEXP, REPLACE, ROUND, SECOND, SHA1, SHA2, SIN, SOUNDEX, STD, STRTODATE, SUBSTRING_INDEX, TAN, TIME, TIMESTAMPADD, TIMESTAMPDIFF, UUID_SHORT, WEEK, WEEKDAY, YEAR` |
 | Oracle | `DAY, MONTH, NVL, TODATE, TRUNC, YEAR` |
-| Sqlite | `DATE, MINUTE, HOUR, DAY, WEEK, WEEKDAY, MONTH, YEAR, STRFTIME*` |
+| Sqlite | `DATE, MINUTE, HOUR, DAY, WEEK, WEEKDAY, MONTH, YEAR, STRFTIME, DATE_FORMAT*` |
 
-Note: Sqlite date functions are implemented as strftime(formatter, value).
+> Note: Sqlite date functions are implemented as `strftime(format, value)`.
+  Sqlite only supports the [most common formats](https://www.sqlite.org/lang_datefunc.html),
+  so `date_format` will convert the mysql substitutions to the closest available sqlite substitutions.
+  This means `date_format(field, '%b %D %Y') -> Jan 1st 2015` becomes `strftime('%m %d %Y', field) -> 01 01 2015`.
 
 Installation
 ------------
