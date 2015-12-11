@@ -63,4 +63,13 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $this->assertEquals($sql, $q->getSql());
     }
+
+    public function testUnixTimpestamp()
+    {
+        $dql = "SELECT UNIX_TIMESTAMP(p.created) FROM DoctrineExtensions\Tests\Entities\Date p";
+        $q = $this->entityManager->createQuery($dql);
+        $sql = 'SELECT UNIX_TIMESTAMP(d0_.created) AS sclr_0 FROM Date d0_';
+
+        $this->assertEquals($sql, $q->getSql());
+    }
 }

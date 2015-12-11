@@ -20,6 +20,7 @@ doctrine:
                  week: DoctrineExtensions\Query\Mysql\Week
                  weekday: DoctrineExtensions\Query\Mysql\WeekDay
                  year: DoctrineExtensions\Query\Mysql\Year
+                 unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
 
              numeric_functions:
                  acos: DoctrineExtensions\Query\Mysql\Acos
