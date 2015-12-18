@@ -25,4 +25,9 @@ class CarbonDateType extends DateType
 
         return $result;
     }
+
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
+    }
 }

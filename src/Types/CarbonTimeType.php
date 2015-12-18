@@ -25,4 +25,9 @@ class CarbonTimeType extends TimeType
 
         return $result;
     }
+
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
+    }
 }

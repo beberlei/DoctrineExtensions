@@ -130,4 +130,15 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->em->persist($entity);
         $this->em->flush();
     }
+
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint()
+    {
+        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
+        $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
+
+        $this->assertTrue(\Doctrine\DBAL\Types\Type::getType('CarbonDate')->requiresSQLCommentHint($platform));
+        $this->assertTrue(\Doctrine\DBAL\Types\Type::getType('CarbonDateTime')->requiresSQLCommentHint($platform));
+        $this->assertTrue(\Doctrine\DBAL\Types\Type::getType('CarbonDateTimeTz')->requiresSQLCommentHint($platform));
+        $this->assertTrue(\Doctrine\DBAL\Types\Type::getType('CarbonTime')->requiresSQLCommentHint($platform));
+    }
 }

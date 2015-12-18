@@ -25,4 +25,9 @@ class CarbonDateTimeTzType extends DateTimeTzType
 
         return $result;
     }
+
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
+    }
 }
