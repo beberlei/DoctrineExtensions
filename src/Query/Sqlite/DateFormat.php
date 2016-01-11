@@ -51,6 +51,11 @@ class DateFormat extends FunctionNode
      */
     private function convertFormat(ArithmeticExpression $expr)
     {
+        // when using bind variables there is no value component.
+        if (empty($expr->simpleArithmeticExpression->value)) {
+            return $expr;
+        }
+
         // The order of the array is important. %i converts to %M, but %M converts to %m, so %M has to be done first.
         $conversion = array(
             '%a' => '%w',       // Abbreviated weekday name (Sun..Sat)          -> day of week (0..6)
