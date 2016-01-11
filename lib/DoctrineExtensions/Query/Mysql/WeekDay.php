@@ -34,7 +34,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
  *
  * @category    DoctrineExtensions
  * @package     DoctrineExtensions\Query\Mysql
- * @author      Pavlo Cherniavskyi <ionafan2@gmail.com>
+ * @author      Pavlo Cherniavskyi
  *
  * @license     MIT License
  */
