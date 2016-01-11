@@ -21,4 +21,14 @@ class StringFunctionsTest extends SqliteTestCase
         $q = $this->entityManager->createQuery($dql);
         $this->assertEquals("SELECT REPLACE(b0_.id, '1', '2') AS {$this->columnAlias} FROM Blank b0_", $q->getSql());
     }
+
+    public function testConcatWs()
+    {
+        $dql = "SELECT CONCAT_WS('-', 'foo', 'bar', 'baz') as out FROM DoctrineExtensions\\Tests\\Entities\\Blank p";
+
+        $expected = "SELECT (IFNULL('foo', '') || '-' || IFNULL('bar', '') || '-' || IFNULL('baz', ''))"
+                . " AS {$this->columnAlias} FROM Blank b0_";
+
+        $this->assertEquals($expected, $this->entityManager->createQuery($dql)->getSql());
+    }
 }

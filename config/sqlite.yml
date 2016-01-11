@@ -24,7 +24,7 @@ doctrine:
              string_functions:
 #                 binary: DoctrineExtensions\Query\Sqlite\Binary
 #                 char_length: DoctrineExtensions\Query\Sqlite\CharLength
-#                 concat_ws: DoctrineExtensions\Query\Sqlite\ConcatWs
+                 concat_ws: DoctrineExtensions\Query\Sqlite\ConcatWs
 #                 countif: DoctrineExtensions\Query\Sqlite\CountIf
 #                 crc32: DoctrineExtensions\Query\Sqlite\Crc32
 #                 degrees: DoctrineExtensions\Query\Sqlite\Degrees

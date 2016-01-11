@@ -53,6 +53,7 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
 
         $config->setCustomStringFunctions(
             array(
+                'CONCAT_WS' => 'DoctrineExtensions\Query\Sqlite\ConcatWs',
                 'IFNULL' => 'DoctrineExtensions\Query\Sqlite\IfNull',
                 'REPLACE' => 'DoctrineExtensions\Query\Sqlite\Replace',
             )
