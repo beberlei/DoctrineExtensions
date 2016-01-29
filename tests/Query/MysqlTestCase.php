@@ -45,6 +45,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
             'FIELD'             => 'DoctrineExtensions\Query\Mysql\Field',
             'FIND_IN_SET'       => 'DoctrineExtensions\Query\Mysql\FindInSet',
             'LEAST'             => 'DoctrineExtensions\Query\Mysql\Least',
+            'LPAD'              => 'DoctrineExtensions\Query\Mysql\Lpad',
             'REPLACE'           => 'DoctrineExtensions\Query\Mysql\Replace',
             'SOUNDEX'           => 'DoctrineExtensions\Query\Mysql\Soundex',
             'STR_TO_DATE'       => 'DoctrineExtensions\Query\Mysql\StrToDate',

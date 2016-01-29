@@ -55,6 +55,7 @@ doctrine:
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
                  least: DoctrineExtensions\Query\Mysql\Least
+                 lpad: DoctrineExtensions\Query\Mysql\Lpad
                  match_against: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  month: DoctrineExtensions\Query\Mysql\Month

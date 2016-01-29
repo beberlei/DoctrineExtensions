@@ -113,4 +113,17 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             $q->getSql()
         );
     }
+
+    /**
+     * Test case for MYSQL function LPAD.
+     */
+    public function testLpad()
+    {
+        $q = $this->entityManager->createQuery("SELECT LDAP('Hellow',10,'**') from DoctrineExtensions\Tests\Entities\Blank");
+
+        $this->assertEquals(
+            "SELECT REPLACE('Hellow',10,'**') AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
 }
