@@ -13,7 +13,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             $q->getSql()
         );
     }
-    
+
     /**
      * Not implemented
      *
@@ -90,6 +90,39 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $this->assertEquals(
             "SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
+
+    /**
+     * Test case for MYSQL Comparison function LEAST.
+     */
+    public function testLeast()
+    {
+        $q = $this->entityManager->createQuery("SELECT LEAST(10,1,4,0.4,0.003) AS lest FROM DoctrineExtensions\Tests\Entities\Blank b");
+
+        $this->assertEquals(
+            'SELECT LEAST(10, 1, 4, 0.4, 0.003) AS sclr_0 FROM Blank b0_',
+            $q->getSql()
+        );
+
+        $q = $this->entityManager->createQuery("SELECT LEAST('M', 'N', 'o', 'c', 'C') AS lest FROM DoctrineExtensions\Tests\Entities\Blank b");
+
+        $this->assertEquals(
+            "SELECT LEAST('M', 'N', 'o', 'c', 'C') AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
+
+    /**
+     * Test case for MYSQL function LPAD.
+     */
+    public function testLpad()
+    {
+        $q = $this->entityManager->createQuery("SELECT LDAP('Hellow',10,'**') from DoctrineExtensions\Tests\Entities\Blank");
+
+        $this->assertEquals(
+            "SELECT REPLACE('Hellow',10,'**') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }

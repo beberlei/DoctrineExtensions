@@ -40,9 +40,24 @@ class SqliteTestCase extends \PHPUnit_Framework_TestCase
                 'DAY'      => 'DoctrineExtensions\Query\Sqlite\Day',
                 'DATE'     => 'DoctrineExtensions\Query\Sqlite\Date',
                 'STRFTIME' => 'DoctrineExtensions\Query\Sqlite\StrfTime',
+                'DATE_FORMAT' => 'DoctrineExtensions\Query\Sqlite\DateFormat',
 
             )
         );
+
+        $config->setCustomNumericFunctions(
+            array(
+                'ROUND' => 'DoctrineExtensions\Query\Sqlite\Round',
+            )
+        );
+
+        $config->setCustomStringFunctions(
+            array(
+                'IFNULL' => 'DoctrineExtensions\Query\Sqlite\IfNull',
+                'REPLACE' => 'DoctrineExtensions\Query\Sqlite\Replace',
+            )
+        );
+
         $this->entityManager = \Doctrine\ORM\EntityManager::create(
             array('driver' => 'pdo_sqlite', 'memory' => true),
             $config

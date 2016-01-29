@@ -20,14 +20,17 @@ doctrine:
                  week: DoctrineExtensions\Query\Mysql\Week
                  weekday: DoctrineExtensions\Query\Mysql\WeekDay
                  year: DoctrineExtensions\Query\Mysql\Year
+                 unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
 
              numeric_functions:
                  acos: DoctrineExtensions\Query\Mysql\Acos
                  asin: DoctrineExtensions\Query\Mysql\Asin
                  atan2: DoctrineExtensions\Query\Mysql\Atan2
                  atan: DoctrineExtensions\Query\Mysql\Atan
+                 ceil: DoctrineExtensions\Query\Mysql\Ceil
                  cos: DoctrineExtensions\Query\Mysql\Cos
                  cot: DoctrineExtensions\Query\Mysql\Cot
+                 floor: DoctrineExtensions\Query\Mysql\Floor
                  hour: DoctrineExtensions\Query\Mysql\Hour
                  pi: DoctrineExtensions\Query\Mysql\Pi
                  power: DoctrineExtensions\Query\Mysql\Power
@@ -51,6 +54,8 @@ doctrine:
                  group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
+                 least: DoctrineExtensions\Query\Mysql\Least
+                 lpad: DoctrineExtensions\Query\Mysql\Lpad
                  match_against: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  month: DoctrineExtensions\Query\Mysql\Month
