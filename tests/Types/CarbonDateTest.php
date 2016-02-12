@@ -3,10 +3,9 @@
 namespace DoctrineExtensions\Tests\Types;
 
 use Carbon\Carbon,
-    Doctrine\Common\EventManager,
-    Doctrine\ORM\EntityManager,
     Doctrine\ORM\Tools\SchemaTool,
-    DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
+    DoctrineExtensions\Tests\Entities\CarbonDate as Entity,
+    Doctrine\DBAL\Types\Type;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
@@ -19,10 +18,10 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        \Doctrine\DBAL\Types\Type::addType('CarbonDate', 'DoctrineExtensions\Types\CarbonDateType');
-        \Doctrine\DBAL\Types\Type::addType('CarbonDateTime', 'DoctrineExtensions\Types\CarbonDateTimeType');
-        \Doctrine\DBAL\Types\Type::addType('CarbonDateTimeTz', 'DoctrineExtensions\Types\CarbonDateTimeTzType');
-        \Doctrine\DBAL\Types\Type::addType('CarbonTime', 'DoctrineExtensions\Types\CarbonTimeType');
+        Type::addType('CarbonDate', 'DoctrineExtensions\Types\CarbonDateType');
+        Type::addType('CarbonDateTime', 'DoctrineExtensions\Types\CarbonDateTimeType');
+        Type::addType('CarbonDateTimeTz', 'DoctrineExtensions\Types\CarbonDateTimeTzType');
+        Type::addType('CarbonTime', 'DoctrineExtensions\Types\CarbonTimeType');
     }
 
     public function setUp()
@@ -129,5 +128,26 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
 
         $this->em->persist($entity);
         $this->em->flush();
+    }
+
+    /**
+     * @dataProvider typeProvider
+     */
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type)
+    {
+        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
+        $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
+
+        $this->assertTrue(Type::getType($type)->requiresSQLCommentHint($platform));
+    }
+
+    public function typeProvider()
+    {
+        return array(
+            array('CarbonDate'),
+            array('CarbonDateTime'),
+            array('CarbonDateTimeTz'),
+            array('CarbonTime'),
+        );
     }
 }

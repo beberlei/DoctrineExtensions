@@ -81,4 +81,12 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($entity->date instanceof \Zend_Date);
         $this->assertTrue($entity->date->equals($zendDate));
     }
+
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint()
+    {
+        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
+        $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
+
+        $this->assertTrue(\Doctrine\DBAL\Types\Type::getType('ZendDate')->requiresSQLCommentHint($platform));
+    }
 }
