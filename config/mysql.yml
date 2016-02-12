@@ -20,6 +20,7 @@ doctrine:
                  week: DoctrineExtensions\Query\Mysql\Week
                  weekday: DoctrineExtensions\Query\Mysql\WeekDay
                  year: DoctrineExtensions\Query\Mysql\Year
+                 yearweek: DoctrineExtensions\Query\Mysql\YearWeek
                  unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
 
              numeric_functions:
