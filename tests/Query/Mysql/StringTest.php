@@ -113,4 +113,30 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             $q->getSql()
         );
     }
+
+    /**
+     * Test case for MYSQL function LPAD.
+     */
+    public function testLpad()
+    {
+        $q = $this->entityManager->createQuery("SELECT LPAD('Hellow', 10, '**') from DoctrineExtensions\Tests\Entities\Blank");
+
+        $this->assertEquals(
+            "SELECT LPAD('Hellow', 10, '**') AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
+
+    /**
+     * Test case for MYSQL function RPAD.
+     */
+    public function testRpad()
+    {
+        $q = $this->entityManager->createQuery("SELECT RPAD('Hellow', 10, '**') from DoctrineExtensions\Tests\Entities\Blank");
+
+        $this->assertEquals(
+            "SELECT RPAD('Hellow', 10, '**') AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
 }
