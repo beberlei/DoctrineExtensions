@@ -56,6 +56,7 @@ doctrine:
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
                  least: DoctrineExtensions\Query\Mysql\Least
+                 lpad: DoctrineExtensions\Query\Mysql\Lpad
                  match_against: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  month: DoctrineExtensions\Query\Mysql\Month
@@ -64,6 +65,7 @@ doctrine:
                  radians: DoctrineExtensions\Query\Mysql\Radians
                  regexp: DoctrineExtensions\Query\Mysql\Regexp
                  replace: DoctrineExtensions\Query\Mysql\Replace
+                 rpad: DoctrineExtensions\Query\Mysql\Rpad
                  sha1: DoctrineExtensions\Query\Mysql\Sha1
                  sha2: DoctrineExtensions\Query\Mysql\Sha2
                  soundex: DoctrineExtensions\Query\Mysql\Soundex
