@@ -15,6 +15,7 @@ doctrine:
                  second: DoctrineExtensions\Query\Mysql\Second
                  strtodate: DoctrineExtensions\Query\Mysql\StrToDate
                  time: DoctrineExtensions\Query\Mysql\Time
+                 timediff: DoctrineExtensions\Query\Mysql\TimeDiff
                  timestampadd: DoctrineExtensions\Query\Mysql\TimestampAdd
                  timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
                  week: DoctrineExtensions\Query\Mysql\Week
