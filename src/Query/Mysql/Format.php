@@ -10,23 +10,23 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
  */
 class Format extends FunctionNode
 {
-    public $dateExpression = null;
+    public $numberExpression = null;
     public $patternExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
-        $this->dateExpression = $parser->ArithmeticExpression();
+        $this->numberExpression = $parser->SimpleArithmeticExpression();
         $parser->match(Lexer::T_COMMA);
-        $this->patternExpression = $parser->StringPrimary();
+        $this->patternExpression = $parser->SimpleArithmeticExpression();
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return 'FORMAT(' .
-            $this->dateExpression->dispatch($sqlWalker) . ', ' .
+            $this->numberExpression->dispatch($sqlWalker) . ', ' .
             $this->patternExpression->dispatch($sqlWalker) .
         ')';
     }
