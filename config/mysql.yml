@@ -52,6 +52,7 @@ doctrine:
                  degrees: DoctrineExtensions\Query\Mysql\Degrees
                  field: DoctrineExtensions\Query\Mysql\Field
                  find_in_set: DoctrineExtensions\Query\Mysql\FindInSet
+                 format: DoctrineExtensions\Query\Mysql\Format
                  group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
