@@ -15,13 +15,14 @@ DoctrineExtensions
 [![Packagist](https://img.shields.io/packagist/dt/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 
 A set of extensions to Doctrine 2 that add support for additional query
-functions available in MySQL and Oracle.
+functions available in MySQL, Oracle, Sqlite and PostgreSQL.
 
 | DB | Functions |
 |:--:|:---------:|
 | MySQL | `ACOS, ASCII, ASIN, ATAN, ATAN2, BINARY, CEIL, CHAR_LENGTH, CONCAT_WS, COS, COT, COUNTIF, CRC32, DATE, DATE_FORMAT, DATEADD, DATEDIFF, DATESUB, DAY, DAYNAME, DEGREES, FIELD, FIND_IN_SET, FLOOR, FROM_UNIXTIME, GROUP_CONCAT, HOUR, IFELSE, IFNULL, LAST_DAY, LEAST, LPAD, MATCH_AGAINST, MD5, MINUTE, MONTH, MONTHNAME, NULLIF, PI, POWER, QUARTER, RADIANS, RAND, REGEXP, REPLACE, ROUND, RPAD, SECOND, SHA1, SHA2, SIN, SOUNDEX, STD, STRTODATE, SUBSTRING_INDEX, TAN, TIME, TIMESTAMPADD, TIMESTAMPDIFF, UNIX_TIMESTAMP, UUID_SHORT, WEEK, WEEKDAY, YEAR, YEARWEEK` |
 | Oracle | `DAY, MONTH, NVL, TODATE, TRUNC, YEAR` |
 | Sqlite | `DATE, MINUTE, HOUR, DAY, WEEK, WEEKDAY, MONTH, YEAR, STRFTIME, DATE_FORMAT*, IFNULL, REPLACE, ROUND` |
+| PostgreSQL | `TO_DATE, TO_CHAR` |
 
 > Note: Sqlite date functions are implemented as `strftime(format, value)`.
   Sqlite only supports the [most common formats](https://www.sqlite.org/lang_datefunc.html),
