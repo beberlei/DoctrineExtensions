@@ -6,7 +6,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
     Doctrine\ORM\Query\Lexer;
 
 /**
- * @author Steve Lacey <steve@stevelacey.net>
+ * @author silvioq
  */
 class DateFormat extends FunctionNode
 {
