@@ -31,6 +31,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
             'ATAN'      => 'DoctrineExtensions\Query\Mysql\Atan',
             'ATAN2'     => 'DoctrineExtensions\Query\Mysql\Atan2',
             'BIT_COUNT' => 'DoctrineExtensions\Query\Mysql\BitCount',
+            'BIT_XOR'   => 'DoctrineExtensions\Query\Mysql\BitXor',
             'COS'       => 'DoctrineExtensions\Query\Mysql\Cos',
             'COT'       => 'DoctrineExtensions\Query\Mysql\Cot',
             'DEGREES'   => 'DoctrineExtensions\Query\Mysql\Degrees',
