@@ -26,16 +26,18 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         ));
 
         $config->setCustomNumericFunctions(array(
-            'ACOS'    => 'DoctrineExtensions\Query\Mysql\Acos',
-            'ASIN'    => 'DoctrineExtensions\Query\Mysql\Asin',
-            'ATAN'    => 'DoctrineExtensions\Query\Mysql\Atan',
-            'ATAN2'   => 'DoctrineExtensions\Query\Mysql\Atan2',
-            'COS'     => 'DoctrineExtensions\Query\Mysql\Cos',
-            'COT'     => 'DoctrineExtensions\Query\Mysql\Cot',
-            'DEGREES' => 'DoctrineExtensions\Query\Mysql\Degrees',
-            'RADIANS' => 'DoctrineExtensions\Query\Mysql\Radians',
-            'SIN'     => 'DoctrineExtensions\Query\Mysql\Sin',
-            'TAN'     => 'DoctrineExtensions\Query\Mysql\Tan'
+            'ACOS'      => 'DoctrineExtensions\Query\Mysql\Acos',
+            'ASIN'      => 'DoctrineExtensions\Query\Mysql\Asin',
+            'ATAN'      => 'DoctrineExtensions\Query\Mysql\Atan',
+            'ATAN2'     => 'DoctrineExtensions\Query\Mysql\Atan2',
+            'BIT_COUNT' => 'DoctrineExtensions\Query\Mysql\BitCount',
+            'BIT_XOR'   => 'DoctrineExtensions\Query\Mysql\BitXor',
+            'COS'       => 'DoctrineExtensions\Query\Mysql\Cos',
+            'COT'       => 'DoctrineExtensions\Query\Mysql\Cot',
+            'DEGREES'   => 'DoctrineExtensions\Query\Mysql\Degrees',
+            'RADIANS'   => 'DoctrineExtensions\Query\Mysql\Radians',
+            'SIN'       => 'DoctrineExtensions\Query\Mysql\Sin',
+            'TAN'       => 'DoctrineExtensions\Query\Mysql\Tan',
         ));
 
         $config->setCustomStringFunctions(array(
