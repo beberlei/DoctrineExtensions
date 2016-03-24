@@ -14,14 +14,14 @@ use Doctrine\ORM\Query;
  *     ->where('p.id = 1')
  *     ->orderBy('p.firstname', 'ASC')
  *     ->addOrderBy('p.lastname', 'DESC')
- *     ->addOrderBy('p.basedOnPerson.id', 'DESC'); // relation to person
+ *     ->addOrderBy('p.id', 'DESC'); // relation to person
  *
  * $query = $qb->getQuery();
  * $query->setHint(Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Webges\DoctrineExtensions\Query\SortableNullsWalker');
  * $query->setHint("sortableNulls.fields", array(
  *     "p.firstname" => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_FIRST,
  *     "p.lastname"  => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_LAST,
- *     "p.basedOnPerson.id" => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_LAST
+ *     "p.id" => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_LAST
  * ));
  *
  * @see http://www.doctrine-project.org/jira/browse/DDC-490
@@ -45,7 +45,7 @@ class SortableNullsWalker extends Query\SqlWalker
                     $expr->type == Query\AST\PathExpression::TYPE_STATE_FIELD
             ) {
                 $fieldName = $expr->field;
-                $dqlAlias = $expr->identificationVariable . (!empty($parts) ? '.' . implode('.', $parts) : '');
+                $dqlAlias = $expr->identificationVariable;
                 $search = $this->walkPathExpression($expr) . ' ' . $type;
                 $index = $dqlAlias . '.' . $fieldName;
                 $sql = str_replace($search, $search . ' ' . $hint[$index], $sql);
