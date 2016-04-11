@@ -10,6 +10,7 @@ doctrine:
                  day: DoctrineExtensions\Query\Mysql\Day
                  dayname: DoctrineExtensions\Query\Mysql\DayName
                  dayofweek: DoctrineExtensions\Query\Mysql\DayOfWeek
+                 dayofyear: DoctrineExtensions\Query\Mysql\DayOfYear
                  div: DoctrineExtensions\Query\Mysql\Div
                  from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
                  last_day: DoctrineExtensions\Query\Mysql\LastDay
