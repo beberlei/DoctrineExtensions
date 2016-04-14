@@ -13,6 +13,7 @@ doctrine:
                  from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
                  last_day: DoctrineExtensions\Query\Mysql\LastDay
                  minute: DoctrineExtensions\Query\Mysql\Minute
+                 now: DoctrineExtensions\Query\Mysql\Now
                  second: DoctrineExtensions\Query\Mysql\Second
                  strtodate: DoctrineExtensions\Query\Mysql\StrToDate
                  time: DoctrineExtensions\Query\Mysql\Time
