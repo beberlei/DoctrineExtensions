@@ -15,6 +15,7 @@ doctrine:
                  from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
                  last_day: DoctrineExtensions\Query\Mysql\LastDay
                  minute: DoctrineExtensions\Query\Mysql\Minute
+                 now: DoctrineExtensions\Query\Mysql\Now
                  month: DoctrineExtensions\Query\Mysql\Month
                  monthname: DoctrineExtensions\Query\Mysql\MonthName
                  second: DoctrineExtensions\Query\Mysql\Second
