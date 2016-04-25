@@ -112,6 +112,39 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             "SELECT LEAST('M', 'N', 'o', 'c', 'C') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
+
+        $q = $this->entityManager->createQuery("SELECT LEAST(b.id, 15) AS lest FROM DoctrineExtensions\Tests\Entities\Blank b");
+
+        $this->assertEquals(
+            "SELECT LEAST(b0_.id, 15) AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+    }
+
+    /**
+     * Test case for MYSQL Comparison function GREATEST.
+     */
+    public function testGreatest()
+    {
+        $q = $this->entityManager->createQuery("SELECT GREATEST(10,1,4,0.4,0.003) AS great FROM DoctrineExtensions\Tests\Entities\Blank b");
+
+        $this->assertEquals(
+            'SELECT GREATEST(10, 1, 4, 0.4, 0.003) AS sclr_0 FROM Blank b0_',
+            $q->getSql()
+        );
+
+        $q = $this->entityManager->createQuery("SELECT GREATEST('M', 'N', 'o', 'c', 'C') AS great FROM DoctrineExtensions\Tests\Entities\Blank b");
+
+        $this->assertEquals(
+            "SELECT GREATEST('M', 'N', 'o', 'c', 'C') AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
+
+        $q = $this->entityManager->createQuery("SELECT GREATEST(b.id, 15) AS great FROM DoctrineExtensions\Tests\Entities\Blank b");
+        $this->assertEquals(
+            "SELECT GREATEST(b0_.id, 15) AS sclr_0 FROM Blank b0_",
+            $q->getSql()
+        );
     }
 
     /**
