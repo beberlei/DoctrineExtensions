@@ -48,6 +48,7 @@ doctrine:
                  quarter: DoctrineExtensions\Query\Mysql\Quarter
                  rand: DoctrineExtensions\Query\Mysql\Rand
                  round: DoctrineExtensions\Query\Mysql\Round
+                 stddev: DoctrineExtensions\Query\Mysql\StdDev
                  sin: DoctrineExtensions\Query\Mysql\Sin
                  std: DoctrineExtensions\Query\Mysql\Std
                  tan: DoctrineExtensions\Query\Mysql\Tan
