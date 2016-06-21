@@ -19,10 +19,12 @@ class PostgresqlTestCase extends \PHPUnit_Framework_TestCase
 
         $config->setCustomStringFunctions(array(
             'STR_TO_DATE'       => 'DoctrineExtensions\Query\Postgresql\StrToDate',
+            'COUNT_FILTER'      => 'DoctrineExtensions\Query\Postgresql\CountFilterFunction',
         ));
 
         $config->setCustomDateTimeFunctions(array(
             'DATE_FORMAT'       => 'DoctrineExtensions\Query\Postgresql\DateFormat',
+            'AT_TIME_ZONE'      => 'DoctrineExtensions\Query\Postgresql\AtTimeZoneFunction',
         ));
 
         $this->entityManager = \Doctrine\ORM\EntityManager::create(
