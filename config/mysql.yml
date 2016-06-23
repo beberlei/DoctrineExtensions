@@ -24,6 +24,7 @@ doctrine:
                  timediff: DoctrineExtensions\Query\Mysql\TimeDiff
                  timestampadd: DoctrineExtensions\Query\Mysql\TimestampAdd
                  timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
+                 timetosec: DoctrineExtensions\Query\Mysql\TimeToSec
                  week: DoctrineExtensions\Query\Mysql\Week
                  weekday: DoctrineExtensions\Query\Mysql\WeekDay
                  year: DoctrineExtensions\Query\Mysql\Year
