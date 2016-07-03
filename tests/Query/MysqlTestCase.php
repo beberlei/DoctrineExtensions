@@ -18,6 +18,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../Entities'));
 
         $config->setCustomDatetimeFunctions(array(
+            'CONVERT_TZ' => 'DoctrineExtensions\Query\Mysql\ConvertTz',
             'DATEADD'  => 'DoctrineExtensions\Query\Mysql\DateAdd',
             'DATEDIFF' => 'DoctrineExtensions\Query\Mysql\DateDiff',
             'DATESUB'  => 'DoctrineExtensions\Query\Mysql\DateSub',
