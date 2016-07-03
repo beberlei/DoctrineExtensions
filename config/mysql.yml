@@ -2,6 +2,7 @@ doctrine:
      orm:
          dql:
              datetime_functions:
+                 convert_tz: DoctrineExtensions\Query\Mysql\ConvertTz
                  date: DoctrineExtensions\Query\Mysql\Date
                  date_format: DoctrineExtensions\Query\Mysql\DateFormat
                  dateadd: DoctrineExtensions\Query\Mysql\DateAdd
