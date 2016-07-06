@@ -82,3 +82,5 @@ doctrine:
                  soundex: DoctrineExtensions\Query\Mysql\Soundex
                  substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
+                 hex: DoctrineExtensions\Query\Mysql\Hex
+                 unhex: DoctrineExtensions\Query\Mysql\Unhex
