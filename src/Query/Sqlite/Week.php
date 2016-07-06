@@ -6,22 +6,19 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * @author Tarjei Huse <tarjei.huse@gmail.com>
+ * @author Aleksandr Klimenkov <alx.devel@gmail.com>
  */
-class Week extends FunctionNode
+class Week extends AbstractStrfTime
 {
-    public $date;
+    /**
+     * Currently not in use
+     * @var int
+     */
     public $mode;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    protected function getFormat()
     {
-        $sql = "WEEK(" . $sqlWalker->walkArithmeticPrimary($this->date);
-        if ($this->mode != null) {
-            $sql .= ", " . $sqlWalker->walkLiteral($this->mode);
-        }
-        $sql .= ")";
-
-        return $sql;
+        return '%W';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
