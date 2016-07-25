@@ -14,6 +14,7 @@ doctrine:
                  dayofyear: DoctrineExtensions\Query\Mysql\DayOfYear
                  div: DoctrineExtensions\Query\Mysql\Div
                  from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
+                 hour: DoctrineExtensions\Query\Mysql\Hour
                  last_day: DoctrineExtensions\Query\Mysql\LastDay
                  minute: DoctrineExtensions\Query\Mysql\Minute
                  now: DoctrineExtensions\Query\Mysql\Now
@@ -43,7 +44,6 @@ doctrine:
                  cos: DoctrineExtensions\Query\Mysql\Cos
                  cot: DoctrineExtensions\Query\Mysql\Cot
                  floor: DoctrineExtensions\Query\Mysql\Floor
-                 hour: DoctrineExtensions\Query\Mysql\Hour
                  pi: DoctrineExtensions\Query\Mysql\Pi
                  power: DoctrineExtensions\Query\Mysql\Power
                  quarter: DoctrineExtensions\Query\Mysql\Quarter
