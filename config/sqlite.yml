@@ -35,7 +35,7 @@ doctrine:
 #                 group_concat: DoctrineExtensions\Query\Sqlite\GroupConcat
 #                 ifelse: DoctrineExtensions\Query\Sqlite\IfElse
                  ifnull: DoctrineExtensions\Query\Sqlite\IfNull
-#                 match_against: DoctrineExtensions\Query\Sqlite\MatchAgainst
+#                 match: DoctrineExtensions\Query\Sqlite\MatchAgainst
 #                 md5: DoctrineExtensions\Query\Sqlite\Md5
 #                 nullif: DoctrineExtensions\Query\Sqlite\NullIf
 #                 radians: DoctrineExtensions\Query\Sqlite\Radians

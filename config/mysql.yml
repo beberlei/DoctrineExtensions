@@ -70,7 +70,7 @@ doctrine:
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
                  least: DoctrineExtensions\Query\Mysql\Least
                  lpad: DoctrineExtensions\Query\Mysql\Lpad
-                 match_against: DoctrineExtensions\Query\Mysql\MatchAgainst
+                 match: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  nullif: DoctrineExtensions\Query\Mysql\NullIf
                  radians: DoctrineExtensions\Query\Mysql\Radians
