@@ -36,6 +36,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
             'COS'       => 'DoctrineExtensions\Query\Mysql\Cos',
             'COT'       => 'DoctrineExtensions\Query\Mysql\Cot',
             'DEGREES'   => 'DoctrineExtensions\Query\Mysql\Degrees',
+            'LOG10'     => 'DoctrineExtensions\Query\Mysql\Log10',
             'RADIANS'   => 'DoctrineExtensions\Query\Mysql\Radians',
             'STDDEV'    => 'DoctrineExtensions\Query\Mysql\StdDev',
             'SIN'       => 'DoctrineExtensions\Query\Mysql\Sin',
