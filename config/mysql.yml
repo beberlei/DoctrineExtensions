@@ -54,6 +54,7 @@ doctrine:
                  sin: DoctrineExtensions\Query\Mysql\Sin
                  std: DoctrineExtensions\Query\Mysql\Std
                  tan: DoctrineExtensions\Query\Mysql\Tan
+                 variance: DoctrineExtensions\Query\Mysql\Variance
 
              string_functions:
                  ascii: DoctrineExtensions\Query\Mysql\Ascii
