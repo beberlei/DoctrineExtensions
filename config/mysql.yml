@@ -43,11 +43,13 @@ doctrine:
                  ceil: DoctrineExtensions\Query\Mysql\Ceil
                  cos: DoctrineExtensions\Query\Mysql\Cos
                  cot: DoctrineExtensions\Query\Mysql\Cot
+                 degrees: DoctrineExtensions\Query\Mysql\Degrees
                  floor: DoctrineExtensions\Query\Mysql\Floor
                  log10: DoctrineExtensions\Query\Mysql\Log10
                  pi: DoctrineExtensions\Query\Mysql\Pi
                  power: DoctrineExtensions\Query\Mysql\Power
                  quarter: DoctrineExtensions\Query\Mysql\Quarter
+                 radians: DoctrineExtensions\Query\Mysql\Radians
                  rand: DoctrineExtensions\Query\Mysql\Rand
                  round: DoctrineExtensions\Query\Mysql\Round
                  stddev: DoctrineExtensions\Query\Mysql\StdDev
@@ -82,6 +84,7 @@ doctrine:
                  sha1: DoctrineExtensions\Query\Mysql\Sha1
                  sha2: DoctrineExtensions\Query\Mysql\Sha2
                  soundex: DoctrineExtensions\Query\Mysql\Soundex
+                 str_to_date: DoctrineExtensions\Query\Mysql\StrToDate
                  substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
                  hex: DoctrineExtensions\Query\Mysql\Hex
