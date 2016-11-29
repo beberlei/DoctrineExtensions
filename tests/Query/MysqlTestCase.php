@@ -41,6 +41,7 @@ class MysqlTestCase extends \PHPUnit_Framework_TestCase
             'STDDEV'    => 'DoctrineExtensions\Query\Mysql\StdDev',
             'SIN'       => 'DoctrineExtensions\Query\Mysql\Sin',
             'TAN'       => 'DoctrineExtensions\Query\Mysql\Tan',
+            'VARIANCE'  => 'DoctrineExtensions\Query\Mysql\Variance',
         ));
 
         $config->setCustomStringFunctions(array(
