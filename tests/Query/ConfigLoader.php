@@ -37,11 +37,19 @@ class ConfigLoader
         }
 
         // Load the existing function classes.
-        foreach (array('datetime_functions', 'numeric_functions', 'string_functions') as $function) {
-            if (array_key_exists($function, $parsed)) {
-                foreach ($parsed[ $function ] as $key => $value) {
-                    $configuration->addCustomDatetimeFunction(strtoupper($key), $value);
-                }
+        if (array_key_exists('datetime_functions', $parsed)) {
+            foreach ($parsed[ 'datetime_functions' ] as $key => $value) {
+                $configuration->addCustomDatetimeFunction(strtoupper($key), $value);
+            }
+        }
+        if (array_key_exists('numeric_functions', $parsed)) {
+            foreach ($parsed[ 'numeric_functions' ] as $key => $value) {
+                $configuration->addCustomNumericFunction(strtoupper($key), $value);
+            }
+        }
+        if (array_key_exists('string_functions', $parsed)) {
+            foreach ($parsed[ 'string_functions' ] as $key => $value) {
+                $configuration->addCustomStringFunction(strtoupper($key), $value);
             }
         }
     }
