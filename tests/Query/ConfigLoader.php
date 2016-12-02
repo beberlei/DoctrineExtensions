@@ -22,18 +22,13 @@ class ConfigLoader
         $parsed = $parser->parse( file_get_contents( realpath( __DIR__ . '/../../config/' . $database . '.yml' ) ) );
 
         // Make sure it has the correct structure.
-        if (array_key_exists( 'doctrine', $parsed)) {
-            if (array_key_exists('orm', $parsed['doctrine'])) {
-                if (array_key_exists('dql', $parsed['doctrine']['orm'])) {
-                    $parsed = $parsed['doctrine']['orm']['dql'];
-                } else {
-                    return;
-                }
-            } else {
-                return;
-            }
+        if (array_key_exists('doctrine', $parsed)
+            and array_key_exists('orm', $parsed['doctrine'])
+            and array_key_exists('dql', $parsed['doctrine']['orm'])
+        ) {
+            $parsed = $parsed['doctrine']['orm']['dql'];
         } else {
-            return;
+            throw new \Exception('/config/' . $database . '.yml does not have the proper doctrine configuration.');
         }
 
         // Load the existing function classes.
