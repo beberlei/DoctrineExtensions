@@ -8,6 +8,7 @@ doctrine:
                  #datediff: DoctrineExtensions\Query\Sqlite\DateDiff
                  day: DoctrineExtensions\Query\Sqlite\Day
                  dayname: DoctrineExtensions\Query\Sqlite\DayName
+                 hour: DoctrineExtensions\Query\Sqlite\Hour
                  minute: DoctrineExtensions\Query\Sqlite\Minute
                  #month: DoctrineExtensions\Query\Sqlite\Month
                  #monthname: DoctrineExtensions\Query\Sqlite\MonthName

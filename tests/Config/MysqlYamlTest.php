@@ -9,15 +9,18 @@ namespace DoctrineExtensions\Tests\Config;
  */
 class MysqlConfigTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var array */
+    protected $functions;
+
     public function setUp()
     {
         $yaml = new \Symfony\Component\Yaml\Parser();
 
-        $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
+        $config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
         $this->functions = array_merge(
-            $this->config['doctrine']['orm']['dql']['datetime_functions'],
-            $this->config['doctrine']['orm']['dql']['numeric_functions'],
-            $this->config['doctrine']['orm']['dql']['string_functions']
+            $config['doctrine']['orm']['dql']['datetime_functions'],
+            $config['doctrine']['orm']['dql']['numeric_functions'],
+            $config['doctrine']['orm']['dql']['string_functions']
         );
     }
 

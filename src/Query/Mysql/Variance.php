@@ -2,12 +2,16 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 class Variance extends FunctionNode
 {
+    /** @var SimpleArithmeticExpression */
+    protected $arithmeticExpression;
+
     public function parse(Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
