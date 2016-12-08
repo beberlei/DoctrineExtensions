@@ -2,7 +2,9 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class BitCountTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+use DoctrineExtensions\Tests\Query\MysqlTestCase;
+
+class BitCountTest extends MysqlTestCase
 {
     public function testBitCount()
     {
