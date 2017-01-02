@@ -59,6 +59,8 @@ doctrine:
                  variance: DoctrineExtensions\Query\Mysql\Variance
 
              string_functions:
+                 aes_decrypt: DoctrineExtensions\Query\Mysql\AesDecrypt
+                 aes_encrypt: DoctrineExtensions\Query\Mysql\AesEncrypt
                  ascii: DoctrineExtensions\Query\Mysql\Ascii
                  binary: DoctrineExtensions\Query\Mysql\Binary
                  char_length: DoctrineExtensions\Query\Mysql\CharLength
