@@ -34,7 +34,7 @@ doctrine:
 #                 field: DoctrineExtensions\Query\Sqlite\Field
 #                 find_in_set: DoctrineExtensions\Query\Sqlite\FindInSet
 #                 group_concat: DoctrineExtensions\Query\Sqlite\GroupConcat
-#                 ifelse: DoctrineExtensions\Query\Sqlite\IfElse
+                 ifelse: DoctrineExtensions\Query\Sqlite\IfElse
                  ifnull: DoctrineExtensions\Query\Sqlite\IfNull
 #                 match: DoctrineExtensions\Query\Sqlite\MatchAgainst
 #                 md5: DoctrineExtensions\Query\Sqlite\Md5
