@@ -5,6 +5,7 @@ namespace DoctrineExtensions\Query\Mysql;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Version;
 
 class Regexp extends FunctionNode
 {
@@ -25,18 +26,13 @@ class Regexp extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return '('
-            . (
-                is_a( $this->value, 'Doctrine\ORM\Query\AST\Node')
-                    ? $this->value->dispatch($sqlWalker)
-                    : "'" . $this->value . "'"
-            )
-            . ' REGEXP '
-            . (
-                is_a( $this->regexp, 'Doctrine\ORM\Query\AST\Node')
-                    ? $this->regexp->dispatch($sqlWalker)
-                    : "'" . $this->regexp . "'"
-            )
-            . ')';
+        if (Version::VERSION < 2.3) {
+            $sqlLeft = "'" . $this->value . "'";
+            $sqlRight = "'" . $this->regexp . "'";
+        } else {
+            $sqlLeft =  $this->value->dispatch($sqlWalker);
+            $sqlRight =  $this->regexp->dispatch($sqlWalker);
+        }
+        return '(' . $sqlLeft . ' REGEXP ' . $sqlRight . ')';
     }
 }
