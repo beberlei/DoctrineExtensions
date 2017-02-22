@@ -22,6 +22,15 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
+    public function testDateAddWithColumnAlias()
+    {
+        $dql = "SELECT p.created as alternative FROM DoctrineExtensions\Tests\Entities\Date p HAVING DATEADD(alternative, 4, 'MONTH') < 7";
+        $q = $this->entityManager->createQuery($dql);
+        $sql = "SELECT d0_.created AS created_0 FROM Date d0_ HAVING DATE_ADD(created_0, INTERVAL 4 MONTH) < 7";
+
+        $this->assertEquals($sql, $q->getSql());
+    }
+
     public function testDateAddWithNegative()
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEADD(CURRENT_TIME(), -4, 'MONTH') < 7";
