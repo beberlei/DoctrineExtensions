@@ -32,6 +32,7 @@ doctrine:
                  year: DoctrineExtensions\Query\Mysql\Year
                  yearweek: DoctrineExtensions\Query\Mysql\YearWeek
                  unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
+                 utc_timestamp: DoctrineExtensions\Query\Mysql\UtcTimestamp
 
              numeric_functions:
                  acos: DoctrineExtensions\Query\Mysql\Acos
