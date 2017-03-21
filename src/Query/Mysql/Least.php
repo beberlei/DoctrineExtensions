@@ -25,13 +25,13 @@ class Least extends FunctionNode
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
-        $this->field = $parser->ArithmeticPrimary();
+        $this->field = $parser->ArithmeticExpression();
         $lexer = $parser->getLexer();
 
         while (count($this->values) < 1 ||
             $lexer->lookahead['type'] != Lexer::T_CLOSE_PARENTHESIS) {
             $parser->match(Lexer::T_COMMA);
-            $this->values[] = $parser->ArithmeticPrimary();
+            $this->values[] = $parser->ArithmeticExpression();
         }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
