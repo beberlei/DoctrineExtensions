@@ -1,6 +1,6 @@
 <?php
 
-namespace BoaCompra\DoctrineExtensions\Query\Mysql;
+namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
