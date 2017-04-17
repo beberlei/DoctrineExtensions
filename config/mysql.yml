@@ -81,6 +81,7 @@ doctrine:
                  match: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
                  nullif: DoctrineExtensions\Query\Mysql\NullIf
+                 password: DoctrineExtensions\Query\Mysql\Password
                  radians: DoctrineExtensions\Query\Mysql\Radians
                  regexp: DoctrineExtensions\Query\Mysql\Regexp
                  replace: DoctrineExtensions\Query\Mysql\Replace
