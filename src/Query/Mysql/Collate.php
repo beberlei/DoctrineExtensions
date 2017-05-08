@@ -18,17 +18,15 @@ use Doctrine\ORM\Query\Lexer;
  */
 class Collate extends FunctionNode
 {
+    /**
+     * @var null
+     */
+    public $expressionToCollate = null;
 
     /**
      * @var null
      */
-    protected $expressionToCollate = null;
-
-    /**
-     * @var null
-     */
-    protected $collation = null;
-
+    public $collation = null;
 
     /**
      * @param \Doctrine\ORM\Query\Parser $parser
