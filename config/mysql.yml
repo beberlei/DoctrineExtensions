@@ -67,6 +67,7 @@ doctrine:
                  binary: DoctrineExtensions\Query\Mysql\Binary
                  char_length: DoctrineExtensions\Query\Mysql\CharLength
                  concat_ws: DoctrineExtensions\Query\Mysql\ConcatWs
+                 collate: DoctrineExtensions\Query\Mysql\Collate
                  countif: DoctrineExtensions\Query\Mysql\CountIf
                  crc32: DoctrineExtensions\Query\Mysql\Crc32
                  degrees: DoctrineExtensions\Query\Mysql\Degrees
