@@ -35,12 +35,14 @@ class Collate extends FunctionNode
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
+
         $this->stringPrimary = $parser->StringPrimary();
 
         $parser->match(Lexer::T_COMMA);
-
         $parser->match(Lexer::T_IDENTIFIER);
+
         $lexer = $parser->getLexer();
+
         $this->collation = $lexer->token['value'];
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
@@ -52,7 +54,6 @@ class Collate extends FunctionNode
      */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-
-        return sprintf( '%s COLLATE %s', $sqlWalker->walkStringPrimary($this->stringPrimary), $this->collation );
+        return sprintf('%s COLLATE %s', $sqlWalker->walkStringPrimary($this->stringPrimary), $this->collation);
     }
 }
