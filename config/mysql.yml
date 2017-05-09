@@ -66,6 +66,7 @@ doctrine:
                  ascii: DoctrineExtensions\Query\Mysql\Ascii
                  binary: DoctrineExtensions\Query\Mysql\Binary
                  char_length: DoctrineExtensions\Query\Mysql\CharLength
+                 collate: DoctrineExtensions\Query\Mysql\Collate
                  concat_ws: DoctrineExtensions\Query\Mysql\ConcatWs
                  countif: DoctrineExtensions\Query\Mysql\CountIf
                  crc32: DoctrineExtensions\Query\Mysql\Crc32
