@@ -39,10 +39,10 @@ class SubstringIndex extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return sprintf("SUBSTRING_INDEX(%s, %s, %s)",
-          $this->string->dispatch($sqlWalker),
-          $this->delimiter->dispatch($sqlWalker),
-          $this->count->dispatch($sqlWalker)
+        return sprintf('SUBSTRING_INDEX(%s, %s, %s)',
+            $this->string->dispatch($sqlWalker),
+            $this->delimiter->dispatch($sqlWalker),
+            $this->count->dispatch($sqlWalker)
         );
     }
 }
