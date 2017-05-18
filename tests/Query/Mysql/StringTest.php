@@ -84,14 +84,21 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         );
     }
 
+  /**
+   * Test cases for MYSQL SUBSTRING_INDEX function.
+   */
     public function testSubstringIndex()
     {
-        $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) from DoctrineExtensions\Tests\Entities\Blank");
-
-        $this->assertEquals(
-            "SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
-        );
+      $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) from DoctrineExtensions\Tests\Entities\Blank");
+      $this->assertEquals("SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) AS sclr_0 FROM Blank b0_", $q->getSql());
+      $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX('www.mysql.com', '.', -2) from DoctrineExtensions\Tests\Entities\Blank");
+      $this->assertEquals("SELECT SUBSTRING_INDEX('www.mysql.com', '.', -2) AS sclr_0 FROM Blank b0_", $q->getSql());
+      $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX('www.mysql.com', '.', '-2') from DoctrineExtensions\Tests\Entities\Blank");
+      $this->assertEquals("SELECT SUBSTRING_INDEX('www.mysql.com', '.', '-2') AS sclr_0 FROM Blank b0_", $q->getSql());
+      $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX(b.id, '', '4') from DoctrineExtensions\Tests\Entities\Blank b");
+      $this->assertEquals("SELECT SUBSTRING_INDEX(b0_.id, '', '4') AS sclr_0 FROM Blank b0_", $q->getSql());
+      $q = $this->entityManager->createQuery("SELECT SUBSTRING_INDEX(b.id, '', -1) from DoctrineExtensions\Tests\Entities\Blank b");
+      $this->assertEquals("SELECT SUBSTRING_INDEX(b0_.id, '', -1) AS sclr_0 FROM Blank b0_", $q->getSql());
     }
 
     /**
@@ -99,10 +106,10 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
      */
     public function testLeast()
     {
-        $q = $this->entityManager->createQuery("SELECT LEAST(10,1,4,0.4,0.003) AS lest FROM DoctrineExtensions\Tests\Entities\Blank b");
+        $q = $this->entityManager->createQuery("SELECT LEAST(10,1,-4,0.4,0.003) AS lest FROM DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
-            'SELECT LEAST(10, 1, 4, 0.4, 0.003) AS sclr_0 FROM Blank b0_',
+            'SELECT LEAST(10, 1, -4, 0.4, 0.003) AS sclr_0 FROM Blank b0_',
             $q->getSql()
         );
 
