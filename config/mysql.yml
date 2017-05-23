@@ -63,6 +63,7 @@ doctrine:
              string_functions:
                  aes_decrypt: DoctrineExtensions\Query\Mysql\AesDecrypt
                  aes_encrypt: DoctrineExtensions\Query\Mysql\AesEncrypt
+                 any_value: DoctrineExtensions\Query\Mysql\AnyValue
                  ascii: DoctrineExtensions\Query\Mysql\Ascii
                  binary: DoctrineExtensions\Query\Mysql\Binary
                  char_length: DoctrineExtensions\Query\Mysql\CharLength
