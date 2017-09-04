@@ -21,6 +21,7 @@ doctrine:
                  month: DoctrineExtensions\Query\Mysql\Month
                  monthname: DoctrineExtensions\Query\Mysql\MonthName
                  second: DoctrineExtensions\Query\Mysql\Second
+                 sectotime: DoctrineExtensions\Query\Mysql\SecToTime
                  strtodate: DoctrineExtensions\Query\Mysql\StrToDate
                  time: DoctrineExtensions\Query\Mysql\Time
                  timediff: DoctrineExtensions\Query\Mysql\TimeDiff
