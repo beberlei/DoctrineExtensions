@@ -32,6 +32,7 @@ notifications:
 script: vendor/bin/phpunit
 
 sudo: false
+dist: precise
 
 cache:
   directories:
