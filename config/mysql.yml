@@ -47,8 +47,11 @@ doctrine:
                  cos: DoctrineExtensions\Query\Mysql\Cos
                  cot: DoctrineExtensions\Query\Mysql\Cot
                  degrees: DoctrineExtensions\Query\Mysql\Degrees
+                 exp: DoctrineExtensions\Query\Mysql\Exp
                  floor: DoctrineExtensions\Query\Mysql\Floor
+                 log: DoctrineExtensions\Query\Mysql\Log
                  log10: DoctrineExtensions\Query\Mysql\Log10
+                 log2: DoctrineExtensions\Query\Mysql\Log2
                  pi: DoctrineExtensions\Query\Mysql\Pi
                  power: DoctrineExtensions\Query\Mysql\Power
                  quarter: DoctrineExtensions\Query\Mysql\Quarter
