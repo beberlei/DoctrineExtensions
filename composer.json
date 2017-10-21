@@ -1,5 +1,5 @@
 {
-    "name": "beberlei/DoctrineExtensions",
+    "name": "mbtec/DoctrineExtensions",
     "type": "library",
     "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL and Oracle.",
     "keywords": ["doctrine", "orm", "database"],
@@ -7,6 +7,7 @@
     "authors": [
         {"name": "Benjamin Eberlei", "email": "kontakt@beberlei.de"},
         {"name": "Steve Lacey", "email": "steve@stevelacey.net"}
+        {"name": "Matthias Büsing", "email": "info@mb-tec.eu"}
     ],
     "require": {
         "php": ">=5.3.2"
