@@ -1,5 +1,5 @@
 {
-    "name": "mbtec/DoctrineExtensions",
+    "name": "mb-tec/DoctrineExtensions",
     "type": "library",
     "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL and Oracle.",
     "keywords": ["doctrine", "orm", "database"],
