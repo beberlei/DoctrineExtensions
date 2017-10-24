@@ -36,7 +36,7 @@ To install this library, run the command below and you will get the latest
 version:
 
 ```sh
-composer require mb-tec/DoctrineExtensions
+composer require beberlei/DoctrineExtensions
 ```
 
 If you want to run the tests:
