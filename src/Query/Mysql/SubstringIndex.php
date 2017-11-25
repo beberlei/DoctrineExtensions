@@ -29,7 +29,7 @@ class SubstringIndex extends FunctionNode
         $parser->match(Lexer::T_COMMA);
         $this->delimiter = $parser->ArithmeticPrimary();
         $parser->match(Lexer::T_COMMA);
-        $this->count = $parser->ArithmeticExpression();
+        $this->count = $parser->ArithmeticFactor();
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
