@@ -58,7 +58,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 1);
 
-        $this->assertTrue($entity->date instanceof \Zend_Date);
+        $this->assertInstanceOf('Zend_Date', $entity->date);
         $this->assertTrue($entity->date->equals(new \Zend_Date(array(
             'year' => 2012, 'month' => 11, 'day' => 10,
             'hour' => 9, 'minute' => 8, 'second' => 7
@@ -78,7 +78,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
 
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 2);
 
-        $this->assertTrue($entity->date instanceof \Zend_Date);
+        $this->assertInstanceOf('Zend_Date', $entity->date);
         $this->assertTrue($entity->date->equals($zendDate));
     }
 
