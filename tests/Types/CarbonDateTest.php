@@ -5,14 +5,15 @@ namespace DoctrineExtensions\Tests\Types;
 use Carbon\Carbon,
     Doctrine\ORM\Tools\SchemaTool,
     DoctrineExtensions\Tests\Entities\CarbonDate as Entity,
-    Doctrine\DBAL\Types\Type;
+    Doctrine\DBAL\Types\Type,
+    PHPUnit\Framework\TestCase;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class CarbonDateTest extends \PHPUnit_Framework_TestCase
+class CarbonDateTest extends TestCase
 {
     public $entityManager = null;
 

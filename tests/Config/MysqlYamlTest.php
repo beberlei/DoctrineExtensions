@@ -2,12 +2,14 @@
 
 namespace DoctrineExtensions\Tests\Config;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test that checks the README describes all of the query types
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlConfigTest extends \PHPUnit_Framework_TestCase
+class MysqlConfigTest extends TestCase
 {
     /** @var array */
     protected $functions;

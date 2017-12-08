@@ -4,14 +4,15 @@ namespace DoctrineExtensions\Tests\Types;
 
 use Doctrine\Common\EventManager,
     Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Tools\SchemaTool;
+    Doctrine\ORM\Tools\SchemaTool,
+    PHPUnit\Framework\TestCase;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
  *
  * @author Andreas Gallien <gallien@seleos.de>
  */
-class ZendDateTest extends \PHPUnit_Framework_TestCase
+class ZendDateTest extends TestCase
 {
     public $entityManager = null;
 
