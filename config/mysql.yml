@@ -83,6 +83,7 @@ doctrine:
                  group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
+                 instr: DoctrineExtensions\Query\Mysql\Instr
                  least: DoctrineExtensions\Query\Mysql\Least
                  lpad: DoctrineExtensions\Query\Mysql\Lpad
                  match: DoctrineExtensions\Query\Mysql\MatchAgainst
