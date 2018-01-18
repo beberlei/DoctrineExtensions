@@ -179,4 +179,14 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             $q->getSql()
         );
     }
+
+  /**
+   * Test cases for MYSQL INSTR function.
+   */
+  public function testInstr()
+  {
+    $q = $this->entityManager->createQuery("SELECT INSTR('www.mysql.com', 'mysql') from DoctrineExtensions\Tests\Entities\Blank");
+    $this->assertEquals("SELECT INSTR('www.mysql.com', 'mysql') AS sclr_0 FROM Blank b0_", $q->getSql());
+  }
+
 }
