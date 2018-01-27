@@ -14,7 +14,7 @@
     "require-dev": {
         "doctrine/orm": "~2.1",
         "nesbot/carbon": "*",
-        "phpunit/phpunit": "~4.5",
+        "phpunit/phpunit": "~4.8.35",
         "symfony/yaml": "~2.6",
         "zf1/zend-date": "~1.12",
         "zf1/zend-registry": "~1.12"
