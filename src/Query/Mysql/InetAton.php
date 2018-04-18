@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
@@ -32,6 +33,12 @@ class InetAton extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return 'INET_ATON('.$this->valueExpression->dispatch($sqlWalker).')';
+        return 'INET_ATON('
+            . (
+                $this->valueExpression instanceof Node
+                ? $this->valueExpression->dispatch($sqlWalker)
+                : "'" . $this->valueExpression . "'"
+            )
+            .')';
     }
 }
