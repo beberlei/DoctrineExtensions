@@ -101,3 +101,4 @@ doctrine:
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
                  hex: DoctrineExtensions\Query\Mysql\Hex
                  unhex: DoctrineExtensions\Query\Mysql\Unhex
+                 cast: DoctrineExtensions\Query\Mysql\Cast
