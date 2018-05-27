@@ -84,6 +84,30 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         );
     }
 
+    /**
+     * Test cases for MYSQL SUBSTRING function.
+     */
+    public function testSubstring()
+    {
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING('www.mysql.com', 1, 3) from DoctrineExtensions\Tests\Entities\Blank");
+        $this->assertEquals("SELECT SUBSTRING('www.mysql.com', 1, 3) AS sclr_0 FROM Blank b0_", $q->getSql());
+
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING('www.mysql.com', 2) from DoctrineExtensions\Tests\Entities\Blank");
+        $this->assertEquals("SELECT SUBSTRING('www.mysql.com', 2) AS sclr_0 FROM Blank b0_", $q->getSql());
+
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING('www.mysql.com', -2, 2) from DoctrineExtensions\Tests\Entities\Blank");
+        $this->assertEquals("SELECT SUBSTRING('www.mysql.com', -2, 2) AS sclr_0 FROM Blank b0_", $q->getSql());
+
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING(b.id, 5, 5) from DoctrineExtensions\Tests\Entities\Blank b");
+        $this->assertEquals("SELECT SUBSTRING(b0_.id, 5, 5) AS sclr_0 FROM Blank b0_", $q->getSql());
+
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING(b.id, 5) from DoctrineExtensions\Tests\Entities\Blank b");
+        $this->assertEquals("SELECT SUBSTRING(b0_.id, 5) AS sclr_0 FROM Blank b0_", $q->getSql());
+
+        $q = $this->entityManager->createQuery("SELECT SUBSTRING(b.id, -5, 2) from DoctrineExtensions\Tests\Entities\Blank b");
+        $this->assertEquals("SELECT SUBSTRING(b0_.id, -5, 2) AS sclr_0 FROM Blank b0_", $q->getSql());
+    }
+
   /**
    * Test cases for MYSQL SUBSTRING_INDEX function.
    */

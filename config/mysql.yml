@@ -100,6 +100,7 @@ doctrine:
                  sha2: DoctrineExtensions\Query\Mysql\Sha2
                  soundex: DoctrineExtensions\Query\Mysql\Soundex
                  str_to_date: DoctrineExtensions\Query\Mysql\StrToDate
+                 substring: DoctrineExtensions\Query\Mysql\Substring
                  substring_index: DoctrineExtensions\Query\Mysql\SubstringIndex
                  unhex: DoctrineExtensions\Query\Mysql\Unhex
                  uuid_short: DoctrineExtensions\Query\Mysql\UuidShort
