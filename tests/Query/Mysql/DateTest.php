@@ -96,13 +96,22 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $this->assertEquals($sql, $q->getSql());
     }
-    
+
     public function testExtract()
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE 201702 > EXTRACT(YEAR_MONTH FROM p.created)";
         $q = $this->entityManager->createQuery($dql);
         
         $sql = "SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE 201702 > EXTRACT(YEAR_MONTH FROM d0_.created)";
+        $this->assertEquals($sql, $q->getSql());
+    }
+
+    public function testPeriodDiff()
+    {
+        $dql = "SELECT PERIOD_DIFF(date_format(p.created, '%Y%m'), date_format(p.created, '%Y%m') as date_diff FROM DoctrineExtensions\Tests\Entities\Date p";
+        $q = $this->entityManager->createQuery($dql);
+
+        $sql = "SELECT PERIOD_DIFF(DATE_FORMAT(d0_.created, '%Y%m'), DATE_FORMAT(d0_.created, '%Y%m')) AS sclr_0 FROM Date d0_";
 
         $this->assertEquals($sql, $q->getSql());
     }

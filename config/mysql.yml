@@ -20,6 +20,7 @@ doctrine:
                  now: DoctrineExtensions\Query\Mysql\Now
                  month: DoctrineExtensions\Query\Mysql\Month
                  monthname: DoctrineExtensions\Query\Mysql\MonthName
+                 period_diff: DoctrineExtensions\Query\Mysql\PeriodDiff
                  second: DoctrineExtensions\Query\Mysql\Second
                  sectotime: DoctrineExtensions\Query\Mysql\SecToTime
                  strtodate: DoctrineExtensions\Query\Mysql\StrToDate
