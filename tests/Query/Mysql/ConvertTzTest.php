@@ -9,7 +9,7 @@ class ConvertTzTest extends MysqlTestCase
     public function testDefaultSql()
     {
         $query = $this->entityManager->createQuery(
-            "SELECT CONVERT_TZ('2004-01-01 12:00:00','GMT','MET') FROM DoctrineExtensions\Tests\Entities\Blank"
+            "SELECT CONVERT_TZ('2004-01-01 12:00:00','GMT','MET') FROM DoctrineExtensions\Tests\Entities\Blank b"
         );
 
         $this->assertEquals(
