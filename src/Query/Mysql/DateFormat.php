@@ -2,15 +2,19 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Version;
 
 /**
  * @author Steve Lacey <steve@stevelacey.net>
  */
 class DateFormat extends FunctionNode
 {
+    /** @var Node */
     public $dateExpression = null;
+    /** @var Node */
     public $patternExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -25,9 +29,11 @@ class DateFormat extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return 'DATE_FORMAT(' .
-            $this->dateExpression->dispatch($sqlWalker) . ', ' .
-            $this->patternExpression->dispatch($sqlWalker) .
-        ')';
+        if (Version::VERSION < 2.3) {
+            $sql = "'" . $this->patternExpression . "'";
+        } else {
+            $sql =  $this->patternExpression->dispatch($sqlWalker);
+        }
+        return 'DATE_FORMAT(' . $this->dateExpression->dispatch($sqlWalker) . ', ' . $sql . ')';
     }
 }

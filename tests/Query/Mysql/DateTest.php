@@ -2,9 +2,10 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
+use DoctrineExtensions\Tests\Query\MysqlTestCase;
 use Doctrine\ORM\Version;
 
-class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+class DateTest extends MysqlTestCase
 {
     public function testDateDiff()
     {
