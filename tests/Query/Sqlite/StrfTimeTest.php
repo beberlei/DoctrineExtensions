@@ -8,15 +8,15 @@ class StrfTimeTest extends SqliteTestCase
 {
     public function getFunctionFormatters()
     {
-        return array(
-            array('Year', '%Y'),
-            array('Weekday', '%w'),
-            array('Month', '%m'),
-            array('Minute', '%M'),
-            array('Hour', '%H'),
-            array('Day', '%d'),
-            array('Date', '%Y-%m-%d')
-        );
+        return [
+            ['Year', '%Y'],
+            ['Weekday', '%w'],
+            ['Month', '%m'],
+            ['Minute', '%M'],
+            ['Hour', '%H'],
+            ['Day', '%d'],
+            ['Date', '%Y-%m-%d'],
+        ];
     }
 
     /**

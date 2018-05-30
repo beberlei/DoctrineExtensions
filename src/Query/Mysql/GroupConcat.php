@@ -2,14 +2,17 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class GroupConcat extends FunctionNode
 {
     public $isDistinct = false;
+
     public $pathExp = null;
+
     public $separator = null;
+
     public $orderBy = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -25,7 +28,7 @@ class GroupConcat extends FunctionNode
         }
 
         // first Path Expression is mandatory
-        $this->pathExp = array();
+        $this->pathExp = [];
         if ($lexer->isNextToken(Lexer::T_IDENTIFIER)) {
             $this->pathExp[] = $parser->StringExpression();
         } else {
@@ -57,7 +60,7 @@ class GroupConcat extends FunctionNode
     {
         $result = 'GROUP_CONCAT(' . ($this->isDistinct ? 'DISTINCT ' : '');
 
-        $fields = array();
+        $fields = [];
         foreach ($this->pathExp as $pathExp) {
             $fields[] = $pathExp->dispatch($sqlWalker);
         }

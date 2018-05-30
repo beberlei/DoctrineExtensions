@@ -10,7 +10,7 @@ class SinTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT SIN(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SIN(2) AS sclr_0 FROM Blank b0_"
+            'SELECT SIN(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

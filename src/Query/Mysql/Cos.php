@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class Cos extends FunctionNode
 {

@@ -10,7 +10,7 @@ class CharLengthTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT CHAR_LENGTH(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT CHAR_LENGTH(2) AS sclr_0 FROM Blank b0_"
+            'SELECT CHAR_LENGTH(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

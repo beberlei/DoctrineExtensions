@@ -2,10 +2,10 @@
 
 namespace DoctrineExtensions\Query\Postgresql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\SqlWalker,
-    Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * CountFilterFunction ::= "COUNT_FILTER" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
@@ -13,6 +13,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class CountFilterFunction extends FunctionNode
 {
     public $countExpression = null;
+
     public $whereExpression = null;
 
     public function parse(Parser $parser)
@@ -27,10 +28,10 @@ class CountFilterFunction extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker)
     {
-        return sprintf('COUNT(%s) FILTER(%s)',
+        return sprintf(
+            'COUNT(%s) FILTER(%s)',
             $this->countExpression->dispatch($sqlWalker),
             $this->whereExpression->dispatch($sqlWalker)
         );
     }
-
 }

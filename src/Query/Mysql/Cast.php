@@ -2,12 +2,12 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\AST\Node,
-    Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\Parser,
-    Doctrine\ORM\Query\QueryException,
-    Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\QueryException;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * "CAST" "(" "$fieldIdentifierExpression" "AS" "$castingTypeExpression" ")"

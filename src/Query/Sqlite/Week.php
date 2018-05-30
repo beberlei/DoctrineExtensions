@@ -2,7 +2,6 @@
 
 namespace DoctrineExtensions\Query\Sqlite;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
@@ -15,11 +14,6 @@ class Week extends AbstractStrfTime
      * @var int
      */
     public $mode;
-
-    protected function getFormat()
-    {
-        return '%W';
-    }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
@@ -34,5 +28,10 @@ class Week extends AbstractStrfTime
         }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
+
+    protected function getFormat()
+    {
+        return '%W';
     }
 }

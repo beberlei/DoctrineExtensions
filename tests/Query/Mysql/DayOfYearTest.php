@@ -10,7 +10,7 @@ class DayOfYearTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT DAYOFYEAR(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT DAYOFYEAR(2) AS sclr_0 FROM Blank b0_"
+            'SELECT DAYOFYEAR(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

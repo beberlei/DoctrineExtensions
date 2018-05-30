@@ -10,7 +10,7 @@ class CeilTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT CEIL(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT CEIL(2) AS sclr_0 FROM Blank b0_"
+            'SELECT CEIL(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

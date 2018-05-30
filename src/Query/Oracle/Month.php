@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Oracle;
 
-use Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Andréia Bohner <andreiabohner@gmail.com>
@@ -16,7 +16,8 @@ class Month extends FunctionNode
     {
         return sprintf(
                 'EXTRACT(MONTH FROM %s)',
-                $sqlWalker->walkArithmeticPrimary($this->date));
+                $sqlWalker->walkArithmeticPrimary($this->date)
+        );
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

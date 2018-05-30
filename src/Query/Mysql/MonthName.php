@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Steve Lacey <steve@stevelacey.net>
@@ -14,7 +14,7 @@ class MonthName extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "MONTHNAME(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+        return 'MONTHNAME(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

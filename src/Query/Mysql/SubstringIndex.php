@@ -15,7 +15,9 @@ use  Doctrine\ORM\Query\SqlWalker;
 class SubstringIndex extends FunctionNode
 {
     public $string = null;
+
     public $delimiter = null;
+
     public $count = null;
 
     /**
@@ -39,7 +41,8 @@ class SubstringIndex extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return sprintf('SUBSTRING_INDEX(%s, %s, %s)',
+        return sprintf(
+            'SUBSTRING_INDEX(%s, %s, %s)',
             $this->string->dispatch($sqlWalker),
             $this->delimiter->dispatch($sqlWalker),
             $this->count->dispatch($sqlWalker)

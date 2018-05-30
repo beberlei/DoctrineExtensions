@@ -2,12 +2,13 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class Regexp extends FunctionNode
 {
     public $value = null;
+
     public $regexp = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

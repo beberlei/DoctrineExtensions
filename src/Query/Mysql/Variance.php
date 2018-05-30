@@ -1,4 +1,5 @@
 <?php
+
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -20,7 +21,6 @@ class Variance extends FunctionNode
         $this->arithmeticExpression = $parser->SimpleArithmeticExpression();
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-
     }
 
     public function getSql(SqlWalker $sqlWalker)

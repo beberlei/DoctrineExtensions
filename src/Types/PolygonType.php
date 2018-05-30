@@ -1,6 +1,8 @@
 <?php
 
-namespace DoctrineExtensions\Types;;
+namespace DoctrineExtensions\Types;
+
+;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class PolygonType extends Type
@@ -20,8 +22,10 @@ class PolygonType extends Type
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         preg_match('/POLYGON\(\((.*)\)\)/', $value, $matches);
-        if ( !isset($matches[1]) )
+        if (!isset($matches[1])) {
             throw new Exception('No Polygon Points');
+        }
+
         return $matches[1];
     }
 

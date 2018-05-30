@@ -15,6 +15,7 @@ use  Doctrine\ORM\Query\SqlWalker;
 class Instr extends FunctionNode
 {
     public $originalString = null;
+
     public $subString = null;
 
     /**
@@ -36,7 +37,8 @@ class Instr extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return sprintf('INSTR(%s, %s)',
+        return sprintf(
+            'INSTR(%s, %s)',
             $this->originalString->dispatch($sqlWalker),
             $this->subString->dispatch($sqlWalker)
         );

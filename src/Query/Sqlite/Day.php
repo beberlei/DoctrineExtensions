@@ -7,7 +7,6 @@ namespace DoctrineExtensions\Query\Sqlite;
  */
 class Day extends AbstractStrfTime
 {
-
     protected function getFormat()
     {
         return '%d';

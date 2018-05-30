@@ -2,9 +2,9 @@
 
 namespace DoctrineExtensions\Types;
 
-use Carbon\Carbon,
-    Doctrine\DBAL\Platforms\AbstractPlatform,
-    Doctrine\DBAL\Types\DateType;
+use Carbon\Carbon;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\DateType;
 
 class CarbonDateType extends DateType
 {

@@ -10,7 +10,7 @@ class PiTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT PI() from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT PI() AS sclr_0 FROM Blank b0_"
+            'SELECT PI() AS sclr_0 FROM Blank b0_'
         );
     }
 }

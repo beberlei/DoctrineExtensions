@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * "BIT_XOR" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class BitXor extends FunctionNode
 {
     public $firstArithmetic;
+
     public $secondArithmetic;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)

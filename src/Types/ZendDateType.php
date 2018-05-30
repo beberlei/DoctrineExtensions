@@ -2,11 +2,13 @@
 
 namespace DoctrineExtensions\Types;
 
-use Doctrine\DBAL\Platforms\AbstractPlatform,
-    Doctrine\DBAL\Types\ConversionException,
-    Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Type;
 
-if (!class_exists('Zend_Date')) require_once 'Zend/Date.php';
+if (!class_exists('Zend_Date')) {
+    require_once 'Zend/Date.php';
+}
 
 /**
  * Type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
@@ -39,7 +41,7 @@ class ZendDateType extends Type
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if ($value === null) {
-            return null;
+            return;
         }
 
         $dateTimeFormatString = \Zend_Locale_Format::convertPhpToIsoFormat(
@@ -50,6 +52,7 @@ class ZendDateType extends Type
         if (!$val) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
+
         return $val;
     }
 

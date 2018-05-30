@@ -2,12 +2,13 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class FindInSet extends FunctionNode
 {
     public $needle = null;
+
     public $haystack = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

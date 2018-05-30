@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Andrew Mackrodt <andrew@ajmm.org>
@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class IfNull extends FunctionNode
 {
     private $expr1;
+
     private $expr2;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

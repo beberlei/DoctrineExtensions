@@ -10,7 +10,7 @@ class DegressTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT DEGREES(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT DEGREES(2) AS sclr_0 FROM Blank b0_"
+            'SELECT DEGREES(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

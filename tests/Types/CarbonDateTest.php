@@ -2,10 +2,10 @@
 
 namespace DoctrineExtensions\Tests\Types;
 
-use Carbon\Carbon,
-    Doctrine\ORM\Tools\SchemaTool,
-    DoctrineExtensions\Tests\Entities\CarbonDate as Entity,
-    Doctrine\DBAL\Types\Type;
+use Carbon\Carbon;
+use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Tools\SchemaTool;
+use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
@@ -35,18 +35,18 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
         $this->em = \Doctrine\ORM\EntityManager::create(
-            array(
+            [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
-            ),
+            ],
             $config
         );
 
         $schemaTool = new SchemaTool($this->em);
         $schemaTool->dropDatabase();
-        $schemaTool->createSchema(array(
+        $schemaTool->createSchema([
             $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\CarbonDate'),
-        ));
+        ]);
 
         $entity = new Entity();
         $entity->id = 1;
@@ -146,11 +146,11 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
 
     public function typeProvider()
     {
-        return array(
-            array('CarbonDate'),
-            array('CarbonDateTime'),
-            array('CarbonDateTimeTz'),
-            array('CarbonTime'),
-        );
+        return [
+            ['CarbonDate'],
+            ['CarbonDateTime'],
+            ['CarbonDateTimeTz'],
+            ['CarbonTime'],
+        ];
     }
 }

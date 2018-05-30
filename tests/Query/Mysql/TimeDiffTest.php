@@ -10,7 +10,7 @@ class TimeDiffTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT TIMEDIFF(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT TIMEDIFF(2, 3) AS sclr_0 FROM Blank b0_"
+            'SELECT TIMEDIFF(2, 3) AS sclr_0 FROM Blank b0_'
         );
     }
 }

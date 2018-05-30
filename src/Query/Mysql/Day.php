@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Rafael Kassner <kassner@gmail.com>
@@ -15,7 +15,7 @@ class Day extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "DAY(" . $sqlWalker->walkArithmeticPrimary($this->date) . ")";
+        return 'DAY(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

@@ -12,7 +12,6 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class StrfTime extends FunctionNode
 {
-
     public $date;
 
     public $formatter;
@@ -20,16 +19,16 @@ class StrfTime extends FunctionNode
     /**
      * @param SqlWalker $sqlWalker
      *
-     * @return string
      * @throws \Doctrine\ORM\Query\QueryException
+     * @return string
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return "strftime("
+        return 'strftime('
         . $sqlWalker->walkLiteral($this->formatter)
-        . ", "
+        . ', '
         . $sqlWalker->walkArithmeticPrimary($this->date)
-        . ")";
+        . ')';
     }
 
     public function parse(Parser $parser)

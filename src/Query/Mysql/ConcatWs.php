@@ -2,15 +2,16 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Andrew Mackrodt <andrew@ajmm.org>
  */
 class ConcatWs extends FunctionNode
 {
-    private $values = array();
+    private $values = [];
+
     private $notEmpty = false;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -40,10 +41,11 @@ class ConcatWs extends FunctionNode
                 case 'notempty':
                     $parser->match(Lexer::T_IDENTIFIER);
                     $this->notEmpty = true;
-                break;
 
+                break;
                 default: // Identifier not recognized (causes exception).
                     $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+
                 break;
             }
         }
@@ -54,7 +56,7 @@ class ConcatWs extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         // Create an array to hold the query elements.
-        $queryBuilder = array('CONCAT_WS(');
+        $queryBuilder = ['CONCAT_WS('];
 
         // Iterate over the captured expressions and add them to the query.
         for ($i = 0; $i < count($this->values); $i++) {

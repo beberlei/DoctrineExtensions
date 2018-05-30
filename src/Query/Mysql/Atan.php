@@ -2,13 +2,14 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\QueryException;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\QueryException;
 
 class Atan extends FunctionNode
 {
     public $arithmeticExpression;
+
     public $optionalSecondExpression;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
@@ -16,7 +17,6 @@ class Atan extends FunctionNode
         $secondArgument = '';
 
         if ($this->optionalSecondExpression) {
-
             $secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
                             $this->optionalSecondExpression
             );
@@ -36,14 +36,12 @@ class Atan extends FunctionNode
         $this->arithmeticExpression = $parser->SimpleArithmeticExpression();
 
         try {
-
             $parser->match(Lexer::T_COMMA);
 
             $this->optionalSecondExpression = $parser->SimpleArithmeticExpression();
 
             $parser->match(Lexer::T_CLOSE_PARENTHESIS);
         } catch (QueryException $e) {
-
             $parser->match(Lexer::T_CLOSE_PARENTHESIS);
         }
     }

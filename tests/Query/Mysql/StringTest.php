@@ -21,7 +21,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) AS sclr_0 FROM Blank b0_"
+            'SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) AS sclr_0 FROM Blank b0_'
         );
     }
 
@@ -92,23 +92,23 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
         $this->assertDqlProducesSql(
             "SELECT SUBSTRING(b.id, 5, 5) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SUBSTR(b0_.id, 5, 5) AS sclr_0 FROM Blank b0_"
+            'SELECT SUBSTR(b0_.id, 5, 5) AS sclr_0 FROM Blank b0_'
         );
 
         $this->assertDqlProducesSql(
             "SELECT SUBSTRING(b.id, 5) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SUBSTR(b0_.id, 5, LENGTH(b0_.id)) AS sclr_0 FROM Blank b0_"
+            'SELECT SUBSTR(b0_.id, 5, LENGTH(b0_.id)) AS sclr_0 FROM Blank b0_'
         );
 
         $this->assertDqlProducesSql(
             "SELECT SUBSTRING(b.id, -5, 2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SUBSTR(b0_.id, -5, 2) AS sclr_0 FROM Blank b0_"
+            'SELECT SUBSTR(b0_.id, -5, 2) AS sclr_0 FROM Blank b0_'
         );
     }
 
-  /**
-   * Test cases for MYSQL SUBSTRING_INDEX function.
-   */
+    /**
+     * Test cases for MYSQL SUBSTRING_INDEX function.
+     */
     public function testSubstringIndex()
     {
         $this->assertDqlProducesSql(
@@ -164,7 +164,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         );
         $this->assertDqlProducesSql(
             "SELECT GREATEST(b.id, 15) AS great FROM DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT GREATEST(b0_.id, 15) AS sclr_0 FROM Blank b0_"
+            'SELECT GREATEST(b0_.id, 15) AS sclr_0 FROM Blank b0_'
         );
     }
 

@@ -14,8 +14,8 @@ class DateSub extends DateAdd
 {
     /**
      * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
-     * @return string
      * @throws QueryException
+     * @return string
      */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {

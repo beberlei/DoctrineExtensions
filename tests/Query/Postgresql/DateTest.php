@@ -14,5 +14,4 @@ class DateTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 
         $this->assertEquals($sql, $q->getSql());
     }
-
 }
