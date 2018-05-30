@@ -25,19 +25,6 @@ class DbTestCase extends \PHPUnit_Framework_TestCase
         $this->entityManager = EntityManager::create(array('driver' => 'pdo_sqlite', 'memory' => true ), $this->configuration);
     }
 
-    /**
-     * @@inheritdoc
-     */
-    public static function assertEquals($expected, $actual, $message = '', $delta = 0.0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false)
-    {
-        // Expectation patch to support pre Doctrine 2.5 field aliases
-        if (\Doctrine\ORM\Version::compare('2.5.0') == 1) {
-            $expected = preg_replace('/(\w+)_([0-9])/', '\1\2', $expected);
-        }
-
-        return parent::assertEquals($expected, $actual, $message);
-    }
-
     public function assertDqlProducesSql($actualDql, $expectedSql, $params = array())
     {
         $q = $this->entityManager->createQuery($actualDql);
