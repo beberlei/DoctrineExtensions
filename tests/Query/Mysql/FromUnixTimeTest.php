@@ -8,11 +8,9 @@ class FromUnixTimeTest extends MysqlTestCase
 {
     public function testFromUnixTime()
     {
-        $q = $this->entityManager->createQuery("SELECT FROM_UNIXTIME(2) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT FROM_UNIXTIME(2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT FROM_UNIXTIME(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT FROM_UNIXTIME(2) AS sclr_0 FROM Blank b0_"
         );
     }
 }

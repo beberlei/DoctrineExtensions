@@ -8,11 +8,9 @@ class HourTest extends MysqlTestCase
 {
     public function testHour()
     {
-        $q = $this->entityManager->createQuery("SELECT HOUR(2) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT HOUR(2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT HOUR(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT HOUR(2) AS sclr_0 FROM Blank b0_"
         );
     }
 }

@@ -6,11 +6,9 @@ class Atan2Test
 {
     public function testAtan2()
     {
-        $q = $this->entityManager->createQuery("SELECT ATAN2(2) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT ATAN2(2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT ATAN2(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT ATAN2(2) AS sclr_0 FROM Blank b0_"
         );
     }
 }

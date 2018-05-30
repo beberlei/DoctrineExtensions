@@ -8,11 +8,9 @@ class RadiansTest extends MysqlTestCase
 {
     public function testRadians()
     {
-        $q = $this->entityManager->createQuery("SELECT RADIANS(2) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT RADIANS(2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT RADIANS(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT RADIANS(2) AS sclr_0 FROM Blank b0_"
         );
     }
 }

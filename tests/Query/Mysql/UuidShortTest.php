@@ -8,11 +8,9 @@ class UuidShortTest extends MysqlTestCase
 {
     public function testUuidShort()
     {
-        $q = $this->entityManager->createQuery("SELECT UUID_SHORT() from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT UUID_SHORT() AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT UUID_SHORT() from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT UUID_SHORT() AS sclr_0 FROM Blank b0_"
         );
     }
 }

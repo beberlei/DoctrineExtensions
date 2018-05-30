@@ -8,11 +8,9 @@ class CeilTest extends MysqlTestCase
 {
     public function testCeil()
     {
-        $q = $this->entityManager->createQuery("SELECT CEIL(2) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT CEIL(2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT CEIL(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT CEIL(2) AS sclr_0 FROM Blank b0_"
         );
     }
 }

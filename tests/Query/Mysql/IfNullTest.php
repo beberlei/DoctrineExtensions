@@ -8,11 +8,9 @@ class IfNullTest extends MysqlTestCase
 {
     public function testIfNull()
     {
-        $q = $this->entityManager->createQuery("SELECT IFNULL(2, 3) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT IFNULL(2, 3) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT IFNULL(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT IFNULL(2, 3) AS sclr_0 FROM Blank b0_"
         );
     }
 }

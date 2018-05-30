@@ -8,11 +8,9 @@ class DateSubTest extends MysqlTestCase
 {
     public function testDateSub()
     {
-        $q = $this->entityManager->createQuery("SELECT DATESUB(2, 5, 'MINUTE') from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT DATE_SUB(2, INTERVAL 5 MINUTE) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT DATESUB(2, 5, 'MINUTE') from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT DATE_SUB(2, INTERVAL 5 MINUTE) AS sclr_0 FROM Blank b0_"
         );
     }
 }

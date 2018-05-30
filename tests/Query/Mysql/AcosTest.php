@@ -8,11 +8,9 @@ class AcosTest extends MysqlTestCase
 {
     public function testAcos()
     {
-        $q = $this->entityManager->createQuery("SELECT ACOS(2) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT ACOS(2) AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT ACOS(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT ACOS(2) AS sclr_0 FROM Blank b0_"
         );
     }
 }
