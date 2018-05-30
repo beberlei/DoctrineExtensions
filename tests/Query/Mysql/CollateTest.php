@@ -8,11 +8,9 @@ class CollateTest extends MysqlTestCase
 {
     public function testCollate()
     {
-        $q = $this->entityManager->createQuery("SELECT COLLATE('A',latin1_german2_ci) from DoctrineExtensions\Tests\Entities\Blank b");
-
-        $this->assertEquals(
-            "SELECT 'A' COLLATE latin1_german2_ci AS sclr_0 FROM Blank b0_",
-            $q->getSql()
+        $this->assertDqlProducesSql(
+            "SELECT COLLATE('A',latin1_german2_ci) from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT 'A' COLLATE latin1_german2_ci AS sclr_0 FROM Blank b0_"
         );
     }
 
