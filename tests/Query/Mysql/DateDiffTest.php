@@ -9,10 +9,10 @@ class DateDiffTest extends MysqlTestCase
 {
     public function testDateDiff()
     {
-        $q = $this->entityManager->createQuery("SELECT DATEDIFF(5, 2) from DoctrineExtensions\Tests\Entities\Blank b");
+        $q = $this->entityManager->createQuery("SELECT DATEDIFF('2017-06-25', '2017-06-15') from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
-            "SELECT DATEDIFF(5, 2) AS sclr_0 FROM Blank b0_",
+            "SELECT DATEDIFF('2017-06-25', '2017-06-15') AS sclr_0 FROM Blank b0_",
             $q->getSql()
         );
     }
