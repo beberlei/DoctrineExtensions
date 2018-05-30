@@ -1,5 +1,6 @@
 <?php
-namespace Query\Mysql;
+
+namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class Atan2Test
 {
