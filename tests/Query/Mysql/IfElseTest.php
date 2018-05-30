@@ -8,7 +8,7 @@ class IfElseTest extends MysqlTestCase
 {
     public function testIfElse()
     {
-        $q = $this->entityManager->createQuery("SELECT IFELSE(2 < 3, 4, 5) from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT IFELSE(2 < 3, 4, 5) from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT IF(2 < 3, 4, 5) AS sclr_0 FROM Blank b0_",

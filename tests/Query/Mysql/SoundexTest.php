@@ -8,7 +8,7 @@ class SoundexTest extends MysqlTestCase
 {
     public function testSoundex()
     {
-        $q = $this->entityManager->createQuery("SELECT SOUNDEX('2') from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT SOUNDEX('2') from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT SOUNDEX('2') AS sclr_0 FROM Blank b0_",

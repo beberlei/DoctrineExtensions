@@ -8,7 +8,7 @@ class NowTest extends MysqlTestCase
 {
     public function testNow()
     {
-        $q = $this->entityManager->createQuery("SELECT NOW() from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT NOW() from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT NOW() AS sclr_0 FROM Blank b0_",

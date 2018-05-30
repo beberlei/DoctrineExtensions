@@ -8,7 +8,7 @@ class RoundTest extends MysqlTestCase
 {
     public function testRoundOneArgument()
     {
-        $q = $this->entityManager->createQuery("SELECT ROUND(2) from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT ROUND(2) from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT ROUND(2) AS sclr_0 FROM Blank b0_",
@@ -18,7 +18,7 @@ class RoundTest extends MysqlTestCase
 
     public function testRoundTwoArguments()
     {
-        $q = $this->entityManager->createQuery("SELECT ROUND(2, 3) from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT ROUND(2, 3) from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT ROUND(2, 3) AS sclr_0 FROM Blank b0_",

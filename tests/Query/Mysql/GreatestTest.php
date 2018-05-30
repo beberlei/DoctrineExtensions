@@ -8,7 +8,7 @@ class GreatestTest extends MysqlTestCase
 {
     public function testGreatest()
     {
-        $q = $this->entityManager->createQuery("SELECT GREATEST(2, 5, 8) from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT GREATEST(2, 5, 8) from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT GREATEST(2, 5, 8) AS sclr_0 FROM Blank b0_",

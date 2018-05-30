@@ -8,7 +8,7 @@ class HexTest extends MysqlTestCase
 {
     public function testHex()
     {
-        $q = $this->entityManager->createQuery("SELECT HEX(2) from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT HEX(2) from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT HEX(2) AS sclr_0 FROM Blank b0_",

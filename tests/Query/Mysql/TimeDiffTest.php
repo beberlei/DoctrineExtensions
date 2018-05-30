@@ -8,7 +8,7 @@ class TimeDiffTest extends MysqlTestCase
 {
     public function testTimeDiff()
     {
-        $q = $this->entityManager->createQuery("SELECT TIMEDIFF(2, 3) from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT TIMEDIFF(2, 3) from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT TIMEDIFF(2, 3) AS sclr_0 FROM Blank b0_",

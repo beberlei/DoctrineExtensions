@@ -8,7 +8,7 @@ class PiTest extends MysqlTestCase
 {
     public function testPi()
     {
-        $q = $this->entityManager->createQuery("SELECT PI() from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT PI() from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT PI() AS sclr_0 FROM Blank b0_",

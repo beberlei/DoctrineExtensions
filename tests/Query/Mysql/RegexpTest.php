@@ -8,7 +8,7 @@ class RegexpTest extends MysqlTestCase
 {
     public function testRegexp()
     {
-        $q = $this->entityManager->createQuery("SELECT REGEXP('2', '3') from DoctrineExtensions\Tests\Entities\Blank");
+        $q = $this->entityManager->createQuery("SELECT REGEXP('2', '3') from DoctrineExtensions\Tests\Entities\Blank b");
 
         $this->assertEquals(
             "SELECT ('2' REGEXP '3') AS sclr_0 FROM Blank b0_",
