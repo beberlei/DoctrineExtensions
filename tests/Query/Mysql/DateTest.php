@@ -83,10 +83,10 @@ class DateTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?';
 
-        $this->assertDqlProducesSql($dql, $sql, [
+        $this->assertDqlProducesSql($dql, $sql, array(
             'dateFormat' => '%Y-%m-%d %h:%i %p',
             'currentTime' => date('Y-m-d H:i:s'),
-        ]);
+        ));
     }
 
     public function testUnixTimpestamp()
