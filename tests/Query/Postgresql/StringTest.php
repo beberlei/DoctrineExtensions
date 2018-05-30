@@ -16,5 +16,4 @@ class StringTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
             $q->getSql()
         );
     }
-
 }

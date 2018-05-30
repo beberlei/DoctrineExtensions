@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Michael Kimpton <mike@sketchthat.com>
@@ -11,15 +11,16 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class YearWeek extends FunctionNode
 {
     public $date;
+
     public $mode;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        $sql = "YEARWEEK(" . $sqlWalker->walkArithmeticPrimary($this->date);
+        $sql = 'YEARWEEK(' . $sqlWalker->walkArithmeticPrimary($this->date);
         if ($this->mode != null) {
-            $sql .= ", " . $sqlWalker->walkLiteral($this->mode);
+            $sql .= ', ' . $sqlWalker->walkLiteral($this->mode);
         }
-        $sql .= ")";
+        $sql .= ')';
 
         return $sql;
     }

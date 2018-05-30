@@ -7,6 +7,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 class CastTest extends MysqlTestCase
 {
     private $entityLong = 'DoctrineExtensions\\Tests\\Entities\\BlogPost';
+
     private $entityShort = 'BlogPost';
 
     public function testSimpleSqlQuery()

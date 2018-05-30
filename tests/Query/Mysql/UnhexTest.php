@@ -10,7 +10,7 @@ class UnhexTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT UNHEX(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT UNHEX(2) AS sclr_0 FROM Blank b0_"
+            'SELECT UNHEX(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

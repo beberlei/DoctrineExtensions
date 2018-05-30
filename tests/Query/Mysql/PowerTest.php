@@ -10,7 +10,7 @@ class PowerTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT POWER(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT POWER(2, 3) AS sclr_0 FROM Blank b0_"
+            'SELECT POWER(2, 3) AS sclr_0 FROM Blank b0_'
         );
     }
 }

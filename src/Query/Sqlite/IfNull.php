@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\Lexer;
 class IfNull extends FunctionNode
 {
     private $expr1;
+
     private $expr2;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

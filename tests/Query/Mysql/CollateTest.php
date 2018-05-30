@@ -13,5 +13,4 @@ class CollateTest extends MysqlTestCase
             "SELECT 'A' COLLATE latin1_german2_ci AS sclr_0 FROM Blank b0_"
         );
     }
-
 }

@@ -18,7 +18,7 @@ abstract class AbstractStrfTime extends FunctionNode
                 . $this->getFormat()
                 . "', "
                 . $sqlWalker->walkArithmeticPrimary($this->date)
-            . ")";
+            . ')';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

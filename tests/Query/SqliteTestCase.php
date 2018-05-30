@@ -2,8 +2,6 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-use Doctrine\ORM\EntityManagerInterface;
-
 class SqliteTestCase extends DbTestCase
 {
     /**

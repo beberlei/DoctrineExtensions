@@ -29,6 +29,7 @@ use Doctrine\ORM\Query;
 class SortableNullsWalker extends Query\SqlWalker
 {
     const NULLS_FIRST = 'NULLS FIRST';
+
     const NULLS_LAST = 'NULLS LAST';
 
     public function walkOrderByItem($orderByItem)

@@ -8,7 +8,7 @@ class WeekTest extends SqliteTestCase
 {
     public function testFormatWeek()
     {
-        $dql = "SELECT WEEK(b.created) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
+        $dql = 'SELECT WEEK(b.created) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(
             "SELECT strftime('%W', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
             $this->entityManager->createQuery($dql)->getSql()
@@ -17,7 +17,7 @@ class WeekTest extends SqliteTestCase
 
     public function testFormatWeekWithSecondArgument()
     {
-        $dql = "SELECT WEEK(b.created, 1) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
+        $dql = 'SELECT WEEK(b.created, 1) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(
             "SELECT strftime('%W', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
             $this->entityManager->createQuery($dql)->getSql()

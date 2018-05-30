@@ -2,14 +2,14 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class Now extends FunctionNode
 {
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "NOW()";
+        return 'NOW()';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

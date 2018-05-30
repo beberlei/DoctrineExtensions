@@ -1,4 +1,5 @@
 <?php
+
 namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\ORM\Configuration;
@@ -7,8 +8,11 @@ use Symfony\Component\Yaml\Parser;
 class ConfigLoader
 {
     const MYSQL    = 'mysql';
+
     const ORACLE   = 'oracle';
+
     const POSTGRES = 'postgres';
+
     const SQLITE   = 'sqlite';
 
     /**
@@ -19,7 +23,7 @@ class ConfigLoader
     {
         $parser = new Parser();
         // Load the corresponding config file.
-        $config = $parser->parse( file_get_contents( realpath( __DIR__ . '/../../config/' . $database . '.yml' ) ) );
+        $config = $parser->parse(file_get_contents(realpath(__DIR__ . '/../../config/' . $database . '.yml')));
         $parsed = $config['doctrine']['orm']['dql'];
 
         // Load the existing function classes.

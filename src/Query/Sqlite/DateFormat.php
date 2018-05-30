@@ -15,6 +15,7 @@ use Doctrine\ORM\Query\Lexer;
 class DateFormat extends FunctionNode
 {
     private $date;
+
     private $format;
 
     /**
@@ -57,7 +58,7 @@ class DateFormat extends FunctionNode
         }
 
         // The order of the array is important. %i converts to %M, but %M converts to %m, so %M has to be done first.
-        $conversion = array(
+        $conversion = [
             '%a' => '%w',       // Abbreviated weekday name (Sun..Sat)          -> day of week (0..6)
             '%b' => '%m',       // Abbreviated month name (Jan..Dec)            -> month (01..12)
             '%c' => '%m',       // Month, numeric (0..12)                       -> month (01..12)
@@ -91,7 +92,7 @@ class DateFormat extends FunctionNode
             // these two last, so they will not get overwritten
             '%r' => '%H:%M:%S', // Time, 12-hour (hh:mm:ss followed by AM or PM) -> Time, 24-hour (hh:mm:ss)
             '%T' => '%H:%M:%S', // Time, 24-hour (hh:mm:ss)                      -> Time, 24-hour (hh:mm:ss)
-        );
+        ];
 
         $format = $expr->simpleArithmeticExpression->value;
 

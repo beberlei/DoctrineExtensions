@@ -18,4 +18,3 @@ class ListaggTest extends OracleTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 }
-

@@ -32,7 +32,7 @@ class Listagg extends FunctionNode
     /**
      * @var Node[]
      */
-    public $partitionBy = array();
+    public $partitionBy = [];
 
     /**
      * @inheritdoc
@@ -93,20 +93,19 @@ class Listagg extends FunctionNode
         $result = 'LISTAGG(' . $this->listaggField->dispatch($sqlWalker);
         if ($this->separator) {
             $result .= ', ' . $sqlWalker->walkStringPrimary($this->separator) . ')';
-        }
-        else {
+        } else {
             $result .= ')';
         }
 
         $result .= ' WITHIN GROUP (' . $sqlWalker->walkOrderByClause($this->orderBy) . ')';
 
         if (count($this->partitionBy)) {
-            $partitionBy = array();
+            $partitionBy = [];
             foreach ($this->partitionBy as $part) {
                 $partitionBy[] = $part->dispatch($sqlWalker);
             }
 
-            $result .= ' PARTITION BY (' . join($partitionBy, ',') . ')';
+            $result .= ' PARTITION BY (' . implode($partitionBy, ',') . ')';
         }
 
         return $result;

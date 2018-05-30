@@ -10,7 +10,7 @@ class WeekTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT WEEK(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT WEEK(2) AS sclr_0 FROM Blank b0_"
+            'SELECT WEEK(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

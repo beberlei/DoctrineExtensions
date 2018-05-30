@@ -7,8 +7,8 @@ use Doctrine\ORM\Query\Lexer;
 
 class AesDecrypt extends FunctionNode
 {
-
     public $field = '';
+
     public $key = '';
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

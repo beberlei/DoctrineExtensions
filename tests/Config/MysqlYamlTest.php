@@ -7,7 +7,7 @@ namespace DoctrineExtensions\Tests\Config;
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlConfigTest extends \PHPUnit_Framework_TestCase
+class MysqlYamlTest extends \PHPUnit_Framework_TestCase
 {
     /** @var array */
     protected $functions;

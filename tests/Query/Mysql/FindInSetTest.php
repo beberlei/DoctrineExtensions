@@ -10,7 +10,7 @@ class FindInSetTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT FIND_IN_SET(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT FIND_IN_SET(2, 3) AS sclr_0 FROM Blank b0_"
+            'SELECT FIND_IN_SET(2, 3) AS sclr_0 FROM Blank b0_'
         );
     }
 }

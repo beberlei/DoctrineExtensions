@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Oracle;
 
-use Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Cédric Bertolini <bertolini.cedric@me.com>
@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\Lexer,
 class ToChar extends FunctionNode
 {
     private $datetime;
+
     private $fmt;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
@@ -18,7 +19,8 @@ class ToChar extends FunctionNode
         return sprintf(
                 'TO_CHAR(%s, %s)',
                 $sqlWalker->walkArithmeticPrimary($this->datetime),
-                $sqlWalker->walkArithmeticPrimary($this->fmt));
+                $sqlWalker->walkArithmeticPrimary($this->fmt)
+        );
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

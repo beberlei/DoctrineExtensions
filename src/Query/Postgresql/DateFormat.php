@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Postgresql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author silvioq
@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class DateFormat extends FunctionNode
 {
     public $dateExpression = null;
+
     public $patternExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

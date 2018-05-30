@@ -10,7 +10,7 @@ class DayNameTest extends MysqlTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT DAYNAME(2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT DAYNAME(2) AS sclr_0 FROM Blank b0_"
+            'SELECT DAYNAME(2) AS sclr_0 FROM Blank b0_'
         );
     }
 }

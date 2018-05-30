@@ -1,4 +1,5 @@
 <?php
+
 namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -8,11 +9,12 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
-  * @author Roberto Júnior <me@robertojunior.net>
+ * @author Roberto Júnior <me@robertojunior.net>
  */
 class StringAgg extends FunctionNode
 {
     private $expression = null;
+
     private $delimiter = null;
 
     public function parse(Parser $parser)

@@ -17,7 +17,9 @@ use Doctrine\ORM\Query\SqlWalker;
 class ConvertTz extends FunctionNode
 {
     protected $dateExpression;
+
     protected $fromTz;
+
     protected $toTz;
 
     /**

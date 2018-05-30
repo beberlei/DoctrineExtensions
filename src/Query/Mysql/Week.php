@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Rafael Kassner <kassner@gmail.com>
@@ -13,15 +13,16 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class Week extends FunctionNode
 {
     public $date;
+
     public $mode;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        $sql = "WEEK(" . $sqlWalker->walkArithmeticPrimary($this->date);
+        $sql = 'WEEK(' . $sqlWalker->walkArithmeticPrimary($this->date);
         if ($this->mode != null) {
-            $sql .= ", " . $sqlWalker->walkLiteral($this->mode);
+            $sql .= ', ' . $sqlWalker->walkLiteral($this->mode);
         }
-        $sql .= ")";
+        $sql .= ')';
 
         return $sql;
     }

@@ -4,7 +4,6 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\QueryException;
-use DoctrineExtensions\Query\Mysql\DateAdd;
 
 /**
  * @author Ahwalian Masykur <ahwalian@gmail.com>
@@ -12,6 +11,7 @@ use DoctrineExtensions\Query\Mysql\DateAdd;
 class Extract extends DateAdd
 {
     public $date = null;
+
     public $unit = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -36,6 +36,6 @@ class Extract extends DateAdd
             throw QueryException::semanticalError('EXTRACT() does not support unit "' . $unit . '".');
         }
 
-        return "EXTRACT(" . $unit . " FROM ". $this->date->dispatch($sqlWalker) . ")";
+        return 'EXTRACT(' . $unit . ' FROM '. $this->date->dispatch($sqlWalker) . ')';
     }
 }

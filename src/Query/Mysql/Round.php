@@ -2,12 +2,13 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class Round extends FunctionNode
 {
     private $firstExpression = null;
+
     private $secondExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -18,7 +19,7 @@ class Round extends FunctionNode
         $this->firstExpression = $parser->SimpleArithmeticExpression();
 
         // parse second parameter if available
-        if(Lexer::T_COMMA === $lexer->lookahead['type']){
+        if (Lexer::T_COMMA === $lexer->lookahead['type']) {
             $parser->match(Lexer::T_COMMA);
             $this->secondExpression = $parser->ArithmeticPrimary();
         }
@@ -29,7 +30,7 @@ class Round extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         // use second parameter if parsed
-        if (null !== $this->secondExpression){
+        if (null !== $this->secondExpression) {
             return 'ROUND('
                 . $this->firstExpression->dispatch($sqlWalker)
                 . ', '

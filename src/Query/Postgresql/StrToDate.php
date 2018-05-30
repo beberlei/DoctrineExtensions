@@ -2,12 +2,13 @@
 
 namespace DoctrineExtensions\Query\Postgresql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class StrToDate extends FunctionNode
 {
     public $dateString = null;
+
     public $dateFormat = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

@@ -2,12 +2,13 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class TimeDiff extends FunctionNode
 {
     public $firstDateExpression = null;
+
     public $secondDateExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -22,7 +23,8 @@ class TimeDiff extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return sprintf('TIMEDIFF(%s, %s)',
+        return sprintf(
+            'TIMEDIFF(%s, %s)',
             $this->firstDateExpression->dispatch($sqlWalker),
             $this->secondDateExpression->dispatch($sqlWalker)
         );

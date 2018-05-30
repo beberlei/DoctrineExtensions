@@ -1,4 +1,5 @@
 <?php
+
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use Doctrine\ORM\QueryBuilder;
@@ -12,12 +13,10 @@ class StringAggTest extends PostgresqlTestCase
         $queryBuilder
             ->select("string_agg(bpt.latitude, '-')")
             ->from('DoctrineExtensions\Tests\Entities\BlogPost', 'bpt')
-            ->groupBy('bpt.created')
-        ;
+            ->groupBy('bpt.created');
 
         $expected = 'SELECT string_agg(b0_.latitude, \'-\') AS sclr_0 FROM BlogPost b0_ GROUP BY b0_.created';
 
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
-
 }

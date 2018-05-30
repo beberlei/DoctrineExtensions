@@ -2,10 +2,10 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\Parser,
-    Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class Greatest
@@ -17,7 +17,8 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class Greatest extends FunctionNode
 {
     private $field = null;
-    private $values = array();
+
+    private $values = [];
 
     /**
      * @param Parser $parser

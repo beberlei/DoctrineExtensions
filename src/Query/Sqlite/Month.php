@@ -7,7 +7,6 @@ namespace DoctrineExtensions\Query\Sqlite;
  */
 class Month extends AbstractStrfTime
 {
-
     protected function getFormat()
     {
         return '%m';

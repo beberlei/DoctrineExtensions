@@ -7,7 +7,6 @@ namespace DoctrineExtensions\Query\Sqlite;
  */
 class Hour extends AbstractStrfTime
 {
-
     protected function getFormat()
     {
         return '%H';
