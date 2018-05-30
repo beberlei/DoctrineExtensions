@@ -8,15 +8,14 @@ use  Doctrine\ORM\Query\Parser;
 use  Doctrine\ORM\Query\SqlWalker;
 
 /**
- * Class SubstringIndex
+ * Class Instr
  * @package DoctrineExtensions\Query\Mysql
- * @author Vas N <phpvas@gmail.com>
+ * @author Jan H <jan@pmconnect.co.uk>
  */
-class SubstringIndex extends FunctionNode
+class Instr extends FunctionNode
 {
-    public $string = null;
-    public $delimiter = null;
-    public $count = null;
+    public $originalString = null;
+    public $subString = null;
 
     /**
      * @param \Doctrine\ORM\Query\Parser $parser
@@ -25,11 +24,9 @@ class SubstringIndex extends FunctionNode
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
-        $this->string = $parser->ArithmeticPrimary();
+        $this->originalString = $parser->ArithmeticPrimary();
         $parser->match(Lexer::T_COMMA);
-        $this->delimiter = $parser->ArithmeticPrimary();
-        $parser->match(Lexer::T_COMMA);
-        $this->count = $parser->ArithmeticFactor();
+        $this->subString = $parser->ArithmeticPrimary();
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
@@ -39,10 +36,9 @@ class SubstringIndex extends FunctionNode
      */
     public function getSql(SqlWalker $sqlWalker)
     {
-        return sprintf('SUBSTRING_INDEX(%s, %s, %s)',
-            $this->string->dispatch($sqlWalker),
-            $this->delimiter->dispatch($sqlWalker),
-            $this->count->dispatch($sqlWalker)
+        return sprintf('INSTR(%s, %s)',
+            $this->originalString->dispatch($sqlWalker),
+            $this->subString->dispatch($sqlWalker)
         );
     }
 }

@@ -38,4 +38,16 @@ class DbTestCase extends \PHPUnit_Framework_TestCase
         return parent::assertEquals($expected, $actual, $message);
     }
 
+    public function assertDqlProducesSql($actualDql, $expectedSql, $params = array())
+    {
+        $q = $this->entityManager->createQuery($actualDql);
+
+        foreach ($params as $key => $value) {
+            $q->setParameter($key, $value);
+        }
+
+        $actualSql = $q->getSql();
+
+        $this->assertEquals($expectedSql, $actualSql);
+    }
 }

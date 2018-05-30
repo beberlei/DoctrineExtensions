@@ -40,10 +40,10 @@ class DateAdd extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        $this->firstDateExpression = $parser->ArithmeticPrimary();
+        $this->firstDateExpression = $parser->ArithmeticFactor();
 
         $parser->match(Lexer::T_COMMA);
-        $this->intervalExpression = $parser->ArithmeticPrimary();
+        $this->intervalExpression = $parser->ArithmeticFactor();
 
         $parser->match(Lexer::T_COMMA);
         $this->unit = $parser->StringPrimary();
@@ -60,8 +60,8 @@ class DateAdd extends FunctionNode
         }
 
         return 'DATE_ADD(' .
-            $this->firstDateExpression->dispatch($sqlWalker) . ', INTERVAL ' .
-            $this->intervalExpression->dispatch($sqlWalker) . ' ' . $unit .
+            $sqlWalker->walkArithmeticTerm($this->firstDateExpression) . ', INTERVAL ' .
+            $sqlWalker->walkArithmeticTerm($this->intervalExpression) . ' ' . $unit .
         ')';
     }
 }
