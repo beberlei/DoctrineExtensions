@@ -13,6 +13,7 @@
     },
     "require-dev": {
         "doctrine/orm": "~2.5",
+        "friendsofphp/php-cs-fixer": "~2.2.19",
         "nesbot/carbon": "*",
         "phpunit/phpunit": "~4.5",
         "symfony/yaml": "~2.6",
