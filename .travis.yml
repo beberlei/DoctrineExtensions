@@ -32,8 +32,8 @@ notifications:
   email: false
 
 script:
-  - vendor/bin/phpunit
-  - if [[ $DOCTRINE_VERSION == 2.6.* && $TRAVIS_PHP_VERSION == 7.* ]]; then vendor/bin/php-cs-fixer fix --dry-run --diff --diff-format udiff --show-progress=none --verbose; fi
+  - make test
+  - if [[ $DOCTRINE_VERSION == 2.6.* && $TRAVIS_PHP_VERSION == 7.* ]]; then make lint; fi
 
 sudo: false
 dist: precise
