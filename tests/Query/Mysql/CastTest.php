@@ -37,11 +37,11 @@ class CastTest extends MysqlTestCase
     public function testWithParametersSqlQuery()
     {
         $query = $this->entityManager->createQuery(
-            "SELECT CAST(blog.latitude AS DECIMAL(10,2)) FROM {$this->entityLong} blog"
+            "SELECT CAST(blog.latitude AS DECIMAL(10, 2)) FROM {$this->entityLong} blog"
         );
 
         static::assertEquals(
-            "SELECT CAST(b0_.latitude AS DECIMAL(10,2)) AS sclr_0 FROM {$this->entityShort} b0_",
+            "SELECT CAST(b0_.latitude AS DECIMAL(10, 2)) AS sclr_0 FROM {$this->entityShort} b0_",
             $query->getSQL()
         );
     }
