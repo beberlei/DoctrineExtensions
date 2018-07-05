@@ -50,16 +50,3 @@ $classLoader->register();
 
 You can find an example configuration for using the additional MySQL functions
 in Symfony2 in [config/mysql.yml](config/mysql.yml).
-
-
-Legacy versions
----------------
-
-If you're still using Paginator, LargeCollections, Phing, PHPUnit or Versionable
-behaviours available in `0.1`–`0.3`, you're welcome to use `0.3` – but do note,
-**this functionality is now available in Doctrine core, no longer supported in
-this library, and was removed in 1.0**.
-
-Whilst pull requests for bugfixes to this functionality will be considered for
-0.x releases, you are encouraged to switch out your implementations and upgrade
-to ~1.0.
