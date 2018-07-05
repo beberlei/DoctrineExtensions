@@ -48,9 +48,7 @@ class Cast extends FunctionNode
             $parser->match(Lexer::T_OPEN_PARENTHESIS);
             /** @var Literal $parameter */
             $parameter = $parser->Literal();
-            $parameters = array(
-                $parameter->value
-            );
+            $parameters = [$parameter->value];
 
             if ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
                 while ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
