@@ -8,8 +8,8 @@ DoctrineExtensions
 [![Packagist](https://img.shields.io/packagist/dm/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 [![Packagist](https://img.shields.io/packagist/dt/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 
-A set of extensions to Doctrine 2 that add support for additional query
-functions available in MySQL, Oracle, Sqlite and PostgreSQL.
+A set of extensions to Doctrine 2 that add support for functions available in
+MySQL, Oracle, PostgreSQL and SQLite.
 
 | DB | Functions |
 |:--:|:---------:|
@@ -29,14 +29,20 @@ Installation
 To install this library, run the command below and you will get the latest
 version:
 
-```sh
+```
 composer require beberlei/DoctrineExtensions
 ```
 
-If you want to run the tests:
+If you want to run phpunit:
 
-```sh
-vendor/bin/phpunit
+```
+make test
+```
+
+If you want to run php-cs-fixer:
+
+```
+make fix  # (or make lint for a dry-run)
 ```
 
 To include the DoctrineExtensions you should fire up an autoloader, for example:
@@ -48,5 +54,5 @@ $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/
 $classLoader->register();
 ```
 
-You can find an example configuration for using the additional MySQL functions
-in Symfony2 in [config/mysql.yml](config/mysql.yml).
+You can find an example Symfony configuration for using the additional MySQL
+functions in [config/mysql.yml](config/mysql.yml).
