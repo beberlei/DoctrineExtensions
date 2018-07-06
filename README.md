@@ -48,15 +48,11 @@ make fix  # (or make lint for a dry-run)
 Usage
 -----
 
-If you are using DoctrineExtensions with Symfony, you should read the Symfony
-documentation on
-[How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
+If you are using DoctrineExtensions with Symfony, you should read their documentation on [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
 
-You can find example Symfony configuration for using DoctrineExtensions custom
-DQL functions in [config](config).
+You can find example Symfony configuration for using DoctrineExtensions custom DQL functions in [config](config).
 
-If you are using DoctrineExtensions standalone, you might want to fire up the
-autoloader:
+If you are using DoctrineExtensions standalone, you might want to fire up the autoloader:
 
 ```php
 <?php
@@ -64,5 +60,4 @@ autoloader:
 $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/extensions');
 $classLoader->register();
 ```
-For more information check out the documentation of
-[Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
+For more information check out the documentation of [Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
