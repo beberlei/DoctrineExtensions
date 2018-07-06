@@ -45,7 +45,18 @@ If you want to run php-cs-fixer:
 make fix  # (or make lint for a dry-run)
 ```
 
-To include the DoctrineExtensions you should fire up an autoloader, for example:
+Usage
+-----
+
+If you are using DoctrineExtensions with Symfony, you should read the Symfony
+documentation on
+[How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
+
+You can find example Symfony configuration for using DoctrineExtensions custom
+DQL functions in [config](config).
+
+If you are using DoctrineExtensions standalone, you might want to fire up the
+autoloader:
 
 ```php
 <?php
@@ -53,6 +64,5 @@ To include the DoctrineExtensions you should fire up an autoloader, for example:
 $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/extensions');
 $classLoader->register();
 ```
-
-You can find an example Symfony configuration for using the additional MySQL
-functions in [config/mysql.yml](config/mysql.yml).
+For more information check out the documentation of
+[Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
