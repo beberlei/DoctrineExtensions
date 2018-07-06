@@ -41,7 +41,7 @@ make test
 
 If you want to run php-cs-fixer:
 
-```
+```sh
 make fix  # (or make lint for a dry-run)
 ```
 
