@@ -20,10 +20,6 @@
         "zf1/zend-date": "^1.12",
         "zf1/zend-registry": "^1.12"
     },
-    "suggest": {
-        "nesbot/carbon": "Alternative to DateTime",
-        "zf1/zend-date": "Alternative to DateTime"
-    },
     "autoload": {
         "psr-4": {"DoctrineExtensions\\" : "src/"}
     },
