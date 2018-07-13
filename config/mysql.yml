@@ -87,6 +87,7 @@ doctrine:
                  ifelse: DoctrineExtensions\Query\Mysql\IfElse
                  ifnull: DoctrineExtensions\Query\Mysql\IfNull
                  inet_aton: DoctrineExtensions\Query\Mysql\InetAton
+                 inet_ntoa: DoctrineExtensions\Query\Mysql\InetNtoa
                  inet6_aton: DoctrineExtensions\Query\Mysql\Inet6Aton
                  inet6_ntoa: DoctrineExtensions\Query\Mysql\Inet6Ntoa
                  instr: DoctrineExtensions\Query\Mysql\Instr
