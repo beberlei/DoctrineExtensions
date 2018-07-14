@@ -92,6 +92,8 @@ doctrine:
                  inet6_ntoa: DoctrineExtensions\Query\Mysql\Inet6Ntoa
                  instr: DoctrineExtensions\Query\Mysql\Instr
                  is_ipv4: DoctrineExtensions\Query\Mysql\IsIpv4
+                 is_ipv4_compat: DoctrineExtensions\Query\Mysql\IsIpv4Compat
+                 is_ipv4_mapped: DoctrineExtensions\Query\Mysql\IsIpv4Mapped
                  is_ipv6: DoctrineExtensions\Query\Mysql\IsIpv6
                  least: DoctrineExtensions\Query\Mysql\Least
                  lpad: DoctrineExtensions\Query\Mysql\Lpad
