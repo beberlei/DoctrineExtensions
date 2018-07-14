@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class UnixTimestamp extends MysqlTestCase
+class UnixTimestampTest extends MysqlTestCase
 {
     public function testUnixTimeStampNoArguments()
     {
