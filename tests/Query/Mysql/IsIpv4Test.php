@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class IsIpv4 extends MysqlTestCase
+class IsIpv4Test extends MysqlTestCase
 {
     public function testIsIpv4()
     {
