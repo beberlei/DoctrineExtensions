@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineExtensions\tests\Query;
+namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
