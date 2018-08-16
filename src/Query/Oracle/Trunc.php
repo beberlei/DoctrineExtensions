@@ -30,12 +30,11 @@ class Trunc extends FunctionNode
                 $sqlWalker->walkArithmeticPrimary($this->fmt)
             );
         }
-        else {
-            return sprintf(
-                'TRUNC(%s)',
-                $sqlWalker->walkArithmeticPrimary($this->date)
-            );
-        }
+
+        return sprintf(
+            'TRUNC(%s)',
+            $sqlWalker->walkArithmeticPrimary($this->date)
+        );
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
