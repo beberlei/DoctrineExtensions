@@ -61,3 +61,26 @@ $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/
 $classLoader->register();
 ```
 For more information check out the documentation of [Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
+
+Notes
+-----
+
+DoctrineExtensions' mysql's DATEADD, DATESUB have diverged a little from the original mysql functions and should be used like this:
+
+`DATEADD(Date expression, Arithmetic expression, date unit string)`
+
+`DATESUB(Date expression, Arithmetic expression, date unit string)`
+
+  For example:
+
+`DATEADD(CURRENT_DATE(), 1, 'DAY')`
+
+(No underscore and the second period argument has been split into two parts.)
+
+Mysql's `IF` has been renamed to `IFELSE` in DoctrineExtensions:
+
+`IFELSE(Condition, If Expression, Else Expression)`
+
+For example:
+
+`IFELSE(field > 0, 'positive', 'not positive')`
