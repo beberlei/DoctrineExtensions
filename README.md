@@ -61,3 +61,8 @@ $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/
 $classLoader->register();
 ```
 For more information check out the documentation of [Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
+
+Troubleshooting
+---------------
+
+Issues are now disable on this repository, they were mostly being abused for feature requests that would never be serviced, if a custom DQL function that you want isn't provided, or does not support the arguments you want to pass – then it's up to you to solve that problem and if you want to contribute that back in the form of a pull request we would love to have it.
