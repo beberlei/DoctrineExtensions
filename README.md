@@ -48,7 +48,7 @@ make fix  # (or make lint for a dry-run)
 Usage
 -----
 
-If you are using DoctrineExtensions with Symfony, you should read their documentation on [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
+If you are using DoctrineExtensions with Symfony read [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
 
 You can find example Symfony configuration for using DoctrineExtensions custom DQL functions in [config](config).
 
@@ -65,22 +65,11 @@ For more information check out the documentation of [Doctrine DQL User Defined F
 Notes
 -----
 
-DoctrineExtensions' mysql's DATEADD, DATESUB have diverged a little from the original mysql functions and should be used like this:
+- MySQL `DATE_ADD` is available in DQL as `DATEADD(CURRENT_DATE(), 1, 'DAY')`
+- MySQL `DATE_SUB` is available in DQL as `DATESUB(CURRENT_DATE(), 1, 'DAY')`
+- MySQL `IF` is available in DQL as `IFELSE(field > 0, 'true', 'false')`
 
-`DATEADD(Date expression, Arithmetic expression, date unit string)`
+Troubleshooting
+---------------
 
-`DATESUB(Date expression, Arithmetic expression, date unit string)`
-
-  For example:
-
-`DATEADD(CURRENT_DATE(), 1, 'DAY')`
-
-(No underscore and the second period argument has been split into two parts.)
-
-Mysql's `IF` has been renamed to `IFELSE` in DoctrineExtensions:
-
-`IFELSE(Condition, If Expression, Else Expression)`
-
-For example:
-
-`IFELSE(field > 0, 'positive', 'not positive')`
+Issues are now disabled on this repository, they were mostly being abused for feature requests that would never be serviced, if a custom DQL function that you want isn't provided, or does not support the arguments you want to pass – then it's up to you to solve that problem and if you want to contribute that back in the form of a pull request we would love to have it.
