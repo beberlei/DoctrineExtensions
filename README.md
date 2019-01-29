@@ -48,7 +48,7 @@ make fix  # (or make lint for a dry-run)
 Usage
 -----
 
-If you are using DoctrineExtensions with Symfony, you should read their documentation on [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
+If you are using DoctrineExtensions with Symfony read [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
 
 You can find example Symfony configuration for using DoctrineExtensions custom DQL functions in [config](config).
 
@@ -61,6 +61,13 @@ $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/
 $classLoader->register();
 ```
 For more information check out the documentation of [Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
+
+Notes
+-----
+
+- MySQL `DATE_ADD` is available in DQL as `DATEADD(CURRENT_DATE(), 1, 'DAY')`
+- MySQL `DATE_SUB` is available in DQL as `DATESUB(CURRENT_DATE(), 1, 'DAY')`
+- MySQL `IF` is available in DQL as `IFELSE(field > 0, 'true', 'false')`
 
 Troubleshooting
 ---------------
