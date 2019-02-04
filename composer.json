@@ -1,5 +1,5 @@
 {
-    "name": "beberlei/DoctrineExtensions",
+    "name": "beberlei/doctrineextensions",
     "type": "library",
     "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL and Oracle.",
     "keywords": ["doctrine", "orm", "database"],
