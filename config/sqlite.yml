@@ -42,6 +42,7 @@ doctrine:
 #                 md5: DoctrineExtensions\Query\Sqlite\Md5
 #                 nullif: DoctrineExtensions\Query\Sqlite\NullIf
 #                 radians: DoctrineExtensions\Query\Sqlite\Radians
+                 random: DoctrineExtensions\Query\Sqlite\Random
 #                 regexp: DoctrineExtensions\Query\Sqlite\Regexp
                  replace: DoctrineExtensions\Query\Sqlite\Replace
 #                 sha1: DoctrineExtensions\Query\Sqlite\Sha1
