@@ -1,10 +1,6 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7
   - 7.1
   - 7.2
   - 7.3
@@ -15,14 +11,6 @@ env:
 
 matrix:
   exclude:
-  - php: 5.4
-    env: DOCTRINE_VERSION=2.6.*
-  - php: 5.5
-    env: DOCTRINE_VERSION=2.6.*
-  - php: 5.6
-    env: DOCTRINE_VERSION=2.6.*
-  - php: 7
-    env: DOCTRINE_VERSION=2.6.*
   - php: 7.3
     env: DOCTRINE_VERSION=2.5.*
 
