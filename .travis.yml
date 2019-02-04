@@ -6,13 +6,7 @@ php:
   - 7.3
 
 env:
-  - DOCTRINE_VERSION=2.5.*
   - DOCTRINE_VERSION=2.6.*
-
-matrix:
-  exclude:
-  - php: 7.3
-    env: DOCTRINE_VERSION=2.5.*
 
 install:
   - composer self-update
@@ -24,7 +18,7 @@ notifications:
 
 script:
   - make test
-  - if [[ $DOCTRINE_VERSION == 2.6.* && $TRAVIS_PHP_VERSION == 7.* ]]; then make lint; fi
+  - if [[ $DOCTRINE_VERSION == 2.6.* && $TRAVIS_PHP_VERSION == 7.3 ]]; then make lint; fi
 
 sudo: false
 dist: precise
