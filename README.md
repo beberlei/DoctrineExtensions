@@ -30,7 +30,7 @@ To install this library, run the command below and you will get the latest
 version:
 
 ```
-composer require beberlei/DoctrineExtensions
+composer require beberlei/doctrineextensions
 ```
 
 If you want to run phpunit:
