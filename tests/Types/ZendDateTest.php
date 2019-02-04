@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Types;
 
 use Doctrine\ORM\Tools\SchemaTool;
@@ -9,11 +11,11 @@ use Doctrine\ORM\Tools\SchemaTool;
  *
  * @author Andreas Gallien <gallien@seleos.de>
  */
-class ZendDateTest extends \PHPUnit_Framework_TestCase
+class ZendDateTest extends \PHPUnit\Framework\TestCase
 {
     public $entityManager = null;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         \Doctrine\DBAL\Types\Type::addType(
             'ZendDate',
@@ -21,7 +23,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
@@ -53,7 +55,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         $this->em->flush();
     }
 
-    public function testGetZendDate()
+    public function testGetZendDate(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 1);
 
@@ -64,7 +66,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         ])));
     }
 
-    public function testSetZendDate()
+    public function testSetZendDate(): void
     {
         $zendDate = new \Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
@@ -81,7 +83,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($entity->date->equals($zendDate));
     }
 
-    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint()
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint(): void
     {
         /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');

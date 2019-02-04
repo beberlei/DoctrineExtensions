@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Types;
 
 use Carbon\Carbon;
@@ -12,11 +14,11 @@ use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class CarbonDateTest extends \PHPUnit_Framework_TestCase
+class CarbonDateTest extends \PHPUnit\Framework\TestCase
 {
     public $entityManager = null;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         Type::addType('CarbonDate', 'DoctrineExtensions\Types\CarbonDateType');
         Type::addType('CarbonDateTime', 'DoctrineExtensions\Types\CarbonDateTimeType');
@@ -24,7 +26,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         Type::addType('CarbonTime', 'DoctrineExtensions\Types\CarbonTimeType');
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
@@ -58,7 +60,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->em->flush();
     }
 
-    public function testDateGetter()
+    public function testDateGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -69,7 +71,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testDateSetter()
+    public function testDateSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -79,7 +81,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->em->flush();
     }
 
-    public function testDateTimeGetter()
+    public function testDateTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -87,7 +89,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Carbon::create(2015, 1, 1, 0, 0, 0), $entity->datetime);
     }
 
-    public function testDateTimeSetter()
+    public function testDateTimeSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -97,7 +99,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->em->flush();
     }
 
-    public function testDateTimeTzGetter()
+    public function testDateTimeTzGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -105,7 +107,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetime_tz);
     }
 
-    public function testDateTimeTzSetter()
+    public function testDateTimeTzSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -115,7 +117,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->em->flush();
     }
 
-    public function testTimeGetter()
+    public function testTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -123,7 +125,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Carbon::createFromTime(12, 0, 0, 'Europe/London'), $entity->time);
     }
 
-    public function testTimeSetter()
+    public function testTimeSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -136,7 +138,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider typeProvider
      */
-    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type)
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type): void
     {
         /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');

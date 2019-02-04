@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -11,7 +13,7 @@ class Round extends FunctionNode
 
     private $secondExpression = null;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $lexer = $parser->getLexer();
         $parser->match(Lexer::T_IDENTIFIER);

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class TimeDiffTest extends MysqlTestCase
 {
-    public function testTimeDiff()
+    public function testTimeDiff(): void
     {
         $this->assertDqlProducesSql(
             "SELECT TIMEDIFF(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

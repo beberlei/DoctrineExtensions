@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -19,7 +21,7 @@ class MatchAgainst extends FunctionNode
     /** @var bool */
     protected $queryExpansion = false;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         // match
         $parser->match(Lexer::T_IDENTIFIER);

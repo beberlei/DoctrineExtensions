@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DateFormatTest extends MysqlTestCase
 {
-    public function testDateFormat()
+    public function testDateFormat(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DATE_FORMAT(2, 'Y') from DoctrineExtensions\Tests\Entities\Blank b",

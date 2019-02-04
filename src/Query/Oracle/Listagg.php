@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Oracle;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -37,7 +39,7 @@ class Listagg extends FunctionNode
     /**
      * @inheritdoc
      */
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

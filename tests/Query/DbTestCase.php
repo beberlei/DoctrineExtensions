@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 
-class DbTestCase extends \PHPUnit_Framework_TestCase
+class DbTestCase extends \PHPUnit\Framework\TestCase
 {
     /** @var EntityManager */
     public $entityManager;
@@ -14,7 +16,7 @@ class DbTestCase extends \PHPUnit_Framework_TestCase
     /** @var Configuration */
     protected $configuration;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->configuration = new Configuration();
         $this->configuration->setMetadataCacheImpl(new ArrayCache());
@@ -26,7 +28,7 @@ class DbTestCase extends \PHPUnit_Framework_TestCase
         $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true ], $this->configuration);
     }
 
-    public function assertDqlProducesSql($actualDql, $expectedSql, $params = [])
+    public function assertDqlProducesSql($actualDql, $expectedSql, $params = []): void
     {
         $q = $this->entityManager->createQuery($actualDql);
 

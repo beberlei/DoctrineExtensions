@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class Sha2Test extends MysqlTestCase
 {
-    public function testSha2()
+    public function testSha2(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SHA2('2', 2) from DoctrineExtensions\Tests\Entities\Blank b",

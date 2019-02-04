@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class QuarterTest extends MysqlTestCase
 {
-    public function testQuarter()
+    public function testQuarter(): void
     {
         $this->assertDqlProducesSql(
             "SELECT QUARTER(2) from DoctrineExtensions\Tests\Entities\Blank b",

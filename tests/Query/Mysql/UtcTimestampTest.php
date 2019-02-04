@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class UtcTimestampTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public function testUtcTimestamp()
+    public function testUtcTimestamp(): void
     {
         $dql = "SELECT d FROM DoctrineExtensions\Tests\Entities\Date d WHERE d.created > utc_timestamp()";
         $this->assertDqlProducesSql(

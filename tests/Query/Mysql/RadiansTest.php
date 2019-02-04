@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class RadiansTest extends MysqlTestCase
 {
-    public function testRadians()
+    public function testRadians(): void
     {
         $this->assertDqlProducesSql(
             "SELECT RADIANS(2) from DoctrineExtensions\Tests\Entities\Blank b",

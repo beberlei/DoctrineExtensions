@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Config;
 
 /**
@@ -7,12 +9,12 @@ namespace DoctrineExtensions\Tests\Config;
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlYamlTest extends \PHPUnit_Framework_TestCase
+class MysqlYamlTest extends \PHPUnit\Framework\TestCase
 {
     /** @var array */
     protected $functions;
 
-    public function setUp()
+    public function setUp(): void
     {
         $yaml = new \Symfony\Component\Yaml\Parser();
 
@@ -24,7 +26,7 @@ class MysqlYamlTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testFunctions()
+    public function testFunctions(): void
     {
         $documented = $this->functions;
 
@@ -45,7 +47,7 @@ class MysqlYamlTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testReadme()
+    public function testReadme(): void
     {
         preg_match('#\| MySQL \| `(.*)` \|#', file_get_contents(__DIR__ . '/../../README.md'), $matches);
 

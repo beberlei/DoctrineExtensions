@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DegressTest extends MysqlTestCase
 {
-    public function testDegrees()
+    public function testDegrees(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DEGREES(2) from DoctrineExtensions\Tests\Entities\Blank b",

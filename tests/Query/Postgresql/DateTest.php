@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 class DateTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
-    public function testStrToDate()
+    public function testStrToDate(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
         $q = $this->entityManager->createQuery($dql);

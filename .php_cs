@@ -14,6 +14,8 @@ $config = PhpCsFixer\Config::create()
     ->setRules([
         '@PSR1' => true,
         '@PSR2' => true,
+        '@PHP71Migration:risky' => true,
+        '@PHPUnit60Migration:risky' => true,
         'align_multiline_comment' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_after_opening_tag' => true,

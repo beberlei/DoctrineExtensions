@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
@@ -9,7 +11,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
  */
 class ListaggTest extends OracleTestCase
 {
-    public function testFullQuery()
+    public function testFullQuery(): void
     {
         $dql = "SELECT LISTAGG(p.id, ',') WITHIN GROUP (ORDER BY p.created) OVER (PARTITION BY p.longitude, p.latitude) FROM DoctrineExtensions\Tests\Entities\BlogPost p";
         $q = $this->entityManager->createQuery($dql);

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class ConcatWsTest extends MysqlTestCase
 {
-    public function testConcatWs()
+    public function testConcatWs(): void
     {
         $this->assertDqlProducesSql(
             "SELECT CONCAT_WS(',', 'TEST', 'FOO') from DoctrineExtensions\Tests\Entities\Blank b",

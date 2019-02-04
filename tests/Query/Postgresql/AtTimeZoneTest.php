@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 class AtTimeZoneTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
-    public function testAtTimeZone()
+    public function testAtTimeZone(): void
     {
         $dql = "SELECT d FROM DoctrineExtensions\Tests\Entities\Date d WHERE AT_TIME_ZONE(d.created, :timeZone) < :currentTime";
         $q = $this->entityManager->createQuery($dql);

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\ORM\Query;
 
 class MysqlWalkerTest extends MysqlTestCase
 {
-    public function testSelectSQLCalcFoundRows()
+    public function testSelectSQLCalcFoundRows(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p";
         $q = $this->entityManager->createQuery($dql);
@@ -17,7 +19,7 @@ class MysqlWalkerTest extends MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testSelectSQLNoCache()
+    public function testSelectSQLNoCache(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p";
         $q = $this->entityManager->createQuery($dql);
@@ -28,7 +30,7 @@ class MysqlWalkerTest extends MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testGroupByWithRollup()
+    public function testGroupByWithRollup(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p GROUP BY p.id";
         $q = $this->entityManager->createQuery($dql);

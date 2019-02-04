@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class RpadTest extends MysqlTestCase
 {
-    public function testRpad()
+    public function testRpad(): void
     {
         $this->assertDqlProducesSql(
             "SELECT RPAD(2, 3, 4) from DoctrineExtensions\Tests\Entities\Blank b",

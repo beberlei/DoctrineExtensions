@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class UnhexTest extends MysqlTestCase
 {
-    public function testUnhex()
+    public function testUnhex(): void
     {
         $this->assertDqlProducesSql(
             "SELECT UNHEX(2) from DoctrineExtensions\Tests\Entities\Blank b",

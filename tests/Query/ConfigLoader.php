@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\ORM\Configuration;
@@ -19,7 +21,7 @@ class ConfigLoader
      * @param Configuration $configuration
      * @param string        $database
      */
-    public static function load(Configuration $configuration, $database)
+    public static function load(Configuration $configuration, $database): void
     {
         $parser = new Parser();
         // Load the corresponding config file.

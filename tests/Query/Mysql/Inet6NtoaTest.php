@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class Inet6NtoaTest extends MysqlTestCase
 {
-    public function testInet6Ntoa()
+    public function testInet6Ntoa(): void
     {
         $this->assertDqlProducesSql(
             "SELECT INET6_NTOA(INET6_ATON('2001:db8::b33f')) FROM DoctrineExtensions\Tests\Entities\Blank b",

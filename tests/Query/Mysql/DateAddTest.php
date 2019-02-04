@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DateAddTest extends MysqlTestCase
 {
-    public function testDateAdd()
+    public function testDateAdd(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DATEADD(2, 5, 'MINUTE') from DoctrineExtensions\Tests\Entities\Blank b",

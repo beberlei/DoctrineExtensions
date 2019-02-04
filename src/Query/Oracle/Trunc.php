@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Oracle;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -37,7 +39,7 @@ class Trunc extends FunctionNode
         );
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

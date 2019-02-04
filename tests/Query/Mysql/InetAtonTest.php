@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class InetAtonTest extends MysqlTestCase
 {
-    public function testInetAton()
+    public function testInetAton(): void
     {
         $this->assertDqlProducesSql(
             "SELECT INET_ATON('127.0.0.1') FROM DoctrineExtensions\Tests\Entities\Blank b",

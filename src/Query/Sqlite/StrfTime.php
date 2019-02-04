@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Sqlite;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
@@ -31,7 +33,7 @@ class StrfTime extends FunctionNode
         . ')';
     }
 
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

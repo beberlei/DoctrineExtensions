@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class LeastTest extends MysqlTestCase
 {
-    public function testLeast()
+    public function testLeast(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LEAST(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

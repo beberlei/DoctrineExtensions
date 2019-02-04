@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class CotTest extends MysqlTestCase
 {
-    public function testCot()
+    public function testCot(): void
     {
         $this->assertDqlProducesSql(
             "SELECT COT(2) from DoctrineExtensions\Tests\Entities\Blank b",

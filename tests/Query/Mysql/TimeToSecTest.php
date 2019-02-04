@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class TimeToSecTest extends MysqlTestCase
 {
-    public function testTimeToSec()
+    public function testTimeToSec(): void
     {
         $this->assertDqlProducesSql(
             "SELECT TIMETOSEC(2) from DoctrineExtensions\Tests\Entities\Blank b",

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
@@ -22,7 +24,7 @@ class StrfTimeTest extends SqliteTestCase
     /**
      * @dataProvider getFunctionFormatters
      */
-    public function testStrfTimes($function, $formatter)
+    public function testStrfTimes($function, $formatter): void
     {
         $this->assertDqlProducesSql(
             sprintf('SELECT %s(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p', $function),
@@ -30,7 +32,7 @@ class StrfTimeTest extends SqliteTestCase
         );
     }
 
-    public function testStrfTime()
+    public function testStrfTime(): void
     {
         $this->assertDqlProducesSql(
             'SELECT StrfTime(\'%s\', p.created) as Time FROM DoctrineExtensions\Tests\Entities\Date p',

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class Log10Test extends MysqlTestCase
 {
-    public function testLog10()
+    public function testLog10(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LOG10(2) from DoctrineExtensions\Tests\Entities\Blank b",

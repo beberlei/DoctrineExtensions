@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use Doctrine\ORM\QueryBuilder;
@@ -7,7 +9,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class StringAggTest extends PostgresqlTestCase
 {
-    public function testStringAgg()
+    public function testStringAgg(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder

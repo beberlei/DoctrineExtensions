@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class UnixTimestampTest extends MysqlTestCase
 {
-    public function testUnixTimeStampNoArguments()
+    public function testUnixTimeStampNoArguments(): void
     {
         $this->assertDqlProducesSql(
             "SELECT UNIX_TIMESTAMP() from DoctrineExtensions\Tests\Entities\Blank b",
@@ -14,7 +16,7 @@ class UnixTimestampTest extends MysqlTestCase
         );
     }
 
-    public function testUnixTimeStampOneArgument()
+    public function testUnixTimeStampOneArgument(): void
     {
         $this->assertDqlProducesSql(
             "SELECT UNIX_TIMESTAMP(2) from DoctrineExtensions\Tests\Entities\Blank b",

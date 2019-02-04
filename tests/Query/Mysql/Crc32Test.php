@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class Crc32Test extends MysqlTestCase
 {
-    public function testCrc32()
+    public function testCrc32(): void
     {
         $this->assertDqlProducesSql(
             "SELECT CRC32('TEST') from DoctrineExtensions\Tests\Entities\Blank b",

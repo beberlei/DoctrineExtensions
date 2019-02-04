@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class LeastTest extends SqliteTestCase
 {
-    public function testLeast()
+    public function testLeast(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LEAST(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

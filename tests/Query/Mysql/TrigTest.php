@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->entity = 'DoctrineExtensions\Tests\Entities\BlogPost';
     }
 
-    public function testSin()
+    public function testSin(): void
     {
         $this->_assertFirstQuery('SIN');
         $this->_assertSecondQuery('SIN');
@@ -63,13 +65,13 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testAsin()
+    public function testAsin(): void
     {
         $this->_assertFirstQuery('ASIN');
         $this->_assertSecondQuery('ASIN');
     }
 
-    public function testAcos()
+    public function testAcos(): void
     {
         $this->_assertFirstQuery('ACOS');
         $this->_assertSecondQuery('ACOS');
@@ -86,37 +88,37 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testCos()
+    public function testCos(): void
     {
         $this->_assertFirstQuery('COS');
         $this->_assertSecondQuery('COS');
     }
 
-    public function testCot()
+    public function testCot(): void
     {
         $this->_assertFirstQuery('COT');
         $this->_assertSecondQuery('COT');
     }
 
-    public function testDegrees()
+    public function testDegrees(): void
     {
         $this->_assertFirstQuery('DEGREES');
         $this->_assertSecondQuery('DEGREES');
     }
 
-    public function testRadians()
+    public function testRadians(): void
     {
         $this->_assertFirstQuery('RADIANS');
         $this->_assertSecondQuery('RADIANS');
     }
 
-    public function testTan()
+    public function testTan(): void
     {
         $this->_assertFirstQuery('TAN');
         $this->_assertSecondQuery('TAN');
     }
 
-    public function testAtan()
+    public function testAtan(): void
     {
         // test with 1 argument
         $this->_assertFirstQuery('ATAN');
@@ -130,7 +132,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testAtan2()
+    public function testAtan2(): void
     {
         $dql = "SELECT ATAN2(p.latitude, p.longitude) FROM {$this->entity} p";
         $q = $this->entityManager->createQuery($dql);
@@ -139,7 +141,7 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testCosineLaw()
+    public function testCosineLaw(): void
     {
         $lat = 0.0;
         $lng = 0.0;
@@ -162,14 +164,14 @@ class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    protected function _assertFirstQuery($func)
+    protected function _assertFirstQuery($func): void
     {
         $q = $this->_getFirstDqlQuery($func);
         $sql = $this->_getFirstSqlQuery($func);
         $this->assertEquals($sql, $q->getSql());
     }
 
-    protected function _assertSecondQuery($func)
+    protected function _assertSecondQuery($func): void
     {
         $q = $this->_getSecondDqlQuery($func);
         $sql = $this->_getSecondSqlQuery($func);

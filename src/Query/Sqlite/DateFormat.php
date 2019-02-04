@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Sqlite;
 
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
@@ -35,7 +37,7 @@ class DateFormat extends FunctionNode
      * @param \Doctrine\ORM\Query\Parser $parser
      * @return void
      */
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class SinTest extends MysqlTestCase
 {
-    public function testSin()
+    public function testSin(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SIN(2) from DoctrineExtensions\Tests\Entities\Blank b",

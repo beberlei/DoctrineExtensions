@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query;
 
 class SqliteTestCase extends DbTestCase
@@ -9,7 +11,7 @@ class SqliteTestCase extends DbTestCase
      */
     protected $columnAlias;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         ConfigLoader::load($this->configuration, ConfigLoader::SQLITE);
