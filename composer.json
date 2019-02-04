@@ -13,10 +13,10 @@
     },
     "require-dev": {
         "doctrine/orm": "^2.5",
-        "friendsofphp/php-cs-fixer": "^2.2.19",
+        "friendsofphp/php-cs-fixer": "^2.14",
         "nesbot/carbon": "*",
-        "phpunit/phpunit": "^4.5",
-        "symfony/yaml": "^2.6",
+        "phpunit/phpunit": "^5.7",
+        "symfony/yaml": "^4.2",
         "zf1/zend-date": "^1.12",
         "zf1/zend-registry": "^1.12"
     },
@@ -25,5 +25,8 @@
     },
     "autoload-dev": {
         "psr-4": {"DoctrineExtensions\\Tests\\": "tests/"}
+    },
+    "config": {
+        "sort-packages": true
     }
 }
