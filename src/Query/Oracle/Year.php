@@ -17,8 +17,8 @@ class Year extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'EXTRACT(YEAR FROM %s)',
-                $sqlWalker->walkArithmeticPrimary($this->date)
+            'EXTRACT(YEAR FROM %s)',
+            $sqlWalker->walkArithmeticPrimary($this->date)
         );
     }
 

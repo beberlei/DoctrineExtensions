@@ -14,7 +14,7 @@ class Sin extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return 'SIN(' . $sqlWalker->walkSimpleArithmeticExpression(
-                $this->arithmeticExpression
+            $this->arithmeticExpression
         ) . ')';
     }
 

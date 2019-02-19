@@ -14,7 +14,7 @@ class Exp extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return 'EXP(' . $sqlWalker->walkSimpleArithmeticExpression(
-                $this->arithmeticExpression
+            $this->arithmeticExpression
         ) . ')';
     }
 
