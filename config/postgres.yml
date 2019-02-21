@@ -8,3 +8,4 @@ doctrine:
                 str_to_date: DoctrineExtensions\Query\Postgresql\StrToDate
                 count_filter: DoctrineExtensions\Query\Postgresql\CountFilterFunction
                 string_agg: DoctrineExtensions\Query\Postgresql\StringAgg
+                greatest: DoctrineExtensions\Query\Postgresql\Greatest
