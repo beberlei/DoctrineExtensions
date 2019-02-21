@@ -9,3 +9,4 @@ doctrine:
                 count_filter: DoctrineExtensions\Query\Postgresql\CountFilterFunction
                 string_agg: DoctrineExtensions\Query\Postgresql\StringAgg
                 greatest: DoctrineExtensions\Query\Postgresql\Greatest
+                least: DoctrineExtensions\Query\Postgresql\Least
