@@ -14,7 +14,7 @@ class DatePartTest extends PostgresqlTestCase
             ->select("date_part('YEAR', dt.created)")
             ->from('DoctrineExtensions\Tests\Entities\Date', 'dt');
 
-        $expected = "SELECT date_part('YEAR', t0_.latitude) AS sclr_0 FROM Date t0_ GROUP BY t0_.created";
+        $expected = "SELECT DATE_PART('YEAR', d0_.created) AS sclr_0 FROM Date d0_";
 
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
