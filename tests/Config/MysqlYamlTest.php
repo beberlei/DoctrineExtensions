@@ -2,17 +2,19 @@
 
 namespace DoctrineExtensions\Tests\Config;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test that checks the README describes all of the query types
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlYamlTest extends \PHPUnit_Framework_TestCase
+class MysqlYamlTest extends TestCase
 {
     /** @var array */
     protected $functions;
 
-    public function setUp()
+    public function setUp(): void
     {
         $yaml = new \Symfony\Component\Yaml\Parser();
 
@@ -42,6 +44,8 @@ class MysqlYamlTest extends \PHPUnit_Framework_TestCase
                 "The following MySQL query functions are undocumented in mysql.yml\n\n" .
                 implode("\n", $undocumented)
             );
+        } else {
+            $this->assertEmpty($undocumented);
         }
     }
 

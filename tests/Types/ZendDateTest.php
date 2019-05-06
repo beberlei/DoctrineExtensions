@@ -3,17 +3,18 @@
 namespace DoctrineExtensions\Tests\Types;
 
 use Doctrine\ORM\Tools\SchemaTool;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
  *
  * @author Andreas Gallien <gallien@seleos.de>
  */
-class ZendDateTest extends \PHPUnit_Framework_TestCase
+class ZendDateTest extends TestCase
 {
     public $entityManager = null;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         \Doctrine\DBAL\Types\Type::addType(
             'ZendDate',
@@ -21,7 +22,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());

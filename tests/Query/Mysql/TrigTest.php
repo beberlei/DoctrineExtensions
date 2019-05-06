@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

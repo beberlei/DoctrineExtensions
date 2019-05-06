@@ -9,7 +9,7 @@ class SqliteTestCase extends DbTestCase
      */
     protected $columnAlias;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         ConfigLoader::load($this->configuration, ConfigLoader::SQLITE);
