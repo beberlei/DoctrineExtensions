@@ -5,8 +5,9 @@ namespace DoctrineExtensions\Tests\Query;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use PHPUnit\Framework\TestCase;
 
-class DbTestCase extends \PHPUnit_Framework_TestCase
+class DbTestCase extends TestCase
 {
     /** @var EntityManager */
     public $entityManager;
@@ -14,7 +15,7 @@ class DbTestCase extends \PHPUnit_Framework_TestCase
     /** @var Configuration */
     protected $configuration;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->configuration = new Configuration();
         $this->configuration->setMetadataCacheImpl(new ArrayCache());

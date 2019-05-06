@@ -14,11 +14,11 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
     /**
      * Not implemented
-     *
-     * @expectedException Doctrine\ORM\Query\QueryException
      */
     public function testCharLength()
     {
+        $this->expectException(\Doctrine\ORM\Query\QueryException::class);
+
         $this->assertDqlProducesSql(
             "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) from DoctrineExtensions\Tests\Entities\Blank b",
             'SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) AS sclr_0 FROM Blank b0_'
@@ -35,11 +35,11 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 
     /**
      * Not implemented
-     *
-     * @expectedException Doctrine\ORM\Query\QueryException
      */
     public function testConcatWithSeparatorWithNull()
     {
+        $this->expectException(\Doctrine\ORM\Query\QueryException::class);
+
         $this->assertDqlProducesSql(
             "SELECT CONCAT_WS(',', 'First name', NULL, 'Last Name') from DoctrineExtensions\Tests\Entities\Blank b",
             "SELECT CONCAT_WS(',', 'First name', NULL, 'Last Name') AS sclr_0 FROM Blank b0_"

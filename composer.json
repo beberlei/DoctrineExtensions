@@ -15,7 +15,7 @@
         "doctrine/orm": "^2.6",
         "friendsofphp/php-cs-fixer": "^2.14",
         "nesbot/carbon": "*",
-        "phpunit/phpunit": "^5.7",
+        "phpunit/phpunit": "^7.0 || ^8.0",
         "symfony/yaml": "^4.2",
         "zf1/zend-date": "^1.12",
         "zf1/zend-registry": "^1.12"
