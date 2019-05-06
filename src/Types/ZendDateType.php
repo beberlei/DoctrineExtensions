@@ -33,7 +33,7 @@ class ZendDateType extends Type
     {
         return ($value !== null)
             ? $value->toString(\Zend_Locale_Format::convertPhpToIsoFormat(
-                  $platform->getDateTimeFormatString()
+                $platform->getDateTimeFormatString()
               ))
             : null;
     }

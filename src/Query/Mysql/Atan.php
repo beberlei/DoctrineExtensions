@@ -18,12 +18,12 @@ class Atan extends FunctionNode
 
         if ($this->optionalSecondExpression) {
             $secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
-                            $this->optionalSecondExpression
+                $this->optionalSecondExpression
             );
         }
 
         return 'ATAN(' . $sqlWalker->walkSimpleArithmeticExpression(
-                $this->arithmeticExpression
+            $this->arithmeticExpression
         ) . (($secondArgument) ? ', ' . $secondArgument : '')
         . ')';
     }

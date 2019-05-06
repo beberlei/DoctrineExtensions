@@ -17,9 +17,9 @@ class ToDate extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'TO_DATE(%s, %s)',
-                $sqlWalker->walkArithmeticPrimary($this->date),
-                $sqlWalker->walkArithmeticPrimary($this->fmt)
+            'TO_DATE(%s, %s)',
+            $sqlWalker->walkArithmeticPrimary($this->date),
+            $sqlWalker->walkArithmeticPrimary($this->fmt)
         );
     }
 

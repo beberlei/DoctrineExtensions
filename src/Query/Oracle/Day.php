@@ -15,8 +15,8 @@ class Day extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'EXTRACT(DAY FROM %s)',
-                $sqlWalker->walkArithmeticPrimary($this->date)
+            'EXTRACT(DAY FROM %s)',
+            $sqlWalker->walkArithmeticPrimary($this->date)
         );
     }
 

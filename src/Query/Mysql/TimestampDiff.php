@@ -33,10 +33,10 @@ class TimestampDiff extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sql_walker)
     {
         return sprintf(
-          'TIMESTAMPDIFF(%s, %s, %s)',
-          $this->unit,
-          $this->firstDatetimeExpression->dispatch($sql_walker),
-          $this->secondDatetimeExpression->dispatch($sql_walker)
+            'TIMESTAMPDIFF(%s, %s, %s)',
+            $this->unit,
+            $this->firstDatetimeExpression->dispatch($sql_walker),
+            $this->secondDatetimeExpression->dispatch($sql_walker)
       );
     }
 }

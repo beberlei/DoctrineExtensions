@@ -17,9 +17,9 @@ class Nvl extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'NVL(%s, %s)',
-                $sqlWalker->walkArithmeticPrimary($this->expr1),
-                $sqlWalker->walkArithmeticPrimary($this->expr2)
+            'NVL(%s, %s)',
+            $sqlWalker->walkArithmeticPrimary($this->expr1),
+            $sqlWalker->walkArithmeticPrimary($this->expr2)
         );
     }
 

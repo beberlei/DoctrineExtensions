@@ -14,11 +14,11 @@ class Atan2 extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         $firstArgument = $sqlWalker->walkSimpleArithmeticExpression(
-                        $this->firstExpression
+            $this->firstExpression
         );
 
         $secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
-                        $this->secondExpression
+            $this->secondExpression
         );
 
         return 'ATAN2(' . $firstArgument . ', ' . $secondArgument . ')';

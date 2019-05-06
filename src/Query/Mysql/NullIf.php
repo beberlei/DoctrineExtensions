@@ -27,9 +27,9 @@ class NullIf extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'NULLIF(%s, %s)',
-                $sqlWalker->walkArithmeticPrimary($this->expr1),
-                $sqlWalker->walkArithmeticPrimary($this->expr2)
+            'NULLIF(%s, %s)',
+            $sqlWalker->walkArithmeticPrimary($this->expr1),
+            $sqlWalker->walkArithmeticPrimary($this->expr2)
         );
     }
 }

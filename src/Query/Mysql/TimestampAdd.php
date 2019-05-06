@@ -33,10 +33,10 @@ class TimestampAdd extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sql_walker)
     {
         return sprintf(
-          'TIMESTAMPADD(%s, %s, %s)',
-          $this->unit,
-          $this->firstDatetimeExpression->dispatch($sql_walker),
-          $this->secondDatetimeExpression->dispatch($sql_walker)
+            'TIMESTAMPADD(%s, %s, %s)',
+            $this->unit,
+            $this->firstDatetimeExpression->dispatch($sql_walker),
+            $this->secondDatetimeExpression->dispatch($sql_walker)
       );
     }
 }
