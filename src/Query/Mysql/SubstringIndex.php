@@ -9,7 +9,6 @@ use  Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class SubstringIndex
- * @package DoctrineExtensions\Query\Mysql
  * @author Vas N <phpvas@gmail.com>
  */
 class SubstringIndex extends FunctionNode

@@ -9,7 +9,6 @@ use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class Least
- * @package DoctrineExtensions\Query\Mysql
  *
  * @author Vas N <phpvas@gmail.com>
  */

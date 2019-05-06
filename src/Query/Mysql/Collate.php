@@ -12,7 +12,6 @@ use Doctrine\ORM\Query\Lexer;
  * https://dev.mysql.com/doc/refman/5.7/en/charset-collate.html
  *
  * @category    DoctrineExtensions
- * @package     DoctrineExtensions\Query\Mysql
  * @author      Peter Tanath <peter.tanath@gmail.com>
  * @license     MIT License
  */

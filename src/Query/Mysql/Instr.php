@@ -9,7 +9,6 @@ use  Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class Instr
- * @package DoctrineExtensions\Query\Mysql
  * @author Jan H <jan@pmconnect.co.uk>
  */
 class Instr extends FunctionNode

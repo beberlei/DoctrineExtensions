@@ -22,7 +22,6 @@ use Doctrine\ORM\Query\Lexer;
  * https://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html
  *
  * @category    DoctrineExtensions
- * @package     DoctrineExtensions\Query\Mysql
  * @author      Pawel Stasicki <p.stasicki@gmail.com>
  * @license     MIT License
  */

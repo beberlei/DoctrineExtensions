@@ -9,7 +9,6 @@ use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class Greatest
- * @package DoctrineExtensions\Query\Mysql
  *
  * @author Vas N <phpvas@gmail.com>
  * @author Guven Atbakan <guven@atbakan.com>

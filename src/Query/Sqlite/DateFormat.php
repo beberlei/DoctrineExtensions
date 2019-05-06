@@ -33,7 +33,6 @@ class DateFormat extends FunctionNode
 
     /**
      * @param \Doctrine\ORM\Query\Parser $parser
-     * @return void
      */
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {

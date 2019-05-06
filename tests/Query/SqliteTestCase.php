@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Query;
 class SqliteTestCase extends DbTestCase
 {
     /**
-     * @var string name of Date.
+     * @var string name of Date
      */
     protected $columnAlias;
 

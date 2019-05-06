@@ -9,7 +9,6 @@ use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class Least
- * @package DoctrineExtensions\Query\Postgresql
  *
  * @author Vas N <phpvas@gmail.com>
  * @author Leonardo B Motyczka <leomoty@gmail.com>
