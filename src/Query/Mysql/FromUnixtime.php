@@ -16,7 +16,6 @@ class FromUnixtime extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-
         if (null !== $this->secondExpression) {
             return 'FROM_UNIXTIME('
                 . $this->firstExpression->dispatch($sqlWalker)

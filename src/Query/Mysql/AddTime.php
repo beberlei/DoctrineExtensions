@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\Lexer;
 class AddTime extends FunctionNode
 {
     public $date;
+
     public $time;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
