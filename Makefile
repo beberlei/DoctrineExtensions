@@ -19,14 +19,14 @@ HELP = \
 	}; \
 	print "\n"; }
 
-help: ##@tap Show this help
+help: ##@DoctrineExtensions Show this help
 	@perl -e '$(HELP)' $(MAKEFILE_LIST)
 
-fix: ##@tap Fix with PHP CS Fixer
+fix: ##@DoctrineExtensions Fix with PHP CS Fixer
 	vendor/bin/php-cs-fixer fix
 
-lint: ##@tap Lint with PHP CS Fixer (dry-run)
+lint: ##@DoctrineExtensions Lint with PHP CS Fixer (dry-run)
 	vendor/bin/php-cs-fixer fix --dry-run --diff --diff-format udiff --show-progress=none --verbose
 
-test: ##@tap Test with PHPUnit
+test: ##@DoctrineExtensions Test with PHPUnit
 	vendor/bin/phpunit
