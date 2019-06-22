@@ -9,6 +9,7 @@ doctrine:
                  day: DoctrineExtensions\Query\Sqlite\Day
                  dayname: DoctrineExtensions\Query\Sqlite\DayName
                  hour: DoctrineExtensions\Query\Sqlite\Hour
+                 julianday: DoctrineExtensions\Query\Sqlite\JulianDay
                  minute: DoctrineExtensions\Query\Sqlite\Minute
                  #month: DoctrineExtensions\Query\Sqlite\Month
                  #monthname: DoctrineExtensions\Query\Sqlite\MonthName
