@@ -5,9 +5,13 @@ namespace DoctrineExtensions\Query\Mysql;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
+/**
+ * @author Wally Noveno <wally.noveno@gmail.com>
+ */
 class Format extends FunctionNode
 {
     public $numberExpression = null;
+
     public $patternExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
