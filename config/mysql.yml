@@ -82,6 +82,7 @@ doctrine:
                  degrees: DoctrineExtensions\Query\Mysql\Degrees
                  field: DoctrineExtensions\Query\Mysql\Field
                  find_in_set: DoctrineExtensions\Query\Mysql\FindInSet
+                 format: DoctrineExtensions\Query\Mysql\Format
                  greatest: DoctrineExtensions\Query\Mysql\Greatest
                  group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  hex: DoctrineExtensions\Query\Mysql\Hex
