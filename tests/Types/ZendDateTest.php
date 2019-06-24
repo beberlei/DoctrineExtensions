@@ -2,27 +2,27 @@
 
 namespace DoctrineExtensions\Tests\Types;
 
-use Doctrine\Common\EventManager,
-    Doctrine\ORM\EntityManager,
-    Doctrine\ORM\Tools\SchemaTool;
+use Doctrine\ORM\Tools\SchemaTool;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
  *
  * @author Andreas Gallien <gallien@seleos.de>
  */
-class ZendDateTest extends \PHPUnit_Framework_TestCase
+class ZendDateTest extends TestCase
 {
     public $entityManager = null;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
-        \Doctrine\DBAL\Types\Type::addType('ZendDate',
+        \Doctrine\DBAL\Types\Type::addType(
+            'ZendDate',
             'DoctrineExtensions\Types\ZendDateType'
         );
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
@@ -33,23 +33,23 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
         $this->em = \Doctrine\ORM\EntityManager::create(
-            array(
+            [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
-            ),
+            ],
             $config
         );
 
         $schemaTool = new SchemaTool($this->em);
         $schemaTool->dropDatabase();
-        $schemaTool->createSchema(array(
+        $schemaTool->createSchema([
             $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\ZendDate'),
-        ));
+        ]);
 
-        $this->em->persist(new \DoctrineExtensions\Tests\Entities\ZendDate(1, new \Zend_Date(array(
+        $this->em->persist(new \DoctrineExtensions\Tests\Entities\ZendDate(1, new \Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
-            'hour' => 9, 'minute' => 8, 'second' => 7
-        ))));
+            'hour' => 9, 'minute' => 8, 'second' => 7,
+        ])));
 
         $this->em->flush();
     }
@@ -58,19 +58,19 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 1);
 
-        $this->assertTrue($entity->date instanceof \Zend_Date);
-        $this->assertTrue($entity->date->equals(new \Zend_Date(array(
+        $this->assertInstanceOf('Zend_Date', $entity->date);
+        $this->assertTrue($entity->date->equals(new \Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
-            'hour' => 9, 'minute' => 8, 'second' => 7
-        ))));
+            'hour' => 9, 'minute' => 8, 'second' => 7,
+        ])));
     }
 
     public function testSetZendDate()
     {
-        $zendDate = new \Zend_Date(array(
+        $zendDate = new \Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
-            'hour' => 9, 'minute' => 8, 'second' => 7
-        ));
+            'hour' => 9, 'minute' => 8, 'second' => 7,
+        ]);
 
         $entity = new \DoctrineExtensions\Tests\Entities\ZendDate(2, $zendDate);
         $this->em->persist($entity);
@@ -78,7 +78,7 @@ class ZendDateTest extends \PHPUnit_Framework_TestCase
 
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 2);
 
-        $this->assertTrue($entity->date instanceof \Zend_Date);
+        $this->assertInstanceOf('Zend_Date', $entity->date);
         $this->assertTrue($entity->date->equals($zendDate));
     }
 

@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Martin Štekl <martin.stekl@gmail.com>
@@ -14,7 +14,7 @@ class Second extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return "SECOND(".$sqlWalker->walkArithmeticPrimary($this->date).")";
+        return 'SECOND('.$sqlWalker->walkArithmeticPrimary($this->date).')';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class Cot extends FunctionNode
 {
@@ -12,7 +12,7 @@ class Cot extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return 'COT(' . $sqlWalker->walkSimpleArithmeticExpression(
-                $this->arithmeticExpression
+            $this->arithmeticExpression
         ) . ')';
     }
 

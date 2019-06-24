@@ -2,8 +2,6 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-use Carbon\Carbon;
-
 /**
  * @Entity
  * @Table

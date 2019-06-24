@@ -2,22 +2,23 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class Atan2 extends FunctionNode
 {
     public $firstExpression;
+
     public $secondExpression;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         $firstArgument = $sqlWalker->walkSimpleArithmeticExpression(
-                        $this->firstExpression
+            $this->firstExpression
         );
 
         $secondArgument = $sqlWalker->walkSimpleArithmeticExpression(
-                        $this->secondExpression
+            $this->secondExpression
         );
 
         return 'ATAN2(' . $firstArgument . ', ' . $secondArgument . ')';

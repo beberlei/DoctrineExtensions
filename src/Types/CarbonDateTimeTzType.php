@@ -2,9 +2,9 @@
 
 namespace DoctrineExtensions\Types;
 
-use Carbon\Carbon,
-    Doctrine\DBAL\Platforms\AbstractPlatform,
-    Doctrine\DBAL\Types\DateTimeTzType;
+use Carbon\Carbon;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\DateTimeTzType;
 
 class CarbonDateTimeTzType extends DateTimeTzType
 {

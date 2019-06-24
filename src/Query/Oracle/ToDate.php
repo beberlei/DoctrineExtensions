@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Oracle;
 
-use Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Mohammad ZeinEddin <mohammad@zeineddin.name>
@@ -11,14 +11,16 @@ use Doctrine\ORM\Query\Lexer,
 class ToDate extends FunctionNode
 {
     private $date;
+
     private $fmt;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'TO_DATE(%s, %s)',
-                $sqlWalker->walkArithmeticPrimary($this->date),
-                $sqlWalker->walkArithmeticPrimary($this->fmt));
+            'TO_DATE(%s, %s)',
+            $sqlWalker->walkArithmeticPrimary($this->date),
+            $sqlWalker->walkArithmeticPrimary($this->fmt)
+        );
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

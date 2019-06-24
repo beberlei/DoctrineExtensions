@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Jeremy Hicks <jeremy.hicks@gmail.com>
@@ -11,7 +11,8 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class Field extends FunctionNode
 {
     private $field = null;
-    private $values = array();
+
+    private $values = [];
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {

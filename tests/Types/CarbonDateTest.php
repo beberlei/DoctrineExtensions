@@ -2,21 +2,22 @@
 
 namespace DoctrineExtensions\Tests\Types;
 
-use Carbon\Carbon,
-    Doctrine\ORM\Tools\SchemaTool,
-    DoctrineExtensions\Tests\Entities\CarbonDate as Entity,
-    Doctrine\DBAL\Types\Type;
+use Carbon\Carbon;
+use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Tools\SchemaTool;
+use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class CarbonDateTest extends \PHPUnit_Framework_TestCase
+class CarbonDateTest extends TestCase
 {
     public $entityManager = null;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         Type::addType('CarbonDate', 'DoctrineExtensions\Types\CarbonDateType');
         Type::addType('CarbonDateTime', 'DoctrineExtensions\Types\CarbonDateTimeType');
@@ -24,7 +25,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         Type::addType('CarbonTime', 'DoctrineExtensions\Types\CarbonTimeType');
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
@@ -35,18 +36,18 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
         $this->em = \Doctrine\ORM\EntityManager::create(
-            array(
+            [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
-            ),
+            ],
             $config
         );
 
         $schemaTool = new SchemaTool($this->em);
         $schemaTool->dropDatabase();
-        $schemaTool->createSchema(array(
+        $schemaTool->createSchema([
             $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\CarbonDate'),
-        ));
+        ]);
 
         $entity = new Entity();
         $entity->id = 1;
@@ -63,7 +64,10 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
         $this->assertInstanceOf('Carbon\Carbon', $entity->date);
-        $this->assertEquals(Carbon::createFromDate(2015, 1, 1, $entity->date->timezone), $entity->date);
+        $this->assertEquals(
+            Carbon::createFromDate(2015, 1, 1, $entity->date->timezone)->format('Y-m-d'),
+            $entity->date->format('Y-m-d')
+        );
     }
 
     public function testDateSetter()
@@ -73,7 +77,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $entity->date = Carbon::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
-        $this->em->flush();
+        $this->assertNull($this->em->flush());
     }
 
     public function testDateTimeGetter()
@@ -91,7 +95,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $entity->datetime = Carbon::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
-        $this->em->flush();
+        $this->assertNull($this->em->flush());
     }
 
     public function testDateTimeTzGetter()
@@ -109,7 +113,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $entity->datetime_tz = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
-        $this->em->flush();
+        $this->assertNull($this->em->flush());
     }
 
     public function testTimeGetter()
@@ -127,7 +131,7 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
         $entity->time = Carbon::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);
-        $this->em->flush();
+        $this->assertNull($this->em->flush());
     }
 
     /**
@@ -143,11 +147,11 @@ class CarbonDateTest extends \PHPUnit_Framework_TestCase
 
     public function typeProvider()
     {
-        return array(
-            array('CarbonDate'),
-            array('CarbonDateTime'),
-            array('CarbonDateTimeTz'),
-            array('CarbonTime'),
-        );
+        return [
+            ['CarbonDate'],
+            ['CarbonDateTime'],
+            ['CarbonDateTimeTz'],
+            ['CarbonTime'],
+        ];
     }
 }

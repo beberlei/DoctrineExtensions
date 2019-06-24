@@ -2,27 +2,18 @@
 
 namespace DoctrineExtensions\Query\Sqlite;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * @author Tarjei Huse <tarjei.huse@gmail.com>
+ * @author Aleksandr Klimenkov <alx.devel@gmail.com>
  */
-class Week extends FunctionNode
+class Week extends AbstractStrfTime
 {
-    public $date;
+    /**
+     * Currently not in use
+     * @var int
+     */
     public $mode;
-
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
-    {
-        $sql = "WEEK(" . $sqlWalker->walkArithmeticPrimary($this->date);
-        if ($this->mode != null) {
-            $sql .= ", " . $sqlWalker->walkLiteral($this->mode);
-        }
-        $sql .= ")";
-
-        return $sql;
-    }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
@@ -37,5 +28,10 @@ class Week extends FunctionNode
         }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+    }
+
+    protected function getFormat()
+    {
+        return '%W';
     }
 }

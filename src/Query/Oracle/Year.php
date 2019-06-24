@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Oracle;
 
-use Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Andréia Bohner <andreiabohner@gmail.com>
@@ -15,8 +15,9 @@ class Year extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'EXTRACT(YEAR FROM %s)',
-                $sqlWalker->walkArithmeticPrimary($this->date));
+            'EXTRACT(YEAR FROM %s)',
+            $sqlWalker->walkArithmeticPrimary($this->date)
+        );
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

@@ -2,12 +2,13 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 class DateDiff extends FunctionNode
 {
     public $firstDateExpression = null;
+
     public $secondDateExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -23,8 +24,8 @@ class DateDiff extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return 'DATEDIFF(' .
-            $this->firstDateExpression->dispatch($sqlWalker) . ', ' .
-            $this->secondDateExpression->dispatch($sqlWalker) .
+            $sqlWalker->walkArithmeticTerm($this->firstDateExpression) . ', ' .
+            $sqlWalker->walkArithmeticTerm($this->secondDateExpression) .
         ')';
     }
 }

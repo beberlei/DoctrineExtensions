@@ -7,7 +7,6 @@ namespace DoctrineExtensions\Query\Sqlite;
  */
 class WeekDay extends AbstractStrfTime
 {
-
     protected function getFormat()
     {
         return '%w';

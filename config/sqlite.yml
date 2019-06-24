@@ -8,7 +8,10 @@ doctrine:
                  #datediff: DoctrineExtensions\Query\Sqlite\DateDiff
                  day: DoctrineExtensions\Query\Sqlite\Day
                  dayname: DoctrineExtensions\Query\Sqlite\DayName
+                 hour: DoctrineExtensions\Query\Sqlite\Hour
                  minute: DoctrineExtensions\Query\Sqlite\Minute
+                 #month: DoctrineExtensions\Query\Sqlite\Month
+                 #monthname: DoctrineExtensions\Query\Sqlite\MonthName
                  second: DoctrineExtensions\Query\Sqlite\Second
                  month:  DoctrineExtensions\Query\Sqlite\Month
                  strftime:  DoctrineExtensions\Query\Sqlite\StrfTime
@@ -31,14 +34,15 @@ doctrine:
 #                 field: DoctrineExtensions\Query\Sqlite\Field
 #                 find_in_set: DoctrineExtensions\Query\Sqlite\FindInSet
 #                 group_concat: DoctrineExtensions\Query\Sqlite\GroupConcat
-#                 ifelse: DoctrineExtensions\Query\Sqlite\IfElse
+                 greatest: DoctrineExtensions\Query\Sqlite\Greatest
+                 ifelse: DoctrineExtensions\Query\Sqlite\IfElse
                  ifnull: DoctrineExtensions\Query\Sqlite\IfNull
-#                 match_against: DoctrineExtensions\Query\Sqlite\MatchAgainst
+                 least: DoctrineExtensions\Query\Sqlite\Least
+#                 match: DoctrineExtensions\Query\Sqlite\MatchAgainst
 #                 md5: DoctrineExtensions\Query\Sqlite\Md5
-#                 month: DoctrineExtensions\Query\Sqlite\Month
-#                 monthname: DoctrineExtensions\Query\Sqlite\MonthName
 #                 nullif: DoctrineExtensions\Query\Sqlite\NullIf
 #                 radians: DoctrineExtensions\Query\Sqlite\Radians
+                 random: DoctrineExtensions\Query\Sqlite\Random
 #                 regexp: DoctrineExtensions\Query\Sqlite\Regexp
                  replace: DoctrineExtensions\Query\Sqlite\Replace
 #                 sha1: DoctrineExtensions\Query\Sqlite\Sha1

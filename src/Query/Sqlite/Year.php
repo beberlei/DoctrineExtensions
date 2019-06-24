@@ -7,7 +7,6 @@ namespace DoctrineExtensions\Query\Sqlite;
  */
 class Year extends AbstractStrfTime
 {
-
     protected function getFormat()
     {
         return '%Y';

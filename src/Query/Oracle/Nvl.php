@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Oracle;
 
-use Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Andréia Bohner <andreiabohner@gmail.com>
@@ -11,14 +11,16 @@ use Doctrine\ORM\Query\Lexer,
 class Nvl extends FunctionNode
 {
     private $expr1;
+
     private $expr2;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-                'NVL(%s, %s)',
-                $sqlWalker->walkArithmeticPrimary($this->expr1),
-                $sqlWalker->walkArithmeticPrimary($this->expr2));
+            'NVL(%s, %s)',
+            $sqlWalker->walkArithmeticPrimary($this->expr1),
+            $sqlWalker->walkArithmeticPrimary($this->expr2)
+        );
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

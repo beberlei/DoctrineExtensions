@@ -1,0 +1,13 @@
+doctrine:
+    orm:
+        dql:
+            datetime_functions:
+                date_format: DoctrineExtensions\Query\Postgresql\DateFormat
+                at_time_zone: DoctrineExtensions\Query\Postgresql\AtTimeZoneFunction
+                date_part: DoctrineExtensions\Query\Postgresql\DatePart
+            string_functions:
+                str_to_date: DoctrineExtensions\Query\Postgresql\StrToDate
+                count_filter: DoctrineExtensions\Query\Postgresql\CountFilterFunction
+                string_agg: DoctrineExtensions\Query\Postgresql\StringAgg
+                greatest: DoctrineExtensions\Query\Postgresql\Greatest
+                least: DoctrineExtensions\Query\Postgresql\Least

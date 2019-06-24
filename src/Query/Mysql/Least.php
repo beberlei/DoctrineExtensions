@@ -2,21 +2,21 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer,
-    Doctrine\ORM\Query\Parser,
-    Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * Class Least
- * @package DoctrineExtensions\Query\Mysql
  *
  * @author Vas N <phpvas@gmail.com>
  */
 class Least extends FunctionNode
 {
     private $field = null;
-    private $values = array();
+
+    private $values = [];
 
     /**
      * @param Parser $parser
@@ -25,13 +25,13 @@ class Least extends FunctionNode
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
-        $this->field = $parser->ArithmeticPrimary();
+        $this->field = $parser->ArithmeticExpression();
         $lexer = $parser->getLexer();
 
         while (count($this->values) < 1 ||
             $lexer->lookahead['type'] != Lexer::T_CLOSE_PARENTHESIS) {
             $parser->match(Lexer::T_COMMA);
-            $this->values[] = $parser->ArithmeticPrimary();
+            $this->values[] = $parser->ArithmeticExpression();
         }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);

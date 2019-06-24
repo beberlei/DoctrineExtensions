@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Andrew Mackrodt <andrew@ajmm.org>
@@ -11,7 +11,9 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class CountIf extends FunctionNode
 {
     private $expr1;
+
     private $expr2;
+
     private $inverse = false;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -29,10 +31,11 @@ class CountIf extends FunctionNode
                 case 'inverse':
                     $parser->match(Lexer::T_IDENTIFIER);
                     $this->inverse = true;
-                break;
 
+                break;
                 default: // Identifier not recognized (causes exception).
                     $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+
                 break;
             }
         }
@@ -43,7 +46,7 @@ class CountIf extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-            "COUNT(CASE %s WHEN %s THEN %s END)",
+            'COUNT(CASE %s WHEN %s THEN %s END)',
             $sqlWalker->walkArithmeticPrimary($this->expr1),
             $sqlWalker->walkArithmeticPrimary($this->expr2),
             !$this->inverse ? '1 ELSE NULL' : 'NULL ELSE 1'

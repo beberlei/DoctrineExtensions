@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Jarek Kostrz <jkostrz@gmail.com>
@@ -11,7 +11,9 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode,
 class Replace extends FunctionNode
 {
     public $search = null;
+
     public $replace = null;
+
     public $subject = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)

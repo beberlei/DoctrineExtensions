@@ -2,22 +2,27 @@
 
 namespace DoctrineExtensions\Tests\Config;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test that checks the README describes all of the query types
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlConfigTest extends \PHPUnit_Framework_TestCase
+class MysqlYamlTest extends TestCase
 {
-    public function setUp()
+    /** @var array */
+    protected $functions;
+
+    public function setUp(): void
     {
         $yaml = new \Symfony\Component\Yaml\Parser();
 
-        $this->config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
+        $config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
         $this->functions = array_merge(
-            $this->config['doctrine']['orm']['dql']['datetime_functions'],
-            $this->config['doctrine']['orm']['dql']['numeric_functions'],
-            $this->config['doctrine']['orm']['dql']['string_functions']
+            $config['doctrine']['orm']['dql']['datetime_functions'],
+            $config['doctrine']['orm']['dql']['numeric_functions'],
+            $config['doctrine']['orm']['dql']['string_functions']
         );
     }
 
@@ -39,6 +44,8 @@ class MysqlConfigTest extends \PHPUnit_Framework_TestCase
                 "The following MySQL query functions are undocumented in mysql.yml\n\n" .
                 implode("\n", $undocumented)
             );
+        } else {
+            $this->assertEmpty($undocumented);
         }
     }
 

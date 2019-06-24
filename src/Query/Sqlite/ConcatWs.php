@@ -2,15 +2,16 @@
 
 namespace DoctrineExtensions\Query\Sqlite;
 
-use Doctrine\ORM\Query\AST\Functions\FunctionNode,
-    Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\Lexer;
 
 /**
  * @author Bas de Ruiter <winkbrace@gmail.com>
  */
 class ConcatWs extends FunctionNode
 {
-    private $values = array();
+    private $values = [];
+
     private $notEmpty = false;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -40,10 +41,11 @@ class ConcatWs extends FunctionNode
                 case 'notempty':
                     $parser->match(Lexer::T_IDENTIFIER);
                     $this->notEmpty = true;
-                    break;
 
+                    break;
                 default: // Identifier not recognized (causes exception).
                     $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+
                     break;
             }
         }
@@ -56,12 +58,12 @@ class ConcatWs extends FunctionNode
         $separator = array_shift($this->values)->simpleArithmeticExpression->value;
 
         // Create an array to hold the query elements.
-        $queryBuilder = array('(');
+        $queryBuilder = ['('];
 
         // Iterate over the captured expressions and add them to the query.
         for ($i = 0; $i < count($this->values); $i++) {
             if ($i > 0) {
-                $queryBuilder[] = " || '$separator' || ";
+                $queryBuilder[] = " || '${separator}' || ";
             }
 
             // Dispatch the walker on the current node.

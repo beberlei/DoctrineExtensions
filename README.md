@@ -3,25 +3,20 @@ DoctrineExtensions
 
 [![Build Status](https://img.shields.io/badge/branch-master-blue.svg)](https://github.com/beberlei/DoctrineExtensions/tree/master)
 [![Build Status](https://travis-ci.org/beberlei/DoctrineExtensions.svg?branch=master)](https://travis-ci.org/beberlei/DoctrineExtensions)
-[![Build Status](https://img.shields.io/badge/version-1.0-orange.svg)](https://github.com/beberlei/DoctrineExtensions/tree/1.0)
-[![Travis branch](https://img.shields.io/travis/beberlei/DoctrineExtensions/1.0.svg)](https://travis-ci.org/beberlei/DoctrineExtensions)
-[![Build Status](https://img.shields.io/badge/version-0.3-orange.svg)](https://github.com/beberlei/DoctrineExtensions/tree/0.3)
-[![Travis branch](https://img.shields.io/travis/beberlei/DoctrineExtensions/0.3.svg)](https://travis-ci.org/beberlei/DoctrineExtensions)
-
 [![Packagist](https://img.shields.io/packagist/v/beberlei/DoctrineExtensions.svg?label=stable)](https://packagist.org/packages/beberlei/DoctrineExtensions)
-[![Packagist](https://img.shields.io/packagist/vpre/beberlei/DoctrineExtensions.svg?label=unstable)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 [![Packagist](https://img.shields.io/packagist/dd/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 [![Packagist](https://img.shields.io/packagist/dm/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 [![Packagist](https://img.shields.io/packagist/dt/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
 
-A set of extensions to Doctrine 2 that add support for additional query
-functions available in MySQL and Oracle.
+A set of extensions to Doctrine 2 that add support for functions available in
+MySQL, Oracle, PostgreSQL and SQLite.
 
 | DB | Functions |
 |:--:|:---------:|
-| MySQL | `ACOS, ASCII, ASIN, ATAN, ATAN2, BINARY, CEIL, CHAR_LENGTH, CONCAT_WS, COS, COT, COUNTIF, CRC32, DATE, DATE_FORMAT, DATEADD, DATEDIFF, DATESUB, DAY, DAYNAME, DEGREES, FIELD, FIND_IN_SET, FLOOR, FROM_UNIXTIME, GROUP_CONCAT, HOUR, IFELSE, IFNULL, LAST_DAY, LEAST, LPAD, MATCH_AGAINST, MD5, MINUTE, MONTH, MONTHNAME, NULLIF, PI, POWER, QUARTER, RADIANS, RAND, REGEXP, REPLACE, ROUND, RPAD, SECOND, SHA1, SHA2, SIN, SOUNDEX, STD, STRTODATE, SUBSTRING_INDEX, TAN, TIME, TIMESTAMPADD, TIMESTAMPDIFF, UNIX_TIMESTAMP, UUID_SHORT, WEEK, WEEKDAY, YEAR, YEARWEEK` |
-| Oracle | `DAY, MONTH, NVL, TODATE, TRUNC, YEAR` |
-| Sqlite | `DATE, MINUTE, HOUR, DAY, WEEK, WEEKDAY, MONTH, YEAR, STRFTIME, DATE_FORMAT*, IFNULL, REPLACE, ROUND` |
+| MySQL | `ACOS, ADDTIME, AES_DECRYPT, AES_ENCRYPT, ANY_VALUE, ASCII, ASIN, ATAN, ATAN2, BINARY, BIT_COUNT, BIT_XOR, CAST, CEIL, CHAR_LENGTH, COLLATE, CONCAT_WS, CONVERT_TZ, COS, COT, COUNTIF, CRC32, DATE, DATE_FORMAT, DATEADD, DATEDIFF, DATESUB, DAY, DAYNAME, DAYOFWEEK, DAYOFYEAR, DEGREES, DIV, EXP, EXTRACT, FIELD, FIND_IN_SET, FLOOR, FROM_UNIXTIME, GREATEST, GROUP_CONCAT, HEX, HOUR, IFELSE, IFNULL, INET_ATON, INET_NTOA, INET6_ATON, INET6_NTOA, INSTR, IS_IPV4, IS_IPV4_COMPAT, IS_IPV4_MAPPED, IS_IPV6, LAST_DAY, LEAST, LOG, LOG10, LOG2, LPAD, MATCH, MD5, MINUTE, MONTH, MONTHNAME, NOW, NULLIF, PERIOD_DIFF, PI, POWER, QUARTER, RADIANS, RAND, REGEXP, REPLACE, ROUND, RPAD, SECOND, SECTOTIME, SHA1, SHA2, SIN, SOUNDEX, STD, STDDEV, STRTODATE, STR_TO_DATE, SUBSTRING_INDEX, TAN, TIME, TIMEDIFF, TIMESTAMPADD, TIMESTAMPDIFF, TIMETOSEC, UNHEX, UNIX_TIMESTAMP, UTC_TIMESTAMP, UUID_SHORT, VARIANCE, WEEK, WEEKDAY, YEAR, YEARMONTH, YEARWEEK` |
+| Oracle | `DAY, LISTAGG, MONTH, NVL, TO_CHAR, TO_DATE, TRUNC, YEAR` |
+| Sqlite | `DATE, MINUTE, HOUR, DAY, WEEK, WEEKDAY, MONTH, YEAR, STRFTIME, DATE_FORMAT*, CASE WHEN THEN ELSE END, IFNULL, REPLACE, ROUND` |
+| PostgreSQL | `DATE_PART, GREATEST, LEAST, COUNT_FILTER, STRING_AGG, TO_DATE, TO_CHAR, AT_TIME_ZONE` |
 
 > Note: Sqlite date functions are implemented as `strftime(format, value)`.
   Sqlite only supports the [most common formats](https://www.sqlite.org/lang_datefunc.html),
@@ -34,17 +29,30 @@ Installation
 To install this library, run the command below and you will get the latest
 version:
 
-```sh
-composer require beberlei/DoctrineExtensions
+```
+composer require beberlei/doctrineextensions
 ```
 
-If you want to run the tests:
+If you want to run phpunit:
 
-```sh
-vendor/bin/phpunit
+```
+make test
 ```
 
-To include the DoctrineExtensions you should fire up an autoloader, for example:
+If you want to run php-cs-fixer:
+
+```sh
+make fix  # (or make lint for a dry-run)
+```
+
+Usage
+-----
+
+If you are using DoctrineExtensions with Symfony read [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
+
+You can find example Symfony configuration for using DoctrineExtensions custom DQL functions in [config](config).
+
+If you are using DoctrineExtensions standalone, you might want to fire up the autoloader:
 
 ```php
 <?php
@@ -52,19 +60,16 @@ To include the DoctrineExtensions you should fire up an autoloader, for example:
 $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/extensions');
 $classLoader->register();
 ```
+For more information check out the documentation of [Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
 
-You can find an example configuration for using the additional MySQL functions
-in Symfony2 in [config/mysql.yml](config/mysql.yml).
+Notes
+-----
 
+- MySQL `DATE_ADD` is available in DQL as `DATEADD(CURRENT_DATE(), 1, 'DAY')`
+- MySQL `DATE_SUB` is available in DQL as `DATESUB(CURRENT_DATE(), 1, 'DAY')`
+- MySQL `IF` is available in DQL as `IFELSE(field > 0, 'true', 'false')`
 
-Legacy versions
+Troubleshooting
 ---------------
 
-If you're still using Paginator, LargeCollections, Phing, PHPUnit or Versionable
-behaviours available in `0.1`–`0.3`, you're welcome to use `0.3` – but do note,
-**this functionality is now available in Doctrine core, no longer supported in
-this library, and was removed in 1.0**.
-
-Whilst pull requests for bugfixes to this functionality will be considered for
-0.x releases, you are encouraged to switch out your implementations and upgrade
-to ~1.0.
+Issues are now disabled on this repository, they were mostly being abused for feature requests that would never be serviced, if a custom DQL function that you want isn't provided, or does not support the arguments you want to pass – then it's up to you to solve that problem and if you want to contribute that back in the form of a pull request we would love to have it.
