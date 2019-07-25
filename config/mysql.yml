@@ -17,6 +17,7 @@ doctrine:
                  from_unixtime: DoctrineExtensions\Query\Mysql\FromUnixtime
                  hour: DoctrineExtensions\Query\Mysql\Hour
                  last_day: DoctrineExtensions\Query\Mysql\LastDay
+                 makedate: DoctrineExtensions\Query\Mysql\MakeDate
                  minute: DoctrineExtensions\Query\Mysql\Minute
                  now: DoctrineExtensions\Query\Mysql\Now
                  month: DoctrineExtensions\Query\Mysql\Month
