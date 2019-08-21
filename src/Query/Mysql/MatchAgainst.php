@@ -50,10 +50,38 @@ class MatchAgainst extends FunctionNode
         if (strtolower($lexer->lookahead['value']) === 'boolean') {
             $parser->match(Lexer::T_IDENTIFIER);
             $this->booleanMode = true;
+        } elseif (strtolower($lexer->lookahead['value']) === 'in') {
+            $parser->match(Lexer::T_IDENTIFIER);
+
+            if (strtolower($lexer->lookahead['value']) !== 'boolean') {
+                $parser->syntaxError('boolean');
+            }
+            $parser->match(Lexer::T_IDENTIFIER);
+
+            if (strtolower($lexer->lookahead['value']) !== 'mode') {
+                $parser->syntaxError('mode');
+            }
+            $parser->match(Lexer::T_IDENTIFIER);
+
+            $this->booleanMode = true;
         }
 
         if (strtolower($lexer->lookahead['value']) === 'expand') {
             $parser->match(Lexer::T_IDENTIFIER);
+            $this->queryExpansion = true;
+        } elseif (strtolower($lexer->lookahead['value']) === 'with') {
+            $parser->match(Lexer::T_IDENTIFIER);
+
+            if (strtolower($lexer->lookahead['value']) !== 'query') {
+                $parser->syntaxError('query');
+            }
+            $parser->match(Lexer::T_IDENTIFIER);
+
+            if (strtolower($lexer->lookahead['value']) !== 'expansion') {
+                $parser->syntaxError('expansion');
+            }
+            $parser->match(Lexer::T_IDENTIFIER);
+
             $this->queryExpansion = true;
         }
 
