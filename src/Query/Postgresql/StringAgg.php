@@ -14,13 +14,13 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class StringAgg extends FunctionNode
 {
+    private $orderBy = null;
+
     private $expression = null;
 
     private $delimiter = null;
 
     private $isDistinct = false;
-
-    public $orderBy = null;
 
     public function parse(Parser $parser)
     {
@@ -47,7 +47,8 @@ class StringAgg extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker)
     {
-        return \sprintf('string_agg(%s%s, %s%s)',
+        return \sprintf(
+            'string_agg(%s%s, %s%s)',
             ($this->isDistinct ? 'DISTINCT ' : ''),
             $sqlWalker->walkPathExpression($this->expression),
             $sqlWalker->walkStringPrimary($this->delimiter),
