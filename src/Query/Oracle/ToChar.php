@@ -18,9 +18,7 @@ class ToChar extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-
         if ($this->nls) {
-
             return sprintf(
                 'TO_CHAR(%s, %s, %s)',
                 $sqlWalker->walkArithmeticPrimary($this->datetime),
@@ -35,12 +33,10 @@ class ToChar extends FunctionNode
             $sqlWalker->walkArithmeticPrimary($this->datetime),
             $sqlWalker->walkArithmeticPrimary($this->fmt)
         );
-
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
-
         $lexer = $parser->getLexer();
 
         $parser->match(Lexer::T_IDENTIFIER);
@@ -55,6 +51,5 @@ class ToChar extends FunctionNode
         }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-
     }
 }
