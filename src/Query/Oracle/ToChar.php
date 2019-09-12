@@ -19,7 +19,7 @@ class ToChar extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-            'TO_CHAR(%s, %s)',
+            'TO_CHAR(%s, %s, %s)',
             $sqlWalker->walkArithmeticPrimary($this->datetime),
             $sqlWalker->walkArithmeticPrimary($this->fmt),
             $sqlWalker->walkArithmeticPrimary($this->nls)
