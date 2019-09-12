@@ -25,7 +25,6 @@ class ToChar extends FunctionNode
                 $sqlWalker->walkArithmeticPrimary($this->fmt),
                 $sqlWalker->walkArithmeticPrimary($this->nls)
             );
-
         }
 
         return sprintf(
