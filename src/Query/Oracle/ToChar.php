@@ -14,12 +14,15 @@ class ToChar extends FunctionNode
 
     private $fmt;
 
+    private $nls;
+
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
             'TO_CHAR(%s, %s)',
             $sqlWalker->walkArithmeticPrimary($this->datetime),
-            $sqlWalker->walkArithmeticPrimary($this->fmt)
+            $sqlWalker->walkArithmeticPrimary($this->fmt),
+            $sqlWalker->walkArithmeticPrimary($this->nls)
         );
     }
 
@@ -30,6 +33,8 @@ class ToChar extends FunctionNode
         $this->datetime = $parser->ArithmeticExpression();
         $parser->match(Lexer::T_COMMA);
         $this->fmt = $parser->StringExpression();
+        $parser->match(Lexer::T_COMMA);
+        $this->nls = $parser->StringExpression();
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 }
