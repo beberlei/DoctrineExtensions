@@ -1,0 +1,49 @@
+doctrine:
+     orm:
+         dql:
+             datetime_functions:
+                 addtime: DoctrineExtensions\Query\Mssql\AddTime
+                 convert_tz: DoctrineExtensions\Query\Mssql\ConvertTz
+                 date: DoctrineExtensions\Query\Mssql\Date
+                 date_format: DoctrineExtensions\Query\Mssql\DateFormat
+                 dateadd: DoctrineExtensions\Query\Mssql\DateAdd
+                 datesub: DoctrineExtensions\Query\Mssql\DateSub
+                 datediff: DoctrineExtensions\Query\Mssql\DateDiff
+                 day: DoctrineExtensions\Query\Mssql\Day
+                 dayname: DoctrineExtensions\Query\Mssql\DayName
+                 dayofweek: DoctrineExtensions\Query\Mssql\DayOfWeek
+                 dayofyear: DoctrineExtensions\Query\Mssql\DayOfYear
+                 from_unixtime: DoctrineExtensions\Query\Mssql\FromUnixtime
+                 hour: DoctrineExtensions\Query\Mssql\Hour
+                 last_day: DoctrineExtensions\Query\Mssql\LastDay
+                 minute: DoctrineExtensions\Query\Mssql\Minute
+                 now: DoctrineExtensions\Query\Mssql\Now
+                 month: DoctrineExtensions\Query\Mssql\Month
+                 monthname: DoctrineExtensions\Query\Mssql\MonthName
+                 period_diff: DoctrineExtensions\Query\Mssql\PeriodDiff
+                 second: DoctrineExtensions\Query\Mssql\Second
+                 sectotime: DoctrineExtensions\Query\Mssql\SecToTime
+                 strtodate: DoctrineExtensions\Query\Mssql\StrToDate
+                 time: DoctrineExtensions\Query\Mssql\Time
+                 timediff: DoctrineExtensions\Query\Mssql\TimeDiff
+                 timestampadd: DoctrineExtensions\Query\Mssql\TimestampAdd
+                 timestampdiff: DoctrineExtensions\Query\Mssql\TimestampDiff
+                 timetosec: DoctrineExtensions\Query\Mssql\TimeToSec
+                 week: DoctrineExtensions\Query\Mssql\Week
+                 weekday: DoctrineExtensions\Query\Mssql\WeekDay
+                 year: DoctrineExtensions\Query\Mssql\Year
+                 yearmonth: DoctrineExtensions\Query\Mssql\YearMonth
+                 yearweek: DoctrineExtensions\Query\Mssql\YearWeek
+                 unix_timestamp: DoctrineExtensions\Query\Mssql\UnixTimestamp
+                 utc_timestamp: DoctrineExtensions\Query\Mssql\UtcTimestamp
+                 extract: DoctrineExtensions\Query\Mssql\Extract
+
+             numeric_functions:
+                 quarter: DoctrineExtensions\Query\Mssql\Quarter
+
+             string_functions:
+                 cast: DoctrineExtensions\Query\Mssql\Cast
+                 countif: DoctrineExtensions\Query\Mysql\CountIf
+                 greatest: DoctrineExtensions\Query\Mssql\Greatest
+                 least: DoctrineExtensions\Query\Mssql\Least
+                 str_to_date: DoctrineExtensions\Query\Mssql\StrToDate
