@@ -15,7 +15,7 @@ class Ceil extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-            'CEIL(%d)',
+            'CEIL(%s)',
             $sqlWalker->walkArithmeticPrimary($this->number)
         );
     }

@@ -15,7 +15,7 @@ class Floor extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
-            'FLOOR(%d)',
+            'FLOOR(%s)',
             $sqlWalker->walkArithmeticPrimary($this->number)
         );
     }
