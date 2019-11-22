@@ -37,6 +37,6 @@ class TimestampAdd extends FunctionNode
             $this->unit,
             $this->firstDatetimeExpression->dispatch($sql_walker),
             $this->secondDatetimeExpression->dispatch($sql_walker)
-      );
+        );
     }
 }
