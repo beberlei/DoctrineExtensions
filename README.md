@@ -72,4 +72,4 @@ Notes
 Troubleshooting
 ---------------
 
-Issues are now disabled on this repository, they were mostly being abused for feature requests that would never be serviced, if a custom DQL function that you want isn't provided, or does not support the arguments you want to pass – then it's up to you to solve that problem and if you want to contribute that back in the form of a pull request we would love to have it.
+Issues are disabled on this repository, if a custom DQL function that you want isn't provided, or does not support the arguments you want to pass, pull requests are open and we would love to have your contributions.
