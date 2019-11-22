@@ -67,7 +67,6 @@ Notes
 
 - MySQL `DATE_ADD` is available in DQL as `DATEADD(CURRENT_DATE(), 1, 'DAY')`
 - MySQL `DATE_SUB` is available in DQL as `DATESUB(CURRENT_DATE(), 1, 'DAY')`
-- MySQL `IF` is available in DQL as `IFELSE(field > 0, 'true', 'false')`
 
 Troubleshooting
 ---------------
