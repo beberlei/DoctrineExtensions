@@ -3,10 +3,10 @@ DoctrineExtensions
 
 [![Build Status](https://img.shields.io/badge/branch-master-blue.svg)](https://github.com/beberlei/DoctrineExtensions/tree/master)
 [![Build Status](https://travis-ci.org/beberlei/DoctrineExtensions.svg?branch=master)](https://travis-ci.org/beberlei/DoctrineExtensions)
-[![Packagist](https://img.shields.io/packagist/v/beberlei/DoctrineExtensions.svg?label=stable)](https://packagist.org/packages/beberlei/DoctrineExtensions)
-[![Packagist](https://img.shields.io/packagist/dd/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
-[![Packagist](https://img.shields.io/packagist/dm/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
-[![Packagist](https://img.shields.io/packagist/dt/beberlei/DoctrineExtensions.svg?label=⬇)](https://packagist.org/packages/beberlei/DoctrineExtensions)
+[![Packagist](https://img.shields.io/packagist/v/beberlei/doctrineextensions.svg?label=stable)](https://packagist.org/packages/beberlei/doctrineextensions)
+[![Packagist](https://img.shields.io/packagist/dd/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
+[![Packagist](https://img.shields.io/packagist/dm/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
+[![Packagist](https://img.shields.io/packagist/dt/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
 
 A set of extensions to Doctrine 2 that add support for functions available in
 MySQL, Oracle, PostgreSQL and SQLite.
