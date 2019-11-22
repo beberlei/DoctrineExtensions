@@ -20,8 +20,7 @@ script:
   - make test
   - if [[ $DOCTRINE_VERSION == 2.6.* && $TRAVIS_PHP_VERSION == 7.3 ]]; then make lint; fi
 
-sudo: false
-dist: precise
+dist: bionic
 
 cache:
   directories:
