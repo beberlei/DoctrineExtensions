@@ -1,6 +1,6 @@
 <?php
 
-namespace Query\Oracle;
+namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Entities\Product;
