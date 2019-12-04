@@ -12,3 +12,7 @@ doctrine:
                 nvl: DoctrineExtensions\Query\Oracle\Nvl
                 listagg: DoctrineExtensions\Query\Oracle\Listagg
                 to_date: DoctrineExtensions\Query\Oracle\ToDate
+
+            numeric_functions:
+                ceil: DoctrineExtensions\Query\Oracle\Ceil
+                floor: DoctrineExtensions\Query\Oracle\Floor
