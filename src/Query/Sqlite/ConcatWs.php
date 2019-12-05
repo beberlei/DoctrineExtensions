@@ -55,14 +55,14 @@ class ConcatWs extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        $separator = array_shift($this->values)->simpleArithmeticExpression->value;
+        $separator = $this->values[0]->simpleArithmeticExpression->value;
 
         // Create an array to hold the query elements.
         $queryBuilder = ['('];
 
         // Iterate over the captured expressions and add them to the query.
-        for ($i = 0; $i < count($this->values); $i++) {
-            if ($i > 0) {
+        for ($i = 1; $i < count($this->values); $i++) {
+            if ($i > 1) {
                 $queryBuilder[] = " || '${separator}' || ";
             }
 
