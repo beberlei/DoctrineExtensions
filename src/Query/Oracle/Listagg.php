@@ -105,7 +105,7 @@ class Listagg extends FunctionNode
                 $partitionBy[] = $part->dispatch($sqlWalker);
             }
 
-            $result .= ' PARTITION BY (' . implode($partitionBy, ',') . ')';
+            $result .= ' PARTITION BY (' . implode(',', $partitionBy) . ')';
         }
 
         return $result;
