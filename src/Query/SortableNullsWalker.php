@@ -49,7 +49,9 @@ class SortableNullsWalker extends Query\SqlWalker
                 $dqlAlias = $expr->identificationVariable;
                 $search = $this->walkPathExpression($expr) . ' ' . $type;
                 $index = $dqlAlias . '.' . $fieldName;
-                $sql = str_replace($search, $search . ' ' . $hint[$index], $sql);
+                if (isset($hint[$index])) {
+                    $sql = str_replace($search, $search . ' ' . $hint[$index], $sql);
+                }
             }
         }
 
