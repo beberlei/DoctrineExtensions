@@ -7,7 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 /**
  * @author Aleksandr Klimenkov <alx.devel@gmail.com>
  */
-class Week extends AbstractStrfTime
+class Week extends NumberFromStrfTime
 {
     /**
      * Currently not in use

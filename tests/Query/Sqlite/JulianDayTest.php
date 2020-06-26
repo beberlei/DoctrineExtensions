@@ -10,7 +10,7 @@ class JulianDayTest extends SqliteTestCase
     {
         $this->assertDqlProducesSql(
             "SELECT JULIANDAY(:date) FROM DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT strftime('%J', ?) AS sclr_0 FROM Blank b0_"
+            "SELECT CAST(STRFTIME('%J', ?) AS NUMBER) AS sclr_0 FROM Blank b0_"
         );
     }
 }

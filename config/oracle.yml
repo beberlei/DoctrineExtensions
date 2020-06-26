@@ -2,6 +2,9 @@ doctrine:
     orm:
         dql:
             datetime_functions:
+                second: DoctrineExtensions\Query\Oracle\Second
+                minute: DoctrineExtensions\Query\Oracle\Minute
+                hour: DoctrineExtensions\Query\Oracle\Hour
                 day: DoctrineExtensions\Query\Oracle\Day
                 month: DoctrineExtensions\Query\Oracle\Month
                 year: DoctrineExtensions\Query\Oracle\Year

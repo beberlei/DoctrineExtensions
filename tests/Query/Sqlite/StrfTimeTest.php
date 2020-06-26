@@ -10,12 +10,13 @@ class StrfTimeTest extends SqliteTestCase
     {
         return [
             ['Year', '%Y'],
-            ['Weekday', '%w'],
             ['Month', '%m'],
-            ['Minute', '%M'],
-            ['Hour', '%H'],
+            ['Week', '%W'],
+            ['Weekday', '%w'],
             ['Day', '%d'],
-            ['Date', '%Y-%m-%d'],
+            ['Hour', '%H'],
+            ['Minute', '%M'],
+            ['Second', '%S']
         ];
     }
 
@@ -26,7 +27,7 @@ class StrfTimeTest extends SqliteTestCase
     {
         $this->assertDqlProducesSql(
             sprintf('SELECT %s(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p', $function),
-            sprintf("SELECT strftime('%s', d0_.created) AS %s FROM Date d0_", $formatter, $this->columnAlias)
+            sprintf("SELECT CAST(STRFTIME('%s', d0_.created) AS NUMBER) AS %s FROM Date d0_", $formatter, $this->columnAlias)
         );
     }
 
