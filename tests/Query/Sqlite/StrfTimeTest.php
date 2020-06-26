@@ -16,7 +16,7 @@ class StrfTimeTest extends SqliteTestCase
             ['Day', '%d'],
             ['Hour', '%H'],
             ['Minute', '%M'],
-            ['Second', '%S']
+            ['Second', '%S'],
         ];
     }
 
