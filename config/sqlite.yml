@@ -2,28 +2,26 @@ doctrine:
      orm:
          dql:
              datetime_functions:
+                 second: DoctrineExtensions\Query\Sqlite\Second
+                 minute: DoctrineExtensions\Query\Sqlite\Minute
+                 hour: DoctrineExtensions\Query\Sqlite\Hour
+                 day: DoctrineExtensions\Query\Sqlite\Day
+                 dayname: DoctrineExtensions\Query\Sqlite\DayName
+                 #monthname: DoctrineExtensions\Query\Sqlite\MonthName
+                 month:  DoctrineExtensions\Query\Sqlite\Month
+                 week: DoctrineExtensions\Query\Sqlite\Week
+                 weekday: DoctrineExtensions\Query\Sqlite\WeekDay
+                 year: DoctrineExtensions\Query\Sqlite\Year
                  date: DoctrineExtensions\Query\Sqlite\Date
                  date_format: DoctrineExtensions\Query\Sqlite\DateFormat
                  #dateadd: DoctrineExtensions\Query\Sqlite\DateAdd
                  #datediff: DoctrineExtensions\Query\Sqlite\DateDiff
-                 day: DoctrineExtensions\Query\Sqlite\Day
-                 dayname: DoctrineExtensions\Query\Sqlite\DayName
-                 hour: DoctrineExtensions\Query\Sqlite\Hour
                  julianday: DoctrineExtensions\Query\Sqlite\JulianDay
-                 minute: DoctrineExtensions\Query\Sqlite\Minute
-                 #month: DoctrineExtensions\Query\Sqlite\Month
-                 #monthname: DoctrineExtensions\Query\Sqlite\MonthName
-                 second: DoctrineExtensions\Query\Sqlite\Second
-                 month:  DoctrineExtensions\Query\Sqlite\Month
                  strftime:  DoctrineExtensions\Query\Sqlite\StrfTime
                  #strtodate: DoctrineExtensions\Query\Sqlite\StrToDate
                  #time: DoctrineExtensions\Query\Sqlite\Time
                  #timestampadd: DoctrineExtensions\Query\Sqlite\TimestampAdd
                  #timestampdiff: DoctrineExtensions\Query\Sqlite\TimestampDiff
-                 week: DoctrineExtensions\Query\Sqlite\Week
-                 weekday: DoctrineExtensions\Query\Sqlite\WeekDay
-                 year: DoctrineExtensions\Query\Sqlite\Year
-
 
              string_functions:
 #                 binary: DoctrineExtensions\Query\Sqlite\Binary

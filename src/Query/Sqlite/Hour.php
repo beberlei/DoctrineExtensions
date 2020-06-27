@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Query\Sqlite;
 /**
  * @author Tarjei Huse <tarjei.huse@gmail.com>
  */
-class Hour extends AbstractStrfTime
+class Hour extends NumberFromStrfTime
 {
     protected function getFormat()
     {
