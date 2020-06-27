@@ -31,6 +31,7 @@ doctrine:
                  timestampadd: DoctrineExtensions\Query\Mysql\TimestampAdd
                  timestampdiff: DoctrineExtensions\Query\Mysql\TimestampDiff
                  timetosec: DoctrineExtensions\Query\Mysql\TimeToSec
+                 truncate: DoctrineExtensions\Query\Mysql\Truncate
                  week: DoctrineExtensions\Query\Mysql\Week
                  weekday: DoctrineExtensions\Query\Mysql\WeekDay
                  year: DoctrineExtensions\Query\Mysql\Year
@@ -84,6 +85,7 @@ doctrine:
                  field: DoctrineExtensions\Query\Mysql\Field
                  find_in_set: DoctrineExtensions\Query\Mysql\FindInSet
                  format: DoctrineExtensions\Query\Mysql\Format
+                 from_base64: DoctrineExtensions\Query\Mysql\FromBase64
                  greatest: DoctrineExtensions\Query\Mysql\Greatest
                  group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
                  hex: DoctrineExtensions\Query\Mysql\Hex
