@@ -2,7 +2,6 @@
 
 namespace DoctrineExtensions\Types;
 
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateTimeType;
