@@ -9,7 +9,6 @@ php:
 env:
   - DOCTRINE_VERSION=2.6.*
   - DOCTRINE_VERSION=2.7.*
-  - DOCTRINE_VERSION=2.8.*
 
 install:
   - composer self-update
@@ -21,7 +20,7 @@ notifications:
 
 script:
   - make test
-  - if [[ $DOCTRINE_VERSION == 2.8.* && $TRAVIS_PHP_VERSION == 7.4 ]]; then make lint; fi
+  - if [[ $DOCTRINE_VERSION == 2.7.* && $TRAVIS_PHP_VERSION == 7.4 ]]; then make lint; fi
 
 dist: bionic
 
