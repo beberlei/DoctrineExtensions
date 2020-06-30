@@ -12,7 +12,8 @@ doctrine:
                 at_time_zone: DoctrineExtensions\Query\Postgresql\AtTimeZoneFunction
                 date_part: DoctrineExtensions\Query\Postgresql\DatePart
                 extract: DoctrineExtensions\Query\Postgresql\ExtractFunction
-                
+                date_trunc: DoctrineExtensions\Query\Postgresql\DateTrunc
+
             string_functions:
                 str_to_date: DoctrineExtensions\Query\Postgresql\StrToDate
                 count_filter: DoctrineExtensions\Query\Postgresql\CountFilterFunction
