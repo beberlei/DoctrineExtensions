@@ -27,11 +27,22 @@ class MysqlWalker extends SqlWalker
     {
         $sql = parent::walkSelectClause($selectClause);
 
+        $queryOptions = array();
+
         if ($this->getQuery()->getHint('mysqlWalker.sqlNoCache') === true) {
+            $queryOptions[] = 'SQL_NO_CACHE';
+        }
+
+        if ($this->getQuery()->getHint('mysqlWalker.straightJoin') === true) {
+            $queryOptions[] = 'STRAIGHT_JOIN';
+        }
+
+        if ($queryOptions) {
+            $optionSql = implode($queryOptions, ' ');
             if ($selectClause->isDistinct) {
-                $sql = str_replace('SELECT DISTINCT', 'SELECT DISTINCT SQL_NO_CACHE', $sql);
+                $sql = str_replace('SELECT DISTINCT', 'SELECT DISTINCT ' . $optionSql, $sql);
             } else {
-                $sql = str_replace('SELECT', 'SELECT SQL_NO_CACHE', $sql);
+                $sql = str_replace('SELECT', 'SELECT ' . $optionSql, $sql);
             }
         }
 
