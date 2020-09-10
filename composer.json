@@ -6,7 +6,7 @@
     "license": "BSD-3-Clause",
     "authors": [
         {"name": "Benjamin Eberlei", "email": "kontakt@beberlei.de"},
-        {"name": "Steve Lacey", "email": "steve@stevelacey.net"}
+        {"name": "Steve Lacey", "email": "steve@steve.ly"}
     ],
     "require": {
         "php": "^7.1",
