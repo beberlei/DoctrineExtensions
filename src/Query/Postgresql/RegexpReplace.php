@@ -6,10 +6,8 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * RegexpReplace string using postgresql function regexp_replace :
- * https://www.postgresql.org/docs/9.6/functions-matching.html#FUNCTIONS-POSIX-TABLE
- *
- * Usage : StringFunction REGEXP_REPLACE(string, search, replace)
+ * @example SELECT REGEXP_REPLACE(string, search, replace)
+ * @link https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-POSIX-TABLE
  */
 class RegexpReplace extends FunctionNode
 {

@@ -6,14 +6,8 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * "COLLATE"
- * override the default collation
- * More info:
- * https://dev.mysql.com/doc/refman/5.7/en/charset-collate.html
- *
- * @category    DoctrineExtensions
- * @author      Peter Tanath <peter.tanath@gmail.com>
- * @license     MIT License
+ * @link https://dev.mysql.com/doc/refman/en/charset-collate.html
+ * @author Peter Tanath <peter.tanath@gmail.com>
  */
 class Collate extends FunctionNode
 {

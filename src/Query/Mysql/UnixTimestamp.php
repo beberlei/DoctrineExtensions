@@ -13,9 +13,6 @@ class UnixTimestamp extends FunctionNode
 {
     public $date;
 
-    /**
-     * @override
-     */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return sprintf(
@@ -24,9 +21,6 @@ class UnixTimestamp extends FunctionNode
         );
     }
 
-    /**
-     * @override
-     */
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);

@@ -6,7 +6,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * @author Steve Lacey <steve@stevelacey.net>
+ * @author Steve Lacey <steve@steve.ly>
  * @author James Rohacik <rohacik.james@gmail.com>
  */
 class Time extends FunctionNode

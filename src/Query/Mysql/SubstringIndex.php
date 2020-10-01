@@ -7,10 +7,6 @@ use  Doctrine\ORM\Query\Lexer;
 use  Doctrine\ORM\Query\Parser;
 use  Doctrine\ORM\Query\SqlWalker;
 
-/**
- * Class SubstringIndex
- * @author Vas N <phpvas@gmail.com>
- */
 class SubstringIndex extends FunctionNode
 {
     public $string = null;

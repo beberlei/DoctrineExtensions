@@ -29,6 +29,7 @@ $config = PhpCsFixer\Config::create()
         'explicit_string_variable' => true,
         'fully_qualified_strict_types' => true,
         'function_typehint_space' => true,
+        'general_phpdoc_annotation_remove' => ['category', 'license'],
         'hash_to_slash_comment' => true,
         'heredoc_to_nowdoc' => true,
         'include' => true,

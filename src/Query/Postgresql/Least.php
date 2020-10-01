@@ -8,8 +8,6 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
- * Class Least
- *
  * @author Vas N <phpvas@gmail.com>
  * @author Leonardo B Motyczka <leomoty@gmail.com>
  */

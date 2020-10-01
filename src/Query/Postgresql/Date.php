@@ -5,9 +5,6 @@ namespace DoctrineExtensions\Query\Postgresql;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
-/**
- * @author Steve Lacey <steve@stevelacey.net>
- */
 class Date extends FunctionNode
 {
     public $date;

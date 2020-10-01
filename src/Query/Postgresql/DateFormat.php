@@ -6,7 +6,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * @author silvioq
+ * @author Silvio
  */
 class DateFormat extends FunctionNode
 {

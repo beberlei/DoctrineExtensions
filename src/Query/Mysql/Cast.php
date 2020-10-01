@@ -13,11 +13,9 @@ use Doctrine\ORM\Query\SqlWalker;
 /**
  * "CAST" "(" "$fieldIdentifierExpression" "AS" "$castingTypeExpression" ")"
  *
- * @example
- * SELECT CAST(foo.bar AS SIGNED) FROM dual;
+ * @example SELECT CAST(foo.bar AS SIGNED) FROM dual;
  *
- * @link    https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/cookbook/dql-user-defined-functions.html#conclusion
- * @link    https://dev.mysql.com/doc/refman/5.6/en/cast-functions.html#function_cast
+ * @link https://dev.mysql.com/doc/refman/en/cast-functions.html#function_cast
  */
 class Cast extends FunctionNode
 {

@@ -8,11 +8,7 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
- * Converts timezones.
- *
- * Allows Doctrine 2 Query Language to execute a MySQL CONVERT_TZ function.
- *
- * @link http://dev.mysql.com/doc/refman/5.5/en/date-and-time-functions.html#function_convert-tz
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz
  */
 class ConvertTz extends FunctionNode
 {
@@ -23,7 +19,7 @@ class ConvertTz extends FunctionNode
     protected $toTz;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getSql(SqlWalker $sqlWalker)
     {
@@ -36,7 +32,7 @@ class ConvertTz extends FunctionNode
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function parse(Parser $parser)
     {

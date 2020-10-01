@@ -8,9 +8,7 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
- * Performs an integer division. This is a MySQL operator, implemented as a Doctrine function.
- *
- * @see http://dev.mysql.com/doc/refman/en/arithmetic-functions.html#operator_div
+ * @link https://dev.mysql.com/doc/refman/en/arithmetic-functions.html#operator_div
  */
 class Div extends FunctionNode
 {
