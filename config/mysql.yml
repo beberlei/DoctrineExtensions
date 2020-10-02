@@ -55,6 +55,7 @@ doctrine:
                  exp: DoctrineExtensions\Query\Mysql\Exp
                  floor: DoctrineExtensions\Query\Mysql\Floor
                  json_depth: DoctrineExtensions\Query\Mysql\JsonDepth
+                 json_length: DoctrineExtensions\Query\Mysql\JsonLength
                  log: DoctrineExtensions\Query\Mysql\Log
                  log10: DoctrineExtensions\Query\Mysql\Log10
                  log2: DoctrineExtensions\Query\Mysql\Log2
