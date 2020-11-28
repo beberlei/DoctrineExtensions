@@ -9,7 +9,7 @@
         {"name": "Steve Lacey", "email": "steve@steve.ly"}
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.1 || ^8.0",
         "doctrine/orm": "^2.6"
     },
     "require-dev": {
