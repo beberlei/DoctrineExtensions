@@ -14,7 +14,7 @@ env:
 install:
   - composer self-update
   - composer install
-  - composer require doctrine/orm:${DOCTRINE_VERSION} --dev --prefer-source --update-with-dependencies
+  - composer require doctrine/orm:${DOCTRINE_VERSION} --dev --prefer-source --update-with-all-dependencies
 
 notifications:
   email: false
