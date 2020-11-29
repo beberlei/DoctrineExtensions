@@ -13,8 +13,8 @@ notifications:
   email: false
 
 script:
-  - make test
-  - if [[ $TRAVIS_PHP_VERSION == 7.4 ]]; then make lint; fi
+  - composer run test
+  - if [[ $TRAVIS_PHP_VERSION == 7.4 ]]; then composer run lint -- --dry-run; fi
 
 dist: bionic
 
