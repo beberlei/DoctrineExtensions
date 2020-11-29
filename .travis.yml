@@ -1,26 +1,20 @@
 language: php
 
 php:
-  - 7.1
   - 7.2
   - 7.3
   - 7.4
 
-env:
-  - DOCTRINE_VERSION=2.6.*
-  - DOCTRINE_VERSION=2.7.*
-
 install:
   - composer self-update
   - composer install
-  - composer require doctrine/orm:${DOCTRINE_VERSION} --dev --prefer-source --update-with-dependencies
 
 notifications:
   email: false
 
 script:
   - make test
-  - if [[ $DOCTRINE_VERSION == 2.7.* && $TRAVIS_PHP_VERSION == 7.4 ]]; then make lint; fi
+  - if [[ $TRAVIS_PHP_VERSION == 7.4 ]]; then make lint; fi
 
 dist: bionic
 
