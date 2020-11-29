@@ -1,0 +1,43 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: PHP ${{ matrix.php }}
+
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        php:
+          - 7.2
+          - 7.3
+          - 7.4
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+
+      - run: composer validate
+
+      - id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: php-${{ matrix.php }}-
+
+      - if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - run: composer run test
+
+      - run: composer run lint -- --dry-run
