@@ -36,13 +36,13 @@ composer require beberlei/doctrineextensions
 If you want to run phpunit:
 
 ```
-make test
+composer run test
 ```
 
 If you want to run php-cs-fixer:
 
 ```sh
-make fix  # (or make lint for a dry-run)
+composer run lint
 ```
 
 Usage

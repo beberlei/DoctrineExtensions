@@ -28,5 +28,9 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix --ansi --diff --diff-format udiff --show-progress=none --verbose",
+        "test": "phpunit --colors=always"
     }
 }
