@@ -2,7 +2,7 @@ DoctrineExtensions
 ==================
 
 [![Build Status](https://img.shields.io/badge/branch-master-blue.svg)](https://github.com/beberlei/DoctrineExtensions/tree/master)
-[![Build Status](https://travis-ci.org/beberlei/DoctrineExtensions.svg?branch=master)](https://travis-ci.org/beberlei/DoctrineExtensions)
+[![Build Status](https://github.com/beberlei/DoctrineExtensions/workflows/Tests/badge.svg)](https://github.com/beberlei/DoctrineExtensions/actions)
 [![Packagist](https://img.shields.io/packagist/v/beberlei/doctrineextensions.svg?label=stable)](https://packagist.org/packages/beberlei/doctrineextensions)
 [![Packagist](https://img.shields.io/packagist/dd/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
 [![Packagist](https://img.shields.io/packagist/dm/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
