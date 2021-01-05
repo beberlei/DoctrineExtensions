@@ -34,6 +34,7 @@ doctrine:
                  truncate: DoctrineExtensions\Query\Mysql\Truncate
                  week: DoctrineExtensions\Query\Mysql\Week
                  weekday: DoctrineExtensions\Query\Mysql\WeekDay
+                 weekofyear: DoctrineExtensions\Query\Mysql\WeekOfYear
                  year: DoctrineExtensions\Query\Mysql\Year
                  yearmonth: DoctrineExtensions\Query\Mysql\YearMonth
                  yearweek: DoctrineExtensions\Query\Mysql\YearWeek
