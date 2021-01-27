@@ -13,4 +13,12 @@ class RegexpTest extends MysqlTestCase
             "SELECT ('2' REGEXP '3') AS sclr_0 FROM Blank b0_"
         );
     }
+
+    public function testRegexpWithMatchType()
+    {
+        $this->assertDqlProducesSql(
+            "SELECT REGEXP('2', '3', 'c') from DoctrineExtensions\Tests\Entities\Blank b",
+            "SELECT REGEXP_LIKE('2', '3', 'c') AS sclr_0 FROM Blank b0_"
+        );
+    }
 }
