@@ -6,7 +6,7 @@ use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
 /**
- * @author Andrew Mackrodt <andrew@ajmm.org>
+ * @author Quentin Dequippe <quentin@dequippe.tech>
  */
 class ConcatWs extends FunctionNode
 {
