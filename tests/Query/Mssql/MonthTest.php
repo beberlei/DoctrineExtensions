@@ -2,9 +2,9 @@
 
 namespace DoctrineExtensions\Tests\Query\Mssql;
 
-use DoctrineExtensions\Tests\Query\MysqlTestCase;
+use DoctrineExtensions\Tests\Query\MssqlTestCase;
 
-class MonthTest extends MysqlTestCase
+class MonthTest extends MssqlTestCase
 {
     public function testMonth()
     {

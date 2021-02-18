@@ -2,9 +2,9 @@
 
 namespace DoctrineExtensions\Tests\Query\Mssql;
 
-use DoctrineExtensions\Tests\Query\MysqlTestCase;
+use DoctrineExtensions\Tests\Query\MssqlTestCase;
 
-class YearTest extends MysqlTestCase
+class YearTest extends MssqlTestCase
 {
     public function testYear()
     {
