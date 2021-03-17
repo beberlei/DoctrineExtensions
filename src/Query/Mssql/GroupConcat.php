@@ -67,8 +67,8 @@ class GroupConcat extends FunctionNode
 
         $separator = $this->separator ? $sqlWalker->walkStringPrimary($this->separator) : ', ';
 
-        $fieldsort = $this->orderBy ? "WITHIN GROUP (ORDER BY {$sqlWalker->walkOrderByClause($this->orderBy)})" : '';
+        $fieldsort = $this->orderBy ? "WITHIN GROUP ({$sqlWalker->walkOrderByClause($this->orderBy)})" : '';
 
-        return "STRING_AGG({$field}, '{$separator}') {$fieldsort}";
+        return "STRING_AGG({$field}, {$separator}) {$fieldsort}";
     }
 }
