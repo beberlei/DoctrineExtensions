@@ -106,6 +106,7 @@ doctrine:
                  is_ipv6: DoctrineExtensions\Query\Mysql\IsIpv6
                  json_extract: DoctrineExtensions\Query\Mysql\JsonExtract
                  json_unquote: DoctrineExtensions\Query\Mysql\JsonUnquote
+                 json_value: DoctrineExtensions\Query\Mysql\JsonValue
                  lag: DoctrineExtensions\Query\Mysql\Lag
                  lead: DoctrineExtensions\Query\Mysql\Lead
                  least: DoctrineExtensions\Query\Mysql\Least
