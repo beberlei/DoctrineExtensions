@@ -24,7 +24,7 @@ class JsonRemove extends FunctionNode
 
         $this->path [] = $parser->StringPrimary();
 
-        while($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
+        while ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
             $parser->match(Lexer::T_COMMA);
 
             $this->path [] = $parser->StringPrimary();
@@ -38,8 +38,7 @@ class JsonRemove extends FunctionNode
         $target = $sqlWalker->walkStringPrimary($this->target);
 
         $pathWalker = [];
-        foreach( $this->path as $path)
-        {
+        foreach ($this->path as $path) {
             $pathWalker [] = $sqlWalker->walkStringPrimary($path);
         }
 

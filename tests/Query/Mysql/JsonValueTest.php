@@ -20,7 +20,7 @@ class JsonValueTest extends MysqlTestCase
             "SELECT JSON_VALUE('{}', :path) from DoctrineExtensions\Tests\Entities\Blank as blank",
             "SELECT JSON_VALUE('{}', ?) AS sclr_0 FROM Blank b0_",
             [
-                'path' => '$[0]'
+                'path' => '$[0]',
             ]
         );
     }

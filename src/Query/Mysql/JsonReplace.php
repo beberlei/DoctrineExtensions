@@ -32,7 +32,7 @@ class JsonReplace extends FunctionNode
 
         $this->value = $parser->StringPrimary();
 
-        while($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
+        while ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
             $parser->match(Lexer::T_COMMA);
 
             $this->pathAndValue [] = $parser->StringPrimary();
@@ -47,11 +47,9 @@ class JsonReplace extends FunctionNode
         $path = $sqlWalker->walkStringPrimary($this->path);
         $value = $sqlWalker->walkStringPrimary($this->value);
 
-        if(count($this->pathAndValue) > 0)
-        {
+        if (count($this->pathAndValue) > 0) {
             $pathAndValue = [];
-            foreach( $this->pathAndValue as $elem)
-            {
+            foreach ($this->pathAndValue as $elem) {
                 $pathAndValue [] = $sqlWalker->walkStringPrimary($elem);
             }
 
