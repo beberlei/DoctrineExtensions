@@ -105,6 +105,7 @@ doctrine:
                  is_ipv4_mapped: DoctrineExtensions\Query\Mysql\IsIpv4Mapped
                  is_ipv6: DoctrineExtensions\Query\Mysql\IsIpv6
                  json_extract: DoctrineExtensions\Query\Mysql\JsonExtract
+                 json_insert: DoctrineExtensions\Query\Mysql\JsonInsert
                  json_remove: DoctrineExtensions\Query\Mysql\JsonRemove
                  json_replace: DoctrineExtensions\Query\Mysql\JsonReplace
                  json_unquote: DoctrineExtensions\Query\Mysql\JsonUnquote
