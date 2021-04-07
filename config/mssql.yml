@@ -2,6 +2,6 @@ doctrine:
      orm:
          dql:
              datetime_functions:
-                 day: DoctrineExtensions\Query\Mysql\Day
-                 month: DoctrineExtensions\Query\Mysql\Month
-                 year: DoctrineExtensions\Query\Mysql\Year
+                 day: DoctrineExtensions\Query\Mssql\Day
+                 month: DoctrineExtensions\Query\Mssql\Month
+                 year: DoctrineExtensions\Query\Mssql\Year

@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MssqlTestCase;
 
 class MonthTest extends MssqlTestCase
 {
-    public function testMonth()
+    public function testMonth(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b",

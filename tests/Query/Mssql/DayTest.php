@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MssqlTestCase;
 
 class DayTest extends MssqlTestCase
 {
-    public function testDay()
+    public function testDay(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b",
