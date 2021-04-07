@@ -1,0 +1,7 @@
+doctrine:
+     orm:
+         dql:
+             datetime_functions:
+                 day: DoctrineExtensions\Query\Mssql\Day
+                 month: DoctrineExtensions\Query\Mssql\Month
+                 year: DoctrineExtensions\Query\Mssql\Year
