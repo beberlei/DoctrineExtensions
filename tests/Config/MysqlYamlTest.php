@@ -14,7 +14,7 @@ class MysqlYamlTest extends TestCase
     /** @var array */
     protected $functions;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $yaml = new \Symfony\Component\Yaml\Parser();
 

@@ -30,7 +30,7 @@ class CarbonDateTest extends TestCase
         Type::addType('CarbonImmutableTime', 'DoctrineExtensions\Types\CarbonImmutableTimeType');
     }
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $config = new \Doctrine\ORM\Configuration();
         $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
