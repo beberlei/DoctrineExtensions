@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query;
 
 class MysqlTestCase extends DbTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         ConfigLoader::load($this->configuration, ConfigLoader::MYSQL);
