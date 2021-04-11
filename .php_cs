@@ -75,6 +75,7 @@ $config = PhpCsFixer\Config::create()
         'phpdoc_trim' => true,
         'phpdoc_types' => true,
         'phpdoc_var_without_name' => true,
+        'php_unit_set_up_tear_down_visibility' => true,
         'psr4' => true,
         'self_accessor' => true,
         'semicolon_after_instruction' => true,
