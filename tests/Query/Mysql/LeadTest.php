@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class LeadTest extends MysqlTestCase
 {
-    public function testLag()
+    public function testLag(): void
     {
         $this->assertDqlProducesSql(
             'SELECT LEAD(COUNT(b.id)) from DoctrineExtensions\Tests\Entities\Blank b',

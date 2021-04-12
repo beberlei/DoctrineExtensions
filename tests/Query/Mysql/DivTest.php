@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DivTest extends MysqlTestCase
 {
-    public function testDiv()
+    public function testDiv(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DIV(2, 5) from DoctrineExtensions\Tests\Entities\Blank b",

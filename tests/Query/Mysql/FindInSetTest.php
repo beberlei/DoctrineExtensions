@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class FindInSetTest extends MysqlTestCase
 {
-    public function testFindInSet()
+    public function testFindInSet(): void
     {
         $this->assertDqlProducesSql(
             "SELECT FIND_IN_SET(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

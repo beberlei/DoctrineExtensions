@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class TimeTest extends MysqlTestCase
 {
-    public function testTime()
+    public function testTime(): void
     {
         $this->assertDqlProducesSql(
             "SELECT TIME(2) from DoctrineExtensions\Tests\Entities\Blank b",

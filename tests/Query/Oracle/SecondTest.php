@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 class SecondTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
-    public function testSecond()
+    public function testSecond(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SECOND(2) from DoctrineExtensions\Tests\Entities\Blank b",

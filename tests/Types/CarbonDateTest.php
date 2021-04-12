@@ -68,7 +68,7 @@ class CarbonDateTest extends TestCase
         $this->em->flush();
     }
 
-    public function testDateGetter()
+    public function testDateGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -79,7 +79,7 @@ class CarbonDateTest extends TestCase
         );
     }
 
-    public function testDateSetter()
+    public function testDateSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -89,7 +89,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testDateTimeGetter()
+    public function testDateTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -97,7 +97,7 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(Carbon::create(2015, 1, 1, 0, 0, 0), $entity->datetime);
     }
 
-    public function testDateTimeSetter()
+    public function testDateTimeSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -107,7 +107,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testDateTimeTzGetter()
+    public function testDateTimeTzGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -115,7 +115,7 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetime_tz);
     }
 
-    public function testDateTimeTzSetter()
+    public function testDateTimeTzSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -125,7 +125,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testTimeGetter()
+    public function testTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -133,7 +133,7 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(Carbon::createFromTime(12, 0, 0, 'Europe/London'), $entity->time);
     }
 
-    public function testTimeSetter()
+    public function testTimeSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -143,7 +143,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableDateGetter()
+    public function testImmutableDateGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -154,7 +154,7 @@ class CarbonDateTest extends TestCase
         );
     }
 
-    public function testImmutableDateSetter()
+    public function testImmutableDateSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -164,7 +164,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableDateTimeGetter()
+    public function testImmutableDateTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -172,7 +172,7 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(CarbonImmutable::create(2015, 1, 1, 0, 0, 0), $entity->datetime);
     }
 
-    public function testImmutableDateTimeSetter()
+    public function testImmutableDateTimeSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -182,7 +182,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableDateTimeTzGetter()
+    public function testImmutableDateTimeTzGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -190,7 +190,7 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetime_tz);
     }
 
-    public function testImmutableDateTimeTzSetter()
+    public function testImmutableDateTimeTzSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -200,7 +200,7 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableTimeGetter()
+    public function testImmutableTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -208,7 +208,7 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London'), $entity->time);
     }
 
-    public function testImmutableTimeSetter()
+    public function testImmutableTimeSetter(): void
     {
         $entity = new Entity();
         $entity->id = 2;
@@ -221,7 +221,7 @@ class CarbonDateTest extends TestCase
     /**
      * @dataProvider typeProvider
      */
-    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type)
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type): void
     {
         /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');

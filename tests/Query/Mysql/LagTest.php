@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class LagTest extends MysqlTestCase
 {
-    public function testLag()
+    public function testLag(): void
     {
         $this->assertDqlProducesSql(
             'SELECT LAG(COUNT(b.id)) from DoctrineExtensions\Tests\Entities\Blank b',

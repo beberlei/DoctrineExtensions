@@ -54,7 +54,7 @@ class ZendDateTest extends TestCase
         $this->em->flush();
     }
 
-    public function testGetZendDate()
+    public function testGetZendDate(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 1);
 
@@ -65,7 +65,7 @@ class ZendDateTest extends TestCase
         ])));
     }
 
-    public function testSetZendDate()
+    public function testSetZendDate(): void
     {
         $zendDate = new \Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
@@ -82,7 +82,7 @@ class ZendDateTest extends TestCase
         $this->assertTrue($entity->date->equals($zendDate));
     }
 
-    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint()
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint(): void
     {
         /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');

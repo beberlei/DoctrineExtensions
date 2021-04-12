@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class DateFormatTest extends SqliteTestCase
 {
-    public function testCommonFormats()
+    public function testCommonFormats(): void
     {
         // Both result in '2015-12-30 14:23:40'
         $dql = "SELECT DATE_FORMAT(b.created, '%Y-%m-%d %H:%i:%S') FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
@@ -22,7 +22,7 @@ class DateFormatTest extends SqliteTestCase
      * they get converted to the closest sqlite substitutions.
      * In this test a few examples are listed:
      */
-    public function testUnsupportedFormats()
+    public function testUnsupportedFormats(): void
     {
         // Sqlite does not support AM / PM
         // mysql: '10:15:22 PM'
