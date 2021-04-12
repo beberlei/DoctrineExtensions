@@ -10,7 +10,7 @@ class CastTest extends MysqlTestCase
 
     private $entityShort = 'BlogPost';
 
-    public function testSimpleSqlQuery()
+    public function testSimpleSqlQuery(): void
     {
         $query = $this->entityManager->createQuery(
             "SELECT CAST(blog.latitude AS SIGNED) FROM {$this->entityLong} blog"
@@ -22,7 +22,7 @@ class CastTest extends MysqlTestCase
         );
     }
 
-    public function testMultipleCastWithFieldAliasSqlQuery()
+    public function testMultipleCastWithFieldAliasSqlQuery(): void
     {
         $query = $this->entityManager->createQuery(
             "SELECT CAST(blog.latitude AS UNSIGNED), CAST(blog.latitude AS SIGNED) FROM {$this->entityLong} blog"
@@ -34,7 +34,7 @@ class CastTest extends MysqlTestCase
         );
     }
 
-    public function testWithParametersSqlQuery()
+    public function testWithParametersSqlQuery(): void
     {
         $query = $this->entityManager->createQuery(
             "SELECT CAST(blog.latitude AS DECIMAL(10, 2)) FROM {$this->entityLong} blog"

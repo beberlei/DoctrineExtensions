@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class ExpTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public function testExp()
+    public function testExp(): void
     {
         $this->assertDqlProducesSql(
             "SELECT EXP(2) from DoctrineExtensions\Tests\Entities\Blank b",

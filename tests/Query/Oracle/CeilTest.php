@@ -11,7 +11,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
  */
 class CeilTest extends OracleTestCase
 {
-    public function testFullQuery()
+    public function testFullQuery(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder->select('CEIL(p.weight)')

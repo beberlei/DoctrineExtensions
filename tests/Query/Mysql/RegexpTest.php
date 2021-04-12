@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class RegexpTest extends MysqlTestCase
 {
-    public function testRegexp()
+    public function testRegexp(): void
     {
         $this->assertDqlProducesSql(
             "SELECT REGEXP('2', '3') from DoctrineExtensions\Tests\Entities\Blank b",

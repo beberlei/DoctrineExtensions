@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class PiTest extends MysqlTestCase
 {
-    public function testPi()
+    public function testPi(): void
     {
         $this->assertDqlProducesSql(
             "SELECT PI() from DoctrineExtensions\Tests\Entities\Blank b",

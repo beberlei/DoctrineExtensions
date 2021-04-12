@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 class MonthTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
 {
-    public function testMonth()
+    public function testMonth(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b",

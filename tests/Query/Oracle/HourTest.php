@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 class HourTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
-    public function testHour()
+    public function testHour(): void
     {
         $this->assertDqlProducesSql(
             "SELECT HOUR(2) from DoctrineExtensions\Tests\Entities\Blank b",

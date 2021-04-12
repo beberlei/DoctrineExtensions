@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class FieldTest extends MysqlTestCase
 {
-    public function testField()
+    public function testField(): void
     {
         $this->assertDqlProducesSql(
             "SELECT FIELD(2, 3, 4) from DoctrineExtensions\Tests\Entities\Blank b",

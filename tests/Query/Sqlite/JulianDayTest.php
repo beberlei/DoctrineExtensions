@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class JulianDayTest extends SqliteTestCase
 {
-    public function testWithOneArgument()
+    public function testWithOneArgument(): void
     {
         $this->assertDqlProducesSql(
             "SELECT JULIANDAY(:date) FROM DoctrineExtensions\Tests\Entities\Blank b",

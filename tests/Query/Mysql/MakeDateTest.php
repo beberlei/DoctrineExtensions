@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class MakeDateTest extends MysqlTestCase
 {
-    public function testMakeDate()
+    public function testMakeDate(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MAKEDATE(2019, 5) FROM DoctrineExtensions\Tests\Entities\Blank b",

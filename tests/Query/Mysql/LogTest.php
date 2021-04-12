@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class LogTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public function testLog()
+    public function testLog(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LOG(2) from DoctrineExtensions\Tests\Entities\Blank b",

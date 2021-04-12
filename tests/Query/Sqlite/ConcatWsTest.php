@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class ConcatWsTest extends SqliteTestCase
 {
-    public function testConcatWs()
+    public function testConcatWs(): void
     {
         $dql = "SELECT CONCAT_WS(',', p.id, p.name) FROM DoctrineExtensions\\Tests\\Entities\\Product p";
 

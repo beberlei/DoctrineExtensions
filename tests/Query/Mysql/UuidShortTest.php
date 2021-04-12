@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class UuidShortTest extends MysqlTestCase
 {
-    public function testUuidShort()
+    public function testUuidShort(): void
     {
         $this->assertDqlProducesSql(
             "SELECT UUID_SHORT() from DoctrineExtensions\Tests\Entities\Blank b",

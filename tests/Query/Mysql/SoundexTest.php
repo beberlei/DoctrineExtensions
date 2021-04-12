@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class SoundexTest extends MysqlTestCase
 {
-    public function testSoundex()
+    public function testSoundex(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SOUNDEX('2') from DoctrineExtensions\Tests\Entities\Blank b",

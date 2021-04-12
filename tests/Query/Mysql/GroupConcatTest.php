@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class GroupConcatTest extends MysqlTestCase
 {
-    public function testGroupConcat()
+    public function testGroupConcat(): void
     {
         $this->assertDqlProducesSql(
             "SELECT GROUP_CONCAT(blank.id) from DoctrineExtensions\Tests\Entities\Blank as blank",
@@ -14,7 +14,7 @@ class GroupConcatTest extends MysqlTestCase
         );
     }
 
-    public function testGroupConcatWithDistinct()
+    public function testGroupConcatWithDistinct(): void
     {
         $this->assertDqlProducesSql(
             "SELECT GROUP_CONCAT(DISTINCT blank.id) from DoctrineExtensions\Tests\Entities\Blank as blank",
@@ -22,7 +22,7 @@ class GroupConcatTest extends MysqlTestCase
         );
     }
 
-    public function testGroupConcatWithOrderBy()
+    public function testGroupConcatWithOrderBy(): void
     {
         $this->assertDqlProducesSql(
             "SELECT GROUP_CONCAT(blank.id ORDER BY blank.id) from DoctrineExtensions\Tests\Entities\Blank as blank",
@@ -30,7 +30,7 @@ class GroupConcatTest extends MysqlTestCase
         );
     }
 
-    public function testGroupConcatWithSeparator()
+    public function testGroupConcatWithSeparator(): void
     {
         $this->assertDqlProducesSql(
             "SELECT GROUP_CONCAT(blank.id SEPARATOR ' ') from DoctrineExtensions\Tests\Entities\Blank as blank",

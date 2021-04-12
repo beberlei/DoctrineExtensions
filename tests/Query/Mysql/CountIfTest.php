@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class CountIfTest extends MysqlTestCase
 {
-    public function testCountIf()
+    public function testCountIf(): void
     {
         $this->assertDqlProducesSql(
             "SELECT COUNTIF(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -14,7 +14,7 @@ class CountIfTest extends MysqlTestCase
         );
     }
 
-    public function testCountIfInverse()
+    public function testCountIfInverse(): void
     {
         $this->assertDqlProducesSql(
             "SELECT COUNTIF(2, 3 INVERSE) from DoctrineExtensions\Tests\Entities\Blank b",

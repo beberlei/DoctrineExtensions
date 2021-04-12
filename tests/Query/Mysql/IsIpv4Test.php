@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class IsIpv4Test extends MysqlTestCase
 {
-    public function testIsIpv4()
+    public function testIsIpv4(): void
     {
         $this->assertDqlProducesSql(
             "SELECT IS_IPV4('192.0.2.1') FROM DoctrineExtensions\Tests\Entities\Blank b",

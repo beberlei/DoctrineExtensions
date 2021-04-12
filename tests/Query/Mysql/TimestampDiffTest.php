@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class TimestampDiffTest extends MysqlTestCase
 {
-    public function testTimestampDiff()
+    public function testTimestampDiff(): void
     {
         $this->assertDqlProducesSql(
             "SELECT TIMESTAMPDIFF(MONTH, '2017-06-25', '2017-06-15') from DoctrineExtensions\Tests\Entities\Blank b",

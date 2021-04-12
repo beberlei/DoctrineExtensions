@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class HourTest extends MysqlTestCase
 {
-    public function testHour()
+    public function testHour(): void
     {
         $this->assertDqlProducesSql(
             "SELECT HOUR(2) from DoctrineExtensions\Tests\Entities\Blank b",

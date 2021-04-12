@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 class YearTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
 {
-    public function testYear()
+    public function testYear(): void
     {
         $this->assertDqlProducesSql(
             "SELECT YEAR(2) from DoctrineExtensions\Tests\Entities\Blank b",

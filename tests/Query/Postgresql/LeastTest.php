@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 class LeastTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
-    public function testLeast()
+    public function testLeast(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LEAST(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

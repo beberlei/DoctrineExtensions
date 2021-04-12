@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class YearTest extends MysqlTestCase
 {
-    public function testYear()
+    public function testYear(): void
     {
         $this->assertDqlProducesSql(
             "SELECT YEAR(2) from DoctrineExtensions\Tests\Entities\Blank b",

@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class WeekTest extends SqliteTestCase
 {
-    public function testFormatWeek()
+    public function testFormatWeek(): void
     {
         $dql = 'SELECT WEEK(b.created) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(
@@ -15,7 +15,7 @@ class WeekTest extends SqliteTestCase
         );
     }
 
-    public function testFormatWeekWithSecondArgument()
+    public function testFormatWeekWithSecondArgument(): void
     {
         $dql = 'SELECT WEEK(b.created, 1) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(

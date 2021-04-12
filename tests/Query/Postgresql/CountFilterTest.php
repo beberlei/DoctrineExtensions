@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 class CountFilterTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
-    public function testCountFilter()
+    public function testCountFilter(): void
     {
         $dql = "SELECT COUNT_FILTER(b, WHERE b.id = :id) FROM DoctrineExtensions\Tests\Entities\Blank b";
         $q = $this->entityManager->createQuery($dql);
