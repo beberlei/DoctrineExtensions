@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-class PostgresqlTestCase extends DbTestCase
+abstract class PostgresqlTestCase extends DbTestCase
 {
     public function setUp(): void
     {

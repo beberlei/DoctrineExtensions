@@ -7,7 +7,7 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
 
-class DbTestCase extends TestCase
+abstract class DbTestCase extends TestCase
 {
     /** @var EntityManager */
     public $entityManager;
