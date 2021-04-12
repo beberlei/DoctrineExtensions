@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-class MysqlTestCase extends DbTestCase
+abstract class MysqlTestCase extends DbTestCase
 {
     public function setUp(): void
     {

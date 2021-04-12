@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-class SqliteTestCase extends DbTestCase
+abstract class SqliteTestCase extends DbTestCase
 {
     /**
      * @var string name of Date

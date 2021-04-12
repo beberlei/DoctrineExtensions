@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-class OracleTestCase extends DbTestCase
+abstract class OracleTestCase extends DbTestCase
 {
     public function setUp(): void
     {
