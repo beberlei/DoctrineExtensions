@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class IfElseTest extends MysqlTestCase
+final class IfElseTest extends MysqlTestCase
 {
     public function testIfElseWithoutNullValue()
     {

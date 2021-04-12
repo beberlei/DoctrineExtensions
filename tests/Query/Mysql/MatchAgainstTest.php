@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class MatchAgainstTest extends MysqlTestCase
+final class MatchAgainstTest extends MysqlTestCase
 {
     public function testMatchAgainst()
     {

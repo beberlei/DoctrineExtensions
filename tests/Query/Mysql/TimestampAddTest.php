@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class TimestampAddTest extends MysqlTestCase
+final class TimestampAddTest extends MysqlTestCase
 {
     public function testTimestampAdd()
     {

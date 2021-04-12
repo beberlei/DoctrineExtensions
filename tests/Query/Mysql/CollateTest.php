@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class CollateTest extends MysqlTestCase
+final class CollateTest extends MysqlTestCase
 {
     public function testCollate()
     {

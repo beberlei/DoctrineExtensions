@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class CountFilterTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class CountFilterTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testCountFilter()
     {

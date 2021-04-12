@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class AtTimeZoneTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class AtTimeZoneTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testAtTimeZone()
     {

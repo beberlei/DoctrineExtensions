@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class BinaryTest extends MysqlTestCase
+final class BinaryTest extends MysqlTestCase
 {
     public function testBinary()
     {

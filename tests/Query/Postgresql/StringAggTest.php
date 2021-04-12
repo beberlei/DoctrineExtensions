@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class StringAggTest extends PostgresqlTestCase
+final class StringAggTest extends PostgresqlTestCase
 {
     public function testStringAgg()
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class UuidShortTest extends MysqlTestCase
+final class UuidShortTest extends MysqlTestCase
 {
     public function testUuidShort()
     {

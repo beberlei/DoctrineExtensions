@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class MinuteTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+final class MinuteTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
 {
     public function testMinute()
     {

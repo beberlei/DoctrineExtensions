@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class ExtractFunctionTest extends PostgresqlTestCase
+final class ExtractFunctionTest extends PostgresqlTestCase
 {
     public function testExtract(): void
     {

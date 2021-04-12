@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class SecondTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+final class SecondTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
     public function testSecond()
     {

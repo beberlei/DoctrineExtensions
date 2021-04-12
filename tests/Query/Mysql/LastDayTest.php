@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class LastDayTest extends MysqlTestCase
+final class LastDayTest extends MysqlTestCase
 {
     public function testLastDay()
     {

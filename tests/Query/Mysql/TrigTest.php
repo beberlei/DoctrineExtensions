@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+final class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
     public function setUp(): void
     {

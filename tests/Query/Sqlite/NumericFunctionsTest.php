@@ -9,7 +9,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
  *
  * @author winkbrace
  */
-class NumericFunctionsTest extends SqliteTestCase
+final class NumericFunctionsTest extends SqliteTestCase
 {
     public function testRound()
     {

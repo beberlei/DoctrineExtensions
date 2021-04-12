@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class IfElseTest extends SqliteTestCase
+final class IfElseTest extends SqliteTestCase
 {
     public function testIfElse()
     {

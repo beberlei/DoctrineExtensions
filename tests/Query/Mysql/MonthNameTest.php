@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class MonthNameTest extends MysqlTestCase
+final class MonthNameTest extends MysqlTestCase
 {
     public function testMonthName()
     {
