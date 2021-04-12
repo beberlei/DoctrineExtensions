@@ -27,7 +27,7 @@ class ConcatWs extends FunctionNode
 
         $lexer = $parser->getLexer();
 
-        while (count($this->values) < 3 || $lexer->lookahead['type'] == Lexer::T_COMMA) {
+        while (count($this->values) < 3 || $lexer->lookahead['type'] === Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $peek = $lexer->glimpse();
 
@@ -56,12 +56,12 @@ class ConcatWs extends FunctionNode
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         // Create an array to hold the query elements.
-        $queryBuilder = ['CONCAT_WS('];
+        $queryBuilder = 'CONCAT_WS(';
 
         // Iterate over the captured expressions and add them to the query.
         for ($i = 0; $i < count($this->values); $i++) {
             if ($i > 0) {
-                $queryBuilder[] = ', ';
+                $queryBuilder .= ', ';
             }
 
             // Dispatch the walker on the current node.
@@ -72,13 +72,13 @@ class ConcatWs extends FunctionNode
                 $nodeSql = sprintf("NULLIF(%s, '')", $nodeSql);
             }
 
-            $queryBuilder[] = $nodeSql;
+            $queryBuilder .= $nodeSql;
         }
 
         // Close the query.
-        $queryBuilder[] = ')';
+        $queryBuilder .= ')';
 
         // Return the joined query.
-        return implode('', $queryBuilder);
+        return $queryBuilder;
     }
 }

@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class ConcatWsTest extends PostgresqlTestCase
 {
-    public function testConcatWs()
+    public function testConcatWs(): void
     {
         $this->assertDqlProducesSql(
             "SELECT CONCAT_WS(',', 'TEST', 'FOO') from DoctrineExtensions\Tests\Entities\Blank b",
