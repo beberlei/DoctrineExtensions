@@ -55,7 +55,6 @@ class ConcatWs extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        // Create an array to hold the query elements.
         $queryBuilder = 'CONCAT_WS(';
 
         // Iterate over the captured expressions and add them to the query.
@@ -78,7 +77,6 @@ class ConcatWs extends FunctionNode
         // Close the query.
         $queryBuilder .= ')';
 
-        // Return the joined query.
         return $queryBuilder;
     }
 }
