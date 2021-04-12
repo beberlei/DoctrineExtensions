@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class DayTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+final class DayTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
     public function testDay()
     {

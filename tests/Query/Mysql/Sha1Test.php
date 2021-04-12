@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class Sha1Test extends MysqlTestCase
+final class Sha1Test extends MysqlTestCase
 {
     public function testSha1()
     {

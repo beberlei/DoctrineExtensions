@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class JsonContainsTest extends MysqlTestCase
+final class JsonContainsTest extends MysqlTestCase
 {
     public function testJsonContainsWithoutPath(): void
     {

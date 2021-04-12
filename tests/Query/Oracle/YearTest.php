@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class YearTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+final class YearTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
     public function testYear()
     {

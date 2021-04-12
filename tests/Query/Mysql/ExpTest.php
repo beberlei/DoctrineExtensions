@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class ExpTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+final class ExpTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
     public function testExp()
     {

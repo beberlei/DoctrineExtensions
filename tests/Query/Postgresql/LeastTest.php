@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class LeastTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class LeastTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testLeast()
     {

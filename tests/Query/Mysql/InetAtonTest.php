@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class InetAtonTest extends MysqlTestCase
+final class InetAtonTest extends MysqlTestCase
 {
     public function testInetAton()
     {

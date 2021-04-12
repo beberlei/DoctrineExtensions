@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class UtcTimestampTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+final class UtcTimestampTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
     public function testUtcTimestamp()
     {

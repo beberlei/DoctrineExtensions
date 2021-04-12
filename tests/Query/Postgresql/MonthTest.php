@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class MonthTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class MonthTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testMonth()
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class DateFormatTest extends SqliteTestCase
+final class DateFormatTest extends SqliteTestCase
 {
     public function testCommonFormats()
     {

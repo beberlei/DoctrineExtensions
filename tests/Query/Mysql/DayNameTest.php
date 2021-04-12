@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class DayNameTest extends MysqlTestCase
+final class DayNameTest extends MysqlTestCase
 {
     public function testDayName()
     {

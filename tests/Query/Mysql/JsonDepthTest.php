@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class JsonDepthTest extends MysqlTestCase
+final class JsonDepthTest extends MysqlTestCase
 {
     public function testJsonDepthWithTargetExplicit(): void
     {

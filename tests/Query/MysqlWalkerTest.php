@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query;
 
 use Doctrine\ORM\Query;
 
-class MysqlWalkerTest extends MysqlTestCase
+final class MysqlWalkerTest extends MysqlTestCase
 {
     public function testSelectSQLCalcFoundRows()
     {

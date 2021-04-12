@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class ConvertTzTest extends MysqlTestCase
+final class ConvertTzTest extends MysqlTestCase
 {
     public function testDefaultSql()
     {

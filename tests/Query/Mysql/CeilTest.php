@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class CeilTest extends MysqlTestCase
+final class CeilTest extends MysqlTestCase
 {
     public function testCeil()
     {

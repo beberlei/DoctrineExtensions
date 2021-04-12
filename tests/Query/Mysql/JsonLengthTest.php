@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class JsonLengthTest extends MysqlTestCase
+final class JsonLengthTest extends MysqlTestCase
 {
     public function testJsonLengthWithoutPath(): void
     {

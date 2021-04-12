@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class SecondTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class SecondTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testSecond()
     {

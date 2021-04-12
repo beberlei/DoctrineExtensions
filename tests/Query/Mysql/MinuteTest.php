@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class MinuteTest extends MysqlTestCase
+final class MinuteTest extends MysqlTestCase
 {
     public function testMinute()
     {

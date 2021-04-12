@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class DatePartTest extends PostgresqlTestCase
+final class DatePartTest extends PostgresqlTestCase
 {
     public function testDatePart()
     {

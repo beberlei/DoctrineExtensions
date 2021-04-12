@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class Md5Test extends MysqlTestCase
+final class Md5Test extends MysqlTestCase
 {
     public function testMd5()
     {

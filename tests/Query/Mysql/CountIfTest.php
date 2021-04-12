@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class CountIfTest extends MysqlTestCase
+final class CountIfTest extends MysqlTestCase
 {
     public function testCountIf()
     {

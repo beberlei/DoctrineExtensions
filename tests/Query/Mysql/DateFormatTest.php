@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class DateFormatTest extends MysqlTestCase
+final class DateFormatTest extends MysqlTestCase
 {
     public function testDateFormat()
     {

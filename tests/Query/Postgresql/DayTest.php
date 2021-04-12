@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class DayTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class DayTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testDay()
     {

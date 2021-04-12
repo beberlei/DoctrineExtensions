@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class PiTest extends MysqlTestCase
+final class PiTest extends MysqlTestCase
 {
     public function testPi()
     {

@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class HourTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class HourTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testHour()
     {

@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class MonthTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+final class MonthTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
 {
     public function testMonth()
     {

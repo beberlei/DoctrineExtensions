@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class TimeDiffTest extends MysqlTestCase
+final class TimeDiffTest extends MysqlTestCase
 {
     public function testTimeDiff()
     {

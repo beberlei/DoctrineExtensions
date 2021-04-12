@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class YearTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+final class YearTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
 {
     public function testYear()
     {

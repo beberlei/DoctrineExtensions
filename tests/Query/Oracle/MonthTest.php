@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class MonthTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+final class MonthTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
     public function testMonth()
     {

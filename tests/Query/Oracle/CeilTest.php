@@ -9,7 +9,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
 /**
  * @author Jefferson Vantuir <jefferson.behling@gmail.com>
  */
-class CeilTest extends OracleTestCase
+final class CeilTest extends OracleTestCase
 {
     public function testFullQuery()
     {

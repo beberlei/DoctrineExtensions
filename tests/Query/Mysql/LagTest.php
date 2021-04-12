@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class LagTest extends MysqlTestCase
+final class LagTest extends MysqlTestCase
 {
     public function testLag()
     {
