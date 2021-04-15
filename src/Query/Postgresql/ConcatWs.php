@@ -4,6 +4,8 @@ namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @author Quentin Dequippe <quentin@dequippe.tech>
@@ -14,7 +16,7 @@ class ConcatWs extends FunctionNode
 
     private $notEmpty = false;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -31,12 +33,12 @@ class ConcatWs extends FunctionNode
             $parser->match(Lexer::T_COMMA);
             $peek = $lexer->glimpse();
 
-            $this->values[] = $peek['value'] == '('
+            $this->values[] = $peek['value'] === '('
                     ? $parser->FunctionDeclaration()
                     : $parser->ArithmeticExpression();
         }
 
-        while ($lexer->lookahead['type'] == Lexer::T_IDENTIFIER) {
+        while ($lexer->lookahead['type'] === Lexer::T_IDENTIFIER) {
             switch (strtolower($lexer->lookahead['value'])) {
                 case 'notempty':
                     $parser->match(Lexer::T_IDENTIFIER);
@@ -53,7 +55,7 @@ class ConcatWs extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker)
     {
         $queryBuilder = 'CONCAT_WS(';
 
