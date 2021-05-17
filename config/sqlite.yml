@@ -9,6 +9,7 @@ doctrine:
                  dayname: DoctrineExtensions\Query\Sqlite\DayName
                  #monthname: DoctrineExtensions\Query\Sqlite\MonthName
                  month:  DoctrineExtensions\Query\Sqlite\Month
+                 quarter: DoctrineExtensions\Query\Sqlite\Quarter
                  week: DoctrineExtensions\Query\Sqlite\Week
                  weekday: DoctrineExtensions\Query\Sqlite\WeekDay
                  year: DoctrineExtensions\Query\Sqlite\Year
