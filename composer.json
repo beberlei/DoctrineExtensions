@@ -1,13 +1,12 @@
 {
-    "name": "technoknol/doctrineextensions",
+    "name": "beberlei/doctrineextensions",
     "type": "library",
     "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL, Oracle, PostgreSQL and SQLite.",
     "keywords": ["doctrine", "orm", "database"],
     "license": "BSD-3-Clause",
     "authors": [
         {"name": "Benjamin Eberlei", "email": "kontakt@beberlei.de"},
-        {"name": "Steve Lacey", "email": "steve@steve.ly"},
-        {"name": "technoknol", "email": "shyam@ghanshyamdigital.com"}
+        {"name": "Steve Lacey", "email": "steve@steve.ly"}
     ],
     "require": {
         "php": "^7.2 || ^8.0",
