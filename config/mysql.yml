@@ -50,6 +50,7 @@ doctrine:
                  bit_count: DoctrineExtensions\Query\Mysql\BitCount
                  bit_xor: DoctrineExtensions\Query\Mysql\BitXor
                  ceil: DoctrineExtensions\Query\Mysql\Ceil
+                 conv: DoctrineExtensions\Query\Mysql\Conv
                  cos: DoctrineExtensions\Query\Mysql\Cos
                  cot: DoctrineExtensions\Query\Mysql\Cot
                  degrees: DoctrineExtensions\Query\Mysql\Degrees
