@@ -8,6 +8,8 @@ DoctrineExtensions
 [![Packagist](https://img.shields.io/packagist/dm/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
 [![Packagist](https://img.shields.io/packagist/dt/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
 
+_A Fork of `beberlei/doctrineextensions` package._
+
 A set of extensions to Doctrine 2 that add support for functions available in
 MySQL, Oracle, PostgreSQL and SQLite.
 
