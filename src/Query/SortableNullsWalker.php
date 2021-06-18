@@ -8,6 +8,8 @@ use Doctrine\ORM\Query;
  * The SortableNullsWalker is a TreeWalker that walks over a DQL AST and constructs
  * the corresponding SQL to allow ORDER BY x ASC NULLS FIRST|LAST.
  *
+ * use \DoctrineExtensions\Query\SortableNullsWalker;
+ *
  * $qb = $em->createQueryBuilder()
  *     ->select('p')
  *     ->from('Webges\Domain\Core\Person\Person', 'p')
@@ -17,11 +19,11 @@ use Doctrine\ORM\Query;
  *     ->addOrderBy('p.id', 'DESC'); // relation to person
  *
  * $query = $qb->getQuery();
- * $query->setHint(Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, 'Webges\DoctrineExtensions\Query\SortableNullsWalker');
- * $query->setHint("sortableNulls.fields", array(
- *     "p.firstname" => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_FIRST,
- *     "p.lastname"  => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_LAST,
- *     "p.id" => Webges\DoctrineExtensions\Query\SortableNullsWalker::NULLS_LAST
+ * $query->setHint(Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER, SortableNullsWalker::class);
+ * $query->setHint(SortableNullsWalker::HINT, array(
+ *     "p.firstname" => SortableNullsWalker::NULLS_FIRST,
+ *     "p.lastname"  => SortableNullsWalker::NULLS_LAST,
+ *     "p.id" => SortableNullsWalker::NULLS_LAST
  * ));
  *
  * @see http://www.doctrine-project.org/jira/browse/DDC-490
@@ -32,10 +34,12 @@ class SortableNullsWalker extends Query\SqlWalker
 
     const NULLS_LAST = 'NULLS LAST';
 
+    const HINT = 'sortableNulls.fields';
+
     public function walkOrderByItem($orderByItem)
     {
         $sql = parent::walkOrderByItem($orderByItem);
-        $hint = $this->getQuery()->getHint('sortableNulls.fields');
+        $hint = $this->getQuery()->getHint(self::HINT);
         $expr = $orderByItem->expression;
         $type = strtoupper($orderByItem->type);
 
