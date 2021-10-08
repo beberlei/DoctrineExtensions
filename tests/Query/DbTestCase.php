@@ -2,9 +2,9 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
 use PHPUnit\Framework\TestCase;
 
 class DbTestCase extends TestCase
@@ -17,13 +17,7 @@ class DbTestCase extends TestCase
 
     public function setUp(): void
     {
-        $this->configuration = new Configuration();
-        $this->configuration->setMetadataCacheImpl(new ArrayCache());
-        $this->configuration->setQueryCacheImpl(new ArrayCache());
-        $this->configuration->setProxyDir(__DIR__ . '/Proxies');
-        $this->configuration->setProxyNamespace('DoctrineExtensions\Tests\Proxies');
-        $this->configuration->setAutoGenerateProxyClasses(true);
-        $this->configuration->setMetadataDriverImpl($this->configuration->newDefaultAnnotationDriver(__DIR__ . '/../Entities'));
+        $this->configuration = Setup::createAnnotationMetadataConfiguration([__DIR__ . '/../Entities'], true);
         $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true ], $this->configuration);
     }
 
