@@ -9,7 +9,7 @@ class Day extends FunctionNode
 {
     private $date;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return sprintf(
             'EXTRACT(DAY FROM %s)',
@@ -17,7 +17,7 @@ class Day extends FunctionNode
         );
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

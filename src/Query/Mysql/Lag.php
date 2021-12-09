@@ -33,7 +33,7 @@ class Lag extends FunctionNode
         return 'LAG(' . $sqlWalker->walkAggregateExpression($this->aggregateExpression) . ')';
     }
 
-    public function parse(Parser $parser): void
+    public function parse(Parser $parser) : void
     {
         $lexer = $parser->getLexer();
 

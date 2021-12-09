@@ -9,7 +9,7 @@ class MysqlWalker extends SqlWalker
     /**
      * @inheritdoc
      */
-    public function walkSelectClause($selectClause)
+    public function walkSelectClause($selectClause): array|string
     {
         $sql = parent::walkSelectClause($selectClause);
 
@@ -29,7 +29,7 @@ class MysqlWalker extends SqlWalker
     /**
      * @inheritdoc
      */
-    public function walkGroupByClause($groupByClause)
+    public function walkGroupByClause($groupByClause): string
     {
         $sql = parent::walkGroupByClause($groupByClause);
 

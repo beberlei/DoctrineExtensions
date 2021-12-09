@@ -21,7 +21,7 @@ class Trunc extends FunctionNode
      */
     private $fmt;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         if ($this->fmt) {
             return sprintf(
@@ -37,7 +37,7 @@ class Trunc extends FunctionNode
         );
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

@@ -21,7 +21,7 @@ class Greatest extends FunctionNode
     /**
      * @param Parser $parser
      */
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -41,7 +41,7 @@ class Greatest extends FunctionNode
      * @param SqlWalker $sqlWalker
      * @return string
      */
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         $query = 'GREATEST(';
 

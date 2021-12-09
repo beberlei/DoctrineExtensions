@@ -13,7 +13,7 @@ class Rand extends FunctionNode
      */
     private $expression = null;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         if ($this->expression) {
             return 'RAND(' . $this->expression->dispatch($sqlWalker) . ')';
@@ -22,7 +22,7 @@ class Rand extends FunctionNode
         return 'RAND()';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $lexer = $parser->getLexer();
         $parser->match(Lexer::T_IDENTIFIER);
