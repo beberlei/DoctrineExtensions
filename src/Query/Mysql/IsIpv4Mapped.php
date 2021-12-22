@@ -31,7 +31,7 @@ class IsIpv4Mapped extends FunctionNode
      *
      * @return string
      */
-    public function getSql(SqlWalker $sqlWalker) : string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return 'IS_IPV4_MAPPED('
             . (

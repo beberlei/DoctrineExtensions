@@ -18,7 +18,7 @@ class Inet6Aton extends FunctionNode
      *
      * @throws QueryException
      */
-    public function parse(Parser $parser):void
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

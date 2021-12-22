@@ -53,7 +53,7 @@ class DateAdd extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker):  string
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         $unit = strtoupper(is_string($this->unit) ? $this->unit : $this->unit->value);
 

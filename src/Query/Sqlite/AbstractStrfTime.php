@@ -12,7 +12,7 @@ abstract class AbstractStrfTime extends FunctionNode
 {
     public $date;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker) : string
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return "STRFTIME('"
                 . $this->getFormat()
@@ -21,7 +21,7 @@ abstract class AbstractStrfTime extends FunctionNode
             . ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser) : void
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -31,5 +31,5 @@ abstract class AbstractStrfTime extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    abstract protected function getFormat() : string;
+    abstract protected function getFormat(): string;
 }

@@ -35,7 +35,7 @@ class JsonContains extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(SqlWalker $sqlWalker) : string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         $target = $sqlWalker->walkStringPrimary($this->target);
         $candidate = $sqlWalker->walkStringPrimary($this->candidate);

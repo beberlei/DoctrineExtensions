@@ -17,7 +17,7 @@ class DayOfYear extends FunctionNode
     /**
      * @inheritdoc
      */
-    public function getSql(SqlWalker $sqlWalker) : string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return 'DAYOFYEAR(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
@@ -25,7 +25,7 @@ class DayOfYear extends FunctionNode
     /**
      * @inheritdoc
      */
-    public function parse(Parser $parser) : void
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

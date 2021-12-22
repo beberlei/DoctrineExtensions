@@ -13,7 +13,7 @@ use Doctrine\ORM\Query\SqlWalker;
 class DatePart extends FunctionNode
 {
     public $dateString = null;
-    
+
     public $dateFormat = null;
 
     public function parse(Parser $parser): void
