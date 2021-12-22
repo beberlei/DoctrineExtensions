@@ -17,14 +17,14 @@ class Over extends FunctionNode
     /** @var OrderByClause|null */
     private $orderByClause;
 
-    public function getSql(SqlWalker $sqlWalker) : string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return isset($this->orderByClause) && count($this->orderByClause->orderByItems) > 0
             ? $sqlWalker->walkArithmeticExpression($this->arithmeticExpression) . ' OVER (' . trim($sqlWalker->walkOrderByClause($this->orderByClause)) . ')'
             : $sqlWalker->walkArithmeticExpression($this->arithmeticExpression) . ' OVER ()';
     }
 
-    public function parse(Parser $parser) : void
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

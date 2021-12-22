@@ -53,7 +53,7 @@ class ConcatWs extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker) : string
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         // Create an array to hold the query elements.
         $queryBuilder = ['CONCAT_WS('];

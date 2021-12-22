@@ -32,7 +32,11 @@ class SortableNullsWalker extends Query\SqlWalker
 
     const NULLS_LAST = 'NULLS LAST';
 
-    public function walkOrderByItem($orderByItem): array|string
+    /**
+     * @param $orderByItem
+     * @return array|string
+     */
+    public function walkOrderByItem($orderByItem)
     {
         $sql = parent::walkOrderByItem($orderByItem);
         $hint = $this->getQuery()->getHint('sortableNulls.fields');
