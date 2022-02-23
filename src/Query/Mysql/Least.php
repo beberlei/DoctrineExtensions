@@ -47,7 +47,7 @@ class Least extends FunctionNode
 
         $query .= ', ';
 
-        for ($i = 0; $i < count($this->values); $i++) {
+        for ($i = 0, $iMax = count($this->values); $i < $iMax; $i++) {
             if ($i > 0) {
                 $query .= ', ';
             }
