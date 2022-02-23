@@ -23,7 +23,7 @@ class PolygonType extends Type
     {
         preg_match('/POLYGON\(\((.*)\)\)/', $value, $matches);
         if (!isset($matches[1])) {
-            throw new Exception('No Polygon Points');
+            throw new \Exception('No Polygon Points');
         }
 
         return $matches[1];
