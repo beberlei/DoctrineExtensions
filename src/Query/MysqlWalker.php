@@ -11,7 +11,7 @@ class MysqlWalker extends SqlWalker
      *
      * @return array|string
      */
-    public function walkSelectClause($selectClause)
+    public function walkSelectClause($selectClause) : mixed
     {
         $sql = parent::walkSelectClause($selectClause);
 

@@ -36,7 +36,7 @@ class SortableNullsWalker extends Query\SqlWalker
      * @param $orderByItem
      * @return array|string
      */
-    public function walkOrderByItem($orderByItem)
+    public function walkOrderByItem($orderByItem) : mixed
     {
         $sql = parent::walkOrderByItem($orderByItem);
         $hint = $this->getQuery()->getHint('sortableNulls.fields');
