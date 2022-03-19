@@ -15,6 +15,8 @@ class ConfigLoader
 
     const SQLITE   = 'sqlite';
 
+    const MSSQL   = 'mssql';
+
     /**
      * @param Configuration $configuration
      * @param string        $database

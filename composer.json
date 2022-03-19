@@ -1,7 +1,7 @@
 {
     "name": "beberlei/doctrineextensions",
     "type": "library",
-    "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL, Oracle, PostgreSQL and SQLite.",
+    "description": "A set of extensions to Doctrine 2 that add support for additional query functions available in MySQL, Oracle, PostgreSQL, SQLite and Microsoft SQL.",
     "keywords": ["doctrine", "orm", "database"],
     "license": "BSD-3-Clause",
     "authors": [
