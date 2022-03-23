@@ -17,7 +17,7 @@
         "nesbot/carbon": "*",
         "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
         "symfony/cache": "^5.3",
-        "symfony/yaml": "^4.2 || ^5.0",
+        "symfony/yaml": "^4.4 || ^5.3 || ^6.0",
         "zf1/zend-date": "^1.12",
         "zf1/zend-registry": "^1.12"
     },
