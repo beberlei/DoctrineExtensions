@@ -17,9 +17,17 @@ class RegexpReplace extends FunctionNode
 
     private $replace;
 
+    private $flags;
+
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
-        return 'REGEXP_REPLACE('.$this->string->dispatch($sqlWalker).', '.$this->search->dispatch($sqlWalker).', '.$this->replace->dispatch($sqlWalker).')';
+        $sql = 'REGEXP_REPLACE('.$this->string->dispatch($sqlWalker).', '.$this->search->dispatch($sqlWalker).', '.$this->replace->dispatch($sqlWalker);
+        if ($this->flags) {
+            $sql .= ', '.$this->flags->dispatch($sqlWalker);
+        }
+        $sql .= ')';
+
+        return $sql;
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
@@ -32,6 +40,11 @@ class RegexpReplace extends FunctionNode
         $this->search = $parser->StringExpression();
         $parser->match(Lexer::T_COMMA);
         $this->replace = $parser->StringExpression();
+
+        if ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
+            $parser->match(Lexer::T_COMMA);
+            $this->flags = $parser->StringExpression();
+        }
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }

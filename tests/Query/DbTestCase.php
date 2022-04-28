@@ -6,6 +6,7 @@ use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 class DbTestCase extends TestCase
 {
@@ -18,8 +19,6 @@ class DbTestCase extends TestCase
     public function setUp(): void
     {
         $this->configuration = new Configuration();
-        $this->configuration->setMetadataCacheImpl(new ArrayCache());
-        $this->configuration->setQueryCacheImpl(new ArrayCache());
         $this->configuration->setProxyDir(__DIR__ . '/Proxies');
         $this->configuration->setProxyNamespace('DoctrineExtensions\Tests\Proxies');
         $this->configuration->setAutoGenerateProxyClasses(true);
