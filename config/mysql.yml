@@ -104,6 +104,7 @@ doctrine:
                  is_ipv4_compat: DoctrineExtensions\Query\Mysql\IsIpv4Compat
                  is_ipv4_mapped: DoctrineExtensions\Query\Mysql\IsIpv4Mapped
                  is_ipv6: DoctrineExtensions\Query\Mysql\IsIpv6
+                 json_extract: DoctrineExtensions\Query\Mysql\JsonExtract
                  lag: DoctrineExtensions\Query\Mysql\Lag
                  lead: DoctrineExtensions\Query\Mysql\Lead
                  least: DoctrineExtensions\Query\Mysql\Least
