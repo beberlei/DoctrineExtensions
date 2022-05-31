@@ -88,7 +88,7 @@ class MatchAgainst extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $walker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $walker): string
     {
         $fields = [];
 
