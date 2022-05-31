@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\DateTimeTzType;
 
 class CarbonDateTimeTzType extends DateTimeTzType
 {
-    const CARBONDATETIMETZ = 'carbondatetimetz';
+    public const CARBONDATETIMETZ = 'carbondatetimetz';
 
     public function getName()
     {

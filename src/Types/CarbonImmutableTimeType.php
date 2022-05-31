@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\TimeType;
 
 class CarbonImmutableTimeType extends TimeType
 {
-    const CARBONTIME = 'carbontime_immutable';
+    public const CARBONTIME = 'carbontime_immutable';
 
     public function getName()
     {
