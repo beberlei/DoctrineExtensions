@@ -4,15 +4,18 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\QueryException;
 
 /**
- * @author Wally Noveno <wally.noveno@gmail.com>
+ * @author Marek Karmelski <marek.karmelski@gmail.com>
  */
 class Format extends FunctionNode
 {
     public $numberExpression = null;
 
     public $patternExpression = null;
+
+    public $optionalLocaleExpression = null;
 
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
@@ -21,6 +24,13 @@ class Format extends FunctionNode
         $this->numberExpression = $parser->SimpleArithmeticExpression();
         $parser->match(Lexer::T_COMMA);
         $this->patternExpression = $parser->SimpleArithmeticExpression();
+
+        $lexer = $parser->getLexer();
+        if ($lexer->isNextToken(Lexer::T_COMMA)) {
+            $parser->match(Lexer::T_COMMA);
+            $this->optionalLocaleExpression = $parser->StringExpression();
+        }
+
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
@@ -29,6 +39,7 @@ class Format extends FunctionNode
         return 'FORMAT(' .
             $this->numberExpression->dispatch($sqlWalker) . ', ' .
             $this->patternExpression->dispatch($sqlWalker) .
-        ')';
+            (($this->optionalLocaleExpression) ? ', ' . $this->optionalLocaleExpression->dispatch($sqlWalker) : '') .
+            ')';
     }
 }
