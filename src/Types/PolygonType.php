@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Type;
 
 class PolygonType extends Type
 {
-    const FIELD = 'polygon';
+    public const FIELD = 'polygon';
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {

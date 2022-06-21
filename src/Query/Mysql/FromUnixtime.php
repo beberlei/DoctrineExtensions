@@ -14,7 +14,7 @@ class FromUnixtime extends FunctionNode
 
     public $secondExpression = null;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         if (null !== $this->secondExpression) {
             return 'FROM_UNIXTIME('
@@ -27,7 +27,7 @@ class FromUnixtime extends FunctionNode
         return 'FROM_UNIXTIME(' . $this->firstExpression->dispatch($sqlWalker) . ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

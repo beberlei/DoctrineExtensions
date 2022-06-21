@@ -13,7 +13,7 @@ class Variance extends FunctionNode
     /** @var SimpleArithmeticExpression */
     protected $arithmeticExpression;
 
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -23,7 +23,7 @@ class Variance extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf('VARIANCE(%s)', $sqlWalker->walkSimpleArithmeticExpression($this->arithmeticExpression));
     }

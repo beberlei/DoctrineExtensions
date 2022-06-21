@@ -14,7 +14,7 @@ class YearWeek extends FunctionNode
 
     public $mode;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         $sql = 'YEARWEEK(' . $sqlWalker->walkArithmeticPrimary($this->date);
         if ($this->mode != null) {
@@ -25,7 +25,7 @@ class YearWeek extends FunctionNode
         return $sql;
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

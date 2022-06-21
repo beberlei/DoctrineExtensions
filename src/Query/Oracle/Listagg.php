@@ -37,7 +37,7 @@ class Listagg extends FunctionNode
     /**
      * @inheritdoc
      */
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 
@@ -88,7 +88,7 @@ class Listagg extends FunctionNode
     /**
      * @inheritdoc
      */
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         $result = 'LISTAGG(' . $this->listaggField->dispatch($sqlWalker);
         if ($this->separator) {
