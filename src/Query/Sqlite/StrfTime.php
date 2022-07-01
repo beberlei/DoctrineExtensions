@@ -22,7 +22,7 @@ class StrfTime extends FunctionNode
      * @throws \Doctrine\ORM\Query\QueryException
      * @return string
      */
-    public function getSql(SqlWalker $sqlWalker)
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return 'strftime('
         . $sqlWalker->walkLiteral($this->formatter)
@@ -31,7 +31,7 @@ class StrfTime extends FunctionNode
         . ')';
     }
 
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

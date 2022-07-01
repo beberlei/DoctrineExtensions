@@ -14,7 +14,7 @@ class ConcatWs extends FunctionNode
 
     private $notEmpty = false;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -53,7 +53,7 @@ class ConcatWs extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         // Create an array to hold the query elements.
         $queryBuilder = ['CONCAT_WS('];

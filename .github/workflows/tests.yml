@@ -1,16 +1,11 @@
 name: Tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: ["push", "pull_request"]
 
 jobs:
   build:
     name: PHP ${{ matrix.php }}
-
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:

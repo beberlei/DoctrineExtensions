@@ -14,7 +14,7 @@ class DateSub extends DateAdd
      * @throws QueryException
      * @return string
      */
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         $unit = strtoupper(is_string($this->unit) ? $this->unit : $this->unit->value);
 
