@@ -22,7 +22,7 @@ class DatePart extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $this->dateString = $parser->ArithmeticPrimary();
         $parser->match(Lexer::T_COMMA);
-        $this->dateFormat = $parser->ArithmeticPrimary();
+        $this->dateFormat = $parser->ArithmeticExpression();
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
