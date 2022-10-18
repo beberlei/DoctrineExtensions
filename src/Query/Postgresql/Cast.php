@@ -1,24 +1,24 @@
 <?php
 
-namespace DoctrineExtensions\Query\Mysql;
+namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-class StDistanceSphere extends FunctionNode
+class Cast extends FunctionNode
 {
-    public $origin;
+    public $subject;
 
-    public $remote;
+    public $type;
 
     public function getSql(SqlWalker $sqlWalker)
     {
         return sprintf(
-            'ST_DISTANCE_SPHERE(%s, %s)',
-            $this->origin->dispatch($sqlWalker),
-            $this->remote->dispatch($sqlWalker)
+            'CAST(%s AS %s)',
+            $this->subject->dispatch($sqlWalker),
+            $this->type
         );
     }
 
@@ -27,9 +27,12 @@ class StDistanceSphere extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        $this->origin = $parser->ArithmeticPrimary();
-        $parser->match(Lexer::T_COMMA);
-        $this->remote = $parser->ArithmeticPrimary();
+        $this->subject = $parser->ArithmeticPrimary();
+        $parser->match(Lexer::T_AS);
+        $parser->match(Lexer::T_IDENTIFIER);
+
+        $lexer = $parser->getLexer();
+        $this->type = $lexer->token['value'];
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }

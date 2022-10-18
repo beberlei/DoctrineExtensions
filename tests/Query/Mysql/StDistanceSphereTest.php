@@ -11,6 +11,7 @@ class StDistanceSphereTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
             'SELECT ST_DISTANCE_SPHERE(1, 2) AS sclr_0 FROM Blank b0_'
         );
     }
+
     public function testStDistanceSphereWithExpression()
     {
         $this->assertDqlProducesSql(
