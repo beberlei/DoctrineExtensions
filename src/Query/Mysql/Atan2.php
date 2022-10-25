@@ -11,7 +11,7 @@ class Atan2 extends FunctionNode
 
     public $secondExpression;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         $firstArgument = $sqlWalker->walkSimpleArithmeticExpression(
             $this->firstExpression
@@ -24,7 +24,7 @@ class Atan2 extends FunctionNode
         return 'ATAN2(' . $firstArgument . ', ' . $secondArgument . ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

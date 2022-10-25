@@ -17,7 +17,7 @@ if (!class_exists('Zend_Date')) {
  */
 class ZendDateType extends Type
 {
-    const ZENDDATE = 'zenddate';
+    public const ZENDDATE = 'zenddate';
 
     public function getName()
     {

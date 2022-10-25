@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\DateType;
 
 class CarbonImmutableDateType extends DateType
 {
-    const CARBONDATE = 'carbondate_immutable';
+    public const CARBONDATE = 'carbondate_immutable';
 
     public function getName()
     {

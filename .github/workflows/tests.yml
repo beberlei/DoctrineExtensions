@@ -1,16 +1,12 @@
 name: Tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: ["push", "pull_request"]
 
 jobs:
   build:
     name: PHP ${{ matrix.php }}
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -18,6 +14,8 @@ jobs:
           - 7.2
           - 7.3
           - 7.4
+          - 8.0
+          - 8.1
 
     steps:
       - uses: actions/checkout@v2
