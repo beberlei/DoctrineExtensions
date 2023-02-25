@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CarbonDateTest extends TestCase
 {
-    public $entityManager = null;
+    private $em;
 
     public static function setUpBeforeClass(): void
     {

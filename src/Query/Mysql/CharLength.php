@@ -10,7 +10,7 @@ use Doctrine\ORM\Query\Lexer;
  */
 class CharLength extends FunctionNode
 {
-    private $expr;
+    private $expr1;
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {

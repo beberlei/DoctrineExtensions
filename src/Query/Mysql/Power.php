@@ -9,6 +9,8 @@ class Power extends FunctionNode
 {
     public $arithmeticExpression;
 
+    public $power;
+
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return 'POWER(' . $this->arithmeticExpression->dispatch($sqlWalker) . ', '

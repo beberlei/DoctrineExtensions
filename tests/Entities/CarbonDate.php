@@ -33,4 +33,24 @@ class CarbonDate
      * @Column(type="CarbonTime", nullable=true)
      */
     public $time;
+
+    /**
+     * @Column(type="CarbonImmutableDate", nullable=true)
+     */
+    public $date_immutable;
+
+    /**
+     * @Column(type="CarbonImmutableDateTime", nullable=true)
+     */
+    public $datetime_immutable;
+
+    /**
+     * @Column(type="CarbonImmutableDateTimeTz", nullable=true)
+     */
+    public $datetime_tz_immutable;
+
+    /**
+     * @Column(type="CarbonImmutableTime", nullable=true)
+     */
+    public $time_immutable;
 }
