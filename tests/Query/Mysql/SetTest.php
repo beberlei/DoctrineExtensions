@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class SetTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
-    public function testFindInSet()
+    public function testFindInSet(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Set p WHERE FIND_IN_SET(p.id, p.set) != 0";
         $this->assertDqlProducesSql(

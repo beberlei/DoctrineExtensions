@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class BitXorTest extends MysqlTestCase
 {
-    public function testBitCount()
+    public function testBitCount(): void
     {
         $this->assertDqlProducesSql(
             "SELECT BIT_XOR(2, 2) from DoctrineExtensions\Tests\Entities\Blank b",

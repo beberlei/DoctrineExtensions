@@ -26,7 +26,7 @@ class MysqlYamlTest extends TestCase
         );
     }
 
-    public function testFunctions()
+    public function testFunctions(): void
     {
         $documented = $this->functions;
 
@@ -49,7 +49,7 @@ class MysqlYamlTest extends TestCase
         }
     }
 
-    public function testReadme()
+    public function testReadme(): void
     {
         preg_match('#\| MySQL \| `(.*)` \|#', file_get_contents(__DIR__ . '/../../README.md'), $matches);
 

@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class RoundTest extends MysqlTestCase
 {
-    public function testRoundOneArgument()
+    public function testRoundOneArgument(): void
     {
         $this->assertDqlProducesSql(
             "SELECT ROUND(2) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -14,7 +14,7 @@ class RoundTest extends MysqlTestCase
         );
     }
 
-    public function testRoundTwoArguments()
+    public function testRoundTwoArguments(): void
     {
         $this->assertDqlProducesSql(
             "SELECT ROUND(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

@@ -7,7 +7,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class DateTruncTest extends PostgresqlTestCase
 {
-    public function testDateTrunc()
+    public function testDateTrunc(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder
