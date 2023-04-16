@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
  * This class is responsible for testing the Sqlite string functions
  * @author winkbrace
  */
-class StringFunctionsTest extends SqliteTestCase
+final class StringFunctionsTest extends SqliteTestCase
 {
     public function testIfNull()
     {

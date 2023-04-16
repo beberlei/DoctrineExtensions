@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class CarbonDateTest extends TestCase
+final class CarbonDateTest extends TestCase
 {
     private $em;
 

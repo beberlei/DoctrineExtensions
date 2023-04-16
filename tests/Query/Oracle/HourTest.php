@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class HourTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+final class HourTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
     public function testHour()
     {

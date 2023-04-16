@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @author Andreas Gallien <gallien@seleos.de>
  */
-class ZendDateTest extends TestCase
+final class ZendDateTest extends TestCase
 {
     private $em;
 

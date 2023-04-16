@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class DateTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class DateTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testStrToDate()
     {

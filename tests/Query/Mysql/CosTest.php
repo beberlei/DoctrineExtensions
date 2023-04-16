@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class CosTest extends MysqlTestCase
+final class CosTest extends MysqlTestCase
 {
     public function testCos()
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class GroupConcatTest extends MysqlTestCase
+final class GroupConcatTest extends MysqlTestCase
 {
     public function testGroupConcat()
     {

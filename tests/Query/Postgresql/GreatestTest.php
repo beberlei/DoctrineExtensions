@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class GreatestTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class GreatestTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testGreatest()
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class PowerTest extends MysqlTestCase
+final class PowerTest extends MysqlTestCase
 {
     public function testPower()
     {

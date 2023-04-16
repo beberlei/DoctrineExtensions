@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class DayTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+final class DayTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
 {
     public function testDay()
     {

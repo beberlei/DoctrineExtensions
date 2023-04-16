@@ -6,7 +6,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class TruncateTest extends MysqlTestCase
+final class TruncateTest extends MysqlTestCase
 {
     public function testFormat()
     {

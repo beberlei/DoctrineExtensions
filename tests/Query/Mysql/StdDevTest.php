@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class StdDevTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+final class StdDevTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
     public function testStdDev()
     {

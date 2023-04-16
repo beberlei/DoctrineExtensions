@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+final class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
     public function testAscii()
     {

@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class SetTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+final class SetTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
 {
     public function testFindInSet()
     {

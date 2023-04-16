@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class MinuteTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+final class MinuteTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
 {
     public function testMinute()
     {

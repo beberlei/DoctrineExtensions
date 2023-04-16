@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class StringTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class StringTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testFormatDate()
     {

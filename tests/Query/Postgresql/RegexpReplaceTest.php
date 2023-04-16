@@ -2,7 +2,7 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class RegexpReplaceTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+final class RegexpReplaceTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
 {
     public function testRegexpReplace()
     {
