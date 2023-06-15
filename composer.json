@@ -13,8 +13,8 @@
         "doctrine/orm": "^2.7"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
         "doctrine/cache": "^1.11",
-        "friendsofphp/php-cs-fixer": "^2.14",
         "nesbot/carbon": "*",
         "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
         "symfony/yaml": "^4.4 || ^5.3 || ^6.0",
@@ -31,7 +31,7 @@
         "sort-packages": true
     },
     "scripts": {
-        "lint": "php-cs-fixer fix --ansi --diff --diff-format udiff --show-progress=none --verbose",
+        "lint": "php-cs-fixer fix --ansi --diff --show-progress=none --verbose",
         "test": "phpunit --colors=always"
     }
 }
