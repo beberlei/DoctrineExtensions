@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\OrderByClause;
 use Doctrine\ORM\Query\AST\PathExpression;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
@@ -14,13 +15,13 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class StringAgg extends FunctionNode
 {
-    private $orderBy = null;
+    private OrderByClause|null $orderBy = null;
 
-    private $expression = null;
+    private PathExpression|null $expression = null;
 
     private $delimiter = null;
 
-    private $isDistinct = false;
+    private bool $isDistinct = false;
 
     public function parse(Parser $parser): void
     {

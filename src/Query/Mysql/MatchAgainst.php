@@ -3,23 +3,21 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\PathExpression;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 class MatchAgainst extends FunctionNode
 {
-    /** @var array list of \Doctrine\ORM\Query\AST\PathExpression */
-    protected $pathExp = null;
+    /** @var PathExpression[] */
+    protected ?array $pathExp = null;
 
-    /** @var string */
-    protected $against = null;
+    protected mixed $against = null;
 
-    /** @var bool */
-    protected $booleanMode = false;
+    protected bool $booleanMode = false;
 
-    /** @var bool */
-    protected $queryExpansion = false;
+    protected bool $queryExpansion = false;
 
     public function parse(Parser $parser): void
     {

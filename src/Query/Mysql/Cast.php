@@ -3,7 +3,8 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\AST\PathExpression;
+use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
@@ -18,15 +19,11 @@ use Doctrine\ORM\Query\SqlWalker;
  */
 class Cast extends FunctionNode
 {
-    /** @var Node */
-    protected $fieldIdentifierExpression;
+    protected SimpleArithmeticExpression|PathExpression $fieldIdentifierExpression;
 
-    /** @var string */
-    protected $castingTypeExpression;
+    protected string $castingTypeExpression;
 
     /**
-     * @param Parser $parser
-     *
      * @throws QueryException
      */
     public function parse(Parser $parser): void
@@ -64,11 +61,6 @@ class Cast extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(

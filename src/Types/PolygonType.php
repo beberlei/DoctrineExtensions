@@ -9,7 +9,7 @@ class PolygonType extends Type
 {
     public const FIELD = 'polygon';
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
         return 'POLYGON';
     }
