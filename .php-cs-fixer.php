@@ -5,10 +5,11 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
     ->name('*.php')
     ->ignoreDotFiles(true)
-    ->ignoreVCS(true);
+    ->ignoreVCS(true)
 ;
 
-$config = PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+$config
     ->setFinder($finder)
     ->setRiskyAllowed(true)
     ->setRules([
@@ -17,7 +18,6 @@ $config = PhpCsFixer\Config::create()
         'align_multiline_comment' => true,
         'array_syntax' => ['syntax' => 'short'],
         'blank_line_after_opening_tag' => true,
-        'blank_line_before_return' => true,
         'blank_line_before_statement' => true,
         'cast_spaces' => true,
         'class_attributes_separation' => true,
@@ -29,8 +29,6 @@ $config = PhpCsFixer\Config::create()
         'explicit_string_variable' => true,
         'fully_qualified_strict_types' => true,
         'function_typehint_space' => true,
-        'general_phpdoc_annotation_remove' => ['category', 'license'],
-        'hash_to_slash_comment' => true,
         'heredoc_to_nowdoc' => true,
         'include' => true,
         'lowercase_cast' => true,
@@ -44,13 +42,10 @@ $config = PhpCsFixer\Config::create()
         'no_blank_lines_after_phpdoc' => true,
         'no_empty_phpdoc' => true,
         'no_extra_blank_lines' => ['tokens' => ['break', 'continue', 'throw', 'use']],
-        'no_extra_consecutive_blank_lines' => true,
         'no_leading_import_slash' => true,
         'no_leading_namespace_whitespace' => true,
         'no_multiline_whitespace_around_double_arrow' => true,
-        'no_multiline_whitespace_before_semicolons' => true,
         'no_short_bool_cast' => true,
-        'no_short_echo_tag' => true,
         'no_singleline_whitespace_before_semicolons' => true,
         'no_superfluous_elseif' => true,
         'no_trailing_comma_in_list_call' => true,
@@ -75,7 +70,7 @@ $config = PhpCsFixer\Config::create()
         'phpdoc_trim' => true,
         'phpdoc_types' => true,
         'phpdoc_var_without_name' => true,
-        'psr4' => true,
+        'psr_autoloading' => true,
         'self_accessor' => true,
         'semicolon_after_instruction' => true,
         'short_scalar_cast' => true,
@@ -86,7 +81,7 @@ $config = PhpCsFixer\Config::create()
         'standardize_not_equals' => true,
         'string_line_ending' => true,
         'ternary_operator_spaces' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => true,
         'unary_operator_spaces' => true,
         'whitespace_after_comma_in_array' => true,
     ])
