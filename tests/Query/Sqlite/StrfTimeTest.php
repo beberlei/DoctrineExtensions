@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class StrfTimeTest extends SqliteTestCase
 {
-    public function getFunctionFormatters()
+    public static function getFunctionFormatters(): array
     {
         return [
             ['Year', '%Y'],
@@ -23,7 +23,7 @@ class StrfTimeTest extends SqliteTestCase
     /**
      * @dataProvider getFunctionFormatters
      */
-    public function testStrfTimes($function, $formatter)
+    public function testStrfTimes($function, $formatter): void
     {
         $this->assertDqlProducesSql(
             sprintf('SELECT %s(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p', $function),
@@ -31,11 +31,11 @@ class StrfTimeTest extends SqliteTestCase
         );
     }
 
-    public function testStrfTime()
+    public function testStrfTime(): void
     {
         $this->assertDqlProducesSql(
             'SELECT StrfTime(\'%s\', p.created) as Time FROM DoctrineExtensions\Tests\Entities\Date p',
-            "SELECT strftime('%s', d0_.created) AS {$this->columnAlias} FROM Date d0_"
+            "SELECT strftime('%s', d0_.created) AS $this->columnAlias FROM Date d0_"
         );
     }
 }

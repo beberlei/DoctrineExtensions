@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class MatchAgainstTest extends MysqlTestCase
 {
-    public function testMatchAgainst()
+    public function testMatchAgainst(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MATCH(blank.id) AGAINST ('3') from DoctrineExtensions\Tests\Entities\Blank AS blank",
@@ -14,7 +14,7 @@ class MatchAgainstTest extends MysqlTestCase
         );
     }
 
-    public function testMatchAgainstMultipleFields()
+    public function testMatchAgainstMultipleFields(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MATCH(post.longitude, post.latitude) AGAINST ('3') from DoctrineExtensions\Tests\Entities\BlogPost AS post",
@@ -22,7 +22,7 @@ class MatchAgainstTest extends MysqlTestCase
         );
     }
 
-    public function testMatchAgainstInBooleanMode()
+    public function testMatchAgainstInBooleanMode(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MATCH(blank.id) AGAINST ('+3 -4' BOOLEAN) from DoctrineExtensions\Tests\Entities\Blank AS blank",
@@ -34,7 +34,7 @@ class MatchAgainstTest extends MysqlTestCase
         );
     }
 
-    public function testMatchAgainstWithQueryExpansion()
+    public function testMatchAgainstWithQueryExpansion(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MATCH(blank.id) AGAINST ('3' EXPAND) from DoctrineExtensions\Tests\Entities\Blank AS blank",

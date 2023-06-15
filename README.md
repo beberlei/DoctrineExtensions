@@ -1,12 +1,12 @@
 DoctrineExtensions
 ==================
 
-[![Build Status](https://img.shields.io/badge/branch-master-blue.svg)](https://github.com/beberlei/DoctrineExtensions/tree/master)
-[![Build Status](https://github.com/beberlei/DoctrineExtensions/workflows/Tests/badge.svg)](https://github.com/beberlei/DoctrineExtensions/actions)
-[![Packagist](https://img.shields.io/packagist/v/beberlei/doctrineextensions.svg?label=stable)](https://packagist.org/packages/beberlei/doctrineextensions)
-[![Packagist](https://img.shields.io/packagist/dd/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
-[![Packagist](https://img.shields.io/packagist/dm/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
-[![Packagist](https://img.shields.io/packagist/dt/beberlei/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/beberlei/doctrineextensions)
+[![Build Status](https://img.shields.io/badge/branch-master-blue.svg)](https://github.com/Dukecity/DoctrineExtensions/tree/master)
+[![Build Status](https://github.com/Dukecity/DoctrineExtensions/workflows/Tests/badge.svg)](https://github.com/Dukecity/DoctrineExtensions/actions)
+[![Packagist](https://img.shields.io/packagist/v/Dukecity/doctrineextensions.svg?label=stable)](https://packagist.org/packages/Dukecity/doctrineextensions)
+[![Packagist](https://img.shields.io/packagist/dd/Dukecity/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/Dukecity/doctrineextensions)
+[![Packagist](https://img.shields.io/packagist/dm/Dukecity/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/Dukecity/doctrineextensions)
+[![Packagist](https://img.shields.io/packagist/dt/Dukecity/doctrineextensions.svg?label=⬇)](https://packagist.org/packages/Dukecity/doctrineextensions)
 
 A set of extensions to Doctrine 2 that add support for functions available in
 MySQL, Oracle, PostgreSQL and SQLite.
@@ -21,7 +21,7 @@ MySQL, Oracle, PostgreSQL and SQLite.
 > Note: SQLite date functions are implemented as `strftime(format, value)`.
   SQLite only supports the [most common formats](https://www.sqlite.org/lang_datefunc.html),
   so `date_format` will convert the mysql substitutions to the closest available SQLite substitutions.
-  This means `date_format(field, '%b %D %Y') -> Jan 1st 2015` becomes `strftime('%m %d %Y', field) -> 01 01 2015`.
+  This means `date_format(field, '%b %D %Y') -> Jan 1st 2023` becomes `strftime('%m %d %Y', field) -> 01 01 2023`.
 
 Installation
 ------------
@@ -29,13 +29,13 @@ Installation
 To install this library, run the command below and you will get the latest
 version:
 
-```
-composer require beberlei/doctrineextensions=dev-master
+```sh
+composer require beberlei/doctrineextensions
 ```
 
 If you want to run phpunit:
 
-```
+```sh
 composer run test
 ```
 

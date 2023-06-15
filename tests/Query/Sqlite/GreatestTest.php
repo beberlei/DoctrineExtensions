@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class GreatestTest extends SqliteTestCase
 {
-    public function testGreatest()
+    public function testGreatest():void
     {
         $this->assertDqlProducesSql(
             "SELECT Greatest(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

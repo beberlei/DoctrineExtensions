@@ -11,10 +11,6 @@ jobs:
     strategy:
       matrix:
         php:
-          - 7.2
-          - 7.3
-          - 7.4
-          - 8.0
           - 8.1
           - 8.2
 
@@ -40,4 +36,4 @@ jobs:
       - run: composer run test
 
       - run: composer run lint -- --dry-run
-        if: ${{ matrix.php <= '8.0' }}
+        if: ${{ matrix.php == '8.0' }}

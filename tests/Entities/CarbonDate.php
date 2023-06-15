@@ -2,55 +2,37 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- * @Table
- */
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
+#[ORM\Table]
 class CarbonDate
 {
-    /**
-     * @Id
-     * @Column(type="integer")
-     */
-    public $id;
+    #[ORM\Id]
+    #[ORM\Column]
+    public int $id;
 
-    /**
-     * @Column(type="CarbonDate", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonDate', nullable: true)]
     public $date;
 
-    /**
-     * @Column(type="CarbonDateTime", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonDateTime', nullable: true)]
     public $datetime;
 
-    /**
-     * @Column(type="CarbonDateTimeTz", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonDateTimeTz', nullable: true)]
     public $datetime_tz;
 
-    /**
-     * @Column(type="CarbonTime", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonTime', nullable: true)]
     public $time;
 
-    /**
-     * @Column(type="CarbonImmutableDate", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonImmutableDate', nullable: true)]
     public $date_immutable;
 
-    /**
-     * @Column(type="CarbonImmutableDateTime", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonImmutableDateTime', nullable: true)]
     public $datetime_immutable;
 
-    /**
-     * @Column(type="CarbonImmutableDateTimeTz", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonImmutableDateTimeTz', nullable: true)]
     public $datetime_tz_immutable;
 
-    /**
-     * @Column(type="CarbonImmutableTime", nullable=true)
-     */
+    #[ORM\Column(type: 'CarbonImmutableTime', nullable: true)]
     public $time_immutable;
 }

@@ -44,7 +44,7 @@ class Cast extends FunctionNode
 
         if ($parser->getLexer()->isNextToken(Lexer::T_OPEN_PARENTHESIS)) {
             $parser->match(Lexer::T_OPEN_PARENTHESIS);
-            /** @var Literal $parameter */
+
             $parameter = $parser->Literal();
             $parameters = [$parameter->value];
 

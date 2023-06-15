@@ -7,19 +7,15 @@ use Symfony\Component\Yaml\Parser;
 
 class ConfigLoader
 {
-    const MYSQL    = 'mysql';
+    public const MYSQL    = 'mysql';
 
-    const ORACLE   = 'oracle';
+    public const ORACLE   = 'oracle';
 
-    const POSTGRES = 'postgres';
+    public const POSTGRES = 'postgres';
 
-    const SQLITE   = 'sqlite';
+    public const SQLITE   = 'sqlite';
 
-    /**
-     * @param Configuration $configuration
-     * @param string        $database
-     */
-    public static function load(Configuration $configuration, $database)
+    public static function load(Configuration $configuration, string $database): void
     {
         $parser = new Parser();
         // Load the corresponding config file.

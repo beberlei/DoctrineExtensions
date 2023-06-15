@@ -2,9 +2,11 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class DayTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+use DoctrineExtensions\Tests\Query\OracleTestCase;
+
+class DayTest extends OracleTestCase
 {
-    public function testDay()
+    public function testDay(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b",

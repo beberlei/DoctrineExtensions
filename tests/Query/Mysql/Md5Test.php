@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class Md5Test extends MysqlTestCase
 {
-    public function testMd5()
+    public function testMd5(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MD5('2') from DoctrineExtensions\Tests\Entities\Blank b",

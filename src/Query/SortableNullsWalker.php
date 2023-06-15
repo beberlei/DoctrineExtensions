@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Query;
 
 use Doctrine\ORM\Query;
+use Doctrine\ORM\Query\AST\OrderByItem;
 
 /**
  * The SortableNullsWalker is a TreeWalker that walks over a DQL AST and constructs
@@ -33,10 +34,9 @@ class SortableNullsWalker extends Query\SqlWalker
     public const NULLS_LAST = 'NULLS LAST';
 
     /**
-     * @param $orderByItem
-     * @return array|string
+     * @param OrderByItem $orderByItem
      */
-    public function walkOrderByItem($orderByItem)
+    public function walkOrderByItem($orderByItem): array|string
     {
         $sql = parent::walkOrderByItem($orderByItem);
         $hint = $this->getQuery()->getHint('sortableNulls.fields');

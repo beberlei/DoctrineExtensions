@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class Inet6AtonTest extends MysqlTestCase
 {
-    public function testInet6Aton()
+    public function testInet6Aton(): void
     {
         $this->assertDqlProducesSql(
             "SELECT INET6_ATON('2001:db8::b33f') FROM DoctrineExtensions\Tests\Entities\Blank b",

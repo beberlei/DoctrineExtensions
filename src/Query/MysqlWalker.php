@@ -8,10 +8,8 @@ class MysqlWalker extends SqlWalker
 {
     /**
      * @inheritdoc
-     *
-     * @return array|string
      */
-    public function walkSelectClause($selectClause)
+    public function walkSelectClause($selectClause): array|string
     {
         $sql = parent::walkSelectClause($selectClause);
 

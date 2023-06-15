@@ -2,9 +2,11 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class HourTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+
+class HourTest extends PostgresqlTestCase
 {
-    public function testHour()
+    public function testHour(): void
     {
         $this->assertDqlProducesSql(
             "SELECT HOUR(2) from DoctrineExtensions\Tests\Entities\Blank b",

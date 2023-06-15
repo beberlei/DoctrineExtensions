@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DateSubTest extends MysqlTestCase
 {
-    public function testDateSub()
+    public function testDateSub(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DATESUB(2, 5, 'MINUTE') from DoctrineExtensions\Tests\Entities\Blank b",

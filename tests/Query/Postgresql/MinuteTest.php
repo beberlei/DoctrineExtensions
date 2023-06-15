@@ -2,9 +2,11 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class MinuteTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+
+class MinuteTest extends PostgresqlTestCase
 {
-    public function testMinute()
+    public function testMinute(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MINUTE(2) from DoctrineExtensions\Tests\Entities\Blank b",

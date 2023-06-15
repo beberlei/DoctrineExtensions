@@ -1,6 +1,6 @@
 <?php
 
-namespace Query\Oracle;
+namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
@@ -9,7 +9,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
  */
 class TruncTest extends OracleTestCase
 {
-    public function testFullQuery()
+    public function testFullQuery(): void
     {
         $dql = 'SELECT TRUNC(d.created, \'YYYY\') FROM DoctrineExtensions\\Tests\\Entities\\Date d';
         $q = $this->entityManager->createQuery($dql);
@@ -18,7 +18,7 @@ class TruncTest extends OracleTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testShortQuery()
+    public function testShortQuery(): void
     {
         $dql = 'SELECT TRUNC(d.created) FROM DoctrineExtensions\\Tests\\Entities\\Date d';
         $q = $this->entityManager->createQuery($dql);
