@@ -44,11 +44,11 @@ class ConcatWs extends FunctionNode
                     $parser->match(Lexer::T_IDENTIFIER);
                     $this->notEmpty = true;
 
-                break;
+                    break;
                 default: // Identifier not recognized (causes exception).
                     $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
-                break;
+                    break;
             }
         }
 

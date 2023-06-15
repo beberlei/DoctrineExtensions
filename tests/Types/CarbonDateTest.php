@@ -5,22 +5,22 @@ namespace DoctrineExtensions\Tests\Types;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Tools\SchemaTool;
 use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
-use PHPUnit\Framework\TestCase;
-use DoctrineExtensions\Types\CarbonDateType;
 use DoctrineExtensions\Types\CarbonDateTimeType;
 use DoctrineExtensions\Types\CarbonDateTimeTzType;
-use DoctrineExtensions\Types\CarbonTimeType;
-use DoctrineExtensions\Types\CarbonImmutableDateType;
+use DoctrineExtensions\Types\CarbonDateType;
 use DoctrineExtensions\Types\CarbonImmutableDateTimeType;
 use DoctrineExtensions\Types\CarbonImmutableDateTimeTzType;
+use DoctrineExtensions\Types\CarbonImmutableDateType;
 use DoctrineExtensions\Types\CarbonImmutableTimeType;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
+use DoctrineExtensions\Types\CarbonTimeType;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
@@ -56,7 +56,7 @@ class CarbonDateTest extends TestCase
 
         $connection = DriverManager::getConnection([
             'driver' => 'pdo_sqlite',
-            'memory' => true
+            'memory' => true,
         ], $config);
 
         $this->em = new EntityManager($connection, $config);

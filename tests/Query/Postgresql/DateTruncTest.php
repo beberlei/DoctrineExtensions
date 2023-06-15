@@ -3,8 +3,8 @@
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use Doctrine\ORM\QueryBuilder;
-use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 use DoctrineExtensions\Tests\Entities\Date;
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class DateTruncTest extends PostgresqlTestCase
 {
