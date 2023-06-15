@@ -14,6 +14,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
+        "doctrine/cache": "^1.11",
         "nesbot/carbon": "*",
         "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
         "symfony/yaml": "^4.4 || ^5.3 || ^6.0",

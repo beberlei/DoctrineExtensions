@@ -14,14 +14,14 @@ class BitXor extends FunctionNode
 
     public $secondArithmetic;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return $this->firstArithmetic->dispatch($sqlWalker)
             . ' ^ '
             . $this->secondArithmetic->dispatch($sqlWalker);
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

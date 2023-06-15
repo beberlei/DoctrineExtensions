@@ -22,7 +22,7 @@ class DateFormat extends FunctionNode
      * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
      * @return string
      */
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return 'STRFTIME('
             . $sqlWalker->walkArithmeticPrimary($this->format)
@@ -34,7 +34,7 @@ class DateFormat extends FunctionNode
     /**
      * @param \Doctrine\ORM\Query\Parser $parser
      */
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -49,7 +49,7 @@ class DateFormat extends FunctionNode
      * @param ArithmeticExpression $expr
      * @return ArithmeticExpression
      */
-    private function convertFormat(ArithmeticExpression $expr)
+    private function convertFormat(ArithmeticExpression $expr): ArithmeticExpression
     {
         // when using bind variables there is no value component.
         if (empty($expr->simpleArithmeticExpression->value)) {

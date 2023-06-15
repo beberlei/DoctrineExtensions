@@ -14,7 +14,7 @@ class ConcatWs extends FunctionNode
 
     private $notEmpty = false;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -53,7 +53,7 @@ class ConcatWs extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         $separator = $this->values[0]->simpleArithmeticExpression->value;
 
@@ -63,7 +63,7 @@ class ConcatWs extends FunctionNode
         // Iterate over the captured expressions and add them to the query.
         for ($i = 1; $i < count($this->values); $i++) {
             if ($i > 1) {
-                $queryBuilder[] = " || '${separator}' || ";
+                $queryBuilder[] = " || '{$separator}' || ";
             }
 
             // Dispatch the walker on the current node.

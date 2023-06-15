@@ -14,7 +14,7 @@ class Nvl extends FunctionNode
 
     private $expr2;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return sprintf(
             'NVL(%s, %s)',
@@ -23,7 +23,7 @@ class Nvl extends FunctionNode
         );
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

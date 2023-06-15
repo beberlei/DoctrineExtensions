@@ -14,7 +14,7 @@ class Sha2 extends FunctionNode
 
     public $simpleArithmeticExpression;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
         return 'SHA2(' .
             $sqlWalker->walkStringPrimary($this->stringPrimary) .
@@ -23,7 +23,7 @@ class Sha2 extends FunctionNode
         ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

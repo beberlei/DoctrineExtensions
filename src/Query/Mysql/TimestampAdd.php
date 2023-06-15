@@ -16,7 +16,7 @@ class TimestampAdd extends FunctionNode
 
     public $unit = null;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser)
+    public function parse(\Doctrine\ORM\Query\Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -30,7 +30,7 @@ class TimestampAdd extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sql_walker)
+    public function getSql(\Doctrine\ORM\Query\SqlWalker $sql_walker): string
     {
         return sprintf(
             'TIMESTAMPADD(%s, %s, %s)',
