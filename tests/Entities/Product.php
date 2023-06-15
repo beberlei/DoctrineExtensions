@@ -2,31 +2,25 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
 class Product
 {
-    /** @Id @Column(type="string") @GeneratedValue */
-    public $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'string')]
+    #[ORM\GeneratedValue]
+    public string $id;
 
-    /**
-     * @Column(type="string")
-     */
-    public $name;
+    #[ORM\Column]
+    public string $name;
 
-    /**
-     * @Column(type="DateTime")
-     */
-    public $created;
+    #[ORM\Column]
+    public \DateTime $created;
 
-    /**
-     * @Column(type="decimal", precision=10, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
     public $price;
 
-    /**
-     * @Column(type="decimal", precision=5, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
     public $weight;
 }

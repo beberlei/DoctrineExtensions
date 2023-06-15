@@ -9,17 +9,17 @@
         {"name": "Steve Lacey", "email": "steve@steve.ly"}
     ],
     "require": {
-        "php": "^7.2 || ^8.0",
-        "doctrine/orm": "^2.7"
+        "php": "^8.1",
+        "doctrine/orm": "^2.9"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "doctrine/cache": "^1.11",
-        "nesbot/carbon": "*",
-        "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
-        "symfony/yaml": "^4.4 || ^5.3 || ^6.0",
-        "zf1/zend-date": "^1.12",
-        "zf1/zend-registry": "^1.12"
+        "friendsofphp/php-cs-fixer": "^3.17",
+        "symfony/cache": "^5.4 || ^6.2",
+        "nesbot/carbon": "^2.67",
+        "phpunit/phpunit": "^10.2",
+        "symfony/yaml": "^5.4 || ^6.2",
+        "zf1/zend-date": "^1.12.20",
+        "zf1/zend-registry": "^1.12.20"
     },
     "autoload": {
         "psr-4": {"DoctrineExtensions\\" : "src/"}

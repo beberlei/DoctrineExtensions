@@ -2,9 +2,11 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class HourTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+use DoctrineExtensions\Tests\Query\SqliteTestCase;
+
+class HourTest extends SqliteTestCase
 {
-    public function testHour()
+    public function testHour(): void
     {
         $this->assertDqlProducesSql(
             "SELECT HOUR(2) from DoctrineExtensions\Tests\Entities\Blank b",

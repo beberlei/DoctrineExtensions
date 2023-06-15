@@ -5,6 +5,7 @@ namespace DoctrineExtensions\Query\Sqlite;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
@@ -19,7 +20,7 @@ class StrfTime extends FunctionNode
     /**
      * @param SqlWalker $sqlWalker
      *
-     * @throws \Doctrine\ORM\Query\QueryException
+     * @throws QueryException
      * @return string
      */
     public function getSql(SqlWalker $sqlWalker): string

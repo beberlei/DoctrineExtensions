@@ -1,4 +1,5 @@
 .phpunit.result.cache
+.phpunit.cache
 /composer.lock
 /tests/phpunit.xml
 /vendor

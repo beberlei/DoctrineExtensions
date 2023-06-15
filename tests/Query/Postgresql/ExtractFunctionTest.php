@@ -4,6 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+use DoctrineExtensions\Tests\Entities\Date;
 
 class ExtractFunctionTest extends PostgresqlTestCase
 {
@@ -12,7 +13,7 @@ class ExtractFunctionTest extends PostgresqlTestCase
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder
             ->select('extract(EPOCH FROM dt.created)')
-            ->from('DoctrineExtensions\Tests\Entities\Date', 'dt');
+            ->from(Date::class, 'dt');
 
         $expected = 'SELECT EXTRACT(EPOCH FROM d0_.created) AS sclr_0 FROM Date d0_';
 

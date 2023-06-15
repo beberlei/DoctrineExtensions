@@ -4,6 +4,8 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @author Nima S <nimasdj@yahoo.com>
@@ -14,7 +16,7 @@ class FromUnixtime extends FunctionNode
 
     public $secondExpression = null;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         if (null !== $this->secondExpression) {
             return 'FROM_UNIXTIME('
@@ -27,7 +29,7 @@ class FromUnixtime extends FunctionNode
         return 'FROM_UNIXTIME(' . $this->firstExpression->dispatch($sqlWalker) . ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

@@ -2,9 +2,11 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class SecondTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+use DoctrineExtensions\Tests\Query\SqliteTestCase;
+
+class SecondTest extends SqliteTestCase
 {
-    public function testSecond()
+    public function testSecond(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SECOND(2) from DoctrineExtensions\Tests\Entities\Blank b",

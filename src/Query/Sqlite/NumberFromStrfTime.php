@@ -2,9 +2,11 @@
 
 namespace DoctrineExtensions\Query\Sqlite;
 
+use Doctrine\ORM\Query\SqlWalker;
+
 abstract class NumberFromStrfTime extends AbstractStrfTime
 {
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return "CAST(STRFTIME('"
                 . $this->getFormat()

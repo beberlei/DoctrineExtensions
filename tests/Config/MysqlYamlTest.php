@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Yaml\Parser;
 
 /**
  * Test that checks the README describes all of the query types
@@ -11,12 +12,11 @@ use PHPUnit\Framework\TestCase;
  */
 class MysqlYamlTest extends TestCase
 {
-    /** @var array */
-    protected $functions;
+    protected array $functions;
 
     public function setUp(): void
     {
-        $yaml = new \Symfony\Component\Yaml\Parser();
+        $yaml = new Parser();
 
         $config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
         $this->functions = array_merge(
@@ -26,7 +26,7 @@ class MysqlYamlTest extends TestCase
         );
     }
 
-    public function testFunctions()
+    public function testFunctions(): void
     {
         $documented = $this->functions;
 
@@ -49,7 +49,7 @@ class MysqlYamlTest extends TestCase
         }
     }
 
-    public function testReadme()
+    public function testReadme(): void
     {
         preg_match('#\| MySQL \| `(.*)` \|#', file_get_contents(__DIR__ . '/../../README.md'), $matches);
 

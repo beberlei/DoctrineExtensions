@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DayOfWeekTest extends MysqlTestCase
 {
-    public function testDayOfWeek()
+    public function testDayOfWeek(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DAYOFWEEK(2) from DoctrineExtensions\Tests\Entities\Blank b",

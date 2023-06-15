@@ -2,32 +2,38 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
-use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 class DbTestCase extends TestCase
 {
-    /** @var EntityManager */
-    public $entityManager;
+    public EntityManager $entityManager;
 
-    /** @var Configuration */
-    protected $configuration;
+    protected Configuration $configuration;
 
     public function setUp(): void
     {
         $this->configuration = new Configuration();
-        $this->configuration->setMetadataCacheImpl(new ArrayCache());
-        $this->configuration->setQueryCacheImpl(new ArrayCache());
+        $this->configuration->setMetadataCache(new ArrayAdapter());
+        $this->configuration->setQueryCache(new ArrayAdapter());
         $this->configuration->setProxyDir(__DIR__ . '/Proxies');
         $this->configuration->setProxyNamespace('DoctrineExtensions\Tests\Proxies');
         $this->configuration->setAutoGenerateProxyClasses(true);
-        $this->configuration->setMetadataDriverImpl($this->configuration->newDefaultAnnotationDriver(__DIR__ . '/../Entities'));
-        $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true ], $this->configuration);
+        $this->configuration->setMetadataDriverImpl(new AttributeDriver([__DIR__ . '/../Entities']));
+
+        $connection = DriverManager::getConnection([
+            'driver' => 'pdo_sqlite',
+            'memory' => true
+        ], $this->configuration);
+
+        $this->entityManager = new EntityManager($connection, $this->configuration);
     }
 
-    public function assertDqlProducesSql($actualDql, $expectedSql, $params = [])
+    public function assertDqlProducesSql(string $actualDql, string $expectedSql, array $params = []): void
     {
         $q = $this->entityManager->createQuery($actualDql);
 

@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\QueryException;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @author Vas N <phpvas@gmail.com>
@@ -10,11 +11,11 @@ use Doctrine\ORM\Query\QueryException;
 class DateSub extends DateAdd
 {
     /**
-     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
+     * @param SqlWalker $sqlWalker
      * @throws QueryException
      * @return string
      */
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         $unit = strtoupper(is_string($this->unit) ? $this->unit : $this->unit->value);
 
