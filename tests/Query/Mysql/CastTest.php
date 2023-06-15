@@ -2,8 +2,8 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-use DoctrineExtensions\Tests\Query\MysqlTestCase;
 use DoctrineExtensions\Tests\Entities\BlogPost;
+use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class CastTest extends MysqlTestCase
 {

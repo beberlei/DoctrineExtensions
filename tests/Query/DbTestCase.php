@@ -27,7 +27,7 @@ class DbTestCase extends TestCase
 
         $connection = DriverManager::getConnection([
             'driver' => 'pdo_sqlite',
-            'memory' => true
+            'memory' => true,
         ], $this->configuration);
 
         $this->entityManager = new EntityManager($connection, $this->configuration);

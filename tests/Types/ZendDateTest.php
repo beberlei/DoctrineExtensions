@@ -3,16 +3,16 @@
 namespace DoctrineExtensions\Tests\Types;
 
 use Doctrine\DBAL\DriverManager;
-use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Tools\SchemaTool;
-use PHPUnit\Framework\TestCase;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
 use DoctrineExtensions\Tests\Entities\ZendDate;
 use DoctrineExtensions\Types\ZendDateType;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
@@ -43,7 +43,7 @@ class ZendDateTest extends TestCase
 
         $connection = DriverManager::getConnection([
             'driver' => 'pdo_sqlite',
-            'memory' => true
+            'memory' => true,
         ], $config);
 
         $this->em = new EntityManager($connection, $config);

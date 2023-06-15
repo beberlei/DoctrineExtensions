@@ -29,4 +29,4 @@ jobs:
       - run: composer run test
 
       - run: composer run lint -- --dry-run
-        if: ${{ matrix.php == '8.0' }}
+        if: ${{ matrix.php == '8.1' }}
