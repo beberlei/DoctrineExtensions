@@ -23,9 +23,6 @@ class Collate extends FunctionNode
      */
     public $collation = null;
 
-    /**
-     * @param Parser $parser
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);

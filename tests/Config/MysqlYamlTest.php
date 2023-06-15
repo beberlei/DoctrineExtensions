@@ -31,7 +31,7 @@ class MysqlYamlTest extends TestCase
         $documented = $this->functions;
 
         $available = array_map(
-            function ($path) {
+            static function ($path) {
                 return 'DoctrineExtensions\\Query\\Mysql\\' . str_replace('.php', '', basename($path));
             },
             glob(__DIR__ . '/../../src/Query/Mysql/*')

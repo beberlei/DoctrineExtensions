@@ -32,13 +32,13 @@ class TimestampDiff extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(SqlWalker $sql_walker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(
             'TIMESTAMPDIFF(%s, %s, %s)',
             $this->unit,
-            $this->firstDatetimeExpression->dispatch($sql_walker),
-            $this->secondDatetimeExpression->dispatch($sql_walker)
+            $this->firstDatetimeExpression->dispatch($sqlWalker),
+            $this->secondDatetimeExpression->dispatch($sqlWalker)
         );
     }
 }

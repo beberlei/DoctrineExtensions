@@ -99,7 +99,7 @@ class CarbonDateTest extends TestCase
         $entity->date = Carbon::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testDateTimeGetter(): void
@@ -117,7 +117,7 @@ class CarbonDateTest extends TestCase
         $entity->datetime = Carbon::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testDateTimeTzGetter(): void
@@ -135,7 +135,7 @@ class CarbonDateTest extends TestCase
         $entity->datetime_tz = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testTimeGetter(): void
@@ -153,7 +153,7 @@ class CarbonDateTest extends TestCase
         $entity->time = Carbon::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testImmutableDateGetter(): void
@@ -174,7 +174,7 @@ class CarbonDateTest extends TestCase
         $entity->date = CarbonImmutable::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testImmutableDateTimeGetter(): void
@@ -192,7 +192,7 @@ class CarbonDateTest extends TestCase
         $entity->datetime = CarbonImmutable::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testImmutableDateTimeTzGetter(): void
@@ -210,7 +210,7 @@ class CarbonDateTest extends TestCase
         $entity->datetime_tz = CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     public function testImmutableTimeGetter(): void
@@ -228,7 +228,7 @@ class CarbonDateTest extends TestCase
         $entity->time = CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);
-        $this->assertNull($this->em->flush());
+        $this->em->flush();
     }
 
     /**
@@ -236,7 +236,6 @@ class CarbonDateTest extends TestCase
      */
     public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type): void
     {
-        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass(AbstractPlatform::class);
 
         $this->assertTrue(Type::getType($type)->requiresSQLCommentHint($platform));
