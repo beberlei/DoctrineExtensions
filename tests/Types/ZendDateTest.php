@@ -31,7 +31,7 @@ class ZendDateTest extends TestCase
         );
     }
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $config = new Configuration();
         $config->setMetadataCache(new ArrayAdapter());

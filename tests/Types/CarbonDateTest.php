@@ -44,7 +44,7 @@ class CarbonDateTest extends TestCase
         Type::addType('CarbonImmutableTime', CarbonImmutableTimeType::class);
     }
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $config = new Configuration();
         $config->setMetadataCache(new ArrayAdapter());
