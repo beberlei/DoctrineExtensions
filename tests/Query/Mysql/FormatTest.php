@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class FormatTest extends MysqlTestCase
+final class FormatTest extends MysqlTestCase
 {
     public function testFormat(): void
     {

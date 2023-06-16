@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class Inet6AtonTest extends MysqlTestCase
+final class Inet6AtonTest extends MysqlTestCase
 {
     public function testInet6Aton(): void
     {

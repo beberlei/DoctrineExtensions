@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class RadiansTest extends MysqlTestCase
+final class RadiansTest extends MysqlTestCase
 {
     public function testRadians(): void
     {

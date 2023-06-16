@@ -7,7 +7,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
 /**
  * @author Alexey Kalinin <nitso@yandex.ru>
  */
-class ListaggTest extends OracleTestCase
+final class ListaggTest extends OracleTestCase
 {
     public function testFullQuery(): void
     {

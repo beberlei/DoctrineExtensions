@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-class SecondTest extends OracleTestCase
+final class SecondTest extends OracleTestCase
 {
     public function testSecond(): void
     {

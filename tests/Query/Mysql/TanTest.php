@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class TanTest extends MysqlTestCase
+final class TanTest extends MysqlTestCase
 {
     public function testTan(): void
     {

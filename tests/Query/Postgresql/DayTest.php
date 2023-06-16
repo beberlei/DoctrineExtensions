@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class DayTest extends PostgresqlTestCase
+final class DayTest extends PostgresqlTestCase
 {
     public function testDay():void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class StrToDateTest extends MysqlTestCase
+final class StrToDateTest extends MysqlTestCase
 {
     public function testStrToDate(): void
     {

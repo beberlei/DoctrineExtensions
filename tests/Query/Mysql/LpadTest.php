@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class LpadTest extends MysqlTestCase
+final class LpadTest extends MysqlTestCase
 {
     public function testLpad(): void
     {

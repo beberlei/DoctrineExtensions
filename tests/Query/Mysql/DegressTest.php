@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class DegressTest extends MysqlTestCase
+final class DegressTest extends MysqlTestCase
 {
     public function testDegrees(): void
     {

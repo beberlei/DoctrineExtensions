@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class ReplaceTest extends MysqlTestCase
+final class ReplaceTest extends MysqlTestCase
 {
     public function testReplace():void
     {

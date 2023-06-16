@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class MonthTest extends SqliteTestCase
+final class MonthTest extends SqliteTestCase
 {
     public function testMonth(): void
     {

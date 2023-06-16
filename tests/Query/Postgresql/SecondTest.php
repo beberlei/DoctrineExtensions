@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class SecondTest extends PostgresqlTestCase
+final class SecondTest extends PostgresqlTestCase
 {
     public function testSecond(): void
     {

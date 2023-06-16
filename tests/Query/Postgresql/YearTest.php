@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class YearTest extends PostgresqlTestCase
+final class YearTest extends PostgresqlTestCase
 {
     public function testYear():void
     {

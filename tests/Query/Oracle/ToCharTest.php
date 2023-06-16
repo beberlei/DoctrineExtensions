@@ -9,7 +9,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
 /**
  * @author Jefferson Vantuir <jefferson.behling@gmail.com>
  */
-class ToCharTest extends OracleTestCase
+final class ToCharTest extends OracleTestCase
 {
     public function testFullQuery(): void
     {

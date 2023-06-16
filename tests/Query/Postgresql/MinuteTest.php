@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class MinuteTest extends PostgresqlTestCase
+final class MinuteTest extends PostgresqlTestCase
 {
     public function testMinute(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-class MinuteTest extends OracleTestCase
+final class MinuteTest extends OracleTestCase
 {
     public function testMinute(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class CharLengthTest extends MysqlTestCase
+final class CharLengthTest extends MysqlTestCase
 {
     public function testCharLength(): void
     {

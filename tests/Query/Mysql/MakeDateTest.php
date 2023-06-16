@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class MakeDateTest extends MysqlTestCase
+final class MakeDateTest extends MysqlTestCase
 {
     public function testMakeDate(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class MonthTest extends PostgresqlTestCase
+final class MonthTest extends PostgresqlTestCase
 {
     public function testMonth(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class LeastTest extends SqliteTestCase
+final class LeastTest extends SqliteTestCase
 {
     public function testLeast(): void
     {

@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class Blank
+final class Blank
 {
     #[ORM\Id]
     #[ORM\Column]

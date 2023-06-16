@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table]
-class CarbonDate
+final class CarbonDate
 {
     #[ORM\Id]
     #[ORM\Column]

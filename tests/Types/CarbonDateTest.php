@@ -28,7 +28,7 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class CarbonDateTest extends TestCase
+final class CarbonDateTest extends TestCase
 {
     private EntityManager $em;
 

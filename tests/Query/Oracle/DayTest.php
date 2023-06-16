@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-class DayTest extends OracleTestCase
+final class DayTest extends OracleTestCase
 {
     public function testDay(): void
     {

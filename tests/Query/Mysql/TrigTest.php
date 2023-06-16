@@ -6,7 +6,7 @@ use Doctrine\ORM\Query;
 use DoctrineExtensions\Tests\Entities\BlogPost;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class TrigTest extends MysqlTestCase
+final class TrigTest extends MysqlTestCase
 {
     private $entity;
 

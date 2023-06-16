@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class AtanTest extends MysqlTestCase
+final class AtanTest extends MysqlTestCase
 {
     public function testAtan(): void
     {

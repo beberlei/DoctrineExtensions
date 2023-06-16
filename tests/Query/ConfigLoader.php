@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Query;
 use Doctrine\ORM\Configuration;
 use Symfony\Component\Yaml\Parser;
 
-class ConfigLoader
+final class ConfigLoader
 {
     public const MYSQL    = 'mysql';
 
@@ -22,7 +22,7 @@ class ConfigLoader
         $config = $parser->parse(file_get_contents(realpath(__DIR__ . '/../../config/' . $database . '.yml')));
         $parsed = $config['doctrine']['orm']['dql'];
 
-        // Load the existing function classes.
+        // Load the existing function final classes.
         if (array_key_exists('datetime_functions', $parsed)) {
             foreach ($parsed[ 'datetime_functions' ] as $key => $value) {
                 $configuration->addCustomDatetimeFunction(strtoupper($key), $value);

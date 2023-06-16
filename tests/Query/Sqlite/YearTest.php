@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class YearTest extends SqliteTestCase
+final class YearTest extends SqliteTestCase
 {
     public function testYear(): void
     {

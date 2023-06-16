@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-class HourTest extends OracleTestCase
+final class HourTest extends OracleTestCase
 {
     public function testHour(): void
     {

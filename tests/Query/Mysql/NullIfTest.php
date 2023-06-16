@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class NullIfTest extends MysqlTestCase
+final class NullIfTest extends MysqlTestCase
 {
     public function testNullIf(): void
     {

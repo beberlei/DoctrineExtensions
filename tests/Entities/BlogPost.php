@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class BlogPost
+final class BlogPost
 {
     #[ORM\Id]
     #[ORM\Column]

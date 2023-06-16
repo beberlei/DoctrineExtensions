@@ -6,7 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Entities\Date;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class ExtractFunctionTest extends PostgresqlTestCase
+final class ExtractFunctionTest extends PostgresqlTestCase
 {
     public function testExtract(): void
     {

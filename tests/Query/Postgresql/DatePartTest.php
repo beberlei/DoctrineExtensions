@@ -6,7 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Entities\Date;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class DatePartTest extends PostgresqlTestCase
+final class DatePartTest extends PostgresqlTestCase
 {
     public function testDatePart(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class GreatestTest extends SqliteTestCase
+final class GreatestTest extends SqliteTestCase
 {
     public function testGreatest():void
     {

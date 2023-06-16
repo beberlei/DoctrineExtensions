@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class Log10Test extends MysqlTestCase
+final class Log10Test extends MysqlTestCase
 {
     public function testLog10(): void
     {

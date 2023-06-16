@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class StringTest extends PostgresqlTestCase
+final class StringTest extends PostgresqlTestCase
 {
     public function testFormatDate(): void
     {

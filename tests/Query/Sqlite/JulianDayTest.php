@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class JulianDayTest extends SqliteTestCase
+final class JulianDayTest extends SqliteTestCase
 {
     public function testWithOneArgument(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class LastInsertIdTest extends MysqlTestCase
+final class LastInsertIdTest extends MysqlTestCase
 {
     public function testLastInsertId(): void
     {

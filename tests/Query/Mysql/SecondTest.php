@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class SecondTest extends MysqlTestCase
+final class SecondTest extends MysqlTestCase
 {
     public function testSecond():void
     {
