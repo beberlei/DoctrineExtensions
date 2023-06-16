@@ -4,8 +4,8 @@ namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\ASTException;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
@@ -14,6 +14,7 @@ class Ilike extends FunctionNode
 {
     /** @var Node */
     protected $field;
+
     /** @var Node */
     protected $query;
 
@@ -35,8 +36,8 @@ class Ilike extends FunctionNode
     /**
      * @param SqlWalker $sqlWalker
      *
-     * @return string
      * @throws ASTException
+     * @return string
      */
     public function getSql(SqlWalker $sqlWalker)
     {
