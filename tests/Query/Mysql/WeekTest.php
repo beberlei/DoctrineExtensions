@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class WeekTest extends MysqlTestCase
+final class WeekTest extends MysqlTestCase
 {
     public function testWeek(): void
     {

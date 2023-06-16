@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class ConcatWsTest extends SqliteTestCase
+final class ConcatWsTest extends SqliteTestCase
 {
     public function testConcatWs(): void
     {

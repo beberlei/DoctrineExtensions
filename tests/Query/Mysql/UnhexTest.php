@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class UnhexTest extends MysqlTestCase
+final class UnhexTest extends MysqlTestCase
 {
     public function testUnhex(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class RandTest extends MysqlTestCase
+final class RandTest extends MysqlTestCase
 {
     public function testRandWithParameter(): void
     {

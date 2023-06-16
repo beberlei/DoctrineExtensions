@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Entities;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class Product
+final class Product
 {
     #[ORM\Id]
     #[ORM\Column(type: 'string')]

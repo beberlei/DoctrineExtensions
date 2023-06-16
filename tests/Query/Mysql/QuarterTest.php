@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class QuarterTest extends MysqlTestCase
+final class QuarterTest extends MysqlTestCase
 {
     public function testQuarter(): void
     {

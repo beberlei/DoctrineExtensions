@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class HourTest extends SqliteTestCase
+final class HourTest extends SqliteTestCase
 {
     public function testHour(): void
     {

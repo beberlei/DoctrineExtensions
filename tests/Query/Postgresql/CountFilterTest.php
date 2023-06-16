@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class CountFilterTest extends PostgresqlTestCase
+final class CountFilterTest extends PostgresqlTestCase
 {
     public function testCountFilter(): void
     {

@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class AsciiTest extends MysqlTestCase
+final class AsciiTest extends MysqlTestCase
 {
     public function testAscii(): void
     {

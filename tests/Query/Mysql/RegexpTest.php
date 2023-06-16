@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class RegexpTest extends MysqlTestCase
+final class RegexpTest extends MysqlTestCase
 {
     public function testRegexp():void
     {

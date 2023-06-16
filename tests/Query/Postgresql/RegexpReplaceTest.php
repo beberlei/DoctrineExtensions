@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class RegexpReplaceTest extends PostgresqlTestCase
+final class RegexpReplaceTest extends PostgresqlTestCase
 {
     public function testRegexpReplace(): void
     {

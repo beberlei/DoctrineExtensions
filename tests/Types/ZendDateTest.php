@@ -19,7 +19,7 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
  *
  * @author Andreas Gallien <gallien@seleos.de>
  */
-class ZendDateTest extends TestCase
+final class ZendDateTest extends TestCase
 {
     private EntityManager $em;
 

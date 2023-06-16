@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class RoundTest extends MysqlTestCase
+final class RoundTest extends MysqlTestCase
 {
     public function testRoundOneArgument(): void
     {

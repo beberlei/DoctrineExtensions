@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class HourTest extends MysqlTestCase
+final class HourTest extends MysqlTestCase
 {
     public function testHour():void
     {

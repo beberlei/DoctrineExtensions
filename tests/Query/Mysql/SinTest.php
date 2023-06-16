@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class SinTest extends MysqlTestCase
+final class SinTest extends MysqlTestCase
 {
     public function testSin(): void
     {

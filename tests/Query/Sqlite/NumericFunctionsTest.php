@@ -5,11 +5,11 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 /**
- * This class is responsible for testing the SQLite numeric functions
+ * This final class is responsible for testing the SQLite numeric functions
  *
  * @author winkbrace
  */
-class NumericFunctionsTest extends SqliteTestCase
+final class NumericFunctionsTest extends SqliteTestCase
 {
     public function testRound():void
     {

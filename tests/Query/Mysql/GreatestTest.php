@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class GreatestTest extends MysqlTestCase
+final class GreatestTest extends MysqlTestCase
 {
     public function testGreatest(): void
     {

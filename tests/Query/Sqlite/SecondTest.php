@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class SecondTest extends SqliteTestCase
+final class SecondTest extends SqliteTestCase
 {
     public function testSecond(): void
     {

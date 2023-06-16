@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class FromBase64 extends MysqlTestCase
+final class FromBase64 extends MysqlTestCase
 {
     public function testFromBase64(): void
     {

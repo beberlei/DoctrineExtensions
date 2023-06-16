@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class FindInSetTest extends MysqlTestCase
+final class FindInSetTest extends MysqlTestCase
 {
     public function testFindInSet(): void
     {

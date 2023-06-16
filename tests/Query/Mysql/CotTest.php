@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class CotTest extends MysqlTestCase
+final class CotTest extends MysqlTestCase
 {
     public function testCot(): void
     {

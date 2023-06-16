@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-class MonthTest extends OracleTestCase
+final class MonthTest extends OracleTestCase
 {
     public function testMonth(): void
     {

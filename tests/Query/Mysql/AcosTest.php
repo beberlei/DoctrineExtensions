@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class AcosTest extends MysqlTestCase
+final class AcosTest extends MysqlTestCase
 {
     public function testAcos(): void
     {

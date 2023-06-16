@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class AsinTest extends MysqlTestCase
+final class AsinTest extends MysqlTestCase
 {
     public function testAsin(): void
     {

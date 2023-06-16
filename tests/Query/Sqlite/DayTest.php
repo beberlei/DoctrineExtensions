@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class DayTest extends SqliteTestCase
+final class DayTest extends SqliteTestCase
 {
     public function testDay():void
     {

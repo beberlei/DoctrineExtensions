@@ -5,7 +5,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 use Doctrine\ORM\Query\QueryException;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class StringTest extends MysqlTestCase
+final class StringTest extends MysqlTestCase
 {
     public function testAscii(): void
     {

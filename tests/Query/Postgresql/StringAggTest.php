@@ -6,7 +6,7 @@ use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Entities\BlogPost;
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class StringAggTest extends PostgresqlTestCase
+final class StringAggTest extends PostgresqlTestCase
 {
     public function testStringAgg():void
     {

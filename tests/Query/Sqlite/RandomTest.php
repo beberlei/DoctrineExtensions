@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
-class RandomTest extends SqliteTestCase
+final class RandomTest extends SqliteTestCase
 {
     public function testRandom(): void
     {

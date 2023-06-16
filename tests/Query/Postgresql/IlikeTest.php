@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase as PostgresqlTestCaseAlias;
 
-class IlikeTest extends PostgresqlTestCaseAlias
+final class IlikeTest extends PostgresqlTestCaseAlias
 {
     public function testILike(): void
     {

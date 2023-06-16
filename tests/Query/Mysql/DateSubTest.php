@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
-class DateSubTest extends MysqlTestCase
+final class DateSubTest extends MysqlTestCase
 {
     public function testDateSub(): void
     {

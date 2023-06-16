@@ -10,7 +10,7 @@ use Symfony\Component\Yaml\Parser;
  *
  * @author Steve Lacey <steve@stevelacey.net>
  */
-class MysqlYamlTest extends TestCase
+final class MysqlYamlTest extends TestCase
 {
     protected array $functions;
 
