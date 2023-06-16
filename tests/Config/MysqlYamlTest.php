@@ -14,7 +14,7 @@ class MysqlYamlTest extends TestCase
 {
     protected array $functions;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $yaml = new Parser();
 
