@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
-class DbTestCase extends TestCase
+abstract class DbTestCase extends TestCase
 {
     public EntityManager $entityManager;
 
