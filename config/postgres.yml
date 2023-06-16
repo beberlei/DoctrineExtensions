@@ -2,6 +2,7 @@ doctrine:
     orm:
         dql:
             datetime_functions:
+                age: DoctrineExtensions\Query\Postgresql\Age
                 second: DoctrineExtensions\Query\Postgresql\Second
                 minute: DoctrineExtensions\Query\Postgresql\Minute
                 hour: DoctrineExtensions\Query\Postgresql\Hour
