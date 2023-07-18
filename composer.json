@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.2 || ^8.0",
-        "doctrine/orm": "^2.7"
+        "doctrine/orm": "^2.15"
     },
     "require-dev": {
         "doctrine/cache": "^1.11",
