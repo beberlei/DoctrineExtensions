@@ -8,6 +8,7 @@ doctrine:
                 day: DoctrineExtensions\Query\Postgresql\Day
                 month: DoctrineExtensions\Query\Postgresql\Month
                 year: DoctrineExtensions\Query\Postgresql\Year
+                now: DoctrineExtensions\Query\Postgresql\Now
                 date_format: DoctrineExtensions\Query\Postgresql\DateFormat
                 at_time_zone: DoctrineExtensions\Query\Postgresql\AtTimeZoneFunction
                 date_part: DoctrineExtensions\Query\Postgresql\DatePart
@@ -16,6 +17,7 @@ doctrine:
                 date: DoctrineExtensions\Query\Postgresql\Date
 
             string_functions:
+                cast: DoctrineExtensions\Query\Postgresql\Cast
                 str_to_date: DoctrineExtensions\Query\Postgresql\StrToDate
                 count_filter: DoctrineExtensions\Query\Postgresql\CountFilterFunction
                 string_agg: DoctrineExtensions\Query\Postgresql\StringAgg
