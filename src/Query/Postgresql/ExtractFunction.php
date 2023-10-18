@@ -44,7 +44,7 @@ class ExtractFunction extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         $parser->match(Lexer::T_IDENTIFIER);
-        $this->field = $parser->getLexer()->token['value'];
+        $this->field = $parser->getLexer()->token->value;
 
         $parser->match(Lexer::T_FROM);
 

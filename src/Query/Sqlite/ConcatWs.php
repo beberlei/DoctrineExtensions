@@ -27,17 +27,17 @@ class ConcatWs extends FunctionNode
 
         $lexer = $parser->getLexer();
 
-        while (count($this->values) < 3 || $lexer->lookahead['type'] == Lexer::T_COMMA) {
+        while (count($this->values) < 3 || $lexer->lookahead->type == Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $peek = $lexer->glimpse();
 
-            $this->values[] = $peek['value'] == '('
+            $this->values[] = $peek->value == '('
                 ? $parser->FunctionDeclaration()
                 : $parser->ArithmeticExpression();
         }
 
-        while ($lexer->lookahead['type'] == Lexer::T_IDENTIFIER) {
-            switch (strtolower($lexer->lookahead['value'])) {
+        while ($lexer->lookahead->type == Lexer::T_IDENTIFIER) {
+            switch (strtolower($lexer->lookahead->value)) {
                 case 'notempty':
                     $parser->match(Lexer::T_IDENTIFIER);
                     $this->notEmpty = true;
@@ -63,7 +63,7 @@ class ConcatWs extends FunctionNode
         // Iterate over the captured expressions and add them to the query.
         for ($i = 1; $i < count($this->values); $i++) {
             if ($i > 1) {
-                $queryBuilder[] = " || '${separator}' || ";
+                $queryBuilder[] = " || '{$separator}' || ";
             }
 
             // Dispatch the walker on the current node.
