@@ -28,7 +28,7 @@ class DateTrunc extends FunctionNode
     public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(
-            'DATE_TRUNC(%s, %s)',
+            'DATE_TRUNC(%s::text, %s::timestamp)',
             $this->fieldText->dispatch($sqlWalker),
             $this->fieldTimestamp->dispatch($sqlWalker)
         );
