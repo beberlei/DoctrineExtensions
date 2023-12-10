@@ -19,7 +19,7 @@ jobs:
           - 8.2
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: shivammathur/setup-php@v2
         with:
