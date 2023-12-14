@@ -14,6 +14,14 @@ class MatchAgainstTest extends MysqlTestCase
         );
     }
 
+    public function testMatchAgainstInWhereClause(): void
+    {
+        $this->assertDqlProducesSql(
+            "SELECT blank FROM DoctrineExtensions\Tests\Entities\Blank AS blank WHERE MATCH(blank.id) AGAINST ('3')",
+            "SELECT b0_.id AS id_0 FROM Blank b0_ WHERE MATCH (b0_.id) AGAINST ('3')"
+        );
+    }
+
     public function testMatchAgainstMultipleFields()
     {
         $this->assertDqlProducesSql(
