@@ -5,10 +5,10 @@ namespace DoctrineExtensions\Query\Mysql;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Literal;
 use Doctrine\ORM\Query\AST\Node;
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\TokenType;
 
 use function assert;
 use function implode;
@@ -32,37 +32,37 @@ class Cast extends FunctionNode
     /** @throws QueryException */
     public function parse(Parser $parser): void
     {
-        $parser->match(Lexer::T_IDENTIFIER);
-        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        $parser->match(TokenType::T_IDENTIFIER);
+        $parser->match(TokenType::T_OPEN_PARENTHESIS);
 
         $this->fieldIdentifierExpression = $parser->SimpleArithmeticExpression();
 
-        $parser->match(Lexer::T_AS);
-        $parser->match(Lexer::T_IDENTIFIER);
+        $parser->match(TokenType::T_AS);
+        $parser->match(TokenType::T_IDENTIFIER);
 
         $type = $parser->getLexer()->token->value;
 
-        if ($parser->getLexer()->isNextToken(Lexer::T_OPEN_PARENTHESIS)) {
-            $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        if ($parser->getLexer()->isNextToken(TokenType::T_OPEN_PARENTHESIS)) {
+            $parser->match(TokenType::T_OPEN_PARENTHESIS);
             $parameter = $parser->Literal();
             assert($parameter instanceof Literal);
             $parameters = [$parameter->value];
 
-            if ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
-                while ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
-                    $parser->match(Lexer::T_COMMA);
+            if ($parser->getLexer()->isNextToken(TokenType::T_COMMA)) {
+                while ($parser->getLexer()->isNextToken(TokenType::T_COMMA)) {
+                    $parser->match(TokenType::T_COMMA);
                     $parameter    = $parser->Literal();
                     $parameters[] = $parameter->value;
                 }
             }
 
-            $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+            $parser->match(TokenType::T_CLOSE_PARENTHESIS);
             $type .= '(' . implode(', ', $parameters) . ')';
         }
 
         $this->castingTypeExpression = $type;
 
-        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
     }
 
     public function getSql(SqlWalker $sqlWalker): string

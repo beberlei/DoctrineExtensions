@@ -3,9 +3,9 @@
 namespace DoctrineExtensions\Query\Sqlite;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\TokenType;
 
 /** @author winkbrace <winkbrace@gmail.com> */
 class Round extends FunctionNode
@@ -17,17 +17,17 @@ class Round extends FunctionNode
     public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
-        $parser->match(Lexer::T_IDENTIFIER);
-        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        $parser->match(TokenType::T_IDENTIFIER);
+        $parser->match(TokenType::T_OPEN_PARENTHESIS);
         $this->firstExpression = $parser->SimpleArithmeticExpression();
 
         // parse second parameter if available
-        if ($lexer->lookahead->type === Lexer::T_COMMA) {
-            $parser->match(Lexer::T_COMMA);
+        if ($lexer->lookahead->type === TokenType::T_COMMA) {
+            $parser->match(TokenType::T_COMMA);
             $this->secondExpression = $parser->ArithmeticPrimary();
         }
 
-        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
     }
 
     public function getSql(SqlWalker $sqlWalker): string

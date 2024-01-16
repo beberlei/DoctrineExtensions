@@ -5,9 +5,9 @@ namespace DoctrineExtensions\Query\Mysql;
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\OrderByClause;
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\TokenType;
 
 use function count;
 use function trim;
@@ -31,14 +31,14 @@ class Over extends FunctionNode
     {
         $lexer = $parser->getLexer();
 
-        $parser->match(Lexer::T_IDENTIFIER);
-        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        $parser->match(TokenType::T_IDENTIFIER);
+        $parser->match(TokenType::T_OPEN_PARENTHESIS);
         $this->arithmeticExpression = $parser->ArithmeticExpression();
-        if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
-            $parser->match(Lexer::T_COMMA);
+        if (! $lexer->isNextToken(TokenType::T_CLOSE_PARENTHESIS)) {
+            $parser->match(TokenType::T_COMMA);
             $this->orderByClause = $parser->OrderByClause();
         }
 
-        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
     }
 }

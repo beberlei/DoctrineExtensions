@@ -13,10 +13,7 @@ class PolygonType extends Type
 {
     public const FIELD = 'polygon';
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return self::FIELD;
     }
@@ -24,15 +21,12 @@ class PolygonType extends Type
     /**
      * {@inheritDoc}
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {
         return 'POLYGON';
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function canRequireSQLConversion()
+    public function canRequireSQLConversion(): bool
     {
         return true;
     }
@@ -42,7 +36,7 @@ class PolygonType extends Type
      *
      * @return string
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): string
     {
         preg_match('/POLYGON\(\((.*)\)\)/', $value, $matches);
         if (! isset($matches[1])) {
@@ -55,7 +49,7 @@ class PolygonType extends Type
     /**
      * {@inheritDoc}
      */
-    public function convertToPHPValueSQL($sqlExpr, $platform)
+    public function convertToPHPValueSQL($sqlExpr, $platform): string
     {
         return sprintf('AsText(%s)', $sqlExpr);
     }
@@ -63,7 +57,7 @@ class PolygonType extends Type
     /**
      * {@inheritDoc}
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): string
     {
         return sprintf('POLYGON((%s))', $value);
     }
@@ -71,7 +65,7 @@ class PolygonType extends Type
     /**
      * {@inheritDoc}
      */
-    public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform)
+    public function convertToDatabaseValueSQL($sqlExpr, AbstractPlatform $platform): string
     {
         return sprintf('ST_PolygonFromText(%s)', $sqlExpr);
     }
