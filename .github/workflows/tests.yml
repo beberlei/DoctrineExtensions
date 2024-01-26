@@ -4,12 +4,14 @@ on: ["push", "pull_request"]
 
 jobs:
   build:
-    name: PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php }} with ORM ${{ matrix.orm }}
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
+        orm:
+          - 2.7
         php:
           - 7.2
           - 7.3
@@ -31,13 +33,17 @@ jobs:
         uses: actions/cache@v2
         with:
           path: vendor
-          key: php-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: php-${{ matrix.php }}-
+          key: php-${{ matrix.php }}-${{ matrix.orm }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: php-${{ matrix.php }}-${{ matrix.orm }}-
 
-      - if: steps.composer-cache.outputs.cache-hit != 'true'
+      - if: ${{ steps.composer-cache.outputs.cache-hit != 'true' && ((startsWith(matrix.orm, '3.0') && matrix.php >= '8.1') || matrix.orm == '2.7')  }}
         run: composer install --prefer-dist --no-progress --no-suggest
 
+      - if: ${{ steps.composer-cache.outputs.cache-hit != 'true' && ((startsWith(matrix.orm, '3.0') && matrix.php >= '8.1') || matrix.orm == '2.7')  }}
+        run: composer update doctrine/orm:^${{ matrix.orm }}
+
       - run: composer run test
+        if: ${{ (startsWith(matrix.orm, '3.0') && matrix.php >= '8.1') || matrix.orm == '2.7'  }}
 
       - run: composer run lint -- --dry-run
-        if: ${{ matrix.php <= '8.0' }}
+        if: ${{ matrix.php < '8.1' && ((startsWith(matrix.orm, '3.0') && matrix.php >= '8.1') || matrix.orm == '2.7') }}
