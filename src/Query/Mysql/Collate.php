@@ -36,7 +36,7 @@ class Collate extends FunctionNode
 
         $lexer = $parser->getLexer();
 
-        $this->collation = $lexer->token['value'];
+        $this->collation = $lexer->token->value;
 
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }

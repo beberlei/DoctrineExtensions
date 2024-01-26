@@ -19,7 +19,7 @@ class Round extends FunctionNode
         $this->firstExpression = $parser->SimpleArithmeticExpression();
 
         // parse second parameter if available
-        if (Lexer::T_COMMA === $lexer->lookahead['type']) {
+        if (Lexer::T_COMMA === $lexer->lookahead->type) {
             $parser->match(Lexer::T_COMMA);
             $this->secondExpression = $parser->ArithmeticPrimary();
         }

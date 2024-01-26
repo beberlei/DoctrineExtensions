@@ -22,7 +22,7 @@ class TimestampDiff extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $parser->match(Lexer::T_IDENTIFIER);
         $lexer = $parser->getLexer();
-        $this->unit = $lexer->token['value'];
+        $this->unit = $lexer->token->value;
         $parser->match(Lexer::T_COMMA);
         $this->firstDatetimeExpression = $parser->ArithmeticPrimary();
         $parser->match(Lexer::T_COMMA);

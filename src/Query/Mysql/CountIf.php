@@ -26,8 +26,8 @@ class CountIf extends FunctionNode
 
         $lexer = $parser->getLexer();
 
-        while ($lexer->lookahead['type'] == Lexer::T_IDENTIFIER) {
-            switch (strtolower($lexer->lookahead['value'])) {
+        while ($lexer->lookahead->type == Lexer::T_IDENTIFIER) {
+            switch (strtolower($lexer->lookahead->value)) {
                 case 'inverse':
                     $parser->match(Lexer::T_IDENTIFIER);
                     $this->inverse = true;

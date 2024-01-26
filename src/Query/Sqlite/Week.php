@@ -22,7 +22,7 @@ class Week extends NumberFromStrfTime
 
         $this->date = $parser->ArithmeticPrimary();
 
-        if (Lexer::T_COMMA === $parser->getLexer()->lookahead['type']) {
+        if (Lexer::T_COMMA === $parser->getLexer()->lookahead->type) {
             $parser->match(Lexer::T_COMMA);
             $this->mode = $parser->Literal();
         }
