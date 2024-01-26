@@ -14,9 +14,7 @@ class Md5 extends FunctionNode
 
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
     {
-        return $sqlWalker->getConnection()->getDatabasePlatform()->getMd5Expression(
-            $sqlWalker->walkStringPrimary($this->stringPrimary)
-        );
+        return 'MD5(' . $sqlWalker->walkStringPrimary($this->stringPrimary) . ')';
     }
 
     public function parse(\Doctrine\ORM\Query\Parser $parser): void
