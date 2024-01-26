@@ -11,7 +11,7 @@ class Date
     public $id;
 
     /**
-     * @Column(type="DateTime")
+     * @Column(type="datetime")
      */
     public $created;
 }
