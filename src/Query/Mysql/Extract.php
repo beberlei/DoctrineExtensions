@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Ahwalian Masykur <ahwalian@gmail.com>
- */
 class Extract extends DateAdd
 {
     public $date = null;

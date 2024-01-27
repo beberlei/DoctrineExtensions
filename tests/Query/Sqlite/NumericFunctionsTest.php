@@ -8,8 +8,6 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 /**
  * This class is responsible for testing the SQLite numeric functions
- *
- * @author winkbrace
  */
 class NumericFunctionsTest extends SqliteTestCase
 {

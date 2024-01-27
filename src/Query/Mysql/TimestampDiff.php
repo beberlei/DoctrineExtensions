@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Przemek Sobstel <przemek@sobstel.org>
- */
 class TimestampDiff extends FunctionNode
 {
     public $firstDatetimeExpression = null;

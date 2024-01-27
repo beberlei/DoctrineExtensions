@@ -6,9 +6,6 @@ namespace Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-/**
- * @author Alexey Kalinin <nitso@yandex.ru>
- */
 class TruncTest extends OracleTestCase
 {
     public function testFullQuery()

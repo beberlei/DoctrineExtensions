@@ -10,10 +10,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Roberto Júnior <me@robertojunior.net>
- * @author Vaskevich Eugeniy <wbrframe@gmail.com>
- */
 class StringAgg extends FunctionNode
 {
     private $orderBy = null;

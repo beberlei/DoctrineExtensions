@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Nima S <nimasdj@yahoo.com>
- */
 class FromUnixtime extends FunctionNode
 {
     public $firstExpression = null;

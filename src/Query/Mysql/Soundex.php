@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Steve Tauber <taubers@gmail.com>
- */
 class Soundex extends FunctionNode
 {
     public $stringPrimary;

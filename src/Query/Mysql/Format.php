@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Wally Noveno <wally.noveno@gmail.com>
- */
 class Format extends FunctionNode
 {
     public $numberExpression = null;

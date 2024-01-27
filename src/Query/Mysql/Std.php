@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Toni Uebernickel <tuebernickel@gmail.com>
- */
 class Std extends FunctionNode
 {
     public $arithmeticExpression;

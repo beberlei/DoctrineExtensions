@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Alessandro Tagliapietra <tagliapietra.alessandro@gmail.com>
- */
 class TimestampAdd extends FunctionNode
 {
     public $firstDatetimeExpression = null;

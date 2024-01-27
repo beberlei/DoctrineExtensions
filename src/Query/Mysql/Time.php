@@ -9,10 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Steve Lacey <steve@steve.ly>
- * @author James Rohacik <rohacik.james@gmail.com>
- */
 class Time extends FunctionNode
 {
     public $time;

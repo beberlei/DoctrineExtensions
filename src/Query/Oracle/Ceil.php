@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Jefferson Vantuir <jefferson.behling@gmail.com>
- */
 class Ceil extends FunctionNode
 {
     private $number;

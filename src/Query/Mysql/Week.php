@@ -9,11 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Rafael Kassner <kassner@gmail.com>
- * @author Sarjono Mukti Aji <me@simukti.net>
- * @author Łukasz Nowicki <lukasz.mnowicki@gmail.com>
- */
 class Week extends FunctionNode
 {
     public $date;

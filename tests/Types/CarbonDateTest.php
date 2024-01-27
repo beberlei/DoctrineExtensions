@@ -17,8 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
- *
- * @author Steve Lacey <steve@stevelacey.net>
  */
 class CarbonDateTest extends TestCase
 {

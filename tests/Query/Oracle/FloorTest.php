@@ -8,9 +8,6 @@ use Doctrine\ORM\QueryBuilder;
 use DoctrineExtensions\Tests\Entities\Product;
 use DoctrineExtensions\Tests\Query\OracleTestCase;
 
-/**
- * @author Jefferson Vantuir <jefferson.behling@gmail.com>
- */
 class FloorTest extends OracleTestCase
 {
     public function testFullQuery()

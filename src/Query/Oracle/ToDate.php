@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Mohammad ZeinEddin <mohammad@zeineddin.name>
- */
 class ToDate extends FunctionNode
 {
     private $date;

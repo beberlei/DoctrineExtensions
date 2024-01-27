@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Sarjono Mukti Aji <me@simukti.net>
- */
 class Binary extends FunctionNode
 {
     private $stringPrimary;

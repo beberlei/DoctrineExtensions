@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Evgeny Savich <jack.savich@gmail.com>
- */
 class Truncate extends FunctionNode
 {
     public $numberExpression = null;

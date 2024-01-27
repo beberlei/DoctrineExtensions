@@ -13,8 +13,6 @@ use Doctrine\ORM\Query\SqlWalker;
 /**
  * This class fakes a DATE_FORMAT method for SQLite, so that we can use sqlite as drop-in replacement
  * database in our tests.
- *
- * @author Bas de Ruiter
  */
 class DateFormat extends FunctionNode
 {

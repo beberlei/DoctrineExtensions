@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Pavlo Cherniavskyi <ionafan2@gmail.com>
- */
 class WeekDay extends FunctionNode
 {
     private $date;

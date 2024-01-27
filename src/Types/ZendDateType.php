@@ -16,8 +16,6 @@ if (!class_exists('Zend_Date')) {
 
 /**
  * Type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
- *
- * @author Andreas Gallien <gallien@seleos.de>
  */
 class ZendDateType extends Type
 {

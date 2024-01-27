@@ -11,7 +11,6 @@ use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @link https://dev.mysql.com/doc/refman/en/charset-collate.html
- * @author Peter Tanath <peter.tanath@gmail.com>
  */
 class Collate extends FunctionNode
 {

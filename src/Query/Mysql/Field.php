@@ -9,9 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Jeremy Hicks <jeremy.hicks@gmail.com>
- */
 class Field extends FunctionNode
 {
     private $field = null;

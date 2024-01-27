@@ -10,9 +10,6 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Tarjei Huse <tarjei.huse@gmail.com>
- */
 class StrfTime extends FunctionNode
 {
     public $date;

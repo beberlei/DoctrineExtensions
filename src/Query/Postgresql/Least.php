@@ -9,10 +9,6 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Vas N <phpvas@gmail.com>
- * @author Leonardo B Motyczka <leomoty@gmail.com>
- */
 class Least extends FunctionNode
 {
     private $field = null;
