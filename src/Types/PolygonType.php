@@ -27,7 +27,7 @@ class PolygonType extends Type
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         preg_match('/POLYGON\(\((.*)\)\)/', $value, $matches);
-        if (!isset($matches[1])) {
+        if (! isset($matches[1])) {
             throw new Exception('No Polygon Points');
         }
 

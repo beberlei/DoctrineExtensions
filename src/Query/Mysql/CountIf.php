@@ -53,7 +53,7 @@ class CountIf extends FunctionNode
             'COUNT(CASE %s WHEN %s THEN %s END)',
             $sqlWalker->walkArithmeticPrimary($this->expr1),
             $sqlWalker->walkArithmeticPrimary($this->expr2),
-            !$this->inverse ? '1 ELSE NULL' : 'NULL ELSE 1'
+            ! $this->inverse ? '1 ELSE NULL' : 'NULL ELSE 1'
         );
     }
 }

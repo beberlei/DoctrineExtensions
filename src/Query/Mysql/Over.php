@@ -36,7 +36,7 @@ class Over extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $this->arithmeticExpression = $parser->ArithmeticExpression();
-        if (!$lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
+        if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $parser->match(Lexer::T_COMMA);
             $this->orderByClause = $parser->OrderByClause();
         }

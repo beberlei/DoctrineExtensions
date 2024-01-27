@@ -18,7 +18,7 @@ class DateSub extends DateAdd
     {
         $unit = strtoupper(is_string($this->unit) ? $this->unit : $this->unit->value);
 
-        if (!in_array($unit, self::$allowedUnits)) {
+        if (! in_array($unit, self::$allowedUnits)) {
             throw QueryException::semanticalError('DATE_SUB() does not support unit "' . $unit . '".');
         }
 

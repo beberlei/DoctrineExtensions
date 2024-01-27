@@ -12,7 +12,7 @@ use Zend_Locale_Format;
 
 use function class_exists;
 
-if (!class_exists('Zend_Date')) {
+if (! class_exists('Zend_Date')) {
     require_once 'Zend/Date.php';
 }
 
@@ -53,7 +53,7 @@ class ZendDateType extends Type
         );
 
         $val = new Zend_Date($value, $dateTimeFormatString);
-        if (!$val) {
+        if (! $val) {
             throw ConversionException::conversionFailed($value, $this->getName());
         }
 

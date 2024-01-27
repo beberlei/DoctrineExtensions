@@ -42,11 +42,11 @@ class Lead extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $this->aggregateExpression = $parser->StringExpression();
-        if (!$lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
+        if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $parser->match(Lexer::T_COMMA);
             $this->offset = $parser->ArithmeticPrimary();
         }
-        if (!$lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
+        if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $parser->match(Lexer::T_COMMA);
             $this->defaultValue = $parser->SimpleArithmeticExpression();
         }

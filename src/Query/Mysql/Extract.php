@@ -36,7 +36,7 @@ class Extract extends DateAdd
     public function getSql(SqlWalker $sqlWalker): string
     {
         $unit = strtoupper($this->unit);
-        if (!in_array($unit, self::$allowedUnits)) {
+        if (! in_array($unit, self::$allowedUnits)) {
             throw QueryException::semanticalError('EXTRACT() does not support unit "' . $unit . '".');
         }
 

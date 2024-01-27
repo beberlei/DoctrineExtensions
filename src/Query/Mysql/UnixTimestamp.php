@@ -28,7 +28,7 @@ class UnixTimestamp extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-        if (!$parser->getLexer()->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
+        if (! $parser->getLexer()->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $this->date = $parser->ArithmeticPrimary();
         }
 
