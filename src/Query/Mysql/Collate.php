@@ -11,19 +11,13 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/**
- * @link https://dev.mysql.com/doc/refman/en/charset-collate.html
- */
+/** @link https://dev.mysql.com/doc/refman/en/charset-collate.html */
 class Collate extends FunctionNode
 {
-    /**
-     * @var null
-     */
+    /** @var null */
     public $stringPrimary = null;
 
-    /**
-     * @var null
-     */
+    /** @var null */
     public $collation = null;
 
     /**

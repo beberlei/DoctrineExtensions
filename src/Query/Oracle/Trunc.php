@@ -14,14 +14,10 @@ use function sprintf;
 
 class Trunc extends FunctionNode
 {
-    /**
-     * @var Node
-     */
+    /** @var Node */
     private $date;
 
-    /**
-     * @var Node
-     */
+    /** @var Node */
     private $fmt;
 
     public function getSql(SqlWalker $sqlWalker): string

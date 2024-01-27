@@ -10,19 +10,13 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @link https://dev.mysql.com/doc/refman/en/arithmetic-functions.html#operator_div
- */
+/** @link https://dev.mysql.com/doc/refman/en/arithmetic-functions.html#operator_div */
 class Div extends FunctionNode
 {
-    /**
-     * @var Node
-     */
+    /** @var Node */
     private $dividend;
 
-    /**
-     * @var Node
-     */
+    /** @var Node */
     private $divisor;
 
     /**

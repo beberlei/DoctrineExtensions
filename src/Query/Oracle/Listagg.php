@@ -17,24 +17,16 @@ use function strtolower;
 
 class Listagg extends FunctionNode
 {
-    /**
-     * @var Node
-     */
+    /** @var Node */
     public $separator = null;
 
-    /**
-     * @var Node
-     */
+    /** @var Node */
     public $listaggField = null;
 
-    /**
-     * @var OrderByClause
-     */
+    /** @var OrderByClause */
     public $orderBy;
 
-    /**
-     * @var Node[]
-     */
+    /** @var Node[] */
     public $partitionBy = [];
 
     /**

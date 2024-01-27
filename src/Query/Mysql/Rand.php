@@ -12,9 +12,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 class Rand extends FunctionNode
 {
-    /**
-     * @var SimpleArithmeticExpression
-     */
+    /** @var SimpleArithmeticExpression */
     private $expression = null;
 
     public function getSql(SqlWalker $sqlWalker): string

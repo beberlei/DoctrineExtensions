@@ -224,10 +224,8 @@ class CarbonDateTest extends TestCase
         $this->assertNull($this->em->flush());
     }
 
-    /**
-     * @dataProvider typeProvider
-     */
-    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type)
+    /** @dataProvider typeProvider */
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type): void
     {
         /** @var AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');

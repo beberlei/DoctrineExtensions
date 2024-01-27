@@ -12,9 +12,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 class DayOfYear extends FunctionNode
 {
-    /**
-     * @var Node
-     */
+    /** @var Node */
     public $date;
 
     /**

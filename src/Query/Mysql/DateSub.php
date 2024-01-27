@@ -13,11 +13,7 @@ use function strtoupper;
 
 class DateSub extends DateAdd
 {
-    /**
-     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
-     * @throws QueryException
-     * @return string
-     */
+    /** @throws QueryException */
     public function getSql(SqlWalker $sqlWalker): string
     {
         $unit = strtoupper(is_string($this->unit) ? $this->unit : $this->unit->value);

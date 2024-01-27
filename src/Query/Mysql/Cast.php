@@ -31,11 +31,7 @@ class Cast extends FunctionNode
     /** @var string */
     protected $castingTypeExpression;
 
-    /**
-     * @param Parser $parser
-     *
-     * @throws QueryException
-     */
+    /** @throws QueryException */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);

@@ -16,12 +16,7 @@ class StrfTime extends FunctionNode
 
     public $formatter;
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @throws QueryException
-     * @return string
-     */
+    /** @throws QueryException */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return 'strftime('

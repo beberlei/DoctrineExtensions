@@ -15,11 +15,7 @@ class InetNtoa extends FunctionNode
 {
     public $valueExpression = null;
 
-    /**
-     * @param Parser $parser
-     *
-     * @throws QueryException
-     */
+    /** @throws QueryException */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);

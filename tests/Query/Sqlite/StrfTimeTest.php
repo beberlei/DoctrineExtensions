@@ -24,10 +24,8 @@ class StrfTimeTest extends SqliteTestCase
         ];
     }
 
-    /**
-     * @dataProvider getFunctionFormatters
-     */
-    public function testStrfTimes($function, $formatter)
+    /** @dataProvider getFunctionFormatters */
+    public function testStrfTimes($function, $formatter): void
     {
         $this->assertDqlProducesSql(
             sprintf('SELECT %s(p.created) as Year FROM DoctrineExtensions\Tests\Entities\Date p', $function),

@@ -11,9 +11,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/**
- * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz
- */
+/** @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz */
 class ConvertTz extends FunctionNode
 {
     protected $dateExpression;

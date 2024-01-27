@@ -32,9 +32,7 @@ class MysqlWalker extends SqlWalker
         return $sql;
     }
 
-    /**
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public function walkGroupByClause($groupByClause): string
     {
         $sql = parent::walkGroupByClause($groupByClause);
