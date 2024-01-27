@@ -41,6 +41,6 @@ class Inet6Ntoa extends FunctionNode
                 ? $this->valueExpression->dispatch($sqlWalker)
                 : "'" . $this->valueExpression . "'"
             )
-            .')';
+            . ')';
     }
 }

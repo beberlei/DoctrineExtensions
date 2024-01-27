@@ -15,7 +15,7 @@ class Minute extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'MINUTE('.$sqlWalker->walkArithmeticPrimary($this->date).')';
+        return 'MINUTE(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
 
     public function parse(Parser $parser): void

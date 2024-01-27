@@ -15,7 +15,7 @@ class Soundex extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'SOUNDEX('.$sqlWalker->walkStringPrimary($this->stringPrimary).')';
+        return 'SOUNDEX(' . $sqlWalker->walkStringPrimary($this->stringPrimary) . ')';
     }
 
     public function parse(Parser $parser): void

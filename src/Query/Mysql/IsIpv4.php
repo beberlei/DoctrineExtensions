@@ -41,6 +41,6 @@ class IsIpv4 extends FunctionNode
                 ? $this->valueExpression->dispatch($sqlWalker)
                 : "'" . $this->valueExpression . "'"
             )
-            .')';
+            . ')';
     }
 }

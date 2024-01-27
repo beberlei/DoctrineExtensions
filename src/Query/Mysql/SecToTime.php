@@ -19,7 +19,7 @@ class SecToTime extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'SEC_TO_TIME('.$sqlWalker->walkArithmeticPrimary($this->time).')';
+        return 'SEC_TO_TIME(' . $sqlWalker->walkArithmeticPrimary($this->time) . ')';
     }
 
     public function parse(Parser $parser): void

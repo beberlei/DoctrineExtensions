@@ -23,7 +23,7 @@ class RegexpReplace extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'REGEXP_REPLACE('.$this->string->dispatch($sqlWalker).', '.$this->search->dispatch($sqlWalker).', '.$this->replace->dispatch($sqlWalker).')';
+        return 'REGEXP_REPLACE(' . $this->string->dispatch($sqlWalker) . ', ' . $this->search->dispatch($sqlWalker) . ', ' . $this->replace->dispatch($sqlWalker) . ')';
     }
 
     public function parse(Parser $parser): void

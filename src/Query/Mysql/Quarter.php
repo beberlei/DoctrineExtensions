@@ -15,7 +15,7 @@ class Quarter extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'QUARTER('.$sqlWalker->walkArithmeticPrimary($this->date).')';
+        return 'QUARTER(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
 
     public function parse(Parser $parser): void

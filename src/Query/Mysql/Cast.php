@@ -63,7 +63,7 @@ class Cast extends FunctionNode
             }
 
             $parser->match(Lexer::T_CLOSE_PARENTHESIS);
-            $type .= '('.implode(', ', $parameters).')';
+            $type .= '(' . implode(', ', $parameters) . ')';
         }
 
         $this->castingTypeExpression = $type;

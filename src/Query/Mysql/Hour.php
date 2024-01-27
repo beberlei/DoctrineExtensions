@@ -15,7 +15,7 @@ class Hour extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'HOUR('.$sqlWalker->walkArithmeticPrimary($this->date).')';
+        return 'HOUR(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
 
     public function parse(Parser $parser): void

@@ -25,6 +25,6 @@ class Binary extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'BINARY('.$sqlWalker->walkSimpleArithmeticExpression($this->stringPrimary).')';
+        return 'BINARY(' . $sqlWalker->walkSimpleArithmeticExpression($this->stringPrimary) . ')';
     }
 }

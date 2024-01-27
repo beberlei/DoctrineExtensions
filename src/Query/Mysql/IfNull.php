@@ -28,7 +28,7 @@ class IfNull extends FunctionNode
     public function getSql(SqlWalker $sqlWalker): string
     {
         return 'IFNULL('
-            .$sqlWalker->walkArithmeticPrimary($this->expr1). ', '
-            .$sqlWalker->walkArithmeticPrimary($this->expr2).')';
+            . $sqlWalker->walkArithmeticPrimary($this->expr1) . ', '
+            . $sqlWalker->walkArithmeticPrimary($this->expr2) . ')';
     }
 }

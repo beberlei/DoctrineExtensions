@@ -15,7 +15,7 @@ class CharLength extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'CHAR_LENGTH('.$sqlWalker->walkArithmeticPrimary($this->expr1).')';
+        return 'CHAR_LENGTH(' . $sqlWalker->walkArithmeticPrimary($this->expr1) . ')';
     }
 
     public function parse(Parser $parser): void

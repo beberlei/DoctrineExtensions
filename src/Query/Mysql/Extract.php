@@ -40,6 +40,6 @@ class Extract extends DateAdd
             throw QueryException::semanticalError('EXTRACT() does not support unit "' . $unit . '".');
         }
 
-        return 'EXTRACT(' . $unit . ' FROM '. $this->date->dispatch($sqlWalker) . ')';
+        return 'EXTRACT(' . $unit . ' FROM ' . $this->date->dispatch($sqlWalker) . ')';
     }
 }
