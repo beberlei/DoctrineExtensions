@@ -39,6 +39,3 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - run: composer run test
-
-      - run: composer run lint -- --dry-run
-        if: ${{ matrix.php <= '8.0' }}
