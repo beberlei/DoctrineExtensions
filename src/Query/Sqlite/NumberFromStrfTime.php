@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query\Sqlite;
 
 abstract class NumberFromStrfTime extends AbstractStrfTime

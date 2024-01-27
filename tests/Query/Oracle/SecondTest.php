@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
 class SecondTest extends \DoctrineExtensions\Tests\Query\OracleTestCase

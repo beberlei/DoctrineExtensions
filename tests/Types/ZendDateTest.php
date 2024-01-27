@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Types;
 
 use Doctrine\ORM\Tools\SchemaTool;

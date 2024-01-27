@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 class SecondTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase

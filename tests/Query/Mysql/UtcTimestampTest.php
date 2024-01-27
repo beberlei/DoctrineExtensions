@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class UtcTimestampTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase

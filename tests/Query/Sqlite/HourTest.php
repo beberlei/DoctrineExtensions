@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 class HourTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase

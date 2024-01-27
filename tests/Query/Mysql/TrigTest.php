@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 class TrigTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase

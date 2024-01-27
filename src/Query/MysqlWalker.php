@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DoctrineExtensions\Query;
 
 use Doctrine\ORM\Query\SqlWalker;
