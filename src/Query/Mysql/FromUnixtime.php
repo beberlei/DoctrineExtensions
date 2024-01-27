@@ -17,7 +17,7 @@ class FromUnixtime extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        if (null !== $this->secondExpression) {
+        if ($this->secondExpression !== null) {
             return 'FROM_UNIXTIME('
                 . $this->firstExpression->dispatch($sqlWalker)
                 . ','
@@ -38,7 +38,7 @@ class FromUnixtime extends FunctionNode
         $this->firstExpression = $parser->ArithmeticPrimary();
 
         // parse second parameter if available
-        if (Lexer::T_COMMA === $lexer->lookahead->type) {
+        if ($lexer->lookahead->type === Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $this->secondExpression = $parser->ArithmeticPrimary();
         }

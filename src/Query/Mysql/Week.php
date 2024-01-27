@@ -33,7 +33,7 @@ class Week extends FunctionNode
 
         $this->date = $parser->ArithmeticPrimary();
 
-        if (Lexer::T_COMMA === $parser->getLexer()->lookahead->type) {
+        if ($parser->getLexer()->lookahead->type === Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $this->mode = $parser->Literal();
         }

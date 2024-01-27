@@ -23,7 +23,7 @@ class Round extends FunctionNode
         $this->firstExpression = $parser->SimpleArithmeticExpression();
 
         // parse second parameter if available
-        if (Lexer::T_COMMA === $lexer->lookahead->type) {
+        if ($lexer->lookahead->type === Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $this->secondExpression = $parser->ArithmeticPrimary();
         }
@@ -34,7 +34,7 @@ class Round extends FunctionNode
     public function getSql(SqlWalker $sqlWalker): string
     {
         // use second parameter if parsed
-        if (null !== $this->secondExpression) {
+        if ($this->secondExpression !== null) {
             return 'ROUND('
                 . $this->firstExpression->dispatch($sqlWalker)
                 . ', '
