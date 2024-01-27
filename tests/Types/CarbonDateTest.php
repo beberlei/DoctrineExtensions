@@ -15,6 +15,8 @@ use Doctrine\ORM\Tools\SchemaTool;
 use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
 use PHPUnit\Framework\TestCase;
 
+use function assert;
+
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
  */

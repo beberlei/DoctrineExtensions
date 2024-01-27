@@ -6,6 +6,8 @@ namespace DoctrineExtensions\Query;
 
 use Doctrine\ORM\Query\SqlWalker;
 
+use function str_replace;
+
 class MysqlWalker extends SqlWalker
 {
     /**

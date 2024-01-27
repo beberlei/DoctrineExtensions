@@ -9,6 +9,8 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function sprintf;
+
 /**
  * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz
  */

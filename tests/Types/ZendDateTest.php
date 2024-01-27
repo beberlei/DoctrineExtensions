@@ -14,6 +14,8 @@ use DoctrineExtensions\Tests\Entities\ZendDate;
 use PHPUnit\Framework\TestCase;
 use Zend_Date;
 
+use function assert;
+
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
  */

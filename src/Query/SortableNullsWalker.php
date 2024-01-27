@@ -6,6 +6,11 @@ namespace DoctrineExtensions\Query;
 
 use Doctrine\ORM\Query;
 
+use function count;
+use function is_array;
+use function str_replace;
+use function strtoupper;
+
 /**
  * The SortableNullsWalker is a TreeWalker that walks over a DQL AST and constructs
  * the corresponding SQL to allow ORDER BY x ASC NULLS FIRST|LAST.

@@ -9,6 +9,11 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function count;
+use function implode;
+use function sprintf;
+use function strtolower;
+
 class ConcatWs extends FunctionNode
 {
     private $values = [];

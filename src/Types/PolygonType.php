@@ -7,6 +7,9 @@ namespace DoctrineExtensions\Types;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
+use function preg_match;
+use function sprintf;
+
 class PolygonType extends Type
 {
     public const FIELD = 'polygon';

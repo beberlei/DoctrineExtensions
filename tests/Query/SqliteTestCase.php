@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query;
 
+use function method_exists;
+
 class SqliteTestCase extends DbTestCase
 {
     /**

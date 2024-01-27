@@ -12,6 +12,10 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function assert;
+use function implode;
+use function sprintf;
+
 /**
  * "CAST" "(" "$fieldIdentifierExpression" "AS" "$castingTypeExpression" ")"
  *

@@ -10,6 +10,10 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function in_array;
+use function is_string;
+use function strtoupper;
+
 class DateAdd extends FunctionNode
 {
     public $firstDateExpression = null;

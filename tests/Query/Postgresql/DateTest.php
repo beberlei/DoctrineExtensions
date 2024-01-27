@@ -6,6 +6,8 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
+use function date;
+
 class DateTest extends PostgresqlTestCase
 {
     public function testStrToDate()

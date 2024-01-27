@@ -10,6 +10,8 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function str_replace;
+
 /**
  * This class fakes a DATE_FORMAT method for SQLite, so that we can use sqlite as drop-in replacement
  * database in our tests.

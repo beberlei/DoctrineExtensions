@@ -10,6 +10,8 @@ use Doctrine\DBAL\Types\Type;
 use Zend_Date;
 use Zend_Locale_Format;
 
+use function class_exists;
+
 if (!class_exists('Zend_Date')) {
     require_once 'Zend/Date.php';
 }

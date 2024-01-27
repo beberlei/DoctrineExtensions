@@ -10,6 +10,8 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function sprintf;
+
 class StringAgg extends FunctionNode
 {
     private $orderBy = null;
@@ -45,7 +47,7 @@ class StringAgg extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return \sprintf(
+        return sprintf(
             'string_agg(%s%s, %s%s)',
             ($this->isDistinct ? 'DISTINCT ' : ''),
             $sqlWalker->walkPathExpression($this->expression),

@@ -7,6 +7,11 @@ namespace DoctrineExtensions\Tests\Query;
 use Doctrine\ORM\Configuration;
 use Symfony\Component\Yaml\Parser;
 
+use function array_key_exists;
+use function file_get_contents;
+use function realpath;
+use function strtoupper;
+
 class ConfigLoader
 {
     const MYSQL    = 'mysql';

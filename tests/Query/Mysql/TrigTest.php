@@ -7,6 +7,8 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 use Doctrine\ORM\Version;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
+use function deg2rad;
+
 class TrigTest extends MysqlTestCase
 {
     private $entity;

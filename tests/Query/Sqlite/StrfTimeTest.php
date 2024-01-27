@@ -6,6 +6,8 @@ namespace DoctrineExtensions\Tests\Query\Sqlite;
 
 use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
+use function sprintf;
+
 class StrfTimeTest extends SqliteTestCase
 {
     public function getFunctionFormatters()

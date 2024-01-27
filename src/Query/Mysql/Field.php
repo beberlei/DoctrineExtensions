@@ -9,6 +9,8 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function count;
+
 class Field extends FunctionNode
 {
     private $field = null;
