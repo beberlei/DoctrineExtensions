@@ -20,9 +20,6 @@ class Collate extends FunctionNode
     /** @var null */
     public $collation = null;
 
-    /**
-     * @param \Doctrine\ORM\Query\Parser $parser
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -40,10 +37,6 @@ class Collate extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf('%s COLLATE %s', $sqlWalker->walkStringPrimary($this->stringPrimary), $this->collation);

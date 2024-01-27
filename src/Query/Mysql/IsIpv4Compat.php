@@ -24,11 +24,6 @@ class IsIpv4Compat extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return 'IS_IPV4_COMPAT('

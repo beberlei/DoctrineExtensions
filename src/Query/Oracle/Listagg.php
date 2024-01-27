@@ -29,9 +29,6 @@ class Listagg extends FunctionNode
     /** @var Node[] */
     public $partitionBy = [];
 
-    /**
-     * @inheritdoc
-     */
     public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
@@ -80,9 +77,6 @@ class Listagg extends FunctionNode
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         $result = 'LISTAGG(' . $this->listaggField->dispatch($sqlWalker);

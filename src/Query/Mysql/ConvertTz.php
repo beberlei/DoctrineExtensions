@@ -20,9 +20,6 @@ class ConvertTz extends FunctionNode
 
     protected $toTz;
 
-    /**
-     * @inheritdoc
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(
@@ -33,9 +30,6 @@ class ConvertTz extends FunctionNode
         );
     }
 
-    /**
-     * @inheritdoc
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);

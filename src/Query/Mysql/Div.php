@@ -19,9 +19,6 @@ class Div extends FunctionNode
     /** @var Node */
     private $divisor;
 
-    /**
-     * @inheritdoc
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return
@@ -29,9 +26,6 @@ class Div extends FunctionNode
             $sqlWalker->walkArithmeticPrimary($this->divisor);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);

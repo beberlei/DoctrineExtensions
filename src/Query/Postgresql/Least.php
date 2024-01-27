@@ -17,9 +17,6 @@ class Least extends FunctionNode
 
     private $values = [];
 
-    /**
-     * @param Parser $parser
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -36,10 +33,6 @@ class Least extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         $query = 'LEAST(';

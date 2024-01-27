@@ -22,10 +22,6 @@ class DateFormat extends FunctionNode
 
     private $format;
 
-    /**
-     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return 'STRFTIME('
@@ -35,9 +31,6 @@ class DateFormat extends FunctionNode
             . ')';
     }
 
-    /**
-     * @param \Doctrine\ORM\Query\Parser $parser
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -50,8 +43,6 @@ class DateFormat extends FunctionNode
 
     /**
      * Convert the MySql DATE_FORMAT() substitutions to Sqlite STRFTIME() substitutions
-     * @param ArithmeticExpression $expr
-     * @return ArithmeticExpression
      */
     private function convertFormat(ArithmeticExpression $expr): ArithmeticExpression
     {
