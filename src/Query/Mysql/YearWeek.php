@@ -18,7 +18,7 @@ class YearWeek extends FunctionNode
     public function getSql(SqlWalker $sqlWalker): string
     {
         $sql = 'YEARWEEK(' . $sqlWalker->walkArithmeticPrimary($this->date);
-        if ($this->mode != null) {
+        if ($this->mode !== null) {
             $sql .= ', ' . $sqlWalker->walkLiteral($this->mode);
         }
         $sql .= ')';

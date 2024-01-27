@@ -54,7 +54,7 @@ class SortableNullsWalker extends Query\SqlWalker
             // check for a state field
             if (
                     $expr instanceof Query\AST\PathExpression &&
-                    $expr->type == Query\AST\PathExpression::TYPE_STATE_FIELD
+                    $expr->type === Query\AST\PathExpression::TYPE_STATE_FIELD
             ) {
                 $fieldName = $expr->field;
                 $dqlAlias = $expr->identificationVariable;

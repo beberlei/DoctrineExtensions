@@ -33,16 +33,16 @@ class ConcatWs extends FunctionNode
 
         $lexer = $parser->getLexer();
 
-        while (count($this->values) < 3 || $lexer->lookahead->type == Lexer::T_COMMA) {
+        while (count($this->values) < 3 || $lexer->lookahead->type === Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $peek = $lexer->glimpse();
 
-            $this->values[] = $peek->value == '('
+            $this->values[] = $peek->value === '('
                     ? $parser->FunctionDeclaration()
                     : $parser->ArithmeticExpression();
         }
 
-        while ($lexer->lookahead->type == Lexer::T_IDENTIFIER) {
+        while ($lexer->lookahead->type === Lexer::T_IDENTIFIER) {
             switch (strtolower($lexer->lookahead->value)) {
                 case 'notempty':
                     $parser->match(Lexer::T_IDENTIFIER);
