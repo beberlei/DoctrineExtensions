@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class DateTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+
+class DateTest extends PostgresqlTestCase
 {
     public function testStrToDate()
     {

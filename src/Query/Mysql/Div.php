@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -15,12 +16,12 @@ use Doctrine\ORM\Query\SqlWalker;
 class Div extends FunctionNode
 {
     /**
-     * @var \Doctrine\ORM\Query\AST\Node
+     * @var Node
      */
     private $dividend;
 
     /**
-     * @var \Doctrine\ORM\Query\AST\Node
+     * @var Node
      */
     private $divisor;
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DoctrineExtensions\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Yaml\Parser;
 
 /**
  * Test that checks the README describes all of the query types
@@ -18,7 +19,7 @@ class MysqlYamlTest extends TestCase
 
     public function setUp(): void
     {
-        $yaml = new \Symfony\Component\Yaml\Parser();
+        $yaml = new Parser();
 
         $config = $yaml->parse(file_get_contents(__DIR__ . '/../../config/mysql.yml'));
         $this->functions = array_merge(

@@ -6,6 +6,8 @@ namespace DoctrineExtensions\Query\Sqlite;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @author winkbrace <winkbrace@gmail.com>
@@ -16,7 +18,7 @@ class Round extends FunctionNode
 
     private $secondExpression = null;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
         $parser->match(Lexer::T_IDENTIFIER);
@@ -32,7 +34,7 @@ class Round extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         // use second parameter if parsed
         if (null !== $this->secondExpression) {

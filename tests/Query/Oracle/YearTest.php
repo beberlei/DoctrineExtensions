@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class YearTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+use DoctrineExtensions\Tests\Query\OracleTestCase;
+
+class YearTest extends OracleTestCase
 {
     public function testYear()
     {

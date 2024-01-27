@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+use Doctrine\ORM\Query\QueryException;
+use DoctrineExtensions\Tests\Query\MysqlTestCase;
+
+class StringTest extends MysqlTestCase
 {
     public function testAscii()
     {
@@ -19,7 +22,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
      */
     public function testCharLength()
     {
-        $this->expectException(\Doctrine\ORM\Query\QueryException::class);
+        $this->expectException(QueryException::class);
 
         $this->assertDqlProducesSql(
             "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -40,7 +43,7 @@ class StringTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
      */
     public function testConcatWithSeparatorWithNull()
     {
-        $this->expectException(\Doctrine\ORM\Query\QueryException::class);
+        $this->expectException(QueryException::class);
 
         $this->assertDqlProducesSql(
             "SELECT CONCAT_WS(',', 'First name', NULL, 'Last Name') from DoctrineExtensions\Tests\Entities\Blank b",

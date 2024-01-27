@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class Log2Test extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+use DoctrineExtensions\Tests\Query\MysqlTestCase;
+
+class Log2Test extends MysqlTestCase
 {
     public function testLog2()
     {

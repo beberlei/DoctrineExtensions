@@ -6,7 +6,11 @@ namespace DoctrineExtensions\Tests\Types;
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Configuration;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
 use PHPUnit\Framework\TestCase;
@@ -34,15 +38,15 @@ class CarbonDateTest extends TestCase
 
     public function setUp(): void
     {
-        $config = new \Doctrine\ORM\Configuration();
-        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+        $config = new Configuration();
+        $config->setMetadataCacheImpl(new ArrayCache());
+        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('DoctrineExtensions\Tests\PHPUnit\Proxies');
         $config->setAutoGenerateProxyClasses(true);
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
-        $this->em = \Doctrine\ORM\EntityManager::create(
+        $this->em = EntityManager::create(
             [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
@@ -225,7 +229,7 @@ class CarbonDateTest extends TestCase
      */
     public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type)
     {
-        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
+        /** @var AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
 
         $this->assertTrue(Type::getType($type)->requiresSQLCommentHint($platform));

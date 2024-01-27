@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class AtTimeZoneTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+
+class AtTimeZoneTest extends PostgresqlTestCase
 {
     public function testAtTimeZone()
     {

@@ -6,6 +6,8 @@ namespace DoctrineExtensions\Query\Oracle;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @author Cédric Bertolini <bertolini.cedric@me.com>
@@ -18,7 +20,7 @@ class ToChar extends FunctionNode
 
     private $nls = null;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         if ($this->nls) {
             return sprintf(
@@ -36,7 +38,7 @@ class ToChar extends FunctionNode
         );
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

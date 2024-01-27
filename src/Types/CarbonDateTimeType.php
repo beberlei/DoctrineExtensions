@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DoctrineExtensions\Types;
 
 use Carbon\Carbon;
+use DateTime;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateTimeType;
 
@@ -21,7 +22,7 @@ class CarbonDateTimeType extends DateTimeType
     {
         $result = parent::convertToPHPValue($value, $platform);
 
-        if ($result instanceof \DateTime) {
+        if ($result instanceof DateTime) {
             return Carbon::instance($result);
         }
 

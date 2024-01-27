@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Types;
 
+use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Configuration;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
+use DoctrineExtensions\Tests\Entities\ZendDate;
 use PHPUnit\Framework\TestCase;
+use Zend_Date;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
@@ -18,7 +25,7 @@ class ZendDateTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        \Doctrine\DBAL\Types\Type::addType(
+        Type::addType(
             'ZendDate',
             'DoctrineExtensions\Types\ZendDateType'
         );
@@ -26,15 +33,15 @@ class ZendDateTest extends TestCase
 
     public function setUp(): void
     {
-        $config = new \Doctrine\ORM\Configuration();
-        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+        $config = new Configuration();
+        $config->setMetadataCacheImpl(new ArrayCache());
+        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('DoctrineExtensions\Tests\PHPUnit\Proxies');
         $config->setAutoGenerateProxyClasses(true);
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
-        $this->em = \Doctrine\ORM\EntityManager::create(
+        $this->em = EntityManager::create(
             [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
@@ -48,7 +55,7 @@ class ZendDateTest extends TestCase
             $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\ZendDate'),
         ]);
 
-        $this->em->persist(new \DoctrineExtensions\Tests\Entities\ZendDate(1, new \Zend_Date([
+        $this->em->persist(new ZendDate(1, new Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
             'hour' => 9, 'minute' => 8, 'second' => 7,
         ])));
@@ -61,7 +68,7 @@ class ZendDateTest extends TestCase
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 1);
 
         $this->assertInstanceOf('Zend_Date', $entity->date);
-        $this->assertTrue($entity->date->equals(new \Zend_Date([
+        $this->assertTrue($entity->date->equals(new Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
             'hour' => 9, 'minute' => 8, 'second' => 7,
         ])));
@@ -69,12 +76,12 @@ class ZendDateTest extends TestCase
 
     public function testSetZendDate()
     {
-        $zendDate = new \Zend_Date([
+        $zendDate = new Zend_Date([
             'year' => 2012, 'month' => 11, 'day' => 10,
             'hour' => 9, 'minute' => 8, 'second' => 7,
         ]);
 
-        $entity = new \DoctrineExtensions\Tests\Entities\ZendDate(2, $zendDate);
+        $entity = new ZendDate(2, $zendDate);
         $this->em->persist($entity);
         $this->em->flush();
 
@@ -86,9 +93,9 @@ class ZendDateTest extends TestCase
 
     public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint()
     {
-        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
+        /** @var AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
 
-        $this->assertTrue(\Doctrine\DBAL\Types\Type::getType('ZendDate')->requiresSQLCommentHint($platform));
+        $this->assertTrue(Type::getType('ZendDate')->requiresSQLCommentHint($platform));
     }
 }

@@ -6,6 +6,8 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
 /**
  * @author Przemek Sobstel <przemek@sobstel.org>
@@ -18,7 +20,7 @@ class TimestampDiff extends FunctionNode
 
     public $unit = null;
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -32,7 +34,7 @@ class TimestampDiff extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sql_walker): string
+    public function getSql(SqlWalker $sql_walker): string
     {
         return sprintf(
             'TIMESTAMPDIFF(%s, %s, %s)',

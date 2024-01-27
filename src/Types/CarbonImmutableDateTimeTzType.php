@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DoctrineExtensions\Types;
 
 use Carbon\CarbonImmutable;
+use DateTime;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\DateTimeTzType;
 
@@ -21,7 +22,7 @@ class CarbonImmutableDateTimeTzType extends DateTimeTzType
     {
         $result = parent::convertToPHPValue($value, $platform);
 
-        if ($result instanceof \DateTime) {
+        if ($result instanceof DateTime) {
             return CarbonImmutable::instance($result);
         }
 

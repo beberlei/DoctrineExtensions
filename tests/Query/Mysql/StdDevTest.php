@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-class StdDevTest extends \DoctrineExtensions\Tests\Query\MysqlTestCase
+use DoctrineExtensions\Tests\Query\MysqlTestCase;
+
+class StdDevTest extends MysqlTestCase
 {
     public function testStdDev()
     {
