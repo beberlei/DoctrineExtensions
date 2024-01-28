@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
 use DoctrineExtensions\Tests\Query\OracleTestCase;

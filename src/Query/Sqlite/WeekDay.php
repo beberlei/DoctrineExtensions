@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace DoctrineExtensions\Query\Sqlite;
 
 class WeekDay extends NumberFromStrfTime

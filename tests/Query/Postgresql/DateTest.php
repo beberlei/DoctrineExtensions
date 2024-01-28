@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;

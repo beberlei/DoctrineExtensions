@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
