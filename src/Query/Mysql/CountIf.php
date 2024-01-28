@@ -10,9 +10,7 @@ use Doctrine\ORM\Query\SqlWalker;
 use function sprintf;
 use function strtolower;
 
-/**
- * @author Andrew Mackrodt <andrew@ajmm.org>
- */
+/** @author Andrew Mackrodt <andrew@ajmm.org> */
 class CountIf extends FunctionNode
 {
     private $expr1;

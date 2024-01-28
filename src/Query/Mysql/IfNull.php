@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Andrew Mackrodt <andrew@ajmm.org>
- */
+/** @author Andrew Mackrodt <andrew@ajmm.org> */
 class IfNull extends FunctionNode
 {
     private $expr1;

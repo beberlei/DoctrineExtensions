@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Rafael Kassner <kassner@gmail.com>
- */
+/** @author Rafael Kassner <kassner@gmail.com> */
 class Year extends FunctionNode
 {
     public $date;

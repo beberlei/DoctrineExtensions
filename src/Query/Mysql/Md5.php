@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Andreas Gallien <gallien@seleos.de>
- */
+/** @author Andreas Gallien <gallien@seleos.de> */
 class Md5 extends FunctionNode
 {
     public $stringPrimary;

@@ -5,9 +5,7 @@ namespace DoctrineExtensions\Query\Sqlite;
 use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 
-/**
- * @author Aleksandr Klimenkov <alx.devel@gmail.com>
- */
+/** @author Aleksandr Klimenkov <alx.devel@gmail.com> */
 class Week extends NumberFromStrfTime
 {
     /**

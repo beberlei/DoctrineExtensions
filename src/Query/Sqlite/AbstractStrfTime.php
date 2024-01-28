@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Tarjei Huse <tarjei.huse@gmail.com>
- */
+/** @author Tarjei Huse <tarjei.huse@gmail.com> */
 abstract class AbstractStrfTime extends FunctionNode
 {
     public $date;

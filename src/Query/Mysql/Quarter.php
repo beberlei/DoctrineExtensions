@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Martin Štekl <martin.stekl@gmail.com>
- */
+/** @author Martin Štekl <martin.stekl@gmail.com> */
 class Quarter extends FunctionNode
 {
     public $date;

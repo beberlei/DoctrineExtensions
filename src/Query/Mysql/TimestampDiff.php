@@ -9,9 +9,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/**
- * @author Przemek Sobstel <przemek@sobstel.org>
- */
+/** @author Przemek Sobstel <przemek@sobstel.org> */
 class TimestampDiff extends FunctionNode
 {
     public $firstDatetimeExpression = null;

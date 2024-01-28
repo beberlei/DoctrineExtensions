@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Giulia Santoiemma <giuliaries@gmail.com>
- */
+/** @author Giulia Santoiemma <giuliaries@gmail.com> */
 class Lpad extends FunctionNode
 {
     public $string = null;

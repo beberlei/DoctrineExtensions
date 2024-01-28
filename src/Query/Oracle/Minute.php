@@ -9,9 +9,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/**
- * @author Andréia Bohner <andreiabohner@gmail.com>
- */
+/** @author Andréia Bohner <andreiabohner@gmail.com> */
 class Minute extends FunctionNode
 {
     private $date;

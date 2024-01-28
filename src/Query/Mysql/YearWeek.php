@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Michael Kimpton <mike@sketchthat.com>
- */
+/** @author Michael Kimpton <mike@sketchthat.com> */
 class YearWeek extends FunctionNode
 {
     public $date;

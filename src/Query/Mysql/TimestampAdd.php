@@ -9,9 +9,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/**
- * @author Alessandro Tagliapietra <tagliapietra.alessandro@gmail.com>
- */
+/** @author Alessandro Tagliapietra <tagliapietra.alessandro@gmail.com> */
 class TimestampAdd extends FunctionNode
 {
     public $firstDatetimeExpression = null;

@@ -9,9 +9,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function count;
 
-/**
- * @author Jeremy Hicks <jeremy.hicks@gmail.com>
- */
+/** @author Jeremy Hicks <jeremy.hicks@gmail.com> */
 class Field extends FunctionNode
 {
     private $field = null;

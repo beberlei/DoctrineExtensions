@@ -10,9 +10,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/**
- * @author Mohammad ZeinEddin <mohammad@zeineddin.name>
- */
+/** @author Mohammad ZeinEddin <mohammad@zeineddin.name> */
 class Trunc extends FunctionNode
 {
     /** @var Node */

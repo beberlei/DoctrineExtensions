@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Dawid Nowak <macdada@mmg.pl>
- */
+/** @author Dawid Nowak <macdada@mmg.pl> */
 class Hour extends FunctionNode
 {
     public $date;

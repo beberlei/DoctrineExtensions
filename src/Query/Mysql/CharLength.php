@@ -7,9 +7,7 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Metod <metod@simpel.si>
- */
+/** @author Metod <metod@simpel.si> */
 class CharLength extends FunctionNode
 {
     private $expr1;
