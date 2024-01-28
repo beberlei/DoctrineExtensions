@@ -16,6 +16,7 @@ class SqliteTestCase extends DbTestCase
     public function setUp(): void
     {
         parent::setUp();
+
         ConfigLoader::load($this->configuration, ConfigLoader::SQLITE);
 
         $emConfiguration = $this->entityManager->getConfiguration();
