@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class RandTest extends MysqlTestCase
 {
-    public function testRandWithParameter()
+    public function testRandWithParameter(): void
     {
         $this->assertDqlProducesSql(
             "SELECT RAND(2) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -16,7 +16,7 @@ class RandTest extends MysqlTestCase
         );
     }
 
-    public function testRandWithoutParameter()
+    public function testRandWithoutParameter(): void
     {
         $this->assertDqlProducesSql(
             "SELECT RAND() from DoctrineExtensions\Tests\Entities\Blank b",

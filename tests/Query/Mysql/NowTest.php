@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class NowTest extends MysqlTestCase
 {
-    public function testNow()
+    public function testNow(): void
     {
         $this->assertDqlProducesSql(
             "SELECT NOW() from DoctrineExtensions\Tests\Entities\Blank b",

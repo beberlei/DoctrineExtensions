@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class SecondTest extends PostgresqlTestCase
 {
-    public function testSecond()
+    public function testSecond(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SECOND(2) from DoctrineExtensions\Tests\Entities\Blank b",

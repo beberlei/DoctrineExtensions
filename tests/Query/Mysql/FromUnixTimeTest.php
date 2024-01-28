@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class FromUnixTimeTest extends MysqlTestCase
 {
-    public function testFromUnixTime()
+    public function testFromUnixTime(): void
     {
         $this->assertDqlProducesSql(
             "SELECT FROM_UNIXTIME(2) from DoctrineExtensions\Tests\Entities\Blank b",

@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class AtanTest extends MysqlTestCase
 {
-    public function testAtan()
+    public function testAtan(): void
     {
         $this->assertDqlProducesSql(
             "SELECT ATAN(2) from DoctrineExtensions\Tests\Entities\Blank b",

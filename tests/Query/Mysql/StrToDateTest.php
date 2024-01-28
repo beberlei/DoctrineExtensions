@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class StrToDateTest extends MysqlTestCase
 {
-    public function testStrToDate()
+    public function testStrToDate(): void
     {
         $this->assertDqlProducesSql(
             "SELECT STR_TO_DATE(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

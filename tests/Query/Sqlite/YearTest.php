@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class YearTest extends SqliteTestCase
 {
-    public function testYear()
+    public function testYear(): void
     {
         $this->assertDqlProducesSql(
             "SELECT YEAR(2) from DoctrineExtensions\Tests\Entities\Blank b",

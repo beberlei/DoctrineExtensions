@@ -9,7 +9,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class StringAggTest extends PostgresqlTestCase
 {
-    public function testStringAgg()
+    public function testStringAgg(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder
@@ -22,7 +22,7 @@ class StringAggTest extends PostgresqlTestCase
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
 
-    public function testStringAggWithDistinct()
+    public function testStringAggWithDistinct(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder
@@ -35,7 +35,7 @@ class StringAggTest extends PostgresqlTestCase
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
 
-    public function testStringAggWithOrderByClause()
+    public function testStringAggWithOrderByClause(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder
@@ -48,7 +48,7 @@ class StringAggTest extends PostgresqlTestCase
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
 
-    public function testStringAggWithOrderByClauseAndPredefinedDirectory()
+    public function testStringAggWithOrderByClauseAndPredefinedDirectory(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder
@@ -61,7 +61,7 @@ class StringAggTest extends PostgresqlTestCase
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
 
-    public function testStringAggFullDeclaration()
+    public function testStringAggFullDeclaration(): void
     {
         $queryBuilder = new QueryBuilder($this->entityManager);
         $queryBuilder

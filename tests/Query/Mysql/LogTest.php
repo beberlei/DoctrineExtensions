@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class LogTest extends MysqlTestCase
 {
-    public function testLog()
+    public function testLog(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LOG(2) from DoctrineExtensions\Tests\Entities\Blank b",

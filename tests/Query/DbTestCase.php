@@ -29,7 +29,7 @@ class DbTestCase extends TestCase
         $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true ], $this->configuration);
     }
 
-    public function assertDqlProducesSql($actualDql, $expectedSql, $params = [])
+    public function assertDqlProducesSql($actualDql, $expectedSql, $params = []): void
     {
         $q = $this->entityManager->createQuery($actualDql);
 

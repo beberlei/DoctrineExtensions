@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class IfElseTest extends SqliteTestCase
 {
-    public function testIfElse()
+    public function testIfElse(): void
     {
         $dql = 'SELECT ifelse(1 > 0, 1, 0) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
 

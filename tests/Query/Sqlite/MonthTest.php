@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class MonthTest extends SqliteTestCase
 {
-    public function testMonth()
+    public function testMonth(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b",

@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class PowerTest extends MysqlTestCase
 {
-    public function testPower()
+    public function testPower(): void
     {
         $this->assertDqlProducesSql(
             "SELECT POWER(2, 3) from DoctrineExtensions\Tests\Entities\Blank b",

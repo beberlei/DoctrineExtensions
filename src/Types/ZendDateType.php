@@ -42,7 +42,7 @@ class ZendDateType extends Type
             : null;
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): void
     {
         if ($value === null) {
             return;

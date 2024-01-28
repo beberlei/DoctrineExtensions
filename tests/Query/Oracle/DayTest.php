@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
 
 class DayTest extends OracleTestCase
 {
-    public function testDay()
+    public function testDay(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b",

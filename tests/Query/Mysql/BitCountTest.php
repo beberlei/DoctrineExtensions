@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class BitCountTest extends MysqlTestCase
 {
-    public function testBitCount()
+    public function testBitCount(): void
     {
         $this->assertDqlProducesSql(
             "SELECT BIT_COUNT(2) from DoctrineExtensions\Tests\Entities\Blank b",

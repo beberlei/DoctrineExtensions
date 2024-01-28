@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class WeekDayTest extends SqliteTestCase
 {
-    public function testFormatWeekDay()
+    public function testFormatWeekDay(): void
     {
         $dql = 'SELECT WEEKDAY(b.created) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(

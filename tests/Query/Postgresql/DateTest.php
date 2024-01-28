@@ -10,7 +10,7 @@ use function date;
 
 class DateTest extends PostgresqlTestCase
 {
-    public function testStrToDate()
+    public function testStrToDate(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
         $q   = $this->entityManager->createQuery($dql);
@@ -21,7 +21,7 @@ class DateTest extends PostgresqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    public function testDateFunction()
+    public function testDateFunction(): void
     {
         $dql = "SELECT DATE(p.created) FROM DoctrineExtensions\Tests\Entities\Date p";
         $sql = 'SELECT DATE(d0_.created) AS sclr_0 FROM Date d0_';

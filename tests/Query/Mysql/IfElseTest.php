@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class IfElseTest extends MysqlTestCase
 {
-    public function testIfElseWithoutNullValue()
+    public function testIfElseWithoutNullValue(): void
     {
         $this->assertDqlProducesSql(
             "SELECT IFELSE(2 < 3, 4, 5) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -16,7 +16,7 @@ class IfElseTest extends MysqlTestCase
         );
     }
 
-    public function testIfElseWithNullValue()
+    public function testIfElseWithNullValue(): void
     {
         $this->assertDqlProducesSql(
             "SELECT IFELSE(2 < 3, NULL, 5) from DoctrineExtensions\Tests\Entities\Blank b",

@@ -33,7 +33,7 @@ class StrfTimeTest extends SqliteTestCase
         );
     }
 
-    public function testStrfTime()
+    public function testStrfTime(): void
     {
         $this->assertDqlProducesSql(
             'SELECT StrfTime(\'%s\', p.created) as Time FROM DoctrineExtensions\Tests\Entities\Date p',

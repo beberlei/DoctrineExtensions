@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class CeilTest extends MysqlTestCase
 {
-    public function testCeil()
+    public function testCeil(): void
     {
         $this->assertDqlProducesSql(
             "SELECT CEIL(2) from DoctrineExtensions\Tests\Entities\Blank b",

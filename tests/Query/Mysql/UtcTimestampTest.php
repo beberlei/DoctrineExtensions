@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class UtcTimestampTest extends MysqlTestCase
 {
-    public function testUtcTimestamp()
+    public function testUtcTimestamp(): void
     {
         $dql = "SELECT d FROM DoctrineExtensions\Tests\Entities\Date d WHERE d.created > utc_timestamp()";
         $this->assertDqlProducesSql(

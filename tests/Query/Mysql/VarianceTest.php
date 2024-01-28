@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class VarianceTest extends MysqlTestCase
 {
-    public function testVariance()
+    public function testVariance(): void
     {
         $this->assertDqlProducesSql(
             "SELECT VARIANCE(2) from DoctrineExtensions\Tests\Entities\Blank b",

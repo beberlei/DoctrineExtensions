@@ -9,7 +9,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class StringTest extends MysqlTestCase
 {
-    public function testAscii()
+    public function testAscii(): void
     {
         $this->assertDqlProducesSql(
             "SELECT ASCII('A') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -20,17 +20,17 @@ class StringTest extends MysqlTestCase
     /**
      * Not implemented
      */
-    public function testCharLength()
+    public function testCharLength(): void
     {
         $this->expectException(QueryException::class);
 
         $this->assertDqlProducesSql(
-            "SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT CHAR_LENGTH(CHAR(0x65)), CHAR_LENGTH(CHAR(0x65 USING utf8)) AS sclr_0 FROM Blank b0_'
         );
     }
 
-    public function testConcatWithSeparator()
+    public function testConcatWithSeparator(): void
     {
         $this->assertDqlProducesSql(
             "SELECT CONCAT_WS(',', 'First name', 'Second name', 'Last Name') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -41,7 +41,7 @@ class StringTest extends MysqlTestCase
     /**
      * Not implemented
      */
-    public function testConcatWithSeparatorWithNull()
+    public function testConcatWithSeparatorWithNull(): void
     {
         $this->expectException(QueryException::class);
 
@@ -51,7 +51,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testField()
+    public function testField(): void
     {
         $this->assertDqlProducesSql(
             "SELECT FIELD('ej', 'Hej', 'ej', 'Heja', 'hej', 'foo') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -59,7 +59,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testReplace()
+    public function testReplace(): void
     {
         $this->assertDqlProducesSql(
             "SELECT REPLACE('www.mysql.com', 'w', 'Ww') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -67,7 +67,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testSoundex()
+    public function testSoundex(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SOUNDEX('Hello') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -78,7 +78,7 @@ class StringTest extends MysqlTestCase
     /**
      * Test cases for MYSQL SUBSTRING function.
      */
-    public function testSubstring()
+    public function testSubstring(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SUBSTRING('www.mysql.com', 1, 3) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -114,7 +114,7 @@ class StringTest extends MysqlTestCase
     /**
      * Test cases for MYSQL SUBSTRING_INDEX function.
      */
-    public function testSubstringIndex()
+    public function testSubstringIndex(): void
     {
         $this->assertDqlProducesSql(
             "SELECT SUBSTRING_INDEX('www.mysql.com', '.', 2) from DoctrineExtensions\Tests\Entities\Blank b",
@@ -138,7 +138,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testLeast()
+    public function testLeast(): void
     {
         $this->assertDqlProducesSql(
             'SELECT LEAST(10,1,-4,0.4,0.003) AS lest FROM DoctrineExtensions\Tests\Entities\Blank b',
@@ -156,7 +156,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testGreatest()
+    public function testGreatest(): void
     {
         $this->assertDqlProducesSql(
             "SELECT GREATEST(10,1,4,0.4,0.003) AS great FROM DoctrineExtensions\Tests\Entities\Blank b",
@@ -173,7 +173,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testLpad()
+    public function testLpad(): void
     {
         $this->assertDqlProducesSql(
             "SELECT LPAD('Hellow', 10, '**') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -181,7 +181,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testRpad()
+    public function testRpad(): void
     {
         $this->assertDqlProducesSql(
             "SELECT RPAD('Hellow', 10, '**') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -189,7 +189,7 @@ class StringTest extends MysqlTestCase
         );
     }
 
-    public function testInstr()
+    public function testInstr(): void
     {
         $this->assertDqlProducesSql(
             "SELECT INSTR('www.mysql.com', 'mysql') from DoctrineExtensions\Tests\Entities\Blank b",

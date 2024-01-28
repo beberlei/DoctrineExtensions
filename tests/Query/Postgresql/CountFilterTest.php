@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class CountFilterTest extends PostgresqlTestCase
 {
-    public function testCountFilter()
+    public function testCountFilter(): void
     {
         $dql = "SELECT COUNT_FILTER(b, WHERE b.id = :id) FROM DoctrineExtensions\Tests\Entities\Blank b";
         $q = $this->entityManager->createQuery($dql);

@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class HexTest extends MysqlTestCase
 {
-    public function testHex()
+    public function testHex(): void
     {
         $this->assertDqlProducesSql(
             "SELECT HEX(2) from DoctrineExtensions\Tests\Entities\Blank b",

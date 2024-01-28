@@ -8,7 +8,7 @@ use DoctrineExtensions\Tests\Query\OracleTestCase;
 
 class MinuteTest extends OracleTestCase
 {
-    public function testMinute()
+    public function testMinute(): void
     {
         $this->assertDqlProducesSql(
             "SELECT MINUTE(2) from DoctrineExtensions\Tests\Entities\Blank b",
