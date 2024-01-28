@@ -23,16 +23,25 @@ class ZendDateType extends Type
 {
     public const ZENDDATE = 'zenddate';
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return self::ZENDDATE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         return $platform->getDateTimeTypeDeclarationSQL($fieldDeclaration);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         return $value !== null
@@ -42,10 +51,15 @@ class ZendDateType extends Type
             : null;
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): void
+    /**
+     * {@inheritDoc}
+     *
+     * @return Zend_Date
+     */
+    public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if ($value === null) {
-            return;
+            return null;
         }
 
         $dateTimeFormatString = Zend_Locale_Format::convertPhpToIsoFormat(
@@ -60,6 +74,9 @@ class ZendDateType extends Type
         return $val;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;
