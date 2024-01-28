@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+/** @Entity */
 class Set
 {
     /**
@@ -16,8 +14,6 @@ class Set
      */
     public $id;
 
-    /**
-     * @Column(type="String")
-     */
+    /** @Column(type="String") */
     public $set;
 }

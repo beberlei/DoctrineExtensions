@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+/** @Entity */
 class Blank
 {
     /**

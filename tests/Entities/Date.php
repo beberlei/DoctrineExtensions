@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+/** @Entity */
 class Date
 {
     /**
@@ -16,8 +14,6 @@ class Date
      */
     public $id;
 
-    /**
-     * @Column(type="datetime")
-     */
+    /** @Column(type="datetime") */
     public $created;
 }
