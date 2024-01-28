@@ -28,7 +28,7 @@ class Atan extends FunctionNode
 
         return 'ATAN(' . $sqlWalker->walkSimpleArithmeticExpression(
             $this->arithmeticExpression
-        ) . (($secondArgument) ? ', ' . $secondArgument : '')
+        ) . ($secondArgument ? ', ' . $secondArgument : '')
         . ')';
     }
 

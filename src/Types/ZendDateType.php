@@ -35,7 +35,7 @@ class ZendDateType extends Type
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        return ($value !== null)
+        return $value !== null
             ? $value->toString(Zend_Locale_Format::convertPhpToIsoFormat(
                 $platform->getDateTimeFormatString()
             ))
