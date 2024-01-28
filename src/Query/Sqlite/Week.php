@@ -11,6 +11,7 @@ class Week extends NumberFromStrfTime
 {
     /**
      * Currently not in use
+     *
      * @var int
      */
     public $mode;

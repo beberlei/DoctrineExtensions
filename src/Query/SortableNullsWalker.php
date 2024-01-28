@@ -41,6 +41,7 @@ class SortableNullsWalker extends Query\SqlWalker
 
     /**
      * @param $orderByItem
+     *
      * @return array|string
      */
     public function walkOrderByItem($orderByItem)

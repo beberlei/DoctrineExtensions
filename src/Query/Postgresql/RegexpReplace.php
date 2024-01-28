@@ -10,8 +10,9 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
 /**
- * @example SELECT REGEXP_REPLACE(string, search, replace)
  * @link https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-POSIX-TABLE
+ *
+ * @example SELECT REGEXP_REPLACE(string, search, replace)
  */
 class RegexpReplace extends FunctionNode
 {

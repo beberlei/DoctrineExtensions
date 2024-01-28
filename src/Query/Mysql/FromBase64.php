@@ -12,9 +12,9 @@ use Doctrine\ORM\Query\SqlWalker;
 /**
  * "FROM_BASE64" "(" "$fieldIdentifierExpression" ")"
  *
- * @example SELECT FROM_BASE64(foo) FROM dual;
- *
  * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_from-base64
+ *
+ * @example SELECT FROM_BASE64(foo) FROM dual;
  */
 class FromBase64 extends FunctionNode
 {

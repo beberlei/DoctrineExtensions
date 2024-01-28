@@ -19,9 +19,9 @@ use function sprintf;
 /**
  * "CAST" "(" "$fieldIdentifierExpression" "AS" "$castingTypeExpression" ")"
  *
- * @example SELECT CAST(foo.bar AS SIGNED) FROM dual;
- *
  * @link https://dev.mysql.com/doc/refman/en/cast-functions.html#function_cast
+ *
+ * @example SELECT CAST(foo.bar AS SIGNED) FROM dual;
  */
 class Cast extends FunctionNode
 {

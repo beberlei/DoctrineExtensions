@@ -11,9 +11,9 @@ use function str_replace;
 class MysqlWalker extends SqlWalker
 {
     /**
-     * @inheritdoc
-     *
      * @return array|string
+     *
+     * @inheritdoc
      */
     public function walkSelectClause($selectClause)
     {
