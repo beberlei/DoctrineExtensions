@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
+use Doctrine\ORM\Query;
 use Doctrine\ORM\Version;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
@@ -185,28 +186,28 @@ class TrigTest extends MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    protected function getFirstDqlQuery($func)
+    protected function getFirstDqlQuery($func): Query
     {
         $dql = 'SELECT p FROM ' . $this->entity . ' p WHERE ' . $func . '(p.latitude) = 1';
 
         return $this->entityManager->createQuery($dql);
     }
 
-    protected function getFirstSqlQuery($func)
+    protected function getFirstSqlQuery($func): string
     {
         return 'SELECT b0_.id AS id_0, b0_.created AS created_1, '
         . 'b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 '
         . 'FROM BlogPost b0_ WHERE ' . $func . '(b0_.latitude) = 1';
     }
 
-    protected function getSecondDqlQuery($func)
+    protected function getSecondDqlQuery($func): Query
     {
         $dql = 'SELECT ' . $func . '(p.latitude) FROM ' . $this->entity . ' p';
 
         return $this->entityManager->createQuery($dql);
     }
 
-    protected function getSecondSqlQuery($func)
+    protected function getSecondSqlQuery($func): string
     {
         return 'SELECT ' . $func . '(b0_.latitude) AS sclr_0 FROM BlogPost b0_';
     }
