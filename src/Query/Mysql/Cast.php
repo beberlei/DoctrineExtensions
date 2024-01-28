@@ -53,7 +53,7 @@ class Cast extends FunctionNode
             if ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
                 while ($parser->getLexer()->isNextToken(Lexer::T_COMMA)) {
                     $parser->match(Lexer::T_COMMA);
-                    $parameter = $parser->Literal();
+                    $parameter    = $parser->Literal();
                     $parameters[] = $parameter->value;
                 }
             }

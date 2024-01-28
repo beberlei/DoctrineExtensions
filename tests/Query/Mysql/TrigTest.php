@@ -26,19 +26,19 @@ class TrigTest extends MysqlTestCase
         $this->_assertSecondQuery('SIN');
 
         $dql = "SELECT SIN(RADIANS(p.latitude)) FROM {$this->entity} p";
-        $q = $this->entityManager->createQuery($dql);
+        $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT SIN(RADIANS(b0_.latitude)) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT SIN(p.latitude * p.longitude) FROM {$this->entity} p";
-        $q = $this->entityManager->createQuery($dql);
+        $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT SIN(b0_.latitude * b0_.longitude) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT SIN(RADIANS(p.latitude) * RADIANS(p.longitude)) FROM {$this->entity} p";
-        $q = $this->entityManager->createQuery($dql);
+        $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT SIN(RADIANS(b0_.latitude) * RADIANS(b0_.longitude)) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
@@ -55,7 +55,7 @@ class TrigTest extends MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
 
         $dql = "SELECT p FROM {$this->entity} p WHERE SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) = 1";
-        $q = $this->entityManager->createQuery($dql);
+        $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT b0_.id AS id_0, b0_.created AS created_1, b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 FROM BlogPost b0_ WHERE SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) = 1';
         $this->assertEquals($sql, $q->getSql());
@@ -133,7 +133,7 @@ class TrigTest extends MysqlTestCase
 
         // test with 2 arguments
         $dql = "SELECT ATAN(p.latitude, p.longitude) FROM {$this->entity} p ";
-        $q = $this->entityManager->createQuery($dql);
+        $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT ATAN(b0_.latitude, b0_.longitude) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
@@ -142,7 +142,7 @@ class TrigTest extends MysqlTestCase
     public function testAtan2()
     {
         $dql = "SELECT ATAN2(p.latitude, p.longitude) FROM {$this->entity} p";
-        $q = $this->entityManager->createQuery($dql);
+        $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT ATAN2(b0_.latitude, b0_.longitude) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
@@ -150,8 +150,8 @@ class TrigTest extends MysqlTestCase
 
     public function testCosineLaw()
     {
-        $lat = 0.0;
-        $lng = 0.0;
+        $lat           = 0.0;
+        $lng           = 0.0;
         $radiusOfEarth = 6371;
 
         $cosineLaw = 'ACOS(SIN(' . deg2rad($lat) . ') * SIN(RADIANS(p.latitude)) '
@@ -173,14 +173,14 @@ class TrigTest extends MysqlTestCase
 
     protected function _assertFirstQuery($func)
     {
-        $q = $this->_getFirstDqlQuery($func);
+        $q   = $this->_getFirstDqlQuery($func);
         $sql = $this->_getFirstSqlQuery($func);
         $this->assertEquals($sql, $q->getSql());
     }
 
     protected function _assertSecondQuery($func)
     {
-        $q = $this->_getSecondDqlQuery($func);
+        $q   = $this->_getSecondDqlQuery($func);
         $sql = $this->_getSecondSqlQuery($func);
         $this->assertEquals($sql, $q->getSql());
     }

@@ -60,8 +60,8 @@ class CarbonDateTest extends TestCase
             $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\CarbonDate'),
         ]);
 
-        $entity = new Entity();
-        $entity->id = 1;
+        $entity                        = new Entity();
+        $entity->id                    = 1;
         $entity->date                  = Carbon::createFromDate(2015, 1, 1);
         $entity->datetime              = Carbon::create(2015, 1, 1, 0, 0, 0);
         $entity->datetime_tz           = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
@@ -87,8 +87,8 @@ class CarbonDateTest extends TestCase
 
     public function testDateSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->date = Carbon::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
@@ -105,8 +105,8 @@ class CarbonDateTest extends TestCase
 
     public function testDateTimeSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity           = new Entity();
+        $entity->id       = 2;
         $entity->datetime = Carbon::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
@@ -123,8 +123,8 @@ class CarbonDateTest extends TestCase
 
     public function testDateTimeTzSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity              = new Entity();
+        $entity->id          = 2;
         $entity->datetime_tz = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
@@ -141,8 +141,8 @@ class CarbonDateTest extends TestCase
 
     public function testTimeSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->time = Carbon::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);
@@ -162,8 +162,8 @@ class CarbonDateTest extends TestCase
 
     public function testImmutableDateSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->date = CarbonImmutable::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
@@ -180,8 +180,8 @@ class CarbonDateTest extends TestCase
 
     public function testImmutableDateTimeSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity           = new Entity();
+        $entity->id       = 2;
         $entity->datetime = CarbonImmutable::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
@@ -198,8 +198,8 @@ class CarbonDateTest extends TestCase
 
     public function testImmutableDateTimeTzSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity              = new Entity();
+        $entity->id          = 2;
         $entity->datetime_tz = CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
@@ -216,8 +216,8 @@ class CarbonDateTest extends TestCase
 
     public function testImmutableTimeSetter()
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->time = CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);

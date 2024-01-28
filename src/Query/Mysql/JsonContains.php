@@ -41,7 +41,7 @@ class JsonContains extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        $target = $sqlWalker->walkStringPrimary($this->target);
+        $target    = $sqlWalker->walkStringPrimary($this->target);
         $candidate = $sqlWalker->walkStringPrimary($this->candidate);
 
         if ($this->path !== null) {

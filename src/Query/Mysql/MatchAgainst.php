@@ -34,7 +34,7 @@ class MatchAgainst extends FunctionNode
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
         // first Path Expression is mandatory
-        $this->pathExp = [];
+        $this->pathExp   = [];
         $this->pathExp[] = $parser->StateFieldPathExpression();
 
         // Subsequent Path Expressions are optional

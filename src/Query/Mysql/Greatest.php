@@ -22,7 +22,7 @@ class Greatest extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $this->field = $parser->ArithmeticExpression();
-        $lexer = $parser->getLexer();
+        $lexer       = $parser->getLexer();
 
         while (
             count($this->values) < 1 ||

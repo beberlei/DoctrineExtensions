@@ -45,7 +45,7 @@ class SortableNullsWalker extends Query\SqlWalker
      */
     public function walkOrderByItem($orderByItem)
     {
-        $sql = parent::walkOrderByItem($orderByItem);
+        $sql  = parent::walkOrderByItem($orderByItem);
         $hint = $this->getQuery()->getHint('sortableNulls.fields');
         $expr = $orderByItem->expression;
         $type = strtoupper($orderByItem->type);
@@ -57,9 +57,9 @@ class SortableNullsWalker extends Query\SqlWalker
                     $expr->type === Query\AST\PathExpression::TYPE_STATE_FIELD
             ) {
                 $fieldName = $expr->field;
-                $dqlAlias = $expr->identificationVariable;
-                $search = $this->walkPathExpression($expr) . ' ' . $type;
-                $index = $dqlAlias . '.' . $fieldName;
+                $dqlAlias  = $expr->identificationVariable;
+                $search    = $this->walkPathExpression($expr) . ' ' . $type;
+                $index     = $dqlAlias . '.' . $fieldName;
                 if (isset($hint[$index])) {
                     $sql = str_replace($search, $search . ' ' . $hint[$index], $sql);
                 }

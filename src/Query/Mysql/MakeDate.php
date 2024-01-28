@@ -11,7 +11,7 @@ use Doctrine\ORM\Query\SqlWalker;
 
 class MakeDate extends FunctionNode
 {
-    public $year      = null;
+    public $year = null;
 
     public $dayOfYear = null;
 
