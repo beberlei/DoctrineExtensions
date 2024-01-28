@@ -11,7 +11,7 @@ class CotTest extends MysqlTestCase
     public function testCot(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT COT(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT COT(2) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT COT(2) AS sclr_0 FROM Blank b0_'
         );
     }

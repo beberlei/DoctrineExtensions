@@ -96,17 +96,17 @@ class StringTest extends MysqlTestCase
         );
 
         $this->assertDqlProducesSql(
-            "SELECT SUBSTRING(b.id, 5, 5) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT SUBSTRING(b.id, 5, 5) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT SUBSTR(b0_.id, 5, 5) AS sclr_0 FROM Blank b0_'
         );
 
         $this->assertDqlProducesSql(
-            "SELECT SUBSTRING(b.id, 5) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT SUBSTRING(b.id, 5) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT SUBSTR(b0_.id, 5, LENGTH(b0_.id)) AS sclr_0 FROM Blank b0_'
         );
 
         $this->assertDqlProducesSql(
-            "SELECT SUBSTRING(b.id, -5, 2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT SUBSTRING(b.id, -5, 2) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT SUBSTR(b0_.id, -5, 2) AS sclr_0 FROM Blank b0_'
         );
     }
@@ -159,7 +159,7 @@ class StringTest extends MysqlTestCase
     public function testGreatest(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT GREATEST(10,1,4,0.4,0.003) AS great FROM DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT GREATEST(10,1,4,0.4,0.003) AS great FROM DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT GREATEST(10, 1, 4, 0.4, 0.003) AS sclr_0 FROM Blank b0_'
         );
 
@@ -168,7 +168,7 @@ class StringTest extends MysqlTestCase
             "SELECT GREATEST('M', 'N', 'o', 'c', 'C') AS sclr_0 FROM Blank b0_"
         );
         $this->assertDqlProducesSql(
-            "SELECT GREATEST(b.id, 15) AS great FROM DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT GREATEST(b.id, 15) AS great FROM DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT GREATEST(b0_.id, 15) AS sclr_0 FROM Blank b0_'
         );
     }

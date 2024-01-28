@@ -10,7 +10,7 @@ class MysqlWalkerTest extends MysqlTestCase
 {
     public function testSelectSQLCalcFoundRows(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p';
         $q   = $this->entityManager->createQuery($dql);
         $q->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Query\MysqlWalker');
         $q->setHint('mysqlWalker.sqlCalcFoundRows', true);
@@ -21,7 +21,7 @@ class MysqlWalkerTest extends MysqlTestCase
 
     public function testSelectSQLNoCache(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p';
         $q   = $this->entityManager->createQuery($dql);
         $q->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Query\MysqlWalker');
         $q->setHint('mysqlWalker.sqlNoCache', true);
@@ -32,7 +32,7 @@ class MysqlWalkerTest extends MysqlTestCase
 
     public function testGroupByWithRollup(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p GROUP BY p.id";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p GROUP BY p.id';
         $q   = $this->entityManager->createQuery($dql);
         $q->setHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'DoctrineExtensions\Query\MysqlWalker');
         $q->setHint('mysqlWalker.withRollup', true);

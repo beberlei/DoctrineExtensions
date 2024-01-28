@@ -13,7 +13,7 @@ class DateTest extends MysqlTestCase
 {
     public function testDateDiff(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEDIFF(CURRENT_TIME(), p.created) < 7";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEDIFF(CURRENT_TIME(), p.created) < 7';
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATEDIFF(CURRENT_TIME, d0_.created) < 7';
 
         $this->assertDqlProducesSql($dql, $sql);
@@ -85,7 +85,7 @@ class DateTest extends MysqlTestCase
 
     public function testStrToDate(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime';
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?';
 
         $this->assertDqlProducesSql($dql, $sql, [
@@ -96,7 +96,7 @@ class DateTest extends MysqlTestCase
 
     public function testUnixTimpestamp(): void
     {
-        $dql = "SELECT UNIX_TIMESTAMP(p.created) FROM DoctrineExtensions\Tests\Entities\Date p";
+        $dql = 'SELECT UNIX_TIMESTAMP(p.created) FROM DoctrineExtensions\Tests\Entities\Date p';
         $sql = 'SELECT UNIX_TIMESTAMP(d0_.created) AS sclr_0 FROM Date d0_';
 
         $this->assertDqlProducesSql($dql, $sql);
