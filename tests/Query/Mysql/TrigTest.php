@@ -22,8 +22,8 @@ class TrigTest extends MysqlTestCase
 
     public function testSin(): void
     {
-        $this->_assertFirstQuery('SIN');
-        $this->_assertSecondQuery('SIN');
+        $this->assertFirstQuery('SIN');
+        $this->assertSecondQuery('SIN');
 
         $dql = 'SELECT SIN(RADIANS(p.latitude)) FROM ' . $this->entity . ' p';
         $q   = $this->entityManager->createQuery($dql);
@@ -74,14 +74,14 @@ class TrigTest extends MysqlTestCase
 
     public function testAsin(): void
     {
-        $this->_assertFirstQuery('ASIN');
-        $this->_assertSecondQuery('ASIN');
+        $this->assertFirstQuery('ASIN');
+        $this->assertSecondQuery('ASIN');
     }
 
     public function testAcos(): void
     {
-        $this->_assertFirstQuery('ACOS');
-        $this->_assertSecondQuery('ACOS');
+        $this->assertFirstQuery('ACOS');
+        $this->assertSecondQuery('ACOS');
 
         if (Version::compare('2.4.0') <= 0) {
             $dql = 'SELECT ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1 FROM ' . $this->entity . ' p';
@@ -97,39 +97,39 @@ class TrigTest extends MysqlTestCase
 
     public function testCos(): void
     {
-        $this->_assertFirstQuery('COS');
-        $this->_assertSecondQuery('COS');
+        $this->assertFirstQuery('COS');
+        $this->assertSecondQuery('COS');
     }
 
     public function testCot(): void
     {
-        $this->_assertFirstQuery('COT');
-        $this->_assertSecondQuery('COT');
+        $this->assertFirstQuery('COT');
+        $this->assertSecondQuery('COT');
     }
 
     public function testDegrees(): void
     {
-        $this->_assertFirstQuery('DEGREES');
-        $this->_assertSecondQuery('DEGREES');
+        $this->assertFirstQuery('DEGREES');
+        $this->assertSecondQuery('DEGREES');
     }
 
     public function testRadians(): void
     {
-        $this->_assertFirstQuery('RADIANS');
-        $this->_assertSecondQuery('RADIANS');
+        $this->assertFirstQuery('RADIANS');
+        $this->assertSecondQuery('RADIANS');
     }
 
     public function testTan(): void
     {
-        $this->_assertFirstQuery('TAN');
-        $this->_assertSecondQuery('TAN');
+        $this->assertFirstQuery('TAN');
+        $this->assertSecondQuery('TAN');
     }
 
     public function testAtan(): void
     {
         // test with 1 argument
-        $this->_assertFirstQuery('ATAN');
-        $this->_assertSecondQuery('ATAN');
+        $this->assertFirstQuery('ATAN');
+        $this->assertSecondQuery('ATAN');
 
         // test with 2 arguments
         $dql = 'SELECT ATAN(p.latitude, p.longitude) FROM ' . $this->entity . ' p ';
@@ -171,42 +171,42 @@ class TrigTest extends MysqlTestCase
         $this->assertEquals($sql, $q->getSql());
     }
 
-    protected function _assertFirstQuery($func): void
+    protected function assertFirstQuery($func): void
     {
-        $q   = $this->_getFirstDqlQuery($func);
-        $sql = $this->_getFirstSqlQuery($func);
+        $q   = $this->getFirstDqlQuery($func);
+        $sql = $this->getFirstSqlQuery($func);
         $this->assertEquals($sql, $q->getSql());
     }
 
-    protected function _assertSecondQuery($func): void
+    protected function assertSecondQuery($func): void
     {
-        $q   = $this->_getSecondDqlQuery($func);
-        $sql = $this->_getSecondSqlQuery($func);
+        $q   = $this->getSecondDqlQuery($func);
+        $sql = $this->getSecondSqlQuery($func);
         $this->assertEquals($sql, $q->getSql());
     }
 
-    protected function _getFirstDqlQuery($func)
+    protected function getFirstDqlQuery($func)
     {
         $dql = 'SELECT p FROM ' . $this->entity . ' p WHERE ' . $func . '(p.latitude) = 1';
 
         return $this->entityManager->createQuery($dql);
     }
 
-    protected function _getFirstSqlQuery($func)
+    protected function getFirstSqlQuery($func)
     {
         return 'SELECT b0_.id AS id_0, b0_.created AS created_1, '
         . 'b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 '
         . 'FROM BlogPost b0_ WHERE ' . $func . '(b0_.latitude) = 1';
     }
 
-    protected function _getSecondDqlQuery($func)
+    protected function getSecondDqlQuery($func)
     {
         $dql = 'SELECT ' . $func . '(p.latitude) FROM ' . $this->entity . ' p';
 
         return $this->entityManager->createQuery($dql);
     }
 
-    protected function _getSecondSqlQuery($func)
+    protected function getSecondSqlQuery($func)
     {
         return 'SELECT ' . $func . '(b0_.latitude) AS sclr_0 FROM BlogPost b0_';
     }
