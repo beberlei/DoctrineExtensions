@@ -4,10 +4,16 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/** @Entity @Table */
+/**
+ * @Entity
+ * @Table
+ */
 class ZendDate
 {
-    /** @Id @Column(type="integer") */
+    /**
+     * @Id
+     * @Column(type="integer")
+     */
     public $id;
 
     /** @Column(type="ZendDate") */

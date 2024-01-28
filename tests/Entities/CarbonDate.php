@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/** @Entity @Table */
+/**
+ * @Entity
+ * @Table
+ */
 class CarbonDate
 {
     /**
-     * @Id @Column(type="integer") */
+     * @Id
+     * @Column(type="integer")
+     */
     public $id;
 
     /** @Column(type="CarbonDate", nullable=true) */
@@ -18,20 +23,20 @@ class CarbonDate
     public $datetime;
 
     /** @Column(type="CarbonDateTimeTz", nullable=true) */
-    public $datetime_tz;
+    public $datetimeTz;
 
     /** @Column(type="CarbonTime", nullable=true) */
     public $time;
 
     /** @Column(type="CarbonImmutableDate", nullable=true) */
-    public $date_immutable;
+    public $dateImmutable;
 
     /** @Column(type="CarbonImmutableDateTime", nullable=true) */
-    public $datetime_immutable;
+    public $datetimeImmutable;
 
     /** @Column(type="CarbonImmutableDateTimeTz", nullable=true) */
-    public $datetime_tz_immutable;
+    public $datetimeTzImmutable;
 
     /** @Column(type="CarbonImmutableTime", nullable=true) */
-    public $time_immutable;
+    public $timeImmutable;
 }
