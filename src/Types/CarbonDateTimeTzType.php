@@ -15,7 +15,7 @@ class CarbonDateTimeTzType extends DateTimeTzType
 
     public function getName()
     {
-        return static::CARBONDATETIMETZ;
+        return self::CARBONDATETIMETZ;
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)

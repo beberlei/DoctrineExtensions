@@ -15,7 +15,7 @@ class CarbonTimeType extends TimeType
 
     public function getName()
     {
-        return static::CARBONTIME;
+        return self::CARBONTIME;
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)

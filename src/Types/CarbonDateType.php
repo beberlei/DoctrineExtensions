@@ -15,7 +15,7 @@ class CarbonDateType extends DateType
 
     public function getName()
     {
-        return static::CARBONDATE;
+        return self::CARBONDATE;
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
