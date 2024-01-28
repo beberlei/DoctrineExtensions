@@ -39,11 +39,13 @@ class ConfigLoader
                 $configuration->addCustomDatetimeFunction(strtoupper($key), $value);
             }
         }
+
         if (array_key_exists('numeric_functions', $parsed)) {
             foreach ($parsed[ 'numeric_functions' ] as $key => $value) {
                 $configuration->addCustomNumericFunction(strtoupper($key), $value);
             }
         }
+
         if (array_key_exists('string_functions', $parsed)) {
             foreach ($parsed[ 'string_functions' ] as $key => $value) {
                 $configuration->addCustomStringFunction(strtoupper($key), $value);

@@ -56,6 +56,7 @@ class GroupConcat extends FunctionNode
             if (strtolower($lexer->lookahead->value) !== 'separator') {
                 $parser->syntaxError('separator');
             }
+
             $parser->match(Lexer::T_IDENTIFIER);
 
             $this->separator = $parser->StringPrimary();

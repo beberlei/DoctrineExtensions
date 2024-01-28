@@ -28,6 +28,7 @@ class IfElse extends FunctionNode
         } else {
             $this->expr[] = $parser->ArithmeticExpression();
         }
+
         $parser->match(Lexer::T_COMMA);
         if ($parser->getLexer()->isNextToken(Lexer::T_NULL)) {
             $parser->match(Lexer::T_NULL);

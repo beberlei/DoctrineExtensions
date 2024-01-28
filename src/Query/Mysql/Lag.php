@@ -28,6 +28,7 @@ class Lag extends FunctionNode
         if (isset($this->offset, $this->defaultValue)) {
             return 'LAG(' . $sqlWalker->walkAggregateExpression($this->aggregateExpression) . ', ' . $sqlWalker->walkArithmeticPrimary($this->offset) . ', ' . $sqlWalker->walkSimpleArithmeticExpression($this->defaultValue) . ')';
         }
+
         if (isset($this->offset)) {
             return 'LAG(' . $sqlWalker->walkAggregateExpression($this->aggregateExpression) . ', ' . $sqlWalker->walkArithmeticPrimary($this->offset) . ')';
         }
@@ -46,6 +47,7 @@ class Lag extends FunctionNode
             $parser->match(Lexer::T_COMMA);
             $this->offset = $parser->ArithmeticPrimary();
         }
+
         if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $parser->match(Lexer::T_COMMA);
             $this->defaultValue = $parser->SimpleArithmeticExpression();

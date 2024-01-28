@@ -41,11 +41,13 @@ class Listagg extends FunctionNode
             $parser->match(Lexer::T_COMMA);
             $this->separator = $parser->StringExpression();
         }
+
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
         if (! $lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'within') {
             $parser->syntaxError('WITHIN GROUP');
         }
+
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_GROUP);
 
@@ -57,12 +59,14 @@ class Listagg extends FunctionNode
             if (strtolower($lexer->lookahead->value) !== 'over') {
                 $parser->syntaxError('OVER');
             }
+
             $parser->match(Lexer::T_IDENTIFIER);
             $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
             if (! $lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'partition') {
                 $parser->syntaxError('PARTITION BY');
             }
+
             $parser->match(Lexer::T_IDENTIFIER);
             $parser->match(Lexer::T_BY);
 

@@ -28,6 +28,7 @@ class Lead extends FunctionNode
         if (isset($this->offset, $this->defaultValue)) {
             return 'LEAD(' . $sqlWalker->walkAggregateExpression($this->aggregateExpression) . ', ' . $sqlWalker->walkArithmeticPrimary($this->offset) . ', ' . $sqlWalker->walkSimpleArithmeticExpression($this->defaultValue) . ')';
         }
+
         if (isset($this->offset)) {
             return 'LEAD(' . $sqlWalker->walkAggregateExpression($this->aggregateExpression) . ', ' . $sqlWalker->walkArithmeticPrimary($this->offset) . ')';
         }
@@ -46,6 +47,7 @@ class Lead extends FunctionNode
             $parser->match(Lexer::T_COMMA);
             $this->offset = $parser->ArithmeticPrimary();
         }
+
         if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $parser->match(Lexer::T_COMMA);
             $this->defaultValue = $parser->SimpleArithmeticExpression();

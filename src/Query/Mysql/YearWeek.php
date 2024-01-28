@@ -21,6 +21,7 @@ class YearWeek extends FunctionNode
         if ($this->mode !== null) {
             $sql .= ', ' . $sqlWalker->walkLiteral($this->mode);
         }
+
         $sql .= ')';
 
         return $sql;

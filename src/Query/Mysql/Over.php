@@ -40,6 +40,7 @@ class Over extends FunctionNode
             $parser->match(Lexer::T_COMMA);
             $this->orderByClause = $parser->OrderByClause();
         }
+
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 }
