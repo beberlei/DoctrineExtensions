@@ -26,7 +26,7 @@ class DbTestCase extends TestCase
         $this->configuration->setProxyNamespace('DoctrineExtensions\Tests\Proxies');
         $this->configuration->setAutoGenerateProxyClasses(true);
         $this->configuration->setMetadataDriverImpl($this->configuration->newDefaultAnnotationDriver(__DIR__ . '/../Entities'));
-        $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true ], $this->configuration);
+        $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true], $this->configuration);
     }
 
     public function assertDqlProducesSql($actualDql, $expectedSql, $params = []): void
