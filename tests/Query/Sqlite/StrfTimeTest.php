@@ -10,7 +10,8 @@ use function sprintf;
 
 class StrfTimeTest extends SqliteTestCase
 {
-    public function getFunctionFormatters()
+    /** @return array<int, array<int, string>> */
+    public function getFunctionFormatters(): array
     {
         return [
             ['Year', '%Y'],
