@@ -56,8 +56,12 @@ class ZendDateTest extends TestCase
         ]);
 
         $this->em->persist(new ZendDate(1, new Zend_Date([
-            'year' => 2012, 'month' => 11, 'day' => 10,
-            'hour' => 9, 'minute' => 8, 'second' => 7,
+            'year' => 2012,
+            'month' => 11,
+            'day' => 10,
+            'hour' => 9,
+            'minute' => 8,
+            'second' => 7,
         ])));
 
         $this->em->flush();
@@ -69,16 +73,24 @@ class ZendDateTest extends TestCase
 
         $this->assertInstanceOf('Zend_Date', $entity->date);
         $this->assertTrue($entity->date->equals(new Zend_Date([
-            'year' => 2012, 'month' => 11, 'day' => 10,
-            'hour' => 9, 'minute' => 8, 'second' => 7,
+            'year' => 2012,
+            'month' => 11,
+            'day' => 10,
+            'hour' => 9,
+            'minute' => 8,
+            'second' => 7,
         ])));
     }
 
     public function testSetZendDate()
     {
         $zendDate = new Zend_Date([
-            'year' => 2012, 'month' => 11, 'day' => 10,
-            'hour' => 9, 'minute' => 8, 'second' => 7,
+            'year' => 2012,
+            'month' => 11,
+            'day' => 10,
+            'hour' => 9,
+            'minute' => 8,
+            'second' => 7,
         ]);
 
         $entity = new ZendDate(2, $zendDate);
