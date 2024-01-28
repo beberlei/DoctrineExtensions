@@ -25,28 +25,28 @@ class TrigTest extends MysqlTestCase
         $this->_assertFirstQuery('SIN');
         $this->_assertSecondQuery('SIN');
 
-        $dql = "SELECT SIN(RADIANS(p.latitude)) FROM {$this->entity} p";
+        $dql = 'SELECT SIN(RADIANS(p.latitude)) FROM ' . $this->entity . ' p';
         $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT SIN(RADIANS(b0_.latitude)) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
 
-        $dql = "SELECT SIN(p.latitude * p.longitude) FROM {$this->entity} p";
+        $dql = 'SELECT SIN(p.latitude * p.longitude) FROM ' . $this->entity . ' p';
         $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT SIN(b0_.latitude * b0_.longitude) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
 
-        $dql = "SELECT SIN(RADIANS(p.latitude) * RADIANS(p.longitude)) FROM {$this->entity} p";
+        $dql = 'SELECT SIN(RADIANS(p.latitude) * RADIANS(p.longitude)) FROM ' . $this->entity . ' p';
         $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT SIN(RADIANS(b0_.latitude) * RADIANS(b0_.longitude)) AS sclr_0 FROM BlogPost b0_';
         $this->assertEquals($sql, $q->getSql());
 
         if (Version::compare('2.4.0') <= 0) {
-            $dql = "SELECT p FROM {$this->entity} p WHERE p.longitude = SIN(RADIANS(p.latitude)) * RADIANS(p.longitude)";
+            $dql = 'SELECT p FROM ' . $this->entity . ' p WHERE p.longitude = SIN(RADIANS(p.latitude)) * RADIANS(p.longitude)';
         } else {
-            $dql = "SELECT p FROM {$this->entity} p WHERE p.longitude = (SIN(RADIANS(p.latitude)) * RADIANS(p.longitude))";
+            $dql = 'SELECT p FROM ' . $this->entity . ' p WHERE p.longitude = (SIN(RADIANS(p.latitude)) * RADIANS(p.longitude))';
         }
 
         $q = $this->entityManager->createQuery($dql);
@@ -54,16 +54,16 @@ class TrigTest extends MysqlTestCase
         $sql = 'SELECT b0_.id AS id_0, b0_.created AS created_1, b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 FROM BlogPost b0_ WHERE b0_.longitude = SIN(RADIANS(b0_.latitude)) * RADIANS(b0_.longitude)';
         $this->assertEquals($sql, $q->getSql());
 
-        $dql = "SELECT p FROM {$this->entity} p WHERE SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) = 1";
+        $dql = 'SELECT p FROM ' . $this->entity . ' p WHERE SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) = 1';
         $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT b0_.id AS id_0, b0_.created AS created_1, b0_.longitude AS longitude_2, b0_.latitude AS latitude_3 FROM BlogPost b0_ WHERE SIN(RADIANS(b0_.latitude)) * SIN(RADIANS(b0_.longitude)) = 1';
         $this->assertEquals($sql, $q->getSql());
 
         if (Version::compare('2.4.0') <= 0) {
-            $dql = "SELECT SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) FROM {$this->entity} p ";
+            $dql = 'SELECT SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude)) FROM ' . $this->entity . ' p ';
         } else {
-            $dql = "SELECT (SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude))) FROM {$this->entity} p ";
+            $dql = 'SELECT (SIN(RADIANS(p.latitude)) * SIN(RADIANS(p.longitude))) FROM ' . $this->entity . ' p ';
         }
 
         $q = $this->entityManager->createQuery($dql);
@@ -84,9 +84,9 @@ class TrigTest extends MysqlTestCase
         $this->_assertSecondQuery('ACOS');
 
         if (Version::compare('2.4.0') <= 0) {
-            $dql = "SELECT ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1 FROM {$this->entity} p";
+            $dql = 'SELECT ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1 FROM ' . $this->entity . ' p';
         } else {
-            $dql = "SELECT (ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1) FROM {$this->entity} p";
+            $dql = 'SELECT (ACOS(SIN(RADIANS(p.latitude)) + SIN(RADIANS(p.longitude))) * 1) FROM ' . $this->entity . ' p';
         }
 
         $q = $this->entityManager->createQuery($dql);
@@ -132,7 +132,7 @@ class TrigTest extends MysqlTestCase
         $this->_assertSecondQuery('ATAN');
 
         // test with 2 arguments
-        $dql = "SELECT ATAN(p.latitude, p.longitude) FROM {$this->entity} p ";
+        $dql = 'SELECT ATAN(p.latitude, p.longitude) FROM ' . $this->entity . ' p ';
         $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT ATAN(b0_.latitude, b0_.longitude) AS sclr_0 FROM BlogPost b0_';
@@ -141,7 +141,7 @@ class TrigTest extends MysqlTestCase
 
     public function testAtan2(): void
     {
-        $dql = "SELECT ATAN2(p.latitude, p.longitude) FROM {$this->entity} p";
+        $dql = 'SELECT ATAN2(p.latitude, p.longitude) FROM ' . $this->entity . ' p';
         $q   = $this->entityManager->createQuery($dql);
 
         $sql = 'SELECT ATAN2(b0_.latitude, b0_.longitude) AS sclr_0 FROM BlogPost b0_';
@@ -160,9 +160,9 @@ class TrigTest extends MysqlTestCase
                 . ') * ' . $radiusOfEarth;
 
         if (Version::compare('2.4.0') <= 0) {
-            $dql = 'SELECT ' . $cosineLaw . " FROM {$this->entity} p";
+            $dql = 'SELECT ' . $cosineLaw . ' FROM ' . $this->entity . ' p';
         } else {
-            $dql = 'SELECT (' . $cosineLaw . ") FROM {$this->entity} p";
+            $dql = 'SELECT (' . $cosineLaw . ') FROM ' . $this->entity . ' p';
         }
 
         $q = $this->entityManager->createQuery($dql);
@@ -187,7 +187,7 @@ class TrigTest extends MysqlTestCase
 
     protected function _getFirstDqlQuery($func)
     {
-        $dql = "SELECT p FROM {$this->entity} p WHERE " . $func . '(p.latitude) = 1';
+        $dql = 'SELECT p FROM ' . $this->entity . ' p WHERE ' . $func . '(p.latitude) = 1';
 
         return $this->entityManager->createQuery($dql);
     }
@@ -201,7 +201,7 @@ class TrigTest extends MysqlTestCase
 
     protected function _getSecondDqlQuery($func)
     {
-        $dql = 'SELECT ' . $func . "(p.latitude) FROM {$this->entity} p";
+        $dql = 'SELECT ' . $func . '(p.latitude) FROM ' . $this->entity . ' p';
 
         return $this->entityManager->createQuery($dql);
     }
