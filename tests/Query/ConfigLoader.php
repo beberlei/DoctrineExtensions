@@ -14,13 +14,13 @@ use function strtoupper;
 
 class ConfigLoader
 {
-    const MYSQL    = 'mysql';
+    public const MYSQL = 'mysql';
 
-    const ORACLE   = 'oracle';
+    public const ORACLE = 'oracle';
 
-    const POSTGRES = 'postgres';
+    public const POSTGRES = 'postgres';
 
-    const SQLITE   = 'sqlite';
+    public const SQLITE = 'sqlite';
 
     /**
      * @param Configuration $configuration
