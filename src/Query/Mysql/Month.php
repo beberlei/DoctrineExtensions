@@ -7,6 +7,10 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+/**
+ * @author Rafael Kassner <kassner@gmail.com>
+ * @author Sarjono Mukti Aji <me@simukti.net>
+ */
 class Month extends FunctionNode
 {
     public $date;

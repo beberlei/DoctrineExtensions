@@ -9,7 +9,10 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
-/** @link https://dev.mysql.com/doc/refman/en/charset-collate.html */
+/**
+ * @link https://dev.mysql.com/doc/refman/en/charset-collate.html
+ * @author Peter Tanath <peter.tanath@gmail.com>
+ */
 class Collate extends FunctionNode
 {
     /** @var null */

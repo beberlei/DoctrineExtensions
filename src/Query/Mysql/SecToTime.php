@@ -11,6 +11,7 @@ use Doctrine\ORM\Query\SqlWalker;
  * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_sec-to-time
  *
  * @example SELECT SEC_TO_TIME(2378);
+ * @author Clemens Bastian <clemens.bastian@gmail.com>
  */
 class SecToTime extends FunctionNode
 {

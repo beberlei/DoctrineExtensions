@@ -10,6 +10,9 @@ use Doctrine\ORM\Query\SqlWalker;
 use function in_array;
 use function strtoupper;
 
+/**
+ * @author Ahwalian Masykur <ahwalian@gmail.com>
+ */
 class Extract extends DateAdd
 {
     public $date = null;

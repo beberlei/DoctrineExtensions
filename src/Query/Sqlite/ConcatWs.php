@@ -12,6 +12,9 @@ use function implode;
 use function sprintf;
 use function strtolower;
 
+/**
+ * @author Bas de Ruiter <winkbrace@gmail.com>
+ */
 class ConcatWs extends FunctionNode
 {
     private $values = [];

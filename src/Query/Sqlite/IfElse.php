@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Mikhail Bubnov <bubnov.mihail@gmail.com>
+ */
 class IfElse extends FunctionNode
 {
     private $expr = [];

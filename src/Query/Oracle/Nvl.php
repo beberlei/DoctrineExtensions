@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Andréia Bohner <andreiabohner@gmail.com>
+ */
 class Nvl extends FunctionNode
 {
     private $expr1;

@@ -9,6 +9,9 @@ use function in_array;
 use function is_string;
 use function strtoupper;
 
+/**
+ * @author Vas N <phpvas@gmail.com>
+ */
 class DateSub extends DateAdd
 {
     /** @throws QueryException */

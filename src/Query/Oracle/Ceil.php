@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Jefferson Vantuir <jefferson.behling@gmail.com>
+ */
 class Ceil extends FunctionNode
 {
     private $number;

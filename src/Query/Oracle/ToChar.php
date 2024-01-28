@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Cédric Bertolini <bertolini.cedric@me.com>
+ */
 class ToChar extends FunctionNode
 {
     private $datetime;

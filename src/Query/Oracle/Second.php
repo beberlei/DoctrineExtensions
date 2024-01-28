@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Andréia Bohner <andreiabohner@gmail.com>
+ */
 class Second extends FunctionNode
 {
     private $date;

@@ -7,6 +7,9 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+/**
+ * @author Igor Timoshenko <igor.timoshenko@i.ua>
+ */
 class Crc32 extends FunctionNode
 {
     public $stringPrimary;

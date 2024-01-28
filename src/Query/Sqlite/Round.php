@@ -7,6 +7,9 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+/**
+ * @author winkbrace <winkbrace@gmail.com>
+ */
 class Round extends FunctionNode
 {
     private $firstExpression = null;

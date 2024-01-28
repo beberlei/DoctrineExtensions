@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Jefferson Vantuir <jefferson.behling@gmail.com>
+ */
 class Floor extends FunctionNode
 {
     private $number;

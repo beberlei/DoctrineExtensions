@@ -13,6 +13,9 @@ use function count;
 use function implode;
 use function strtolower;
 
+/**
+ * @author Alexey Kalinin <nitso@yandex.ru>
+ */
 class Listagg extends FunctionNode
 {
     /** @var Node */

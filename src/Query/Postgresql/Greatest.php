@@ -9,6 +9,11 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function count;
 
+/**
+ * @author Vas N <phpvas@gmail.com>
+ * @author Guven Atbakan <guven@atbakan.com>
+ * @author Leonardo B Motyczka <leomoty@gmail.com>
+ */
 class Greatest extends FunctionNode
 {
     private $field = null;

@@ -10,6 +10,10 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Roberto Júnior <me@robertojunior.net>
+ * @author Vaskevich Eugeniy <wbrframe@gmail.com>
+ */
 class StringAgg extends FunctionNode
 {
     private $orderBy = null;

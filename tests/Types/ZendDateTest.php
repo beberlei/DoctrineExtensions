@@ -16,6 +16,8 @@ use function assert;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
+ *
+ * @author Andreas Gallien <gallien@seleos.de>
  */
 class ZendDateTest extends TestCase
 {

@@ -9,6 +9,10 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author      Rafael Kassner <kassner@gmail.com>
+ * @author      Oleg Khussainov <getmequick@gmail.com>
+ */
 class UnixTimestamp extends FunctionNode
 {
     public $date;

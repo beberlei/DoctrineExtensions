@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\SqlWalker;
 
 use function sprintf;
 
+/**
+ * @author Toni Uebernickel <tuebernickel@gmail.com>
+ */
 class Std extends FunctionNode
 {
     public $arithmeticExpression;
