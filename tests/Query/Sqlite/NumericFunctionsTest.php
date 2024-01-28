@@ -15,10 +15,10 @@ class NumericFunctionsTest extends SqliteTestCase
     {
         $dql = 'SELECT ROUND(1.2345, 2) as outcome FROM DoctrineExtensions\Tests\Entities\Blank p';
         $q   = $this->entityManager->createQuery($dql);
-        $this->assertEquals("SELECT ROUND(1.2345, 2) AS {$this->columnAlias} FROM Blank b0_", $q->getSql());
+        $this->assertEquals('SELECT ROUND(1.2345, 2) AS ' . $this->columnAlias . ' FROM Blank b0_', $q->getSql());
 
         $dql = 'SELECT ROUND(1.2345) as outcome FROM DoctrineExtensions\Tests\Entities\Blank p';
         $q   = $this->entityManager->createQuery($dql);
-        $this->assertEquals("SELECT ROUND(1.2345) AS {$this->columnAlias} FROM Blank b0_", $q->getSql());
+        $this->assertEquals('SELECT ROUND(1.2345) AS ' . $this->columnAlias . ' FROM Blank b0_', $q->getSql());
     }
 }

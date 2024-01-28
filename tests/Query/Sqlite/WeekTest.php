@@ -12,7 +12,7 @@ class WeekTest extends SqliteTestCase
     {
         $dql = 'SELECT WEEK(b.created) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(
-            "SELECT CAST(STRFTIME('%W', b0_.created) AS NUMBER) AS {$this->columnAlias} FROM BlogPost b0_",
+            'SELECT CAST(STRFTIME(\'%W\', b0_.created) AS NUMBER) AS ' . $this->columnAlias . ' FROM BlogPost b0_',
             $this->entityManager->createQuery($dql)->getSql()
         );
     }
@@ -21,7 +21,7 @@ class WeekTest extends SqliteTestCase
     {
         $dql = 'SELECT WEEK(b.created, 1) FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b';
         $this->assertEquals(
-            "SELECT CAST(STRFTIME('%W', b0_.created) AS NUMBER) AS {$this->columnAlias} FROM BlogPost b0_",
+            'SELECT CAST(STRFTIME(\'%W\', b0_.created) AS NUMBER) AS ' . $this->columnAlias . ' FROM BlogPost b0_',
             $this->entityManager->createQuery($dql)->getSql()
         );
     }
