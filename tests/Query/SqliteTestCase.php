@@ -8,9 +8,7 @@ use function method_exists;
 
 class SqliteTestCase extends DbTestCase
 {
-    /**
-     * @var string name of Date
-     */
+    /** @var string name of Date */
     protected $columnAlias;
 
     public function setUp(): void

@@ -9,6 +9,10 @@ namespace DoctrineExtensions\Tests\Entities;
  */
 class Blank
 {
-    /** @Id @Column(type="string") @GeneratedValue */
+    /**
+     * @Id
+     * @Column(type="string")
+     * @GeneratedValue
+     */
     public $id;
 }

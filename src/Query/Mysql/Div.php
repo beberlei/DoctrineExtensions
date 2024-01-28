@@ -21,8 +21,7 @@ class Div extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker): string
     {
-        return
-            $sqlWalker->walkArithmeticPrimary($this->dividend) . ' DIV ' .
+        return $sqlWalker->walkArithmeticPrimary($this->dividend) . ' DIV ' .
             $sqlWalker->walkArithmeticPrimary($this->divisor);
     }
 

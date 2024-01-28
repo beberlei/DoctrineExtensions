@@ -23,7 +23,7 @@ class ZendDate
 
     public function __construct($id, $date)
     {
-        $this->id = $id;
+        $this->id   = $id;
         $this->date = $date;
     }
 }

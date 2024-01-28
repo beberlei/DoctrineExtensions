@@ -9,7 +9,11 @@ namespace DoctrineExtensions\Tests\Entities;
  */
 class Date
 {
-    /** @Id @Column(type="string") @GeneratedValue */
+    /**
+     * @Id
+     * @Column(type="string")
+     * @GeneratedValue
+     */
     public $id;
 
     /**

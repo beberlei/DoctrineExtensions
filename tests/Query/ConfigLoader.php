@@ -22,11 +22,7 @@ class ConfigLoader
 
     public const SQLITE = 'sqlite';
 
-    /**
-     * @param Configuration $configuration
-     * @param string        $database
-     */
-    public static function load(Configuration $configuration, $database)
+    public static function load(Configuration $configuration, string $database): void
     {
         $parser = new Parser();
         // Load the corresponding config file.
