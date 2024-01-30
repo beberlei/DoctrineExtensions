@@ -15,7 +15,7 @@ class DbTestCase extends TestCase
     /** @var Configuration */
     protected $configuration;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->configuration = new Configuration();
         $this->configuration->setMetadataCacheImpl(new ArrayCache());
