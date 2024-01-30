@@ -97,7 +97,7 @@ class Listagg extends FunctionNode
             $result .= ')';
         }
 
-        $result .= ' WITHIN GROUP (' . $sqlWalker->walkOrderByClause($this->orderBy) . ')';
+        $result .= ' WITHIN GROUP (' . ltrim($sqlWalker->walkOrderByClause($this->orderBy)) . ')';
 
         if (count($this->partitionBy)) {
             $partitionBy = [];
@@ -105,7 +105,7 @@ class Listagg extends FunctionNode
                 $partitionBy[] = $part->dispatch($sqlWalker);
             }
 
-            $result .= ' PARTITION BY (' . implode(',', $partitionBy) . ')';
+            $result .= ' OVER (PARTITION BY ' . implode(', ', $partitionBy) . ')';
         }
 
         return $result;

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Tools\SchemaTool;
+use Doctrine\ORM\Tools\Setup;
 use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
 use PHPUnit\Framework\TestCase;
 
@@ -32,20 +33,12 @@ class CarbonDateTest extends TestCase
 
     public function setUp(): void
     {
-        $config = new \Doctrine\ORM\Configuration();
-        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setProxyDir(__DIR__ . '/Proxies');
-        $config->setProxyNamespace('DoctrineExtensions\Tests\PHPUnit\Proxies');
-        $config->setAutoGenerateProxyClasses(true);
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
-
         $this->em = \Doctrine\ORM\EntityManager::create(
             [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
             ],
-            $config
+            Setup::createAnnotationMetadataConfiguration([__DIR__ . '/../Entities'], true)
         );
 
         $schemaTool = new SchemaTool($this->em);
