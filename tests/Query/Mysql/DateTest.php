@@ -2,7 +2,6 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
-use Doctrine\ORM\Version;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 use function date;
@@ -27,10 +26,6 @@ class DateTest extends MysqlTestCase
 
     public function testDateAddWithColumnAlias(): void
     {
-        if (Version::VERSION < 2.2) {
-            $this->markTestSkipped('Alias is not supported in Doctrine 2.1 and lower');
-        }
-
         $dql = "SELECT p.created as alternative FROM DoctrineExtensions\Tests\Entities\Date p HAVING DATEADD(alternative, 4, 'MONTH') < 7";
         $sql = 'SELECT d0_.created AS created_0 FROM Date d0_ HAVING DATE_ADD(created_0, INTERVAL 4 MONTH) < 7';
 
@@ -71,10 +66,6 @@ class DateTest extends MysqlTestCase
 
     public function testPeriodDiff(): void
     {
-        if (Version::VERSION < 2.3) {
-            $this->markTestSkipped('Doctrine 2.2 moans about something or other');
-        }
-
         $dql = "SELECT PERIOD_DIFF(date_format(p.created, '%Y%m'), date_format(p.created, '%Y%m')) FROM DoctrineExtensions\Tests\Entities\Date p";
         $sql = "SELECT PERIOD_DIFF(DATE_FORMAT(d0_.created, '%Y%m'), DATE_FORMAT(d0_.created, '%Y%m')) AS sclr_0 FROM Date d0_";
 
