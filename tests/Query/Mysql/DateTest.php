@@ -5,17 +5,19 @@ namespace DoctrineExtensions\Tests\Query\Mysql;
 use Doctrine\ORM\Version;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
+use function date;
+
 class DateTest extends MysqlTestCase
 {
-    public function testDateDiff()
+    public function testDateDiff(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEDIFF(CURRENT_TIME(), p.created) < 7";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEDIFF(CURRENT_TIME(), p.created) < 7';
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATEDIFF(CURRENT_TIME, d0_.created) < 7';
 
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testDateAdd()
+    public function testDateAdd(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEADD(CURRENT_TIME(), 4, 'MONTH') < 7";
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATE_ADD(CURRENT_TIME, INTERVAL 4 MONTH) < 7';
@@ -23,7 +25,7 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testDateAddWithColumnAlias()
+    public function testDateAddWithColumnAlias(): void
     {
         if (Version::VERSION < 2.2) {
             $this->markTestSkipped('Alias is not supported in Doctrine 2.1 and lower');
@@ -35,7 +37,7 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testDateAddWithNegative()
+    public function testDateAddWithNegative(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATEADD(CURRENT_TIME(), -4, 'MONTH') < 7";
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATE_ADD(CURRENT_TIME, INTERVAL -4 MONTH) < 7';
@@ -43,7 +45,7 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testDateSub()
+    public function testDateSub(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE DATESUB(CURRENT_TIME(), 4, 'MONTH') < 7";
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE DATE_SUB(CURRENT_TIME, INTERVAL 4 MONTH) < 7';
@@ -51,7 +53,7 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testExtract()
+    public function testExtract(): void
     {
         $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE 201702 > EXTRACT(YEAR_MONTH FROM p.created)';
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE 201702 > EXTRACT(YEAR_MONTH FROM d0_.created)';
@@ -59,7 +61,7 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testFromUnixtime()
+    public function testFromUnixtime(): void
     {
         $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE FROM_UNIXTIME(CURRENT_TIME()) = '2000-01-01 00:00:00'";
         $sql = "SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE FROM_UNIXTIME(CURRENT_TIME) = '2000-01-01 00:00:00'";
@@ -67,7 +69,7 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testPeriodDiff()
+    public function testPeriodDiff(): void
     {
         if (Version::VERSION < 2.3) {
             $this->markTestSkipped('Doctrine 2.2 moans about something or other');
@@ -79,9 +81,9 @@ class DateTest extends MysqlTestCase
         $this->assertDqlProducesSql($dql, $sql);
     }
 
-    public function testStrToDate()
+    public function testStrToDate(): void
     {
-        $dql = "SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime";
+        $dql = 'SELECT p FROM DoctrineExtensions\Tests\Entities\Date p WHERE STR_TO_DATE(p.created, :dateFormat) < :currentTime';
         $sql = 'SELECT d0_.id AS id_0, d0_.created AS created_1 FROM Date d0_ WHERE STR_TO_DATE(d0_.created, ?) < ?';
 
         $this->assertDqlProducesSql($dql, $sql, [
@@ -90,9 +92,9 @@ class DateTest extends MysqlTestCase
         ]);
     }
 
-    public function testUnixTimpestamp()
+    public function testUnixTimpestamp(): void
     {
-        $dql = "SELECT UNIX_TIMESTAMP(p.created) FROM DoctrineExtensions\Tests\Entities\Date p";
+        $dql = 'SELECT UNIX_TIMESTAMP(p.created) FROM DoctrineExtensions\Tests\Entities\Date p';
         $sql = 'SELECT UNIX_TIMESTAMP(d0_.created) AS sclr_0 FROM Date d0_';
 
         $this->assertDqlProducesSql($dql, $sql);

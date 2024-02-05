@@ -4,19 +4,19 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Nima S <nimasdj@yahoo.com>
- */
+/** @author Nima S <nimasdj@yahoo.com> */
 class FromUnixtime extends FunctionNode
 {
     public $firstExpression = null;
 
     public $secondExpression = null;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
-        if (null !== $this->secondExpression) {
+        if ($this->secondExpression !== null) {
             return 'FROM_UNIXTIME('
                 . $this->firstExpression->dispatch($sqlWalker)
                 . ','
@@ -27,7 +27,7 @@ class FromUnixtime extends FunctionNode
         return 'FROM_UNIXTIME(' . $this->firstExpression->dispatch($sqlWalker) . ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 
@@ -37,7 +37,7 @@ class FromUnixtime extends FunctionNode
         $this->firstExpression = $parser->ArithmeticPrimary();
 
         // parse second parameter if available
-        if (Lexer::T_COMMA === $lexer->lookahead->type) {
+        if ($lexer->lookahead->type === Lexer::T_COMMA) {
             $parser->match(Lexer::T_COMMA);
             $this->secondExpression = $parser->ArithmeticPrimary();
         }

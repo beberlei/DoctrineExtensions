@@ -7,9 +7,9 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz
- */
+use function sprintf;
+
+/** @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz */
 class ConvertTz extends FunctionNode
 {
     protected $dateExpression;
@@ -18,9 +18,6 @@ class ConvertTz extends FunctionNode
 
     protected $toTz;
 
-    /**
-     * @inheritdoc
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(
@@ -31,9 +28,6 @@ class ConvertTz extends FunctionNode
         );
     }
 
-    /**
-     * @inheritdoc
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);

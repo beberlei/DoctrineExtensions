@@ -2,16 +2,16 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+/** @Entity */
 class Date
 {
-    /** @Id @Column(type="string") @GeneratedValue */
+    /**
+     * @Id
+     * @Column(type="string")
+     * @GeneratedValue
+     */
     public $id;
 
-    /**
-     * @Column(type="datetime")
-     */
+    /** @Column(type="datetime") */
     public $created;
 }

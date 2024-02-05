@@ -2,16 +2,16 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+/** @Entity */
 class Set
 {
-    /** @Id @Column(type="string") @GeneratedValue */
+    /**
+     * @Id
+     * @Column(type="string")
+     * @GeneratedValue
+     */
     public $id;
 
-    /**
-     * @Column(type="String")
-     */
+    /** @Column(type="String") */
     public $set;
 }

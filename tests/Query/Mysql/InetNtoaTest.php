@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class InetNtoaTest extends MysqlTestCase
 {
-    public function testInetNtoa()
+    public function testInetNtoa(): void
     {
         $this->assertDqlProducesSql(
             "SELECT INET_NTOA('3221225985') FROM DoctrineExtensions\Tests\Entities\Blank b",

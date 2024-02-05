@@ -13,11 +13,7 @@ class InetAton extends FunctionNode
 {
     public $valueExpression = null;
 
-    /**
-     * @param Parser $parser
-     *
-     * @throws QueryException
-     */
+    /** @throws QueryException */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -26,11 +22,6 @@ class InetAton extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     *
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return 'INET_ATON('
@@ -39,6 +30,6 @@ class InetAton extends FunctionNode
                 ? $this->valueExpression->dispatch($sqlWalker)
                 : "'" . $this->valueExpression . "'"
             )
-            .')';
+            . ')';
     }
 }

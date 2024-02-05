@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class DateDiffTest extends MysqlTestCase
 {
-    public function testDateDiff()
+    public function testDateDiff(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DATEDIFF('2017-06-25', '2017-06-15') from DoctrineExtensions\Tests\Entities\Blank b",
@@ -14,7 +14,7 @@ class DateDiffTest extends MysqlTestCase
         );
     }
 
-    public function testDateDiffWithColumnAlias()
+    public function testDateDiffWithColumnAlias(): void
     {
         $this->assertDqlProducesSql(
             "SELECT DATEADD(p.created, 1, 'DAY') as modified_date FROM DoctrineExtensions\Tests\Entities\Date as p WHERE DATEDIFF(CURRENT_TIME(), modified_date) < 7",

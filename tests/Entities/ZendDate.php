@@ -14,14 +14,12 @@ class ZendDate
      */
     public $id;
 
-    /**
-     * @Column(type="ZendDate")
-     */
+    /** @Column(type="ZendDate") */
     public $date;
 
     public function __construct($id, $date)
     {
-        $this->id = $id;
+        $this->id   = $id;
         $this->date = $date;
     }
 }

@@ -9,34 +9,25 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Alexey Kalinin <nitso@yandex.ru>
- */
+use function count;
+use function implode;
+use function strtolower;
+
+/** @author Alexey Kalinin <nitso@yandex.ru> */
 class Listagg extends FunctionNode
 {
-    /**
-     * @var Node
-     */
+    /** @var Node */
     public $separator = null;
 
-    /**
-     * @var Node
-     */
+    /** @var Node */
     public $listaggField = null;
 
-    /**
-     * @var OrderByClause
-     */
+    /** @var OrderByClause */
     public $orderBy;
 
-    /**
-     * @var Node[]
-     */
+    /** @var Node[] */
     public $partitionBy = [];
 
-    /**
-     * @inheritdoc
-     */
     public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
@@ -49,11 +40,13 @@ class Listagg extends FunctionNode
             $parser->match(Lexer::T_COMMA);
             $this->separator = $parser->StringExpression();
         }
+
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
-        if (!$lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) != 'within') {
+        if (! $lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'within') {
             $parser->syntaxError('WITHIN GROUP');
         }
+
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_GROUP);
 
@@ -62,15 +55,17 @@ class Listagg extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
 
         if ($lexer->isNextToken(Lexer::T_IDENTIFIER)) {
-            if (strtolower($lexer->lookahead->value) != 'over') {
+            if (strtolower($lexer->lookahead->value) !== 'over') {
                 $parser->syntaxError('OVER');
             }
+
             $parser->match(Lexer::T_IDENTIFIER);
             $parser->match(Lexer::T_OPEN_PARENTHESIS);
 
-            if (!$lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) != 'partition') {
+            if (! $lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'partition') {
                 $parser->syntaxError('PARTITION BY');
             }
+
             $parser->match(Lexer::T_IDENTIFIER);
             $parser->match(Lexer::T_BY);
 
@@ -85,9 +80,6 @@ class Listagg extends FunctionNode
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         $result = 'LISTAGG(' . $this->listaggField->dispatch($sqlWalker);

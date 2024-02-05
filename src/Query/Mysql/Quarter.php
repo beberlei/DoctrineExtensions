@@ -4,20 +4,20 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Martin Štekl <martin.stekl@gmail.com>
- */
+/** @author Martin Štekl <martin.stekl@gmail.com> */
 class Quarter extends FunctionNode
 {
     public $date;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
-        return 'QUARTER('.$sqlWalker->walkArithmeticPrimary($this->date).')';
+        return 'QUARTER(' . $sqlWalker->walkArithmeticPrimary($this->date) . ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

@@ -2,12 +2,14 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class DayTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+use DoctrineExtensions\Tests\Query\SqliteTestCase;
+
+class DayTest extends SqliteTestCase
 {
-    public function testDay()
+    public function testDay(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b',
             "SELECT CAST(STRFTIME('%d', 2) AS NUMBER) AS sclr_0 FROM Blank b0_"
         );
     }

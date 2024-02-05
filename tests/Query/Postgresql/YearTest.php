@@ -2,12 +2,14 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class YearTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+
+class YearTest extends PostgresqlTestCase
 {
-    public function testYear()
+    public function testYear(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT YEAR(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT YEAR(2) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT EXTRACT(YEAR FROM 2) AS sclr_0 FROM Blank b0_'
         );
     }

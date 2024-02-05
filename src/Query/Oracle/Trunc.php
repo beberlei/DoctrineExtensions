@@ -5,23 +5,21 @@ namespace DoctrineExtensions\Query\Oracle;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Mohammad ZeinEddin <mohammad@zeineddin.name>
- */
+use function sprintf;
+
+/** @author Mohammad ZeinEddin <mohammad@zeineddin.name> */
 class Trunc extends FunctionNode
 {
-    /**
-     * @var Node
-     */
+    /** @var Node */
     private $date;
 
-    /**
-     * @var Node
-     */
+    /** @var Node */
     private $fmt;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         if ($this->fmt) {
             return sprintf(
@@ -37,7 +35,7 @@ class Trunc extends FunctionNode
         );
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $lexer = $parser->getLexer();
 

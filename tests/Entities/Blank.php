@@ -2,11 +2,13 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/**
- * @Entity
- */
+/** @Entity */
 class Blank
 {
-    /** @Id @Column(type="string") @GeneratedValue */
+    /**
+     * @Id
+     * @Column(type="string")
+     * @GeneratedValue
+     */
     public $id;
 }

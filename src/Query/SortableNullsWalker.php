@@ -4,6 +4,11 @@ namespace DoctrineExtensions\Query;
 
 use Doctrine\ORM\Query;
 
+use function count;
+use function is_array;
+use function str_replace;
+use function strtoupper;
+
 /**
  * The SortableNullsWalker is a TreeWalker that walks over a DQL AST and constructs
  * the corresponding SQL to allow ORDER BY x ASC NULLS FIRST|LAST.
@@ -33,12 +38,11 @@ class SortableNullsWalker extends Query\SqlWalker
     public const NULLS_LAST = 'NULLS LAST';
 
     /**
-     * @param $orderByItem
-     * @return array|string
+     * {@inheritDoc}
      */
     public function walkOrderByItem($orderByItem)
     {
-        $sql = parent::walkOrderByItem($orderByItem);
+        $sql  = parent::walkOrderByItem($orderByItem);
         $hint = $this->getQuery()->getHint('sortableNulls.fields');
         $expr = $orderByItem->expression;
         $type = strtoupper($orderByItem->type);
@@ -47,12 +51,12 @@ class SortableNullsWalker extends Query\SqlWalker
             // check for a state field
             if (
                     $expr instanceof Query\AST\PathExpression &&
-                    $expr->type == Query\AST\PathExpression::TYPE_STATE_FIELD
+                    $expr->type === Query\AST\PathExpression::TYPE_STATE_FIELD
             ) {
                 $fieldName = $expr->field;
-                $dqlAlias = $expr->identificationVariable;
-                $search = $this->walkPathExpression($expr) . ' ' . $type;
-                $index = $dqlAlias . '.' . $fieldName;
+                $dqlAlias  = $expr->identificationVariable;
+                $search    = $this->walkPathExpression($expr) . ' ' . $type;
+                $index     = $dqlAlias . '.' . $fieldName;
                 if (isset($hint[$index])) {
                     $sql = str_replace($search, $search . ' ' . $hint[$index], $sql);
                 }

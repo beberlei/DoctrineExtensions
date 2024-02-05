@@ -2,12 +2,14 @@
 
 namespace DoctrineExtensions\Tests\Query\Postgresql;
 
-class DayTest extends \DoctrineExtensions\Tests\Query\PostgresqlTestCase
+use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
+
+class DayTest extends PostgresqlTestCase
 {
-    public function testDay()
+    public function testDay(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT DAY(2) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT EXTRACT(DAY FROM 2) AS sclr_0 FROM Blank b0_'
         );
     }

@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class AddTimeTest extends MysqlTestCase
 {
-    public function testDateAdd()
+    public function testDateAdd(): void
     {
         $this->assertDqlProducesSql(
             "SELECT ADDTIME('2019-03-01 14:35:00','01:02:03') from DoctrineExtensions\Tests\Entities\Blank b",

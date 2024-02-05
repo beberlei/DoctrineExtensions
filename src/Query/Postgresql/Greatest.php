@@ -7,6 +7,8 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function count;
+
 /**
  * @author Vas N <phpvas@gmail.com>
  * @author Guven Atbakan <guven@atbakan.com>
@@ -18,18 +20,17 @@ class Greatest extends FunctionNode
 
     private $values = [];
 
-    /**
-     * @param Parser $parser
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $this->field = $parser->ArithmeticExpression();
-        $lexer = $parser->getLexer();
+        $lexer       = $parser->getLexer();
 
-        while (count($this->values) < 1 ||
-            $lexer->lookahead->type != Lexer::T_CLOSE_PARENTHESIS) {
+        while (
+            count($this->values) < 1 ||
+            $lexer->lookahead->type !== Lexer::T_CLOSE_PARENTHESIS
+        ) {
             $parser->match(Lexer::T_COMMA);
             $this->values[] = $parser->ArithmeticExpression();
         }
@@ -37,10 +38,6 @@ class Greatest extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param SqlWalker $sqlWalker
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         $query = 'GREATEST(';

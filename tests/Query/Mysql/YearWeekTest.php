@@ -6,10 +6,10 @@ use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class YearWeekTest extends MysqlTestCase
 {
-    public function testYearWeek()
+    public function testYearWeek(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT YEARWEEK(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT YEARWEEK(2) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT YEARWEEK(2) AS sclr_0 FROM Blank b0_'
         );
     }

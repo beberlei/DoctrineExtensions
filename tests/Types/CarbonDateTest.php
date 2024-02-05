@@ -4,10 +4,16 @@ namespace DoctrineExtensions\Tests\Types;
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Configuration;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
 use PHPUnit\Framework\TestCase;
+
+use function assert;
 
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Carbon/Carbon object.
@@ -32,15 +38,15 @@ class CarbonDateTest extends TestCase
 
     public function setUp(): void
     {
-        $config = new \Doctrine\ORM\Configuration();
-        $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
-        $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
+        $config = new Configuration();
+        $config->setMetadataCacheImpl(new ArrayCache());
+        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('DoctrineExtensions\Tests\PHPUnit\Proxies');
         $config->setAutoGenerateProxyClasses(true);
         $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
 
-        $this->em = \Doctrine\ORM\EntityManager::create(
+        $this->em = EntityManager::create(
             [
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
@@ -54,21 +60,21 @@ class CarbonDateTest extends TestCase
             $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\CarbonDate'),
         ]);
 
-        $entity = new Entity();
-        $entity->id = 1;
-        $entity->date                  = Carbon::createFromDate(2015, 1, 1);
-        $entity->datetime              = Carbon::create(2015, 1, 1, 0, 0, 0);
-        $entity->datetime_tz           = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
-        $entity->time                  = Carbon::createFromTime(12, 0, 0, 'Europe/London');
-        $entity->date_immutable        = CarbonImmutable::createFromDate(2015, 1, 1);
-        $entity->datetime_immutable    = CarbonImmutable::create(2015, 1, 1, 0, 0, 0);
-        $entity->datetime_tz_immutable = CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
-        $entity->time_immutable        = CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London');
+        $entity                      = new Entity();
+        $entity->id                  = 1;
+        $entity->date                = Carbon::createFromDate(2015, 1, 1);
+        $entity->datetime            = Carbon::create(2015, 1, 1, 0, 0, 0);
+        $entity->datetimeTz          = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
+        $entity->time                = Carbon::createFromTime(12, 0, 0, 'Europe/London');
+        $entity->dateImmutable       = CarbonImmutable::createFromDate(2015, 1, 1);
+        $entity->datetimeImmutable   = CarbonImmutable::create(2015, 1, 1, 0, 0, 0);
+        $entity->datetimeTzImmutable = CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
+        $entity->timeImmutable       = CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London');
         $this->em->persist($entity);
         $this->em->flush();
     }
 
-    public function testDateGetter()
+    public function testDateGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -79,17 +85,17 @@ class CarbonDateTest extends TestCase
         );
     }
 
-    public function testDateSetter()
+    public function testDateSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->date = Carbon::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testDateTimeGetter()
+    public function testDateTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -97,35 +103,35 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(Carbon::create(2015, 1, 1, 0, 0, 0), $entity->datetime);
     }
 
-    public function testDateTimeSetter()
+    public function testDateTimeSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity           = new Entity();
+        $entity->id       = 2;
         $entity->datetime = Carbon::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testDateTimeTzGetter()
+    public function testDateTimeTzGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
-        $this->assertInstanceOf('Carbon\Carbon', $entity->datetime_tz);
-        $this->assertEquals(Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetime_tz);
+        $this->assertInstanceOf('Carbon\Carbon', $entity->datetimeTz);
+        $this->assertEquals(Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetimeTz);
     }
 
-    public function testDateTimeTzSetter()
+    public function testDateTimeTzSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
-        $entity->datetime_tz = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
+        $entity             = new Entity();
+        $entity->id         = 2;
+        $entity->datetimeTz = Carbon::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testTimeGetter()
+    public function testTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
@@ -133,103 +139,102 @@ class CarbonDateTest extends TestCase
         $this->assertEquals(Carbon::createFromTime(12, 0, 0, 'Europe/London'), $entity->time);
     }
 
-    public function testTimeSetter()
+    public function testTimeSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->time = Carbon::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableDateGetter()
+    public function testImmutableDateGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
-        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->date_immutable);
+        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->dateImmutable);
         $this->assertEquals(
             CarbonImmutable::createFromDate(2015, 1, 1, $entity->date->timezone)->format('Y-m-d'),
             $entity->date->format('Y-m-d')
         );
     }
 
-    public function testImmutableDateSetter()
+    public function testImmutableDateSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->date = CarbonImmutable::createFromDate(2015, 1, 1);
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableDateTimeGetter()
+    public function testImmutableDateTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
-        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->datetime_immutable);
+        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->datetimeImmutable);
         $this->assertEquals(CarbonImmutable::create(2015, 1, 1, 0, 0, 0), $entity->datetime);
     }
 
-    public function testImmutableDateTimeSetter()
+    public function testImmutableDateTimeSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity           = new Entity();
+        $entity->id       = 2;
         $entity->datetime = CarbonImmutable::create(2015, 1, 1, 0, 0, 0);
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableDateTimeTzGetter()
+    public function testImmutableDateTimeTzGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
-        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->datetime_tz_immutable);
-        $this->assertEquals(CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetime_tz);
+        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->datetimeTzImmutable);
+        $this->assertEquals(CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific'), $entity->datetimeTz);
     }
 
-    public function testImmutableDateTimeTzSetter()
+    public function testImmutableDateTimeTzSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
-        $entity->datetime_tz = CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
+        $entity             = new Entity();
+        $entity->id         = 2;
+        $entity->datetimeTz = CarbonImmutable::create(2012, 1, 1, 0, 0, 0, 'US/Pacific');
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    public function testImmutableTimeGetter()
+    public function testImmutableTimeGetter(): void
     {
         $entity = $this->em->find('DoctrineExtensions\Tests\Entities\CarbonDate', 1);
 
-        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->time_immutable);
+        $this->assertInstanceOf('Carbon\CarbonImmutable', $entity->timeImmutable);
         $this->assertEquals(CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London'), $entity->time);
     }
 
-    public function testImmutableTimeSetter()
+    public function testImmutableTimeSetter(): void
     {
-        $entity = new Entity();
-        $entity->id = 2;
+        $entity       = new Entity();
+        $entity->id   = 2;
         $entity->time = CarbonImmutable::createFromTime(12, 0, 0, 'Europe/London');
 
         $this->em->persist($entity);
         $this->assertNull($this->em->flush());
     }
 
-    /**
-     * @dataProvider typeProvider
-     */
-    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type)
+    /** @dataProvider typeProvider */
+    public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type): void
     {
-        /** @var \Doctrine\DBAL\Platforms\AbstractPlatform $platform */
         $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
+        assert($platform instanceof AbstractPlatform);
 
         $this->assertTrue(Type::getType($type)->requiresSQLCommentHint($platform));
     }
 
-    public function typeProvider()
+    /** @return array<int, array<int, string>> */
+    public function typeProvider(): array
     {
         return [
             ['CarbonDate'],

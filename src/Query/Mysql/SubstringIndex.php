@@ -7,6 +7,8 @@ use  Doctrine\ORM\Query\Lexer;
 use  Doctrine\ORM\Query\Parser;
 use  Doctrine\ORM\Query\SqlWalker;
 
+use function sprintf;
+
 class SubstringIndex extends FunctionNode
 {
     public $string = null;
@@ -15,9 +17,6 @@ class SubstringIndex extends FunctionNode
 
     public $count = null;
 
-    /**
-     * @param \Doctrine\ORM\Query\Parser $parser
-     */
     public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -30,10 +29,6 @@ class SubstringIndex extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
-    /**
-     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
-     * @return string
-     */
     public function getSql(SqlWalker $sqlWalker): string
     {
         return sprintf(

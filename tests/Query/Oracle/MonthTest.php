@@ -2,12 +2,14 @@
 
 namespace DoctrineExtensions\Tests\Query\Oracle;
 
-class MonthTest extends \DoctrineExtensions\Tests\Query\OracleTestCase
+use DoctrineExtensions\Tests\Query\OracleTestCase;
+
+class MonthTest extends OracleTestCase
 {
-    public function testMonth()
+    public function testMonth(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b',
             'SELECT EXTRACT(MONTH FROM 2) AS sclr_0 FROM Blank b0_'
         );
     }

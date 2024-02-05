@@ -4,22 +4,22 @@ namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
 
-/**
- * @author Igor Timoshenko <igor.timoshenko@i.ua>
- */
+/** @author Igor Timoshenko <igor.timoshenko@i.ua> */
 class Crc32 extends FunctionNode
 {
     public $stringPrimary;
 
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return 'CRC32(' .
             $sqlWalker->walkStringPrimary($this->stringPrimary) .
         ')';
     }
 
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

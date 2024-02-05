@@ -5,6 +5,10 @@ namespace DoctrineExtensions\Query\Sqlite;
 use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
+use Doctrine\ORM\Query\Parser;
+use Doctrine\ORM\Query\SqlWalker;
+
+use function str_replace;
 
 /**
  * This class fakes a DATE_FORMAT method for SQLite, so that we can use sqlite as drop-in replacement
@@ -18,11 +22,7 @@ class DateFormat extends FunctionNode
 
     private $format;
 
-    /**
-     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
-     * @return string
-     */
-    public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker): string
+    public function getSql(SqlWalker $sqlWalker): string
     {
         return 'STRFTIME('
             . $sqlWalker->walkArithmeticPrimary($this->format)
@@ -31,10 +31,7 @@ class DateFormat extends FunctionNode
             . ')';
     }
 
-    /**
-     * @param \Doctrine\ORM\Query\Parser $parser
-     */
-    public function parse(\Doctrine\ORM\Query\Parser $parser): void
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
@@ -46,8 +43,6 @@ class DateFormat extends FunctionNode
 
     /**
      * Convert the MySql DATE_FORMAT() substitutions to Sqlite STRFTIME() substitutions
-     * @param ArithmeticExpression $expr
-     * @return ArithmeticExpression
      */
     private function convertFormat(ArithmeticExpression $expr): ArithmeticExpression
     {

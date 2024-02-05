@@ -5,21 +5,22 @@ namespace DoctrineExtensions\Tests\Query;
 use Doctrine\ORM\Configuration;
 use Symfony\Component\Yaml\Parser;
 
+use function array_key_exists;
+use function file_get_contents;
+use function realpath;
+use function strtoupper;
+
 class ConfigLoader
 {
-    const MYSQL    = 'mysql';
+    public const MYSQL = 'mysql';
 
-    const ORACLE   = 'oracle';
+    public const ORACLE = 'oracle';
 
-    const POSTGRES = 'postgres';
+    public const POSTGRES = 'postgres';
 
-    const SQLITE   = 'sqlite';
+    public const SQLITE = 'sqlite';
 
-    /**
-     * @param Configuration $configuration
-     * @param string        $database
-     */
-    public static function load(Configuration $configuration, $database)
+    public static function load(Configuration $configuration, string $database): void
     {
         $parser = new Parser();
         // Load the corresponding config file.
@@ -28,17 +29,19 @@ class ConfigLoader
 
         // Load the existing function classes.
         if (array_key_exists('datetime_functions', $parsed)) {
-            foreach ($parsed[ 'datetime_functions' ] as $key => $value) {
+            foreach ($parsed['datetime_functions'] as $key => $value) {
                 $configuration->addCustomDatetimeFunction(strtoupper($key), $value);
             }
         }
+
         if (array_key_exists('numeric_functions', $parsed)) {
-            foreach ($parsed[ 'numeric_functions' ] as $key => $value) {
+            foreach ($parsed['numeric_functions'] as $key => $value) {
                 $configuration->addCustomNumericFunction(strtoupper($key), $value);
             }
         }
+
         if (array_key_exists('string_functions', $parsed)) {
-            foreach ($parsed[ 'string_functions' ] as $key => $value) {
+            foreach ($parsed['string_functions'] as $key => $value) {
                 $configuration->addCustomStringFunction(strtoupper($key), $value);
             }
         }

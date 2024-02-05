@@ -2,12 +2,14 @@
 
 namespace DoctrineExtensions\Tests\Query\Sqlite;
 
-class MonthTest extends \DoctrineExtensions\Tests\Query\SqliteTestCase
+use DoctrineExtensions\Tests\Query\SqliteTestCase;
+
+class MonthTest extends SqliteTestCase
 {
-    public function testMonth()
+    public function testMonth(): void
     {
         $this->assertDqlProducesSql(
-            "SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b",
+            'SELECT MONTH(2) from DoctrineExtensions\Tests\Entities\Blank b',
             "SELECT CAST(STRFTIME('%m', 2) AS NUMBER) AS sclr_0 FROM Blank b0_"
         );
     }

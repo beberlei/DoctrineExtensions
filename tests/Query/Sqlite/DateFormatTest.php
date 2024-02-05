@@ -6,13 +6,13 @@ use DoctrineExtensions\Tests\Query\SqliteTestCase;
 
 class DateFormatTest extends SqliteTestCase
 {
-    public function testCommonFormats()
+    public function testCommonFormats(): void
     {
         // Both result in '2015-12-30 14:23:40'
         $dql = "SELECT DATE_FORMAT(b.created, '%Y-%m-%d %H:%i:%S') FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
 
         $this->assertEquals(
-            "SELECT STRFTIME('%Y-%m-%d %H:%M:%S', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
+            'SELECT STRFTIME(\'%Y-%m-%d %H:%M:%S\', b0_.created) AS ' . $this->columnAlias . ' FROM BlogPost b0_',
             $this->entityManager->createQuery($dql)->getSql()
         );
     }
@@ -22,7 +22,7 @@ class DateFormatTest extends SqliteTestCase
      * they get converted to the closest sqlite substitutions.
      * In this test a few examples are listed:
      */
-    public function testUnsupportedFormats()
+    public function testUnsupportedFormats(): void
     {
         // Sqlite does not support AM / PM
         // mysql: '10:15:22 PM'
@@ -30,7 +30,7 @@ class DateFormatTest extends SqliteTestCase
         $dql = "SELECT DATE_FORMAT(b.created, '%r') FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
 
         $this->assertEquals(
-            "SELECT STRFTIME('%H:%M:%S', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
+            'SELECT STRFTIME(\'%H:%M:%S\', b0_.created) AS ' . $this->columnAlias . ' FROM BlogPost b0_',
             $this->entityManager->createQuery($dql)->getSql()
         );
 
@@ -40,7 +40,7 @@ class DateFormatTest extends SqliteTestCase
         $dql = "SELECT DATE_FORMAT(b.created, '%x-%v') FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
 
         $this->assertEquals(
-            "SELECT STRFTIME('%Y-%W', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
+            'SELECT STRFTIME(\'%Y-%W\', b0_.created) AS ' . $this->columnAlias . ' FROM BlogPost b0_',
             $this->entityManager->createQuery($dql)->getSql()
         );
 
@@ -51,7 +51,7 @@ class DateFormatTest extends SqliteTestCase
         $dql = "SELECT DATE_FORMAT(b.created, '%W, %M %D, %Y') FROM DoctrineExtensions\\Tests\\Entities\\BlogPost b";
 
         $this->assertEquals(
-            "SELECT STRFTIME('%w, %m %d, %Y', b0_.created) AS {$this->columnAlias} FROM BlogPost b0_",
+            'SELECT STRFTIME(\'%w, %m %d, %Y\', b0_.created) AS ' . $this->columnAlias . ' FROM BlogPost b0_',
             $this->entityManager->createQuery($dql)->getSql()
         );
     }

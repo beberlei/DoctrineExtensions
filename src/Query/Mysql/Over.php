@@ -9,6 +9,9 @@ use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 
+use function count;
+use function trim;
+
 class Over extends FunctionNode
 {
     /** @var ArithmeticExpression */
@@ -31,10 +34,11 @@ class Over extends FunctionNode
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);
         $this->arithmeticExpression = $parser->ArithmeticExpression();
-        if (!$lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
+        if (! $lexer->isNextToken(Lexer::T_CLOSE_PARENTHESIS)) {
             $parser->match(Lexer::T_COMMA);
             $this->orderByClause = $parser->OrderByClause();
         }
+
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 }

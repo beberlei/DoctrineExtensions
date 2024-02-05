@@ -14,43 +14,27 @@ class CarbonDate
      */
     public $id;
 
-    /**
-     * @Column(type="CarbonDate", nullable=true)
-     */
+    /** @Column(type="CarbonDate", nullable=true) */
     public $date;
 
-    /**
-     * @Column(type="CarbonDateTime", nullable=true)
-     */
+    /** @Column(type="CarbonDateTime", nullable=true) */
     public $datetime;
 
-    /**
-     * @Column(type="CarbonDateTimeTz", nullable=true)
-     */
-    public $datetime_tz;
+    /** @Column(type="CarbonDateTimeTz", nullable=true) */
+    public $datetimeTz;
 
-    /**
-     * @Column(type="CarbonTime", nullable=true)
-     */
+    /** @Column(type="CarbonTime", nullable=true) */
     public $time;
 
-    /**
-     * @Column(type="CarbonImmutableDate", nullable=true)
-     */
-    public $date_immutable;
+    /** @Column(type="CarbonImmutableDate", nullable=true) */
+    public $dateImmutable;
 
-    /**
-     * @Column(type="CarbonImmutableDateTime", nullable=true)
-     */
-    public $datetime_immutable;
+    /** @Column(type="CarbonImmutableDateTime", nullable=true) */
+    public $datetimeImmutable;
 
-    /**
-     * @Column(type="CarbonImmutableDateTimeTz", nullable=true)
-     */
-    public $datetime_tz_immutable;
+    /** @Column(type="CarbonImmutableDateTimeTz", nullable=true) */
+    public $datetimeTzImmutable;
 
-    /**
-     * @Column(type="CarbonImmutableTime", nullable=true)
-     */
-    public $time_immutable;
+    /** @Column(type="CarbonImmutableTime", nullable=true) */
+    public $timeImmutable;
 }
