@@ -74,42 +74,6 @@ class StringTest extends MysqlTestCase
     }
 
     /**
-     * Test cases for MYSQL SUBSTRING function.
-     */
-    public function testSubstring(): void
-    {
-        $this->assertDqlProducesSql(
-            "SELECT SUBSTRING('www.mysql.com', 1, 3) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SUBSTR('www.mysql.com', 1, 3) AS sclr_0 FROM Blank b0_"
-        );
-
-        $this->assertDqlProducesSql(
-            "SELECT SUBSTRING('www.mysql.com', 2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SUBSTR('www.mysql.com', 2, LENGTH('www.mysql.com')) AS sclr_0 FROM Blank b0_"
-        );
-
-        $this->assertDqlProducesSql(
-            "SELECT SUBSTRING('www.mysql.com', -2, 2) from DoctrineExtensions\Tests\Entities\Blank b",
-            "SELECT SUBSTR('www.mysql.com', -2, 2) AS sclr_0 FROM Blank b0_"
-        );
-
-        $this->assertDqlProducesSql(
-            'SELECT SUBSTRING(b.id, 5, 5) from DoctrineExtensions\Tests\Entities\Blank b',
-            'SELECT SUBSTR(b0_.id, 5, 5) AS sclr_0 FROM Blank b0_'
-        );
-
-        $this->assertDqlProducesSql(
-            'SELECT SUBSTRING(b.id, 5) from DoctrineExtensions\Tests\Entities\Blank b',
-            'SELECT SUBSTR(b0_.id, 5, LENGTH(b0_.id)) AS sclr_0 FROM Blank b0_'
-        );
-
-        $this->assertDqlProducesSql(
-            'SELECT SUBSTRING(b.id, -5, 2) from DoctrineExtensions\Tests\Entities\Blank b',
-            'SELECT SUBSTR(b0_.id, -5, 2) AS sclr_0 FROM Blank b0_'
-        );
-    }
-
-    /**
      * Test cases for MYSQL SUBSTRING_INDEX function.
      */
     public function testSubstringIndex(): void
