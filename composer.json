@@ -18,8 +18,8 @@
         "nesbot/carbon": "*",
         "phpunit/phpunit": "^8.5 || ^9.0",
         "squizlabs/php_codesniffer": "^3.8",
-        "symfony/cache": "^4.4 || ^5.4 || ^6.4 || ^7.0",
-        "symfony/yaml": "^4.4 || ^5.3 || ^6.0 || ^7.0",
+        "symfony/cache": "^5.4 || ^6.4 || ^7.0",
+        "symfony/yaml": "^5.4 || ^6.0 || ^7.0",
         "zf1/zend-date": "^1.12",
         "zf1/zend-registry": "^1.12"
     },
