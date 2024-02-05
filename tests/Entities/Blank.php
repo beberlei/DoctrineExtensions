@@ -2,13 +2,15 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/** @Entity */
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity */
 class Blank
 {
     /**
-     * @Id
-     * @Column(type="string")
-     * @GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="string")
+     * @ORM\GeneratedValue
      */
     public $id;
 }

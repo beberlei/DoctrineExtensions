@@ -2,16 +2,18 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/** @Entity */
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity */
 class Date
 {
     /**
-     * @Id
-     * @Column(type="string")
-     * @GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="string")
+     * @ORM\GeneratedValue
      */
     public $id;
 
-    /** @Column(type="datetime") */
+    /** @ORM\Column(type="datetime") */
     public $created;
 }
