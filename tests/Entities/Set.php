@@ -2,16 +2,18 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/** @Entity */
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity */
 class Set
 {
     /**
-     * @Id
-     * @Column(type="string")
-     * @GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="string")
+     * @ORM\GeneratedValue
      */
     public $id;
 
-    /** @Column(type="String") */
+    /** @ORM\Column(type="String") */
     public $set;
 }

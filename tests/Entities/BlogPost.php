@@ -2,22 +2,24 @@
 
 namespace DoctrineExtensions\Tests\Entities;
 
-/** @Entity */
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity */
 class BlogPost
 {
     /**
-     * @Id
-     * @Column(type="string")
-     * @GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="string")
+     * @ORM\GeneratedValue
      */
     public $id;
 
-    /** @Column(type="DateTime") */
+    /** @ORM\Column(type="DateTime") */
     public $created;
 
-    /** @Column(type="decimal", precision=12, scale=8) */
+    /** @ORM\Column(type="decimal", precision=12, scale=8) */
     public $longitude;
 
-    /** @Column(type="decimal", precision=12, scale=8) */
+    /** @ORM\Column(type="decimal", precision=12, scale=8) */
     public $latitude;
 }

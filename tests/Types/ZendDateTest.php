@@ -2,10 +2,12 @@
 
 namespace DoctrineExtensions\Tests\Types;
 
+use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\SchemaTool;
 use DoctrineExtensions\Tests\Entities\ZendDate;
 use PHPUnit\Framework\TestCase;
@@ -39,13 +41,13 @@ class ZendDateTest extends TestCase
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('DoctrineExtensions\Tests\PHPUnit\Proxies');
         $config->setAutoGenerateProxyClasses(true);
-        $config->setMetadataDriverImpl($config->newDefaultAnnotationDriver(__DIR__ . '/../../Entities'));
+        $config->setMetadataDriverImpl(ORMSetup::createDefaultAnnotationDriver([__DIR__ . '/../../Entities']));
 
-        $this->em = EntityManager::create(
-            [
+        $this->em = new EntityManager(
+            DriverManager::getConnection([
                 'driver' => 'pdo_sqlite',
                 'memory' => true,
-            ],
+            ], $config),
             $config
         );
 

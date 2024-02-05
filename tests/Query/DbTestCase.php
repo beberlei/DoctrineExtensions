@@ -2,8 +2,10 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
@@ -23,8 +25,11 @@ class DbTestCase extends TestCase
         $this->configuration->setProxyDir(__DIR__ . '/Proxies');
         $this->configuration->setProxyNamespace('DoctrineExtensions\Tests\Proxies');
         $this->configuration->setAutoGenerateProxyClasses(true);
-        $this->configuration->setMetadataDriverImpl($this->configuration->newDefaultAnnotationDriver(__DIR__ . '/../Entities'));
-        $this->entityManager = EntityManager::create(['driver' => 'pdo_sqlite', 'memory' => true], $this->configuration);
+        $this->configuration->setMetadataDriverImpl(ORMSetup::createDefaultAnnotationDriver([__DIR__ . '/../Entities']));
+        $this->entityManager = new EntityManager(
+            DriverManager::getConnection(['driver' => 'pdo_sqlite', 'memory' => true], $this->configuration),
+            $this->configuration
+        );
     }
 
     public function assertDqlProducesSql($actualDql, $expectedSql, $params = []): void
