@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.15"
     },
     "require-dev": {
+        "doctrine/annotations": "^1.14",
         "doctrine/cache": "^1.11",
         "doctrine/coding-standard": "^9.0.2 || ^12.0",
         "nesbot/carbon": "*",
