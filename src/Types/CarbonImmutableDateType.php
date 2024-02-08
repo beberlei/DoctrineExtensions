@@ -2,14 +2,12 @@
 
 namespace DoctrineExtensions\Types;
 
-use Carbon\CarbonImmutable;
-use DateTime;
-use DateTimeInterface;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\DateType;
+use Doctrine\DBAL\Types\DateImmutableType;
 
-class CarbonImmutableDateType extends DateType
+class CarbonImmutableDateType extends DateImmutableType
 {
+    use CarbonImmutableTypeImplementation;
+
     public const CARBONDATE = 'carbondate_immutable';
 
     /**
@@ -18,29 +16,5 @@ class CarbonImmutableDateType extends DateType
     public function getName()
     {
         return self::CARBONDATE;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return CarbonImmutable|DateTimeInterface
-     */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        $result = parent::convertToPHPValue($value, $platform);
-
-        if ($result instanceof DateTime) {
-            return CarbonImmutable::instance($result);
-        }
-
-        return $result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function requiresSQLCommentHint(AbstractPlatform $platform)
-    {
-        return true;
     }
 }
