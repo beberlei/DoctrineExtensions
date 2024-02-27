@@ -1,0 +1,41 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Collate\\:\\:\\$collation \\(null\\) does not accept string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Collate.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Collate\\:\\:\\$stringPrimary \\(null\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\.$#"
+			count: 1
+			path: src/Query/Mysql/Collate.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$aggregateExpression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\AggregateExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Lag.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$offset \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\ArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Lag.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lead\\:\\:\\$aggregateExpression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\AggregateExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Lead.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lead\\:\\:\\$offset \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\ArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Lead.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Sqlite\\\\Week\\:\\:\\$mode \\(int\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Literal\\.$#"
+			count: 1
+			path: src/Query/Sqlite/Week.php
+
+		-
+			message: "#^Method DoctrineExtensions\\\\Types\\\\ZendDateType\\:\\:convertToPHPValue\\(\\) should return Zend_Date but returns null\\.$#"
+			count: 1
+			path: src/Types/ZendDateType.php
