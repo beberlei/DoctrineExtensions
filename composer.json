@@ -16,10 +16,12 @@
         "doctrine/annotations": "^1.14 || ^2",
         "doctrine/coding-standard": "^9.0.2 || ^12.0",
         "nesbot/carbon": "^2.72 || ^3",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^8.5 || ^9.6",
         "squizlabs/php_codesniffer": "^3.8",
         "symfony/cache": "^5.4 || ^6.4 || ^7.0",
         "symfony/yaml": "^5.4 || ^6.4 || ^7.0",
+        "vimeo/psalm": "^3.18 || ^5.22",
         "zf1/zend-date": "^1.12",
         "zf1/zend-registry": "^1.12"
     },
