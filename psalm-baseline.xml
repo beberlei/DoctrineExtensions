@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.22.2@d768d914152dbbf3486c36398802f74e80cfde48">
+  <file src="src/Query/Sqlite/DateFormat.php">
+    <NoValue>
+      <code><![CDATA[$format]]></code>
+    </NoValue>
+  </file>
+  <file src="src/Types/ZendDateType.php">
+    <MissingFile>
+      <code><![CDATA[require_once 'Zend/Date.php']]></code>
+    </MissingFile>
+  </file>
+</files>
