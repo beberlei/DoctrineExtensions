@@ -1,6 +1,26 @@
 name: Tests
 
-on: ["push", "pull_request"]
+on:
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - .github/workflows/tests.yml
+      - bin/**
+      - src/**
+      - tests/**
+      - composer.*
+      - phpunit.xml.dist
+  push:
+    branches:
+      - "master"
+    paths:
+      - .github/workflows/tests.yml
+      - config/**
+      - src/**
+      - tests/**
+      - composer.*
+      - phpunit.xml.dist
 
 jobs:
   build:
