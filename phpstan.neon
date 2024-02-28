@@ -1,0 +1,8 @@
+parameters:
+    level: 3
+    paths:
+        - src
+    phpVersion: 80300
+
+includes:
+    - phpstan-baseline.neon
