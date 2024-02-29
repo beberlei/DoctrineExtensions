@@ -16,6 +16,11 @@ parameters:
 			path: src/Query/Mysql/Lag.php
 
 		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$defaultValue \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Lag.php
+
+		-
 			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$offset \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\ArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
 			count: 1
 			path: src/Query/Mysql/Lag.php
@@ -26,16 +31,31 @@ parameters:
 			path: src/Query/Mysql/Lead.php
 
 		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lead\\:\\:\\$defaultValue \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Lead.php
+
+		-
 			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lead\\:\\:\\$offset \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\ArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
 			count: 1
 			path: src/Query/Mysql/Lead.php
 
 		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Rand\\:\\:\\$expression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Rand.php
+
+		-
+			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Variance\\:\\:\\$arithmeticExpression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
+			count: 1
+			path: src/Query/Mysql/Variance.php
+
+		-
+			message: "#^PHPDoc tag @return with type array\\|string is not subtype of native type string\\.$#"
+			count: 1
+			path: src/Query/MysqlWalker.php
+
+		-
 			message: "#^Property DoctrineExtensions\\\\Query\\\\Sqlite\\\\Week\\:\\:\\$mode \\(int\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Literal\\.$#"
 			count: 1
 			path: src/Query/Sqlite/Week.php
-
-		-
-			message: "#^Method DoctrineExtensions\\\\Types\\\\ZendDateType\\:\\:convertToPHPValue\\(\\) should return Zend_Date but returns null\\.$#"
-			count: 1
-			path: src/Types/ZendDateType.php

@@ -3,7 +3,6 @@
 namespace DoctrineExtensions\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Zend_Date;
 use Zend_Locale_Format;
@@ -53,8 +52,6 @@ class ZendDateType extends Type
 
     /**
      * {@inheritDoc}
-     *
-     * @return Zend_Date
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Zend_Date
     {
@@ -66,12 +63,7 @@ class ZendDateType extends Type
             $platform->getDateTimeFormatString()
         );
 
-        $val = new Zend_Date($value, $dateTimeFormatString);
-        if (! $val) {
-            throw ConversionException::conversionFailed($value, $this->getName());
-        }
-
-        return $val;
+        return new Zend_Date($value, $dateTimeFormatString);
     }
 
     /**
