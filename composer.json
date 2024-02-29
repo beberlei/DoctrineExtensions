@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.2 || ^8.0",
-        "doctrine/orm": "^2.15"
+        "doctrine/orm": "^2.19 || ^3.0 @dev"
     },
     "require-dev": {
         "doctrine/annotations": "^1.14 || ^2",

@@ -16,6 +16,8 @@ use Zend_Date;
 
 use function assert;
 
+use const PHP_VERSION_ID;
+
 /**
  * Test type that maps an SQL DATETIME/TIMESTAMP to a Zend_Date object.
  *
@@ -35,13 +37,18 @@ class ZendDateTest extends TestCase
 
     public function setUp(): void
     {
-        $config = new Configuration();
+        if (PHP_VERSION_ID < 80000) {
+            $config = new Configuration();
+            $config->setMetadataDriverImpl(ORMSetup::createDefaultAnnotationDriver([__DIR__ . '/../../Entities']));
+        } else {
+            $config = ORMSetup::createAttributeMetadataConfiguration([__DIR__ . '/../Entities'], true);
+        }
+
         $config->setMetadataCache(new ArrayAdapter());
         $config->setQueryCache(new ArrayAdapter());
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setProxyNamespace('DoctrineExtensions\Tests\PHPUnit\Proxies');
         $config->setAutoGenerateProxyClasses(true);
-        $config->setMetadataDriverImpl(ORMSetup::createDefaultAnnotationDriver([__DIR__ . '/../../Entities']));
 
         $this->em = new EntityManager(
             DriverManager::getConnection([

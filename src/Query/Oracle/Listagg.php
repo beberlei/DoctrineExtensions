@@ -5,9 +5,9 @@ namespace DoctrineExtensions\Query\Oracle;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\AST\OrderByClause;
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\TokenType;
 
 use function count;
 use function implode;
@@ -32,51 +32,51 @@ class Listagg extends FunctionNode
     {
         $lexer = $parser->getLexer();
 
-        $parser->match(Lexer::T_IDENTIFIER);
-        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        $parser->match(TokenType::T_IDENTIFIER);
+        $parser->match(TokenType::T_OPEN_PARENTHESIS);
         $this->listaggField = $parser->StringPrimary();
 
-        if ($lexer->isNextToken(Lexer::T_COMMA)) {
-            $parser->match(Lexer::T_COMMA);
+        if ($lexer->isNextToken(TokenType::T_COMMA)) {
+            $parser->match(TokenType::T_COMMA);
             $this->separator = $parser->StringExpression();
         }
 
-        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
 
-        if (! $lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'within') {
+        if (! $lexer->isNextToken(TokenType::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'within') {
             $parser->syntaxError('WITHIN GROUP');
         }
 
-        $parser->match(Lexer::T_IDENTIFIER);
-        $parser->match(Lexer::T_GROUP);
+        $parser->match(TokenType::T_IDENTIFIER);
+        $parser->match(TokenType::T_GROUP);
 
-        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        $parser->match(TokenType::T_OPEN_PARENTHESIS);
         $this->orderBy = $parser->OrderByClause();
-        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
 
-        if ($lexer->isNextToken(Lexer::T_IDENTIFIER)) {
+        if ($lexer->isNextToken(TokenType::T_IDENTIFIER)) {
             if (strtolower($lexer->lookahead->value) !== 'over') {
                 $parser->syntaxError('OVER');
             }
 
-            $parser->match(Lexer::T_IDENTIFIER);
-            $parser->match(Lexer::T_OPEN_PARENTHESIS);
+            $parser->match(TokenType::T_IDENTIFIER);
+            $parser->match(TokenType::T_OPEN_PARENTHESIS);
 
-            if (! $lexer->isNextToken(Lexer::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'partition') {
+            if (! $lexer->isNextToken(TokenType::T_IDENTIFIER) || strtolower($lexer->lookahead->value) !== 'partition') {
                 $parser->syntaxError('PARTITION BY');
             }
 
-            $parser->match(Lexer::T_IDENTIFIER);
-            $parser->match(Lexer::T_BY);
+            $parser->match(TokenType::T_IDENTIFIER);
+            $parser->match(TokenType::T_BY);
 
             $this->partitionBy[] = $parser->StringPrimary();
 
-            while ($lexer->isNextToken(Lexer::T_COMMA)) {
-                $parser->match(Lexer::T_COMMA);
+            while ($lexer->isNextToken(TokenType::T_COMMA)) {
+                $parser->match(TokenType::T_COMMA);
                 $this->partitionBy[] = $parser->StringPrimary();
             }
 
-            $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+            $parser->match(TokenType::T_CLOSE_PARENTHESIS);
         }
     }
 

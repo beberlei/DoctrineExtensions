@@ -3,9 +3,9 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\Lexer;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
+use Doctrine\ORM\Query\TokenType;
 
 use function count;
 
@@ -18,8 +18,8 @@ class Field extends FunctionNode
 
     public function parse(Parser $parser): void
     {
-        $parser->match(Lexer::T_IDENTIFIER);
-        $parser->match(Lexer::T_OPEN_PARENTHESIS);
+        $parser->match(TokenType::T_IDENTIFIER);
+        $parser->match(TokenType::T_OPEN_PARENTHESIS);
 
         // Do the field.
         $this->field = $parser->ArithmeticPrimary();
@@ -31,13 +31,13 @@ class Field extends FunctionNode
 
         while (
             count($this->values) < 1 ||
-            $lexer->lookahead->type !== Lexer::T_CLOSE_PARENTHESIS
+            $lexer->lookahead->type !== TokenType::T_CLOSE_PARENTHESIS
         ) {
-            $parser->match(Lexer::T_COMMA);
+            $parser->match(TokenType::T_COMMA);
             $this->values[] = $parser->ArithmeticPrimary();
         }
 
-        $parser->match(Lexer::T_CLOSE_PARENTHESIS);
+        $parser->match(TokenType::T_CLOSE_PARENTHESIS);
     }
 
     public function getSql(SqlWalker $sqlWalker): string

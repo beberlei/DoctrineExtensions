@@ -34,7 +34,7 @@ class ZendDateType extends Type
     /**
      * {@inheritDoc}
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
     {
         return $platform->getDateTimeTypeDeclarationSQL($fieldDeclaration);
     }
@@ -42,7 +42,7 @@ class ZendDateType extends Type
     /**
      * {@inheritDoc}
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
         return $value !== null
             ? $value->toString(Zend_Locale_Format::convertPhpToIsoFormat(
@@ -56,7 +56,7 @@ class ZendDateType extends Type
      *
      * @return Zend_Date
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?Zend_Date
     {
         if ($value === null) {
             return null;
