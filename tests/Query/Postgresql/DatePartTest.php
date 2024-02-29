@@ -18,4 +18,16 @@ class DatePartTest extends PostgresqlTestCase
 
         $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
     }
+
+    public function testDatePartWithExpression()
+    {
+        $queryBuilder = new QueryBuilder($this->entityManager);
+        $queryBuilder
+            ->select("date_part('DAY', dt.created - dt.created)")
+            ->from('DoctrineExtensions\Tests\Entities\Date', 'dt');
+
+        $expected = "SELECT DATE_PART('DAY', d0_.created - d0_.created) AS sclr_0 FROM Date d0_";
+
+        $this->assertEquals($expected, $queryBuilder->getQuery()->getSQL());
+    }
 }
