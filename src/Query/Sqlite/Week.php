@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Sqlite;
 
+use Doctrine\ORM\Query\AST\Literal;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\TokenType;
 
@@ -11,7 +12,7 @@ class Week extends NumberFromStrfTime
     /**
      * Currently not in use
      *
-     * @var int
+     * @var Literal
      */
     public $mode;
 

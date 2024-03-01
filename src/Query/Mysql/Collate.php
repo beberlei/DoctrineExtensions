@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
@@ -16,10 +17,10 @@ use function sprintf;
  */
 class Collate extends FunctionNode
 {
-    /** @var null */
+    /** @var Node|null */
     public $stringPrimary = null;
 
-    /** @var null */
+    /** @var string|null */
     public $collation = null;
 
     public function parse(Parser $parser): void
