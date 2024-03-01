@@ -9,8 +9,17 @@ use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * InetNtoaFunction ::= "INET_NTOA" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_inet-ntoa
+ *
+ * @example SELECT INET_NTOA(2130706433)
+ * @example SELECT INET_NTOA(foo.bar) FROM entity
+ */
 class InetNtoa extends FunctionNode
 {
+    /** @var Node */
     public $valueExpression = null;
 
     /** @throws QueryException */

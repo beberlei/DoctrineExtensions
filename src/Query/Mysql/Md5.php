@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Andreas Gallien <gallien@seleos.de> */
+/**
+ * Md5Function ::= "MD5" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_md5
+ *
+ * @author Andreas Gallien <gallien@seleos.de>
+ */
 class Md5 extends FunctionNode
 {
     public $stringPrimary;

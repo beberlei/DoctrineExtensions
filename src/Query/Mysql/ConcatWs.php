@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -12,11 +13,22 @@ use function implode;
 use function sprintf;
 use function strtolower;
 
-/** @author Andrew Mackrodt <andrew@ajmm.org> */
+/**
+ * ConcatWsFunction ::= "CONCAT_WS" "(" ArithmeticExpression "," FunctionDeclaration | ArithmeticExpression "," FunctionDeclaration | ArithmeticExpression [{ "," FunctionDeclaration | ArithmeticExpression }*] [ "NOTEMPTY" ] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_concat-ws
+ *
+ * @author Andrew Mackrodt <andrew@ajmm.org>
+ * @example SELECT CONCAT_WS(',', foo.bar, foo.bar2) FROM entity
+ * @example SELECT CONCAT_WS(',', foo.bar, foo.bar2, foo.bar3) FROM entity
+ * @example SELECT CONCAT_WS(',', foo.bar, foo.bar2, "NOTEMPTY") FROM entity
+ */
 class ConcatWs extends FunctionNode
 {
+    /** @var array<FunctionNode|ArithmeticExpression> */
     private $values = [];
 
+    /** @var bool */
     private $notEmpty = false;
 
     public function parse(Parser $parser): void
@@ -73,7 +85,7 @@ class ConcatWs extends FunctionNode
             $nodeSql = $sqlWalker->walkArithmeticPrimary($this->values[$i]);
 
             if ($this->notEmpty) {
-        // Exclude empty strings from the concatenation.
+                // Exclude empty strings from the concatenation.
                 $nodeSql = sprintf("NULLIF(%s, '')", $nodeSql);
             }
 

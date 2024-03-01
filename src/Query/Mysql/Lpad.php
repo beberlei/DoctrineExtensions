@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Giulia Santoiemma <giuliaries@gmail.com> */
+/**
+ * LpadFunction ::= "LPAD" "(" ArithmeticPrimary "," ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_lpad
+ *
+ * @author Giulia Santoiemma <giuliaries@gmail.com>
+ */
 class Lpad extends FunctionNode
 {
     public $string = null;

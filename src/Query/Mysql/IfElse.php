@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -9,9 +10,19 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
-/** @author Andrew Mackrodt <andrew@ajmm.org> */
+/**
+ * IfElseFunction ::= "IFELSE" "(" ConditionalExpression "," ArithmeticExpression "," ArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/flow-control-functions.html#function_if
+ *
+ * @author Andrew Mackrodt <andrew@ajmm.org>
+ *
+ * @example SELECT IFELSE(foo.bar > 2, 1, 0) FROM entity
+ * @example SELECT IFELSE(true, 0, 1)
+ */
 class IfElse extends FunctionNode
 {
+    /** @var array<AST\ConditionalExpression|AST\ConditionalFactor|AST\ConditionalPrimary|AST\ConditionalTerm|AST\ArithmeticExpression|null> */
     private $expr = [];
 
     public function parse(Parser $parser): void

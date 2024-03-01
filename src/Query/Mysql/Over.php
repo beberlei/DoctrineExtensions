@@ -12,6 +12,9 @@ use Doctrine\ORM\Query\TokenType;
 use function count;
 use function trim;
 
+/**
+ * ArithmeticExpression "OVER" "(" [OrderByClause] ")"
+ */
 class Over extends FunctionNode
 {
     /** @var ArithmeticExpression */

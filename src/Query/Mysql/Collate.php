@@ -11,9 +11,14 @@ use Doctrine\ORM\Query\TokenType;
 use function sprintf;
 
 /**
+ * CollateFunction ::= "COLLATE" "(" StringPrimary "," Identifier ")"
+ *
  * @link https://dev.mysql.com/doc/refman/en/charset-collate.html
  *
  * @author Peter Tanath <peter.tanath@gmail.com>
+ *
+ * @example SELECT COLLATE("string", latin1_german2_ci)
+ * @example SELECT COLLATE(foo.bar, latin1_german2_ci) FROM entity
  */
 class Collate extends FunctionNode
 {

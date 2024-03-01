@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -10,13 +11,24 @@ use Doctrine\ORM\Query\TokenType;
 use function sprintf;
 use function strtolower;
 
-/** @author Andrew Mackrodt <andrew@ajmm.org> */
+/**
+ * CountIfFunction ::= "COUNTIF" "(" ArithmeticExpression "," ArithmeticExpression [ "INVERSE" ] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/counting-rows.html
+ *
+ * @author Andrew Mackrodt <andrew@ajmm.org>
+ * @example SELECT COUNTIF(2, 3)
+ * @example SELECT COUNTIF(2, 3 INVERSE)
+ */
 class CountIf extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     private $expr1;
 
+    /** @var ArithmeticExpression */
     private $expr2;
 
+    /** @var bool */
     private $inverse = false;
 
     public function parse(Parser $parser): void

@@ -9,8 +9,17 @@ use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * IsIpv6Function ::= "IS_IPV6" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_is-ipv6
+ *
+ * @example SELECT IS_IPV6("::ffff:127.0.0.1")
+ * @example SELECT IS_IPV6(foo.bar) FROM entity
+ */
 class IsIpv6 extends FunctionNode
 {
+    /** @var Node */
     public $valueExpression = null;
 
     /** @throws QueryException */

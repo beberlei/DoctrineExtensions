@@ -7,7 +7,11 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Jarek Kostrz <jkostrz@gmail.com> */
+/**
+ * "REPLACE" "(" ArithmeticPrimary "," ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @author Jarek Kostrz <jkostrz@gmail.com>
+ */
 class Replace extends FunctionNode
 {
     public $search = null;

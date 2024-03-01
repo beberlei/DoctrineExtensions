@@ -7,6 +7,9 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * "(" StringPrimary "REGEXP" StringExpression ")"
+ */
 class Regexp extends FunctionNode
 {
     public $value = null;

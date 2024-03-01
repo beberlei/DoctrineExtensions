@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author      Marius Krämer <marius@marius-kraemer.de> */
+/**
+ * UtcTimestampFunction ::= "UTC_TIMESTAMP" "(" ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_utc-timestamp
+ *
+ * @author      Marius Krämer <marius@marius-kraemer.de>
+ */
 class UtcTimestamp extends FunctionNode
 {
     public function getSql(SqlWalker $sqlWalker): string
