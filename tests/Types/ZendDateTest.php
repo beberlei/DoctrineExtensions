@@ -10,11 +10,10 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\Tools\SchemaTool;
 use DoctrineExtensions\Tests\Entities\ZendDate;
+use DoctrineExtensions\Types\ZendDateType;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Zend_Date;
-
-use function assert;
 
 use const PHP_VERSION_ID;
 
@@ -31,7 +30,7 @@ class ZendDateTest extends TestCase
     {
         Type::addType(
             'ZendDate',
-            'DoctrineExtensions\Types\ZendDateType'
+            ZendDateType::class
         );
     }
 
@@ -61,7 +60,7 @@ class ZendDateTest extends TestCase
         $schemaTool = new SchemaTool($this->em);
         $schemaTool->dropDatabase();
         $schemaTool->createSchema([
-            $this->em->getClassMetadata('DoctrineExtensions\Tests\Entities\ZendDate'),
+            $this->em->getClassMetadata(ZendDate::class),
         ]);
 
         $this->em->persist(new ZendDate(1, new Zend_Date([
@@ -78,7 +77,7 @@ class ZendDateTest extends TestCase
 
     public function testGetZendDate(): void
     {
-        $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 1);
+        $entity = $this->em->find(ZendDate::class, 1);
 
         $this->assertInstanceOf('Zend_Date', $entity->date);
         $this->assertTrue($entity->date->equals(new Zend_Date([
@@ -106,7 +105,7 @@ class ZendDateTest extends TestCase
         $this->em->persist($entity);
         $this->em->flush();
 
-        $entity = $this->em->find('DoctrineExtensions\Tests\Entities\ZendDate', 2);
+        $entity = $this->em->find(ZendDate::class, 2);
 
         $this->assertInstanceOf('Zend_Date', $entity->date);
         $this->assertTrue($entity->date->equals($zendDate));
@@ -114,8 +113,7 @@ class ZendDateTest extends TestCase
 
     public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint(): void
     {
-        $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
-        assert($platform instanceof AbstractPlatform);
+        $platform = $this->getMockForAbstractClass(AbstractPlatform::class);
 
         $this->assertTrue(Type::getType('ZendDate')->requiresSQLCommentHint($platform));
     }
