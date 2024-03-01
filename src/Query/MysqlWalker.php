@@ -8,11 +8,7 @@ use function str_replace;
 
 class MysqlWalker extends SqlWalker
 {
-    /**
-     * @return array|string
-     *
-     * @inheritdoc
-     */
+    /** @inheritdoc */
     public function walkSelectClause($selectClause): string
     {
         $sql = parent::walkSelectClause($selectClause);
