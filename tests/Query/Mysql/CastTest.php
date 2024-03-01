@@ -2,11 +2,12 @@
 
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
+use DoctrineExtensions\Tests\Entities\BlogPost;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 class CastTest extends MysqlTestCase
 {
-    private $entityLong = 'DoctrineExtensions\\Tests\\Entities\\BlogPost';
+    private $entityLong = BlogPost::class;
 
     private $entityShort = 'BlogPost';
 

@@ -3,6 +3,7 @@
 namespace DoctrineExtensions\Tests\Query\Mysql;
 
 use Doctrine\ORM\Query;
+use DoctrineExtensions\Tests\Entities\BlogPost;
 use DoctrineExtensions\Tests\Query\MysqlTestCase;
 
 use function deg2rad;
@@ -15,7 +16,7 @@ class TrigTest extends MysqlTestCase
     {
         parent::setUp();
 
-        $this->entity = 'DoctrineExtensions\Tests\Entities\BlogPost';
+        $this->entity = BlogPost::class;
     }
 
     public function testSin(): void

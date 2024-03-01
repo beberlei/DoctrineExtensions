@@ -2,6 +2,8 @@
 
 namespace DoctrineExtensions\Tests\Query;
 
+use DoctrineExtensions\Tests\Entities\Date;
+
 use function method_exists;
 
 class SqliteTestCase extends DbTestCase
@@ -26,7 +28,7 @@ class SqliteTestCase extends DbTestCase
                     'sclr',
                     0,
                     $this->entityManager->getConnection()->getDatabasePlatform(),
-                    $this->entityManager->getClassMetadata('DoctrineExtensions\Tests\Entities\Date')
+                    $this->entityManager->getClassMetadata(Date::class)
                 );
         }
     }
