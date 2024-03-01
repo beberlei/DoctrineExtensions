@@ -15,8 +15,6 @@ use DoctrineExtensions\Tests\Entities\CarbonDate as Entity;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
-use function assert;
-
 use const PHP_VERSION_ID;
 
 /**
@@ -236,14 +234,13 @@ class CarbonDateTest extends TestCase
     /** @dataProvider typeProvider */
     public function testTypesThatMapToAlreadyMappedDatabaseTypesRequireCommentHint($type): void
     {
-        $platform = $this->getMockForAbstractClass('Doctrine\DBAL\Platforms\AbstractPlatform');
-        assert($platform instanceof AbstractPlatform);
+        $platform = $this->createMock(AbstractPlatform::class);
 
         $this->assertTrue(Type::getType($type)->requiresSQLCommentHint($platform));
     }
 
     /** @return array<int, array<int, string>> */
-    public function typeProvider(): array
+    public static function typeProvider(): array
     {
         return [
             ['CarbonDate'],
