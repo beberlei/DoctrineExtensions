@@ -13,7 +13,11 @@ use function count;
 use function trim;
 
 /**
- * ArithmeticExpression "OVER" "(" [OrderByClause] ")"
+ * OverFunction ::= "OVER" "(" ArithmeticExpression "," [OrderByClause] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/window-functions-usage.html
+ *
+ * @example
  */
 class Over extends FunctionNode
 {

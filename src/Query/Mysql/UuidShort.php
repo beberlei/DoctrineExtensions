@@ -8,7 +8,11 @@ use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
- * "UUID_SHORT" "(" ")"
+ * UuidShortFunction ::= "UUID_SHORT" "(" ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_uuid-short
+ *
+ * @example
  */
 class UuidShort extends FunctionNode
 {

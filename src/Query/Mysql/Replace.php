@@ -8,7 +8,9 @@ use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
- * "REPLACE" "(" ArithmeticPrimary "," ArithmeticPrimary "," ArithmeticPrimary ")"
+ * ReplaceFunction ::= "REPLACE" "(" ArithmeticPrimary "," ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_replace
  *
  * @author Jarek Kostrz <jkostrz@gmail.com>
  */

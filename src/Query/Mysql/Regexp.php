@@ -8,7 +8,11 @@ use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
- * "(" StringPrimary "REGEXP" StringExpression ")"
+ * RegexpFunction ::= "(" StringPrimary "REGEXP" StringExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/regexp.html#operator_regexp
+ *
+ * @example
  */
 class Regexp extends FunctionNode
 {
