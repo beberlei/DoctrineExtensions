@@ -9,8 +9,18 @@ use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * Inet6AtonFunction ::= "INET6_ATON" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_inet6-aton
+ *
+ * @example SELECT INET6_ATON('127.0.0.1')
+ * @example SELECT HEX(INET6_ATON('127.0.0.1'))
+ * @example SELECT HEX(INET6_ATON(foo.bar)) FROM entity
+ */
 class Inet6Aton extends FunctionNode
 {
+    /** @var Node */
     public $valueExpression = null;
 
     /** @throws QueryException */

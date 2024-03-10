@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Martin Štekl <martin.stekl@gmail.com> */
+/**
+ * SecondFunction ::= "SECOND" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_second
+ *
+ * @author Martin Štekl <martin.stekl@gmail.com>
+ */
 class Second extends FunctionNode
 {
     public $date;

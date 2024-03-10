@@ -3,6 +3,8 @@
 namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\AST\OrderByClause;
 use Doctrine\ORM\Query\AST\PathExpression;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -11,17 +13,27 @@ use Doctrine\ORM\Query\TokenType;
 use function sprintf;
 
 /**
+ * StringAggFunction ::= "STRING_AGG" "(" ["DISTINCT"] PathExpression "," StringPrimary [ OrderByClause ] ")"
+ *
+ * @link https://www.postgresql.org/docs/9.0/sql-expressions.html#SYNTAX-AGGREGATES
+ *
  * @author Roberto Júnior <me@robertojunior.net>
  * @author Vaskevich Eugeniy <wbrframe@gmail.com>
+ *
+ * @example SELECT STRING_AGG(DISTINCT foo.bar, "," ORDER BY foo.bar) FROM entity
  */
 class StringAgg extends FunctionNode
 {
+    /** @var OrderByClause */
     private $orderBy = null;
 
+    /** @var PathExpression  */
     private $expression = null;
 
+    /** @var Node */
     private $delimiter = null;
 
+    /** @var bool  */
     private $isDistinct = false;
 
     public function parse(Parser $parser): void

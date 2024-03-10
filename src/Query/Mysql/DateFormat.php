@@ -2,16 +2,29 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Steve Lacey <steve@steve.ly> */
+/**
+ * DateFormatFunction ::= "DATEFORMAT" "(" ArithmeticExpression "," StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_date-format
+ *
+ * @author Steve Lacey <steve@steve.ly>
+ *
+ * @example SELECT DATEFORMAT('2024-05-06', '%a')
+ * @example SELECT DATEFORMAT(foo.bar, '%H') FROM entity
+ */
 class DateFormat extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     public $dateExpression = null;
 
+    /** @var Node */
     public $patternExpression = null;
 
     public function parse(Parser $parser): void

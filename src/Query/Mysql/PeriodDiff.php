@@ -7,6 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * PeriodDiffFunction ::= "PERIOD_DIFF" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_period-diff
+ *
+ * @example
+ */
 class PeriodDiff extends FunctionNode
 {
     public $firstDateExpression = null;

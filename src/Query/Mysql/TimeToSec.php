@@ -8,6 +8,8 @@ use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
+ * "TIME_TO_SEC" "(" ArithmeticPrimary ")"
+ *
  * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_time-to-sec
  *
  * @example SELECT TIME_TO_SEC('22:23:00');

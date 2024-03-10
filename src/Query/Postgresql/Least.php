@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Postgresql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -10,13 +11,21 @@ use Doctrine\ORM\Query\TokenType;
 use function count;
 
 /**
+ * LeastFunction ::= "LEAST" "(" ArithmeticExpression {"," ArithmeticExpression}* ")"
+ *
+ * @link https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-GREATEST-LEAST
+ *
  * @author Vas N <phpvas@gmail.com>
  * @author Leonardo B Motyczka <leomoty@gmail.com>
+ *
+ * @example SELECT LEAST(foo.bar, foo.bar2, foo.bar2) FROM entity
  */
 class Least extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     private $field = null;
 
+    /** @var array<ArithmeticExpression> */
     private $values = [];
 
     public function parse(Parser $parser): void

@@ -1,21 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$aggregateExpression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\AggregateExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
-			count: 1
-			path: src/Query/Mysql/Lag.php
-
-		-
-			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$defaultValue \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
-			count: 1
-			path: src/Query/Mysql/Lag.php
-
-		-
-			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lag\\:\\:\\$offset \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\ArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
-			count: 1
-			path: src/Query/Mysql/Lag.php
-
-		-
 			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lead\\:\\:\\$aggregateExpression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\AggregateExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
 			count: 1
 			path: src/Query/Mysql/Lead.php
@@ -29,13 +14,3 @@ parameters:
 			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Lead\\:\\:\\$offset \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\ArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
 			count: 1
 			path: src/Query/Mysql/Lead.php
-
-		-
-			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Rand\\:\\:\\$expression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
-			count: 1
-			path: src/Query/Mysql/Rand.php
-
-		-
-			message: "#^Property DoctrineExtensions\\\\Query\\\\Mysql\\\\Variance\\:\\:\\$arithmeticExpression \\(Doctrine\\\\ORM\\\\Query\\\\AST\\\\SimpleArithmeticExpression\\) does not accept Doctrine\\\\ORM\\\\Query\\\\AST\\\\Node\\|string\\.$#"
-			count: 1
-			path: src/Query/Mysql/Variance.php

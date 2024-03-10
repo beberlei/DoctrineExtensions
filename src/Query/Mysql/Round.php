@@ -3,14 +3,24 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * "ROUND" "(" SimpleArithmeticExpression ["," ArithmeticPrimary] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_round
+ *
+ * @example
+ */
 class Round extends FunctionNode
 {
+    /** @var Node|string */
     private $firstExpression = null;
 
+    /** @var Node|string|null */
     private $secondExpression = null;
 
     public function parse(Parser $parser): void

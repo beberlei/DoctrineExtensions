@@ -9,6 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * TimeDiffFunction ::= "TIMEDIFF" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_timediff
+ *
+ * @example
+ */
 class TimeDiff extends FunctionNode
 {
     public $firstDateExpression = null;

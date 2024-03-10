@@ -3,16 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * VarianceFunction ::= "VARIANCE" "(" SimpleArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/aggregate-functions.html#function_variance
+ *
+ * @example
+ */
 class Variance extends FunctionNode
 {
-    /** @var SimpleArithmeticExpression */
+    /** @var Node|string */
     protected $arithmeticExpression;
 
     public function parse(Parser $parser): void

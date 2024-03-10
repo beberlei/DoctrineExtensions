@@ -15,15 +15,17 @@ use function implode;
 use function sprintf;
 
 /**
- * "CAST" "(" "$fieldIdentifierExpression" "AS" "$castingTypeExpression" ")"
+ * "CAST" "(" SimpleArithmeticExpression "AS" Identifier [ "(" Literal { "," Literal }* ")" ] ")"
  *
  * @link https://dev.mysql.com/doc/refman/en/cast-functions.html#function_cast
  *
- * @example SELECT CAST(foo.bar AS SIGNED) FROM dual;
+ * @example SELECT CAST(foo.bar AS SIGNED) FROM entity
+ * @example SELECT CAST(foo.bar AS UNSIGNED) FROM entity
+ * @example SELECT CAST(foo.bar AS DECIMAL(2, 2)) FROM entity
  */
 class Cast extends FunctionNode
 {
-    /** @var Node */
+    /** @var Node|string */
     protected $fieldIdentifierExpression;
 
     /** @var string */

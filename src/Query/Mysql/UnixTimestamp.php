@@ -10,6 +10,10 @@ use Doctrine\ORM\Query\TokenType;
 use function sprintf;
 
 /**
+ * UnixTimestampFunction ::= "UNIX_TIMESTAMP" "(" [ArithmeticPrimary] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_unix-timestamp
+ *
  * @author      Rafael Kassner <kassner@gmail.com>
  * @author      Oleg Khussainov <getmequick@gmail.com>
  */

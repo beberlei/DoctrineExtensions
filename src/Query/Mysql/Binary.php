@@ -3,13 +3,24 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Sarjono Mukti Aji <me@simukti.net> */
+/**
+ * BinaryFunction ::= "BINARY" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/cast-functions.html#operator_binary
+ *
+ * @author Sarjono Mukti Aji <me@simukti.net>
+ * @example SELECT BINARY(foo.bar) FROM entity
+ * @example SELECT BINARY("string")
+ * @example SELECT BINARY(2)
+ */
 class Binary extends FunctionNode
 {
+    /** @var Node */
     private $stringPrimary;
 
     public function parse(Parser $parser): void

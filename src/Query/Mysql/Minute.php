@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Martin Štekl <martin.stekl@gmail.com> */
+/**
+ * MinuteFunction ::= "MINUTE" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_minute
+ *
+ * @author Martin Štekl <martin.stekl@gmail.com>
+ */
 class Minute extends FunctionNode
 {
     public $date;

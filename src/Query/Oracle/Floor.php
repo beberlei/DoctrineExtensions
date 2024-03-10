@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Oracle;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -12,6 +13,7 @@ use function sprintf;
 /** @author Jefferson Vantuir <jefferson.behling@gmail.com> */
 class Floor extends FunctionNode
 {
+    /** @var ArithmeticExpression $number */
     private $number;
 
     public function getSql(SqlWalker $sqlWalker): string

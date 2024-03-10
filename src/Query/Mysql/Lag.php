@@ -2,23 +2,28 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
-use Doctrine\ORM\Query\AST\AggregateExpression;
-use Doctrine\ORM\Query\AST\ArithmeticExpression;
+use Doctrine\ORM\Query\AST;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * LagFunction ::= "LAG" "(" StringExpression ["," ArithmeticPrimary ["," SimpleArithmeticExpression ]] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/window-function-descriptions.html#function_lag
+ *
+ * @example {@see LagTest}
+ */
 class Lag extends FunctionNode
 {
-    /** @var AggregateExpression */
+    /** @var AST\Subselect|AST\Node|string */
     private $aggregateExpression;
 
-    /** @var ArithmeticExpression */
+    /** @var AST\Node|string */
     private $offset;
 
-    /** @var SimpleArithmeticExpression */
+    /** @var AST\Node|string */
     private $defaultValue;
 
     public function getSql(SqlWalker $sqlWalker): string

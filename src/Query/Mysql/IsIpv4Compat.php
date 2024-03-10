@@ -9,8 +9,17 @@ use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * IsIpv4CompatFunction ::= "IS_IPV4_COMPAT" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_is-ipv4-compat
+ *
+ * @example SELECT IS_IPV4_COMPAT(INET6_ATON('::127.0.0.1'))
+ * @example SELECT IS_IPV4_COMPAT(foo.bar) FROM entity
+ */
 class IsIpv4Compat extends FunctionNode
 {
+    /** @var Node */
     public $valueExpression = null;
 
     /** @throws QueryException */

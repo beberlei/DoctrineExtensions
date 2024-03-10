@@ -3,12 +3,21 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * UnHexFunction ::= "UNHEX" "(" SimpleArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_unhex
+ *
+ * @example
+ */
 class Unhex extends FunctionNode
 {
+    /** @var Node|string */
     public $arithmeticExpression;
 
     public function getSql(SqlWalker $sqlWalker): string

@@ -10,6 +10,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * LeadFunction ::= "LEAD" "(" StringExpression ["," ArithmeticPrimary ["," SimpleArithmeticExpression]] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/window-function-descriptions.html#function_lead
+ *
+ * @example
+ */
 class Lead extends FunctionNode
 {
     /** @var AggregateExpression */

@@ -2,20 +2,32 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
-/** @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz */
+/**
+ * ConvertTzFunction ::= "CONVERT_TZ" "(" ArithmeticExpression "," StringPrimary "," StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_convert-tz
+ *
+ * @example SELECT CONVERT_TZ(foo.bar, 'GMT', 'CEST') FROM entity
+ * @example SELECT CONVERT_TZ('2024-02-06 12:00:00', 'GMT', 'CEST')
+ */
 class ConvertTz extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     protected $dateExpression;
 
+    /** @var Node */
     protected $fromTz;
 
+    /** @var Node */
     protected $toTz;
 
     public function getSql(SqlWalker $sqlWalker): string
