@@ -20,6 +20,7 @@ doctrine:
                  makedate: DoctrineExtensions\Query\Mysql\MakeDate
                  minute: DoctrineExtensions\Query\Mysql\Minute
                  now: DoctrineExtensions\Query\Mysql\Now
+                 mod: DoctrineExtensions\Query\Mysql\Mod
                  month: DoctrineExtensions\Query\Mysql\Month
                  monthname: DoctrineExtensions\Query\Mysql\MonthName
                  period_diff: DoctrineExtensions\Query\Mysql\PeriodDiff
