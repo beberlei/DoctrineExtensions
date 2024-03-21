@@ -114,6 +114,7 @@ doctrine:
                  over: DoctrineExtensions\Query\Mysql\Over
                  radians: DoctrineExtensions\Query\Mysql\Radians
                  regexp: DoctrineExtensions\Query\Mysql\Regexp
+                 regexp_replace: DoctrineExtensions\Query\Mysql\RegexpReplace
                  replace: DoctrineExtensions\Query\Mysql\Replace
                  rpad: DoctrineExtensions\Query\Mysql\Rpad
                  sha1: DoctrineExtensions\Query\Mysql\Sha1
