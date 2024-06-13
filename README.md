@@ -48,18 +48,15 @@ composer run lint
 Usage
 -----
 
+### Symfony
+
 If you are using DoctrineExtensions with Symfony read [How to Register custom DQL Functions](https://symfony.com/doc/current/doctrine/custom_dql_functions.html).
 
 You can find example Symfony configuration for using DoctrineExtensions custom DQL functions in [config](config).
 
-If you are using DoctrineExtensions standalone, you might want to fire up the autoloader:
+### Standalone
 
-```php
-<?php
-
-$classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', '/path/to/extensions');
-$classLoader->register();
-```
+If you are using DoctrineExtensions standalone, you need to register the custom function in the ORM configuration.
 For more information check out the documentation of [Doctrine DQL User Defined Functions](https://www.doctrine-project.org/projects/doctrine-orm/en/latest/cookbook/dql-user-defined-functions.html).
 
 Notes
