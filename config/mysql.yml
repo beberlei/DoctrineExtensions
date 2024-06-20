@@ -78,6 +78,7 @@ doctrine:
                  aes_encrypt: DoctrineExtensions\Query\Mysql\AesEncrypt
                  any_value: DoctrineExtensions\Query\Mysql\AnyValue
                  ascii: DoctrineExtensions\Query\Mysql\Ascii
+                 bin_to_uuid: DoctrineExtensions\Query\Mysql\BinToUuid
                  binary: DoctrineExtensions\Query\Mysql\Binary
                  cast: DoctrineExtensions\Query\Mysql\Cast
                  char_length: DoctrineExtensions\Query\Mysql\CharLength
