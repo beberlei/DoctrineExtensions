@@ -14,6 +14,7 @@ doctrine:
                 extract: DoctrineExtensions\Query\Postgresql\ExtractFunction
                 date_trunc: DoctrineExtensions\Query\Postgresql\DateTrunc
                 date: DoctrineExtensions\Query\Postgresql\Date
+                age: DoctrineExtensions\Query\Postgresql\Age
 
             string_functions:
                 str_to_date: DoctrineExtensions\Query\Postgresql\StrToDate
