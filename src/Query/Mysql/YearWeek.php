@@ -7,7 +7,15 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Michael Kimpton <mike@sketchthat.com> */
+/**
+ * YearWeekFunction ::= "YEARWEEK" "(" ArithmeticPrimary ["," Literal] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_yearweek
+ *
+ * @author Michael Kimpton <mike@sketchthat.com>
+ *
+ * @example
+ */
 class YearWeek extends FunctionNode
 {
     public $date;

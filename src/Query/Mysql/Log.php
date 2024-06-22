@@ -3,12 +3,21 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * "LOG" "(" SimpleArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_log
+ *
+ * @example
+ */
 class Log extends FunctionNode
 {
+    /** @var Node|string */
     public $arithmeticExpression;
 
     public function getSql(SqlWalker $sqlWalker): string

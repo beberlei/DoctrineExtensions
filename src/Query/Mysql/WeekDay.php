@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Pavlo Cherniavskyi <ionafan2@gmail.com> */
+/**
+ * WeekDayFunction ::= "WEEKDAY" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_weekday
+ *
+ * @author Pavlo Cherniavskyi <ionafan2@gmail.com>
+ */
 class WeekDay extends FunctionNode
 {
     private $date;

@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Steve Lacey <steve@steve.ly> */
+/**
+ * MonthNameFunction ::= "MONTHNAME" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_monthname
+ *
+ * @author Steve Lacey <steve@steve.ly>
+ */
 class MonthName extends FunctionNode
 {
     public $date;

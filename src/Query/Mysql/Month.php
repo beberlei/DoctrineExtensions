@@ -8,6 +8,10 @@ use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
+ * MonthFunction ::= "MONTH" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_month
+ *
  * @author Rafael Kassner <kassner@gmail.com>
  * @author Sarjono Mukti Aji <me@simukti.net>
  */

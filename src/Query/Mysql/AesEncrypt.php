@@ -3,16 +3,27 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\AST\Subselect;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * AesEncryptFunction ::= "AES_ENCRYPT" "(" StringExpression "," StringExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_aes-encrypt
+ *
+ * @example SELECT AES_ENCRYPT(foo.to_crypt, foo.key) FROM entity
+ */
 class AesEncrypt extends FunctionNode
 {
+    /** @var Node|Subselect|string */
     public $field = '';
 
+    /** @var Node|Subselect|string */
     public $key = '';
 
     public function parse(Parser $parser): void

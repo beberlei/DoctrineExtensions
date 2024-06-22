@@ -9,6 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * YearMonthFunction ::= "YEARMONTH" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_extract
+ *
+ * @example
+ */
 class YearMonth extends FunctionNode
 {
     public $date;

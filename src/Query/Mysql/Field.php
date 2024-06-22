@@ -3,17 +3,29 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function count;
 
-/** @author Jeremy Hicks <jeremy.hicks@gmail.com> */
+/**
+ * FieldFunction ::= "FIELD" "(" ArithmeticPrimary "," ArithmeticPrimary [{ "," ArithmeticPrimary }*] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_field
+ *
+ * @author Jeremy Hicks <jeremy.hicks@gmail.com>
+ *
+ * @example SELECT FIELD('str', foo.bar) FROM entity
+ * @example SELECT FIELD('str', foo.bar, foo.bar2, foo.bar3) FROM entity
+ */
 class Field extends FunctionNode
 {
+    /** @var Node|string */
     private $field = null;
 
+    /** @var array<Node|string> */
     private $values = [];
 
     public function parse(Parser $parser): void

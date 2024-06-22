@@ -3,13 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Igor Timoshenko <igor.timoshenko@i.ua> */
+/**
+ * Crc32Function ::= "CRC32" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_crc32
+ *
+ * @author Igor Timoshenko <igor.timoshenko@i.ua>
+ * @example SELECT CRC32(foo.bar) FROM entity
+ * @example SELECT CRC32('string')
+ */
 class Crc32 extends FunctionNode
 {
+    /** @var Node */
     public $stringPrimary;
 
     public function getSql(SqlWalker $sqlWalker): string

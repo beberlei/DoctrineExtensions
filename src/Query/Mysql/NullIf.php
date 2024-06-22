@@ -9,7 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
-/** @author Andrew Mackrodt <andrew@ajmm.org> */
+/**
+ * NullIfFunction ::= "NULLIF" "(" ArithmeticExpression "," ArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/flow-control-functions.html#function_ifnull
+ *
+ * @author Andrew Mackrodt <andrew@ajmm.org>
+ */
 class NullIf extends FunctionNode
 {
     private $expr1;

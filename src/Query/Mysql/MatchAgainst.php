@@ -12,6 +12,13 @@ use function implode;
 use function sprintf;
 use function strtolower;
 
+/**
+ * MatchAgainstFunction ::= ?
+ *
+ * @link https://dev.mysql.com/doc/refman/en/fulltext-search.html#function_match
+ *
+ * @example
+ */
 class MatchAgainst extends FunctionNode
 {
     /** @var array<int, PathExpression> */

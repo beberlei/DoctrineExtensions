@@ -3,19 +3,31 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * JsonContainsFunction ::= "JSON_CONTAINS" "(" StringPrimary "," StringPrimary ["," StringPrimary] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/json-search-functions.html#function_json-contains
+ *
+ * @example SELECT JSON_CONTAINS("{x: 2}", 2, "$.x")
+ * @example SELECT JSON_CONTAINS(foo.bar, "x", "$.bar") FROM entity
+ */
 class JsonContains extends FunctionNode
 {
+    /** @var Node */
     protected $target;
 
+    /** @var Node */
     protected $candidate;
 
-    protected $path;
+    /** @var Node|null */
+    protected $path = null;
 
     public function parse(Parser $parser): void
     {

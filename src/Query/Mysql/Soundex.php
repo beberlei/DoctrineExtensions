@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Steve Tauber <taubers@gmail.com> */
+/**
+ * SoundexFunction ::= "SOUNDEX" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_soundex
+ *
+ * @author Steve Tauber <taubers@gmail.com>
+ */
 class Soundex extends FunctionNode
 {
     public $stringPrimary;

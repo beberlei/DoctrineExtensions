@@ -3,6 +3,10 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
+use Doctrine\ORM\Query\AST\OrderByClause;
+use Doctrine\ORM\Query\AST\PathExpression;
+use Doctrine\ORM\Query\AST\Subselect;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
@@ -11,14 +15,26 @@ use function implode;
 use function sprintf;
 use function strtolower;
 
+/**
+ * GroupConcatFunction ::= "GROUP_CONCAT" "(" ["DISTINCT"] StringExpression|SingleValuedPathExpression [{ "," StringPrimary }*] [ OrderByClause ] [ "SEPARATOR" StringPrimary ] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html#function_group-concat
+ *
+ * @example GROUP_CONCAT(foo.bar, foo.bar2) FROM entity
+ * @example GROUP_CONCAT(DISTINCT foo.bar, foo.bar2 ORDER BY foo.bar ASC, foo.bar2 DESC SEPARATOR ", ") FROM entity
+ */
 class GroupConcat extends FunctionNode
 {
+    /** @var bool */
     public $isDistinct = false;
 
+    /** @var array<Subselect|Node|PathExpression|string> */
     public $pathExp = null;
 
+    /** @var Node */
     public $separator = null;
 
+    /** @var OrderByClause */
     public $orderBy = null;
 
     public function parse(Parser $parser): void

@@ -9,6 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * SubstringIndexFunction ::= "SUBSTRING_INDEX" "(" ArithmeticPrimary "," ArithmeticPrimary "," ArithmeticFactor ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_substring-index
+ *
+ * @example
+ */
 class SubstringIndex extends FunctionNode
 {
     public $string = null;

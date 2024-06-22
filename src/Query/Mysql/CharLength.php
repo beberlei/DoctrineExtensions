@@ -2,14 +2,24 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Metod <metod@simpel.si> */
+/**
+ * CharLengthFunction ::= "CHAR_LENGTH" "(" ArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_char-length
+ *
+ * @author Metod <metod@simpel.si>
+ * @example SELECT CHAR_LENGTH(foo.bar) FROM entity
+ * @example SELECT CHAR_LENGTH("string")
+ */
 class CharLength extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     private $expr1;
 
     public function getSql(SqlWalker $sqlWalker): string

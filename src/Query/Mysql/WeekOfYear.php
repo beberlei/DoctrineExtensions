@@ -7,6 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * WeekOfYearFunction ::= "WEEKOFYEAR" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_weekofyear
+ *
+ * @example
+ */
 class WeekOfYear extends FunctionNode
 {
     private $date;

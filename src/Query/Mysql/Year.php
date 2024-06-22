@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Rafael Kassner <kassner@gmail.com> */
+/**
+ * YearFunction ::= "YEAR" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_year
+ *
+ * @author Rafael Kassner <kassner@gmail.com>
+ */
 class Year extends FunctionNode
 {
     public $date;

@@ -3,14 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * AnyValueFunction ::= "ANY_VALUE" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_any-value
+ *
+ * @example SELECT ANY_VALUE(foo.bar) FROM entity
+ */
 class AnyValue extends FunctionNode
 {
+    /** @var Node */
     public $value;
 
     public function parse(Parser $parser): void

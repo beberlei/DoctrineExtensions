@@ -3,17 +3,25 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
- * "BIT_XOR" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
+ * BitXorFunction ::= "BIT_XOR" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/aggregate-functions.html#function_bit-xor
+ *
+ * @example SELECT BIT_XOR(foo.bar, 2) FROM entity
+ * @example SELECT BIT_XOR(2, 2)
  */
 class BitXor extends FunctionNode
 {
+    /** @var Node|string */
     public $firstArithmetic;
 
+    /** @var Node|string */
     public $secondArithmetic;
 
     public function getSql(SqlWalker $sqlWalker): string

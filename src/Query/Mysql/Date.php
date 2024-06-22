@@ -3,13 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Steve Lacey <steve@steve.ly> */
+/**
+ * DateFunction ::= "DATE" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_date
+ *
+ * @author Steve Lacey <steve@steve.ly>
+ * @example SELECT DATE('2024-05-06')
+ * @example SELECT DATE(foo.bar)
+ */
 class Date extends FunctionNode
 {
+    /** @var Node|string */
     public $date;
 
     public function getSql(SqlWalker $sqlWalker): string

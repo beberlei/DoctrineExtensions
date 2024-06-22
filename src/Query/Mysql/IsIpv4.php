@@ -9,8 +9,17 @@ use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * IsIpv4Function ::= "IS_IPV4" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_is-ipv4
+ *
+ * @example SELECT IS_IPV4('127.0.0.1')
+ * @example SELECT IS_IPV4(foo.bar) FROM entity
+ */
 class IsIpv4 extends FunctionNode
 {
+    /** @var Node */
     public $valueExpression = null;
 
     /** @throws QueryException */

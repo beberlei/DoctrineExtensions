@@ -3,15 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
-/** @author Joachim Schirrmacher <j.schirrmacher@dilab.co> */
+/**
+ * StdDevFunction ::= "STDDEV" "(" SimpleArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/aggregate-functions.html#function_stddev
+ *
+ * @author Joachim Schirrmacher <j.schirrmacher@dilab.co>
+ */
 class StdDev extends FunctionNode
 {
+    /** @var Node|string */
     public $arithmeticExpression;
 
     public function getSql(SqlWalker $sqlWalker): string

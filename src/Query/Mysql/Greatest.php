@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
@@ -10,13 +11,23 @@ use Doctrine\ORM\Query\TokenType;
 use function count;
 
 /**
+ * GreatestFunction ::= "GREATEST" "(" ArithmeticExpression "," ArithmeticExpression [{ "," ArithmeticExpression }*] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/8.0/en/comparison-operators.html#function_greatest
+ *
  * @author Vas N <phpvas@gmail.com>
  * @author Guven Atbakan <guven@atbakan.com>
+ *
+ * @example SELECT(1, 2)
+ * @example SELECT(1, 2, 100, 10)
+ * @example SELECT(foo.bar, foo.bar2) FROM entity
  */
 class Greatest extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     private $field = null;
 
+    /** @var array<ArithmeticExpression> */
     private $values = [];
 
     public function parse(Parser $parser): void

@@ -3,12 +3,17 @@
 namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * DateFunction ::= "DATE" "(" ArithmeticPrimary ")"
+ */
 class Date extends FunctionNode
 {
+    /** @var Node|string */
     public $date;
 
     public function getSql(SqlWalker $sqlWalker): string
