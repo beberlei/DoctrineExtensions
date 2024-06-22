@@ -22,3 +22,4 @@ doctrine:
                 greatest: DoctrineExtensions\Query\Postgresql\Greatest
                 least: DoctrineExtensions\Query\Postgresql\Least
                 regexp_replace: DoctrineExtensions\Query\Postgresql\RegexpReplace
+                ilike: DoctrineExtensions\Query\Postgresql\Ilike
