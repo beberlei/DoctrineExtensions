@@ -10,7 +10,6 @@ use Doctrine\ORM\Query\TokenType;
 /** @author JB */
 class CurTime extends FunctionNode
 {
-    public $time;
 
     public function getSql(SqlWalker $sqlWalker): string
     {
