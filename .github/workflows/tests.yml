@@ -49,6 +49,6 @@ jobs:
 
       - run: composer validate
 
-      - uses: "ramsey/composer-install@v2"
+      - uses: "ramsey/composer-install@v3"
 
       - run: composer run test
