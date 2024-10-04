@@ -41,6 +41,8 @@ doctrine:
                  unix_timestamp: DoctrineExtensions\Query\Mysql\UnixTimestamp
                  utc_timestamp: DoctrineExtensions\Query\Mysql\UtcTimestamp
                  extract: DoctrineExtensions\Query\Mysql\Extract
+                 json_extract: DoctrineExtensions\Query\Mysql\JsonExtract
+                 json_iunquote: DoctrineExtensions\Query\Mysql\JsonUnquote                   
 
              numeric_functions:
                  acos: DoctrineExtensions\Query\Mysql\Acos
