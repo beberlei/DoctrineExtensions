@@ -9,7 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
-/** @author Przemek Sobstel <przemek@sobstel.org> */
+/**
+ * TimestampDiffFunction ::= "TIMESTAMPDIFF" "(" Identifier "," ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_timestampdiff
+ *
+ * @author Przemek Sobstel <przemek@sobstel.org>
+ */
 class TimestampDiff extends FunctionNode
 {
     public $firstDatetimeExpression = null;

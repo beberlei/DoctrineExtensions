@@ -3,14 +3,21 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
-use Doctrine\ORM\Query\AST\SimpleArithmeticExpression;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * "RAND" "(" [SimpleArithmeticExpression] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_rand
+ *
+ * @example
+ */
 class Rand extends FunctionNode
 {
-    /** @var SimpleArithmeticExpression */
+    /** @var Node|string */
     private $expression = null;
 
     public function getSql(SqlWalker $sqlWalker): string

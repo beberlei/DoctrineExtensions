@@ -9,7 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function count;
 
-/** @author Vas N <phpvas@gmail.com> */
+/**
+ * LeastFunction ::= "LEAST" "(" ArithmeticExpression {"," ArithmeticExpression}* ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/comparison-operators.html#function_least
+ *
+ * @author Vas N <phpvas@gmail.com>
+ */
 class Least extends FunctionNode
 {
     private $field = null;

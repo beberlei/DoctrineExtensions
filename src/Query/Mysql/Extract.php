@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
@@ -10,11 +11,22 @@ use Doctrine\ORM\Query\TokenType;
 use function in_array;
 use function strtoupper;
 
-/** @author Ahwalian Masykur <ahwalian@gmail.com> */
+/**
+ * ExtractFunction ::= "EXTRACT" "(" Identifier "FROM" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_extract
+ *
+ * @author Ahwalian Masykur <ahwalian@gmail.com>
+ *
+ * @example SELECT EXTRACT('MINUTE' FROM foo.bar) FROM entity
+ * @example SELECT EXTRACT('YEAR' FROM '2024-05-06')
+ */
 class Extract extends DateAdd
 {
+    /** @var Node|string */
     public $date = null;
 
+    /** @var int|string */
     public $unit = null;
 
     public function parse(Parser $parser): void

@@ -12,6 +12,13 @@ use Doctrine\ORM\Query\TokenType;
 use function count;
 use function trim;
 
+/**
+ * OverFunction ::= "OVER" "(" ArithmeticExpression "," [OrderByClause] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/window-functions-usage.html
+ *
+ * @example
+ */
 class Over extends FunctionNode
 {
     /** @var ArithmeticExpression */

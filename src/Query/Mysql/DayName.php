@@ -3,13 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Steve Lacey <steve@steve.ly> */
+/**
+ * DayNameFunction ::= "DAYNAME" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_dayname
+ *
+ * @author Steve Lacey <steve@steve.ly>
+ * @example SELECT DAYNAME(foo.bar) FROM entity
+ * @example SELECT DAYNAME('2023-05-06')
+ */
 class DayName extends FunctionNode
 {
+    /** @var Node|string */
     public $date;
 
     public function getSql(SqlWalker $sqlWalker): string

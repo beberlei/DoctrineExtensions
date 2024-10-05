@@ -3,15 +3,23 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Andreas Gallien <gallien@seleos.de> */
+/**
+ * Sha2Function ::= "SHA2" "(" StringPrimary "," SimpleArithmeticExpression ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_sha2
+ *
+ * @author Andreas Gallien <gallien@seleos.de>
+ */
 class Sha2 extends FunctionNode
 {
     public $stringPrimary;
 
+    /** @var Node|string */
     public $simpleArithmeticExpression;
 
     public function getSql(SqlWalker $sqlWalker): string

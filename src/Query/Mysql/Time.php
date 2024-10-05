@@ -8,6 +8,10 @@ use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 /**
+ * TimeFunction ::= "TIME" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_time
+ *
  * @author Steve Lacey <steve@steve.ly>
  * @author James Rohacik <rohacik.james@gmail.com>
  */

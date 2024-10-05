@@ -3,15 +3,27 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * AtanFunction ::= "ATAN" "(" SimpleArithmeticExpression [ "," SimpleArithmeticExpression ] ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_atan
+ *
+ * @example SELECT ATAN(foo.bar) FROM entity
+ * @example SELECT ATAN(-2, 2)
+ * @example SELECT ATAN(PI(), 2)
+ */
 class Atan extends FunctionNode
 {
+    /** @var Node|string */
     public $arithmeticExpression;
 
+    /** @var Node|string */
     public $optionalSecondExpression;
 
     public function getSql(SqlWalker $sqlWalker): string

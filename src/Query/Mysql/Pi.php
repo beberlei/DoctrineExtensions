@@ -7,6 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * "PI" "(" ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_pi
+ *
+ * @example
+ */
 class Pi extends FunctionNode
 {
     public $arithmeticExpression;

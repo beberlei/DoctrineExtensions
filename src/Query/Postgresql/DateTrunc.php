@@ -3,16 +3,26 @@
 namespace DoctrineExtensions\Query\Postgresql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * DateTruncFunction ::= "DATE_TRUNC" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC
+ *
+ * @example SELECT DATE_TRUNC('hour', foo.bar) FROM entity
+ */
 class DateTrunc extends FunctionNode
 {
+    /** @var Node|string */
     public $fieldText = null;
 
+    /** @var Node|string */
     public $fieldTimestamp = null;
 
     public function parse(Parser $parser): void

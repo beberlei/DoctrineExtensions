@@ -3,13 +3,24 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Dawid Nowak <macdada@mmg.pl> */
+/**
+ * HourFunction ::= "HOUR" "(" ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_hour
+ *
+ * @author Dawid Nowak <macdada@mmg.pl>
+ *
+ * @example SELECT HOUR('12:50:15')
+ * @example SELECT HOUR(foo.bar) FROM entity
+ */
 class Hour extends FunctionNode
 {
+    /** @var Node|string */
     public $date;
 
     public function getSql(SqlWalker $sqlWalker): string

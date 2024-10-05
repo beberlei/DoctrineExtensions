@@ -12,6 +12,15 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * ExtractFunction ::= "EXTRACT" "(" Identifier "," ScalarExpression ")"
+ *
+ * @link https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT
+ *
+ * @example SELECT EXTRACT(MONTH foo.bar) FROM entity
+ *
+ * @todo rename class to Extract
+ */
 class ExtractFunction extends FunctionNode
 {
     /** @var string */

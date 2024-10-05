@@ -2,6 +2,7 @@
 
 namespace DoctrineExtensions\Query\Mysql;
 
+use Doctrine\ORM\Query\AST;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\QueryException;
@@ -12,12 +13,23 @@ use function in_array;
 use function is_string;
 use function strtoupper;
 
+/**
+ * DateAddFunction ::= "DATEADD" "(" ArithmeticFactor "," ArithmeticFactor "," StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_date-add
+ *
+ * @example SELECT DATEADD(2, 5, "MINUTE") FROM entity
+ * @example SELECT DATEADD(foo.bar, 5, "MINUTE") FROM entity
+ */
 class DateAdd extends FunctionNode
 {
+    /** @var AST\Node|string|AST\ArithmeticFactor */
     public $firstDateExpression = null;
 
+    /** @var AST\Node|string|AST\ArithmeticFactor */
     public $intervalExpression = null;
 
+    /** @todo fix phpstan error var AST\Node */
     public $unit = null;
 
     protected static $allowedUnits = [

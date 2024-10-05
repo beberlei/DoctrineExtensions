@@ -2,16 +2,28 @@
 
 namespace DoctrineExtensions\Query\Postgresql;
 
+use Doctrine\ORM\Query\AST\ArithmeticExpression;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Silvio */
+/**
+ * DateFormatFunction ::= "DATE_FORMAT" "(" ArithmeticExpression "," StringPrimary ")"
+ *
+ * @link https://www.postgresql.org/docs/current/functions-formatting.html#FUNCTIONS-FORMATTING-TABLE
+ *
+ * @author Silvio
+ *
+ * @example SELECT DATE_FORMAT(foo.bar, "HH23:MI:SS")
+ */
 class DateFormat extends FunctionNode
 {
+    /** @var ArithmeticExpression */
     public $dateExpression = null;
 
+    /** @var Node */
     public $patternExpression = null;
 
     public function parse(Parser $parser): void

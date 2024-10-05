@@ -7,6 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
+/**
+ * UuidShortFunction ::= "UUID_SHORT" "(" ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/miscellaneous-functions.html#function_uuid-short
+ *
+ * @example
+ */
 class UuidShort extends FunctionNode
 {
     public $arithmeticExpression;

@@ -9,7 +9,13 @@ use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
-/** @author Alessandro Tagliapietra <tagliapietra.alessandro@gmail.com> */
+/**
+ * TimestampAddFunction ::= "TIMESTAMPADD" "(" Identifier "," ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_timestampadd
+ *
+ * @author Alessandro Tagliapietra <tagliapietra.alessandro@gmail.com>
+ */
 class TimestampAdd extends FunctionNode
 {
     public $firstDatetimeExpression = null;

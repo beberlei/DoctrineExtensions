@@ -9,7 +9,15 @@ use function in_array;
 use function is_string;
 use function strtoupper;
 
-/** @author Vas N <phpvas@gmail.com> */
+/**
+ * DateSubFunction ::= "DATESUB" "(" ArithmeticFactor "," ArithmeticFactor "," StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/date-and-time-functions.html#function_date-sub
+ *
+ * @author Vas N <phpvas@gmail.com>
+ * @example SELECT DATESUB(foo.bar, 5, "MINUTE") FROM entity
+ * @example SELECT DATESUB(2, 5, "MINUTE")
+ */
 class DateSub extends DateAdd
 {
     /** @throws QueryException */

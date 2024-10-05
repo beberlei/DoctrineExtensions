@@ -7,7 +7,13 @@ use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
-/** @author Andreas Gallien <gallien@seleos.de> */
+/**
+ * Sha1Function ::= "SHA1" "(" StringPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_sha1
+ *
+ * @author Andreas Gallien <gallien@seleos.de>
+ */
 class Sha1 extends FunctionNode
 {
     public $stringPrimary;

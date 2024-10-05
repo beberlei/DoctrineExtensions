@@ -3,16 +3,27 @@
 namespace DoctrineExtensions\Query\Mysql;
 
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
+use Doctrine\ORM\Query\AST\Node;
 use Doctrine\ORM\Query\Parser;
 use Doctrine\ORM\Query\SqlWalker;
 use Doctrine\ORM\Query\TokenType;
 
 use function sprintf;
 
+/**
+ * InstrFunction ::= "INSTR" "(" ArithmeticPrimary "," ArithmeticPrimary ")"
+ *
+ * @link https://dev.mysql.com/doc/refman/en/string-functions.html#function_instr
+ *
+ * @example SELECT INSTR('foobar', 'bar')
+ * @example SELECT INSTR(foo.bar, 'bar') FROM entity
+ */
 class Instr extends FunctionNode
 {
+    /** @var Node|string */
     public $originalString = null;
 
+    /** @var Node|string */
     public $subString = null;
 
     public function parse(Parser $parser): void
