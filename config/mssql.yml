@@ -1,0 +1,12 @@
+doctrine:
+  orm:
+    dql:
+      datetime_functions:
+        datediff: DoctrineExtensions\Query\Mssql\DateDiff
+        timestampdiff: DoctrineExtensions\Query\Mssql\TimestampDiff
+
+      string_functions:
+        concat_ws: DoctrineExtensions\Query\Mssql\ConcatWs
+        group_concat: DoctrineExtensions\Query\Mssql\GroupConcat
+        ifelse: DoctrineExtensions\Query\Mssql\IfElse
+        ifnull: DoctrineExtensions\Query\Mssql\IfNull
