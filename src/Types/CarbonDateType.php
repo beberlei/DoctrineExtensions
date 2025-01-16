@@ -10,10 +10,7 @@ class CarbonDateType extends DateType
 
     public const CARBONDATE = 'carbondate';
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return self::CARBONDATE;
     }
