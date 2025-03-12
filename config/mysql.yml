@@ -107,6 +107,7 @@ doctrine:
                  lag: DoctrineExtensions\Query\Mysql\Lag
                  lead: DoctrineExtensions\Query\Mysql\Lead
                  least: DoctrineExtensions\Query\Mysql\Least
+                 limit: DoctrineExtensions\Query\Mysql\Limit
                  lpad: DoctrineExtensions\Query\Mysql\Lpad
                  match: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5

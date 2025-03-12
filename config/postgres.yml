@@ -21,4 +21,5 @@ doctrine:
                 string_agg: DoctrineExtensions\Query\Postgresql\StringAgg
                 greatest: DoctrineExtensions\Query\Postgresql\Greatest
                 least: DoctrineExtensions\Query\Postgresql\Least
+                limit: DoctrineExtensions\Query\Postgresql\Limit
                 regexp_replace: DoctrineExtensions\Query\Postgresql\RegexpReplace

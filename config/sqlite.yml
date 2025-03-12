@@ -37,6 +37,7 @@ doctrine:
                  ifelse: DoctrineExtensions\Query\Sqlite\IfElse
                  ifnull: DoctrineExtensions\Query\Sqlite\IfNull
                  least: DoctrineExtensions\Query\Sqlite\Least
+                 limit: DoctrineExtensions\Query\Sqlite\Limit
 #                 match: DoctrineExtensions\Query\Sqlite\MatchAgainst
 #                 md5: DoctrineExtensions\Query\Sqlite\Md5
 #                 nullif: DoctrineExtensions\Query\Sqlite\NullIf
