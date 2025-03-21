@@ -19,3 +19,4 @@ doctrine:
             numeric_functions:
                 ceil: DoctrineExtensions\Query\Oracle\Ceil
                 floor: DoctrineExtensions\Query\Oracle\Floor
+                jaro_winkler_similarity: DoctrineExtensions\Query\Oracle\JaroWinklerSimilarity
