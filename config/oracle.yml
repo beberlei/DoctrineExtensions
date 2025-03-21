@@ -13,6 +13,7 @@ doctrine:
 
             string_functions:
                 nvl: DoctrineExtensions\Query\Oracle\Nvl
+                nvl2: DoctrineExtensions\Query\Oracle\Nvl2
                 listagg: DoctrineExtensions\Query\Oracle\Listagg
                 to_date: DoctrineExtensions\Query\Oracle\ToDate
 

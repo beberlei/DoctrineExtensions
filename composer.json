@@ -38,6 +38,10 @@
         }
     },
     "scripts": {
+        "lint": [
+            "vendor/bin/phpcs -q --report=diff",
+            "vendor/bin/phpstan analyse src tests -v"
+        ],
         "test": "phpunit --colors=always"
     }
 }
