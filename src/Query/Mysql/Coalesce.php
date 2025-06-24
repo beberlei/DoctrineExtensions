@@ -12,10 +12,11 @@ use function array_map;
 use function implode;
 
 /**
- * @author Vas N <phpvas@gmail.com>
- * @author Guven Atbakan <guven@atbakan.com>
+ * @link https://dev.mysql.com/doc/refman/en/comparison-operators.html#function_coalesce
+ *
+ * @author Alexandre Bertrand <alexandrebertrand96@gmail.com>
  */
-class Greatest extends FunctionNode
+class Coalesce extends FunctionNode
 {
     private $values = [];
 
@@ -39,6 +40,6 @@ class Greatest extends FunctionNode
             return $value->dispatch($sqlWalker);
         }, $this->values);
 
-        return 'GREATEST(' . implode(', ', $values) . ')';
+        return 'COALESCE(' . implode(', ', $values) . ')';
     }
 }

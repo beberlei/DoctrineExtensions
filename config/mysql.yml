@@ -81,6 +81,7 @@ doctrine:
                  binary: DoctrineExtensions\Query\Mysql\Binary
                  cast: DoctrineExtensions\Query\Mysql\Cast
                  char_length: DoctrineExtensions\Query\Mysql\CharLength
+                 coalesce: DoctrineExtensions\Query\Mysql\Coalesce
                  collate: DoctrineExtensions\Query\Mysql\Collate
                  concat_ws: DoctrineExtensions\Query\Mysql\ConcatWs
                  countif: DoctrineExtensions\Query\Mysql\CountIf
