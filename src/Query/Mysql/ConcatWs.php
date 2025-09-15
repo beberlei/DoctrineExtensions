@@ -28,11 +28,11 @@ class ConcatWs extends FunctionNode
         $this->values[] = $parser->ArithmeticExpression();
 
         // Add the rest of the strings to the values array. CONCAT_WS must
-        // be used with at least 2 strings not including the separator.
+        // be used with at least 1 string not including the separator.
 
         $lexer = $parser->getLexer();
 
-        while (count($this->values) < 3 || $lexer->lookahead->type === TokenType::T_COMMA) {
+        while (count($this->values) < 2 || $lexer->lookahead->type === TokenType::T_COMMA) {
             $parser->match(TokenType::T_COMMA);
             $peek = $lexer->glimpse();
 
