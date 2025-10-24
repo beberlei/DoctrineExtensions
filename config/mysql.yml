@@ -107,6 +107,7 @@ doctrine:
                  lag: DoctrineExtensions\Query\Mysql\Lag
                  lead: DoctrineExtensions\Query\Mysql\Lead
                  least: DoctrineExtensions\Query\Mysql\Least
+                 left: DoctrineExtensions\Query\Mysql\Left
                  lpad: DoctrineExtensions\Query\Mysql\Lpad
                  match: DoctrineExtensions\Query\Mysql\MatchAgainst
                  md5: DoctrineExtensions\Query\Mysql\Md5
@@ -115,6 +116,7 @@ doctrine:
                  radians: DoctrineExtensions\Query\Mysql\Radians
                  regexp: DoctrineExtensions\Query\Mysql\Regexp
                  replace: DoctrineExtensions\Query\Mysql\Replace
+                 right: DoctrineExtensions\Query\Mysql\Right
                  rpad: DoctrineExtensions\Query\Mysql\Rpad
                  sha1: DoctrineExtensions\Query\Mysql\Sha1
                  sha2: DoctrineExtensions\Query\Mysql\Sha2
